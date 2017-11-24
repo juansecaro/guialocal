@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imgLogo: MyString
+  imgLogoAlt: MyString
+  name: MyString
+  description: MyText
+  mapLon: 1.5
+  mapLat: 1.5
+  tag: one
+  offer: one
+  schedule: MyString
+  direction: MyString
+  web: MyString
+  email: MyString
+  tel: MyString
+  user: one
+  photo: one
+  video: MyString
+
+two:
+  imgLogo: MyString
+  imgLogoAlt: MyString
+  name: MyString
+  description: MyText
+  mapLon: 1.5
+  mapLat: 1.5
+  tag: two
+  offer: two
+  schedule: MyString
+  direction: MyString
+  web: MyString
+  email: MyString
+  tel: MyString
+  user: two
+  photo: two
+  video: MyString
