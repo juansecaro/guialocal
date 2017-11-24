@@ -2,22 +2,23 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :imgLogo %>
-    <%= f.input :imgLogoAlt %>
+
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :mapLon %>
     <%= f.input :mapLat %>
-    <%= f.association :tag %>
-    <%= f.association :offer %>
+    <%= f.input :video %>
     <%= f.input :schedule %>
     <%= f.input :direction %>
     <%= f.input :web %>
     <%= f.input :email %>
     <%= f.input :tel %>
-    <%= f.association :user %>
-    <%= f.association :photo %>
-    <%= f.input :video %>
+
+    <%= f.input :img_logo, as: :file, label: "Selecciona el logo de tu empresa" %>
+    <%= f.input :img_logo_alt %>
+
+    <%= f.association :user, :as => :hidden, :input_html => { :value => current_user.id } %>  
+
   </div>
 
   <div class="form-actions">

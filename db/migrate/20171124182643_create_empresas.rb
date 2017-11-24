@@ -1,8 +1,8 @@
 class CreateEmpresas < ActiveRecord::Migration[5.0]
   def change
     create_table :empresas do |t|
-      t.string :imgLogo
-      t.string :imgLogoAlt
+      t.string :img_logo
+      t.string :img_logo_alt
       t.string :name
       t.text :description
       t.float :mapLon

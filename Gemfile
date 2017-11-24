@@ -28,6 +28,7 @@ gem "font-awesome-rails"
 gem 'simple_form', '~> 3.5'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'devise', '~> 4.3'
+gem 'jquery-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

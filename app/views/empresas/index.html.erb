@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Empresas</h1>
 
@@ -28,21 +27,18 @@
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
-        <td><%= empresa.imgLogo %></td>
-        <td><%= empresa.imgLogoAlt %></td>
+        <td><%= empresa.img_logo %></td>
+        <td><%= empresa.img_logo_alt %></td>
         <td><%= empresa.name %></td>
         <td><%= empresa.description %></td>
         <td><%= empresa.mapLon %></td>
         <td><%= empresa.mapLat %></td>
-        <td><%= empresa.tag %></td>
-        <td><%= empresa.offer %></td>
         <td><%= empresa.schedule %></td>
         <td><%= empresa.direction %></td>
         <td><%= empresa.web %></td>
         <td><%= empresa.email %></td>
         <td><%= empresa.tel %></td>
         <td><%= empresa.user %></td>
-        <td><%= empresa.photo %></td>
         <td><%= empresa.video %></td>
         <td><%= link_to 'Show', empresa %></td>
         <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>

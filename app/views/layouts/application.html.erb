@@ -3,10 +3,6 @@
   <head>
     <title>Guiallerena</title>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,6 +10,21 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <%= render "layouts/header" %>
+
+
+    <div class="container">
+
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %>"> <%= message %> </div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+
+      <%= render "layouts/footer" %>
+
   </body>
 </html>

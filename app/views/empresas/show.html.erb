@@ -1,13 +1,12 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Imglogo:</strong>
-  <%= @empresa.imgLogo %>
+  <%= image_tag (@empresa.img_logo) %>
 </p>
 
 <p>
   <strong>Imglogoalt:</strong>
-  <%= @empresa.imgLogoAlt %>
+  <%= @empresa.img_logo_alt %>
 </p>
 
 <p>
@@ -30,15 +29,7 @@
   <%= @empresa.mapLat %>
 </p>
 
-<p>
-  <strong>Tag:</strong>
-  <%= @empresa.tag %>
-</p>
 
-<p>
-  <strong>Offer:</strong>
-  <%= @empresa.offer %>
-</p>
 
 <p>
   <strong>Schedule:</strong>
@@ -70,10 +61,6 @@
   <%= @empresa.user %>
 </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @empresa.photo %>
-</p>
 
 <p>
   <strong>Video:</strong>

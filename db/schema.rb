@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20171124183817) do
 
   create_table "empresas", force: :cascade do |t|
-    t.string   "imgLogo"
-    t.string   "imgLogoAlt"
+    t.string   "img_logo"
+    t.string   "img_logo_alt"
     t.string   "name"
     t.text     "description"
     t.float    "mapLon"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20171124183817) do
     t.integer  "user_id"
     t.integer  "photo_id"
     t.string   "video"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["offer_id"], name: "index_empresas_on_offer_id"
     t.index ["photo_id"], name: "index_empresas_on_photo_id"
     t.index ["tag_id"], name: "index_empresas_on_tag_id"
