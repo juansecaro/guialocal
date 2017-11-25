@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/king601/devise-bootstrapped.git
+  revision: 02e5259cfaa980deeb3e190ac5a49c9254caa867
+  branch: bootstrap4
+  specs:
+    devise-bootstrapped (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,6 +75,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise-i18n-views (0.3.7)
     elasticsearch (6.0.0)
       elasticsearch-api (= 6.0.0)
       elasticsearch-transport (= 6.0.0)
@@ -215,6 +223,8 @@ DEPENDENCIES
   carrierwave (~> 1.2, >= 1.2.1)
   coffee-rails (~> 4.2)
   devise (~> 4.3)
+  devise-bootstrapped!
+  devise-i18n-views
   font-awesome-rails
   friendly_id (~> 5.2, >= 5.2.1)
   jbuilder (~> 2.5)
