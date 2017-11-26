@@ -1,0 +1,6 @@
+
+<% admins_only do %>
+  <li class="<%= "active" if current_page?("/admin") %>">
+    <%= link_to "Admin", admin_root_path %>
+  </li>
+<% end %>

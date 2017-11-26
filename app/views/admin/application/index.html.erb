@@ -1,2 +1,76 @@
-<h1>Admin::Application#index</h1>
-<p>Find me in app/views/admin/application/index.html.erb</p>
+<div class="row">
+  <div class="col-sm-3 admin">
+    <div class="admin-sidebar">
+      <div class="user-panel">
+        <div class="pull-left image">
+          <span><%= image_tag avatar_url(current_user), width:20, class: "img-circle" %></span>
+        </div>
+        <div class="pull-left info"><p>
+          Full name
+        </p>
+
+        </div>
+      </div>
+
+    </div>
+    <ul class="admin-menu">
+      <li class="text-uppercase text-center header">Main Navigation</li>
+      <li>
+        <%= link_to admin_users_path do %>
+          <%= fa_icon "users" %>
+          <span>Empresas</span>
+          <span class="label label-primary pull-right"><%= @users.count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_categories_path do %>
+          <%= fa_icon "th" %>
+          <span>Categorías</span>
+          <span class="label label-info pull-right"><%= @categories.count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          <%= fa_icon "bank" %>
+          <span>Ingresos</span>
+          <span class="label label-danger pull-right">Users</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to empresas_path do %>
+          <%= fa_icon "bullhorn" %>
+          <span>Ofertas</span>
+          <span class="label label-warning pull-right">Empresas</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          <%= fa_icon "tag" %>
+          <span>Etiquetas</span>
+          <span class="label label-default pull-right">Etiquetas</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          <%= fa_icon "warning" %>
+          <span>Revisiones</span>
+          <span class="label label-primary pull-right">Comentarios</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          <%= fa_icon "heart" %>
+          <span>Likes</span>
+          <span class="label label-danger pull-right">Likes</span>
+        <% end %>
+      </li>
+
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <header>
+      <h1>Dashboard <small>Panel de Control</small></h1>
+    </header>
+    <h4>Bienvenido la sala de mandos</h4>
+  </div>
+</div>

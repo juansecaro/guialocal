@@ -2,6 +2,9 @@ class Admin::ApplicationController < ApplicationController
 before_action :authorize_admin!
 
   def index
+    @users = User.all
+    @empresas = Empresa.all
+    @categories = Category.all
   end
 
   private
