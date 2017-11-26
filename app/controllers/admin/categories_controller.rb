@@ -1,6 +1,7 @@
 class Admin::CategoriesController < Admin::ApplicationController
+  before_action :set_category, only: [:edit, :update, :destroy]
   def index
-
+    @categories = Category.all
   end
   def new
     @category = Category.new
@@ -16,18 +17,29 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
   end
   def edit
-
+    flash[:notice] = "Categoría editada con éxito."
   end
   def update
-
+    if @category.update(category_params)
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = "Hubo un problema. No se pudo actualizar la categoría."
+      render 'edit'
+    end
   end
   def destroy
-
+    @category.destroy
+    flash[:alert] = "Se ha borrado la categoría"
+    redirect_to admin_categories_path
   end
 
   private
   def category_params
     params.require(:category).permit(:name, :summary)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 
 end
