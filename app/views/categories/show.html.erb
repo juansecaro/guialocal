@@ -1,0 +1,12 @@
+<% provide(:title, @category.name) %>
+
+<header>
+  <h1 class="text-uppercase">Empresas en la categoría: <%= @category.name %></h1>
+
+  <ul class="actions">
+    <% admins_only do %>
+      <li><%= link_to "Editar", edit_admin_category_path(@category), class: "edit" %></li>
+      <li><%= link_to "Borrar", edit_admin_category_path(@category), class: "delete", method: :delete, data: [confirm: "¿Estás seguro?"] %></li>
+    <% end %>
+  </ul>
+</header>

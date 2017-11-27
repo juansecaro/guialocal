@@ -17,10 +17,11 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
   end
   def edit
-    flash[:notice] = "Categoría editada con éxito."
+
   end
   def update
     if @category.update(category_params)
+      flash[:notice] = "Categoría editada con éxito."
       redirect_to admin_categories_path
     else
       flash.now[:alert] = "Hubo un problema. No se pudo actualizar la categoría."
