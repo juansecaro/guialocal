@@ -1,12 +1,63 @@
 <% provide(:title, @category.name) %>
 
 <header>
-  <h1 class="text-uppercase">Empresas en la categoría: <%= @category.name %></h1>
+  <h1 class="text-uppercase">Categoría: <small><%= @category.name %></small></h1>
 
   <ul class="actions">
     <% admins_only do %>
-      <li><%= link_to "Editar", edit_admin_category_path(@category), class: "edit" %></li>
-      <li><%= link_to "Borrar", edit_admin_category_path(@category), class: "delete", method: :delete, data: [confirm: "¿Estás seguro?"] %></li>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <li><%= link_to "Editar", edit_admin_category_path(@category), class: "edit" %></li>
+        <li><%= link_to "Borrar", edit_admin_category_path(@category), class: "delete", method: :delete, data: [confirm: "¿Estás seguro?"] %></li>
+      </div>
     <% end %>
   </ul>
 </header>
+
+
+
+
+<div class="row">
+	<div class="col-sm-3 float-right">
+		<div class="sidebar">
+			<h3 class="discover">Discover</h3>
+			<ul class="nav nav-pills nav-stacked">
+				<li class="<%= "active" if current_page?("/empresas")%>">
+					<%= link_to "EMPRESAS (Todas)", empresas_path %>
+				</li>
+        <% @categories.each do |category| %>
+          <li class="<%= "active" if current_page?("/categories/#{category.id}") %> text-uppercase"> <%= link_to category.name, category_path(category) %></li>
+        <% end %>
+			</ul>
+		</div>
+	</div>
+
+
+  <div class="col-sm-9 pull-left">
+
+    <%= link_to empresas_path do %>
+    <div class="events">
+      <div class="row">
+        <div class="col-sm-3">
+          <%= image_tag "event.image.url", class: "event-image"  %>
+        </div>
+        <div class="col-sm-9">
+          <h3 class="event-title"><%= "" %></h3>
+          <p>
+            <span class="event-venue"><%= "" %> - <strong><%= "" %></strong></span>
+          </p>
+          <p class="lead-time">
+            <span class="event-start"><%= "time_format(event.start_time)" %></span>
+            <span class="pull-right"> Organized by: <%= "" %></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+</div>
+
+
+
+</div>

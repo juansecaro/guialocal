@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :empresas
   namespace :admin do
     root 'application#index'
     resources :users, only: [:index, :show, :edit, :delete]
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: :show
-  resources :empresas
   resources :categories, only: :show
 
 

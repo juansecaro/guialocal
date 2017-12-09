@@ -1,3 +1,3 @@
 class Offer < ApplicationRecord
-  has_one :photo
+  belongs_to :empresa
 end

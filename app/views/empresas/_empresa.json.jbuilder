@@ -1,2 +1,2 @@
-json.extract! empresa, :id, :imgLogo, :imgLogoAlt, :name, :description, :mapLon, :mapLat, :tag_id, :offer_id, :schedule, :direction, :web, :email, :tel, :user_id, :photo_id, :video, :created_at, :updated_at
+json.extract! empresa, :id, :logo, :description, :mlon, :mlat, :schedule, :address, :web, :email, :tel, :video, :fotos, :created_at, :updated_at
 json.url empresa_url(empresa, format: :json)

@@ -1,17 +1,8 @@
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Imglogo:</strong>
-  <%= image_tag (@empresa.img_logo) %>
-</p>
-
-<p>
-  <strong>Imglogoalt:</strong>
-  <%= @empresa.img_logo_alt %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @empresa.name %>
+  <strong>Logo:</strong>
+  <%= @empresa.logo %>
 </p>
 
 <p>
@@ -20,16 +11,14 @@
 </p>
 
 <p>
-  <strong>Maplon:</strong>
-  <%= @empresa.mapLon %>
+  <strong>Mlon:</strong>
+  <%= @empresa.mlon %>
 </p>
 
 <p>
-  <strong>Maplat:</strong>
-  <%= @empresa.mapLat %>
+  <strong>Mlat:</strong>
+  <%= @empresa.mlat %>
 </p>
-
-
 
 <p>
   <strong>Schedule:</strong>
@@ -37,8 +26,8 @@
 </p>
 
 <p>
-  <strong>Direction:</strong>
-  <%= @empresa.direction %>
+  <strong>Address:</strong>
+  <%= @empresa.address %>
 </p>
 
 <p>
@@ -57,14 +46,13 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @empresa.user %>
-</p>
-
-
-<p>
   <strong>Video:</strong>
   <%= @empresa.video %>
+</p>
+
+<p>
+  <strong>Fotos:</strong>
+  <%= @empresa.fotos %>
 </p>
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |

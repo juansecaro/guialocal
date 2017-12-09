@@ -1,27 +1,50 @@
-<%= simple_form_for(@empresa) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
 
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :mapLon %>
-    <%= f.input :mapLat %>
-    <%= f.input :video %>
-    <%= f.input :schedule %>
-    <%= f.input :direction %>
-    <%= f.input :web %>
-    <%= f.input :email %>
-    <%= f.input :tel %>
+<%= form_for @empresa, html: {multipart: true}  do |f| %>
+<p>
+  <%= f.label :nombre %>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :Seleccione_una_fotografía_de_su_logo %>
+  <%= f.file_field :logo %>
+</p>
+<p>
+  <%= f.label :Email %>
+  <%= f.text_field :email %>
+</p>
+<p>
+  <%= f.label :Número_de_teléfono %>
+  <%= f.text_field :tel %>
+</p>
+<p>
+  <%= f.label :Dirección %>
+  <%= f.text_field :address %>
+</p>
+<p>
+  <%= f.label :Horario_al_público %>
+  <%= f.text_field :schedule %>
+</p>
+<p>
+  <%= f.label :Página_web %>
+  <%= f.text_field :web %>
+</p>
 
-    <%= f.input :img_logo, as: :file, label: "Selecciona el logo de tu empresa" %>
-    <%= f.input :img_logo_alt %>
-
-    <%= f.association :user, :as => :hidden, :input_html => { :value => current_user.id } %>  
-
+<p>
+  <div class="input-group">
+    <%= f.label :Longitud %>
+    <%= f.number_field(:mlon, step:0.000001) %>
+    <%= f.label :Latitud %>
+    <%= f.number_field(:mlat, step:0.000001) %>
   </div>
+<p>
+  <%= f.label :Descripción_detallada_de_tu_empresa %><br>
+  <%= f.text_area :description, size: "60x12"  %>
+</p>
+<p>
+  <%= f.label :Seleccione_varias_fotos %>
+  <%= f.file_field :fotos, multiple: true %>
+</p>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<p><%= f.submit "Enviar", class: "btn btn-primary" %></p>
 <% end %>

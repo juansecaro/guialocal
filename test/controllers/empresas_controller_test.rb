@@ -17,7 +17,7 @@ class EmpresasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create empresa" do
     assert_difference('Empresa.count') do
-      post empresas_url, params: { empresa: { description: @empresa.description, direction: @empresa.direction, email: @empresa.email, imgLogo: @empresa.imgLogo, imgLogoAlt: @empresa.imgLogoAlt, mapLat: @empresa.mapLat, mapLon: @empresa.mapLon, name: @empresa.name, offer_id: @empresa.offer_id, photo_id: @empresa.photo_id, schedule: @empresa.schedule, tag_id: @empresa.tag_id, tel: @empresa.tel, user_id: @empresa.user_id, video: @empresa.video, web: @empresa.web } }
+      post empresas_url, params: { empresa: { address: @empresa.address, description: @empresa.description, email: @empresa.email, fotos: @empresa.fotos, logo: @empresa.logo, mlat: @empresa.mlat, mlon: @empresa.mlon, schedule: @empresa.schedule, tel: @empresa.tel, video: @empresa.video, web: @empresa.web } }
     end
 
     assert_redirected_to empresa_url(Empresa.last)
@@ -34,7 +34,7 @@ class EmpresasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update empresa" do
-    patch empresa_url(@empresa), params: { empresa: { description: @empresa.description, direction: @empresa.direction, email: @empresa.email, imgLogo: @empresa.imgLogo, imgLogoAlt: @empresa.imgLogoAlt, mapLat: @empresa.mapLat, mapLon: @empresa.mapLon, name: @empresa.name, offer_id: @empresa.offer_id, photo_id: @empresa.photo_id, schedule: @empresa.schedule, tag_id: @empresa.tag_id, tel: @empresa.tel, user_id: @empresa.user_id, video: @empresa.video, web: @empresa.web } }
+    patch empresa_url(@empresa), params: { empresa: { address: @empresa.address, description: @empresa.description, email: @empresa.email, fotos: @empresa.fotos, logo: @empresa.logo, mlat: @empresa.mlat, mlon: @empresa.mlon, schedule: @empresa.schedule, tel: @empresa.tel, video: @empresa.video, web: @empresa.web } }
     assert_redirected_to empresa_url(@empresa)
   end
 

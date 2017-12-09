@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'awesome_print', '~> 1.7', :require => 'ap'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'searchkick', '~> 2.3' #Search
@@ -31,6 +32,8 @@ gem 'devise', '~> 4.3'
 gem 'jquery-rails'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
+gem 'better_errors', '~> 2.4'
+gem 'binding_of_caller', '~> 0.7.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

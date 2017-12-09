@@ -1,25 +1,21 @@
+<p id="notice"><%= notice %></p>
 
 <h1>Empresas</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Imglogo</th>
-      <th>Imglogoalt</th>
-      <th>Name</th>
+      <th>Logo</th>
       <th>Description</th>
-      <th>Maplon</th>
-      <th>Maplat</th>
-      <th>Tag</th>
-      <th>Offer</th>
+      <th>Mlon</th>
+      <th>Mlat</th>
       <th>Schedule</th>
-      <th>Direction</th>
+      <th>Address</th>
       <th>Web</th>
       <th>Email</th>
       <th>Tel</th>
-      <th>User</th>
-      <th>Photo</th>
       <th>Video</th>
+      <th>Fotos</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -27,19 +23,17 @@
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
-        <td><%= empresa.img_logo %></td>
-        <td><%= empresa.img_logo_alt %></td>
-        <td><%= empresa.name %></td>
+        <td><%= empresa.logo %></td>
         <td><%= empresa.description %></td>
-        <td><%= empresa.mapLon %></td>
-        <td><%= empresa.mapLat %></td>
+        <td><%= empresa.mlon %></td>
+        <td><%= empresa.mlat %></td>
         <td><%= empresa.schedule %></td>
-        <td><%= empresa.direction %></td>
+        <td><%= empresa.address %></td>
         <td><%= empresa.web %></td>
         <td><%= empresa.email %></td>
         <td><%= empresa.tel %></td>
-        <td><%= empresa.user %></td>
         <td><%= empresa.video %></td>
+        <td><%= empresa.fotos %></td>
         <td><%= link_to 'Show', empresa %></td>
         <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>
         <td><%= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
