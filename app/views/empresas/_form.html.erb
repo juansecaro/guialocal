@@ -1,50 +1,119 @@
 
 
 <%= form_for @empresa, html: {multipart: true}  do |f| %>
+<div class="form-group">
 <p>
-  <%= f.label :nombre %>
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.label :Seleccione_una_fotografía_de_su_logo %>
-  <%= f.file_field :logo %>
-</p>
-<p>
-  <%= f.label :Email %>
-  <%= f.text_field :email %>
-</p>
-<p>
-  <%= f.label :Número_de_teléfono %>
-  <%= f.text_field :tel %>
-</p>
-<p>
-  <%= f.label :Dirección %>
-  <%= f.text_field :address %>
-</p>
-<p>
-  <%= f.label :Horario_al_público %>
-  <%= f.text_field :schedule %>
-</p>
-<p>
-  <%= f.label :Página_web %>
-  <%= f.text_field :web %>
-</p>
-
-<p>
-  <div class="input-group">
-    <%= f.label :Longitud %>
-    <%= f.number_field(:mlon, step:0.000001) %>
-    <%= f.label :Latitud %>
-    <%= f.number_field(:mlat, step:0.000001) %>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :nombre %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :name %>
+    </div>
   </div>
-<p>
-  <%= f.label :Descripción_detallada_de_tu_empresa %><br>
-  <%= f.text_area :description, size: "60x12"  %>
-</p>
-<p>
-  <%= f.label :Seleccione_varias_fotos %>
-  <%= f.file_field :fotos, multiple: true %>
 </p>
 
-<p><%= f.submit "Enviar", class: "btn btn-primary" %></p>
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Seleccione_una_fotografía_de_su_logo %>
+    </div>
+    <div class="col-md-3">
+      <%= f.file_field :logo %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Email %>
+    </div>
+  <div class="col-md-3">
+  <%= f.text_field :email %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+  <%= f.label :Número_de_teléfono %>
+    </div>
+    <div class="col-md-3">
+  <%= f.text_field :tel %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+  <%= f.label :Dirección %>
+    </div>
+    <div class="col-md-3">
+  <%= f.text_field :address %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Horario_al_público %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :schedule %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Página_web %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :web %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">
+  <%= f.label :Descripción_detallada_de_tu_empresa %>
+  <%= f.text_area :description, size: "60x12"  %>
+    </div>
+  </div>
+</p>
+
+<p>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <%= f.label :Longitud %>
+        <%= f.number_field(:mlon, step:0.000001) %>
+      </div>
+      <div class="col-md-3">
+        <%= f.label :Latitud %>
+        <%= f.number_field(:mlat, step:0.000001) %>
+      </div>
+    </div>
+
+
+<p>
+  <div class="row">
+    <div class="col-md-2 offset-md-3">
+      <%= f.label :Seleccione_varias_fotos %><br>
+      <%= f.file_field :fotos, multiple: true %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="text-center">
+  <%= f.submit "Enviar", class: "btn btn-primary text" %>
+  </div>
+</p>
+</div>
 <% end %>
