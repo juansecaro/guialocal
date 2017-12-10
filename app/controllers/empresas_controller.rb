@@ -65,6 +65,9 @@ class EmpresasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_empresa
       @empresa = Empresa.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+  		flash.alert = "Le empresa que buscas no está aquí"
+      redirect_to empresas_path
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
