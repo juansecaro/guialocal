@@ -8,8 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgreSQL as the database for Active Record
+gem 'pg', '< 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,7 +29,6 @@ gem "font-awesome-rails"
 gem 'simple_form', '~> 3.5'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'devise', '~> 4.3'
-gem 'jquery-rails'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'better_errors', '~> 2.4'

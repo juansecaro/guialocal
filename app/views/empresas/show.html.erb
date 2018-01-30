@@ -1,18 +1,35 @@
-<p id="notice"><%= notice %></p>
 
 <div class="row">
   <div class="col-md-3">
-    <%= image_tag (@empresa.logo.url) %>
+    <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
   </div>
-  <div class="com-md- 9">
-    <h1><%= @empresa.name %></h1>
+  <div class="com-md-9">
+    <div class="display-1 text-center">
+      <h1><strong><%= @empresa.name%></strong></h1>
+
+    </div>
   </div>
 </div>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @empresa.logo %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+Blao
+  </div>
+  <div class="col-md-4">
+    <div id="map">
+      <iframe
+
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKVHaq85J1cJcT1nZjehdz85Ha3iIs5IY
+          &q=<%=@empresa.mlat%>,<%=@empresa.mlon%>" allowfullscreen>
+      </iframe>
+
+    </div>
+  </div>
+
+</div>
+
+
 
 <p>
   <strong>Description:</strong>
@@ -63,6 +80,7 @@
   <strong>Fotos:</strong>
   <%= @empresa.fotos %>
 </p>
+
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
 <%= link_to 'Back', empresas_path %>

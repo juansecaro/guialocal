@@ -5,7 +5,7 @@
 <p>
   <div class="row">
     <div class="col-md-3 offset-md-3">
-      <%= f.label :nombre %>
+      <%= f.label :name %>
     </div>
     <div class="col-md-3">
       <%= f.text_field :name %>
@@ -19,7 +19,7 @@
       <%= f.label :Seleccione_una_fotografía_de_su_logo %>
     </div>
     <div class="col-md-3">
-      <%= f.file_field :logo %>
+      <%= f.file_field :logo, as: :file %>
     </div>
   </div>
 </p>
