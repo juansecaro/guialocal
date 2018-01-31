@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
   resources :categories, only: :show
+  resources :tags, only: :show
 
 
   root 'empresas#index'

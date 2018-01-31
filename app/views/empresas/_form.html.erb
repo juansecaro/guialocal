@@ -81,6 +81,28 @@
 
 <p>
   <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Seleccione_categoría_empresarial %>
+    </div>
+    <div class="col-md-3">
+      <%= f.collection_select :category_id, Category.all, :id, :name, :selected => Category.first  %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+      <%= f.label :Palabras_clave, hint: "Meta las palabras clave separadas por comas" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :tag_list %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <div class="row">
     <div class="col-md-2 offset-md-3">
   <%= f.label :Descripción_detallada_de_tu_empresa %>
   <%= f.text_area :description, size: "60x12"  %>

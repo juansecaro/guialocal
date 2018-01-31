@@ -1,0 +1,54 @@
+<% provide(:title, @tag.name) %>
+
+<header>
+  <h1>Empresas con esta etiqueta: <strong><em> <%= @tag.name %> </em></strong>  </h1>
+</header>
+
+
+
+
+<div class="row">
+	<div class="col-sm-3 float-right">
+		<div class="sidebar">
+			<h3 class="discover">Discover</h3>
+			<ul class="nav nav-pills nav-stacked">
+				<li class="<%= "active" if current_page?("/empresas")%>">
+					<%= link_to "EMPRESAS (Todas)", empresas_path %>
+				</li>
+        <% @categories.each do |category| %>
+          <li class="<%= "active" if current_page?("/categories/#{category.id}") %> text-uppercase"> <%= link_to category.name, category_path(category) %></li>
+        <% end %>
+			</ul>
+		</div>
+	</div>
+
+<%= @tag.empresas.each do |empresa| %>
+  <div class="col-sm-9 pull-left">
+
+    <%= link_to empresas_path do %>
+    <div class="events">
+      <div class="row">
+        <div class="col-sm-3">
+          <%= image_tag empresa.logo.url, class: "event-image"  %>
+        </div>
+        <div class="col-sm-9">
+          <h3 class="event-title"><%= "" %></h3>
+          <p>
+            <span class="event-venue"><%= "" %> - <strong><%= "" %></strong></span>
+          </p>
+          <p class="lead-time">
+            <span class="event-start"><%= "time_format(event.start_time)" %></span>
+            <span class="pull-right"> Organized by: <%= "" %></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+<% end %>
+</div>
+
+
+
+</div>

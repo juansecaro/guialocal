@@ -29,6 +29,11 @@ Blao
 
 </div>
 
+<p>
+  <% if @empresa.tags.any?  %>
+    <%= render @empresa.tags %>
+  <% end %>
+</p>
 
 
 <p>
