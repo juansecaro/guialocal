@@ -1,6 +1,7 @@
 class Empresa < ApplicationRecord
   attr_accessor :tag_list
   belongs_to :user
+  belongs_to :category
   has_many :offers, dependent: :destroy
 
   has_many :taggings, dependent: :destroy

@@ -18,8 +18,6 @@
 @import "admin/application";
 
 
-
-
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -137,11 +135,17 @@ span.past {
     @extend .fa-close;
   }
 }
-#map {
+#cabecero {
+
+  padding-bottom: 20px;
+  padding-top: 20px;
 
 }
 #entrante{
    line-height: 2.2em;
+}
+#titulos {
+  margin-left: 1em; 
 }
 
 

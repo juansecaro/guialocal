@@ -1,17 +1,22 @@
 
-<div class="row">
-  <div id="cabecero">
-    <div class="col-md-3">
-      <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
-    </div>
-    <div class="com-md-9">
-      <div class="display-1 text-center">
-        <h1><strong><%= @empresa.name%></strong></h1>
+  <div class="row" id="cabecero">
+ 
+    
+      <div class="col-md-3">
+        <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
+      </div>
+
+      <div class="col-md-9">
+
+          <div class="display-1" id="titulos">
+            <h1><strong><%= @empresa.name %></strong> </h1>
+            <h2><mark><%= @empresa.category.name %></mark></h2>
+          </div>
 
       </div>
   </div>
-  </div>
-</div>
+
+
 
 <div class="row">
   <div class="col-md-6">
