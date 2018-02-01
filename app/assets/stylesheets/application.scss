@@ -100,6 +100,10 @@ a.delete {
   @extend .alert-danger;
 }
 
+.hashtag {
+  font-size: large;
+}
+
 
 span.past {
   background: #c9302c;
@@ -133,3 +137,5 @@ span.past {
     @extend .fa-close;
   }
 }
+
+
