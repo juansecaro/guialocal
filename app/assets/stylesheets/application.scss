@@ -17,6 +17,11 @@
 @import "font-awesome";
 @import "admin/application";
 
+@font-face {
+  font-family: "Kievit";
+  src: url(/assets/fonts/kievit.ttf) format("truetype");
+}
+
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -98,10 +103,6 @@ a.delete {
   @extend .alert-danger;
 }
 
-.hashtag {
-  font-size: large;
-}
-
 
 span.past {
   background: #c9302c;
@@ -135,6 +136,9 @@ span.past {
     @extend .fa-close;
   }
 }
+.hashtag {
+  font-size: large;
+}
 #cabecero {
 
   padding-bottom: 20px;
@@ -147,5 +151,13 @@ span.past {
 #titulos {
   margin-left: 1em; 
 }
+#description{
+  font-family: "Kievit";
+  font-size: medium;
+  first-letter: 200%;
+
+}
+
+
 
 

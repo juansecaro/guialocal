@@ -1,6 +1,5 @@
 
   <div class="row" id="cabecero">
- 
     
       <div class="col-md-3">
         <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
@@ -20,6 +19,42 @@
 
 <div class="row">
   <div class="col-md-6">
+  <div class="alert alert-dark" role="alert">
+    <h6>Detalles de contacto</h6>
+  </div>
+
+     <p> 
+      <%= fa_icon "map-marker 2x" %>
+      <span><%= @empresa.address unless @empresa.address.blank? %></span>
+    </p>
+
+    <p> 
+      <%= fa_icon "phone 2x" %>
+      <span> <%= @empresa.tel unless @empresa.tel.blank? %></span>
+    </p>
+
+    <p> 
+      <%= fa_icon "at 2x" %>
+      <span> <%= @empresa.email unless @empresa.email.blank? %></span>
+    </p>
+
+    <p> 
+      <%= fa_icon "link 2x"  %>
+      <span> <%= link_to(@empresa.web, @empresa.web) unless @empresa.web.blank? %></span>
+    </p>
+
+    <p> 
+      <%= fa_icon "clock 2x"  %>
+      <span>sdsd <%=  %></span>
+    </p>
+
+  <div class="alert alert-dark" role="alert">
+    <h6>Palabras clave</h6>
+  </div>
+
+
+
+
     <div id="entrante">
       <p>
         <% if @empresa.tags.any?  %>
@@ -47,8 +82,10 @@
 
 
 <p>
-  <strong>Description:</strong>
-  <%= @empresa.description %>
+  <div id="description">
+    <%= simple_format(@empresa.description) %>
+  </div>
+  
 </p>
 
 <p>
