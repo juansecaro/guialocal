@@ -25,7 +25,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'searchkick', '~> 2.3' #Search
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
 gem 'simple_form', '~> 3.5'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'devise', '~> 4.3'

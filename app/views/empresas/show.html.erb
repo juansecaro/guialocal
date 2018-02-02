@@ -24,36 +24,33 @@
   </div>
 
      <p> 
-      <%= fa_icon "map-marker 2x" %>
+      <%= fa_icon "map-marker 2x", class: "text-primary" %>
       <span><%= @empresa.address unless @empresa.address.blank? %></span>
     </p>
 
     <p> 
-      <%= fa_icon "phone 2x" %>
+      <%= fa_icon "phone 2x", class: "text-primary" %>
       <span> <%= @empresa.tel unless @empresa.tel.blank? %></span>
     </p>
 
     <p> 
-      <%= fa_icon "at 2x" %>
+      <%= fa_icon "at 2x", class: "text-primary" %>
       <span> <%= @empresa.email unless @empresa.email.blank? %></span>
     </p>
 
     <p> 
-      <%= fa_icon "link 2x"  %>
+      <%= fa_icon "link 2x", class: "text-primary"  %>
       <span> <%= link_to(@empresa.web, @empresa.web) unless @empresa.web.blank? %></span>
     </p>
 
     <p> 
-      <%= fa_icon "clock 2x"  %>
-      <span>sdsd <%=  %></span>
+      <%= fa_icon "info-circle 2x", class: "text-primary"  %>
+      <span> <%= @empresa.schedule unless @empresa.schedule.blank? %></span>
     </p>
 
   <div class="alert alert-dark" role="alert">
     <h6>Palabras clave</h6>
   </div>
-
-
-
 
     <div id="entrante">
       <p>
@@ -63,7 +60,7 @@
       </p>
     </div>
   </div>
-
+<!-- --> 
   <div class="col-md-6">
     <div id="map">
       <iframe
@@ -80,7 +77,7 @@
 
 
 
-
+<p><h2 class="text-center"><b>Conoce un poco más de <%= @empresa.name %>, nuestra empresa</b></h2></p>
 <p>
   <div id="description">
     <%= simple_format(@empresa.description) %>
@@ -88,50 +85,21 @@
   
 </p>
 
-<p>
-  <strong>Mlon:</strong>
-  <%= @empresa.mlon %>
-</p>
+<p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
 
 <p>
-  <strong>Mlat:</strong>
-  <%= @empresa.mlat %>
+  <strong>Fotos:</strong>
+  <%= @empresa.fotos %>
 </p>
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @empresa.schedule %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @empresa.address %>
-</p>
-
-<p>
-  <strong>Web:</strong>
-  <%= @empresa.web %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @empresa.email %>
-</p>
-
-<p>
-  <strong>Tel:</strong>
-  <%= @empresa.tel %>
-</p>
+<p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
 
 <p>
   <strong>Video:</strong>
   <%= @empresa.video %>
 </p>
 
-<p>
-  <strong>Fotos:</strong>
-  <%= @empresa.fotos %>
-</p>
+
 
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
