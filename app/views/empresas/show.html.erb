@@ -88,11 +88,12 @@
 <p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
 
 <p>
-  <strong>Fotos:</strong>
-  <% if @empresa.fotos.any? %> 
-    <% @empresa.fotos.each do |foto| %>
-      <%= image_tag(foto.url) %>
-    <% end %>
+  <% if @empresa.fotos.any? %>
+    <div class="row">
+      <% @empresa.fotos.each do |foto| %>
+        <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos") %></div>
+      <% end %>
+    </div> 
   <% end %>
 </p>
 
