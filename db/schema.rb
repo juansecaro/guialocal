@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.string   "email"
     t.string   "tel"
     t.string   "video"
-    t.string   "fotos"
+    t.json     "fotos"
     t.float    "mlon"
     t.float    "mlat"
     t.integer  "tag_id"
@@ -88,4 +88,8 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "offers", "empresas"
+  add_foreign_key "taggings", "empresas"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "users", "empresas"
 end

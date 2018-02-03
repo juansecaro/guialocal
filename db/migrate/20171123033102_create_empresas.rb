@@ -11,7 +11,7 @@ class CreateEmpresas < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :tel
       t.string :video
-      t.string :fotos
+      t.json :fotos
 
       t.float :mlon
       t.float :mlat

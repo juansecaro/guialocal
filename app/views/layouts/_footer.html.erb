@@ -1,6 +1,9 @@
-
+<div class="bg-primary text-white">
+<p>
 <% admins_only do %>
   <li class="<%= "active" if current_page?("/admin") %>">
-    <%= link_to "Admin", admin_root_path %>
+    <%= link_to "Admin", admin_root_path, class: "badge badge-light" %>
   </li>
 <% end %>
+</p>
+</div>

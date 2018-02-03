@@ -8,6 +8,7 @@ class Empresa < ApplicationRecord
   has_many :tags, through: :taggings
 
   mount_uploader :logo, LogoUploader
+  mount_uploaders :fotos, FotosUploader
 
   def tag_list
     tags.join(", ")

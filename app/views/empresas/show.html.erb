@@ -9,7 +9,7 @@
 
           <div class="display-1" id="titulos">
             <h1><strong><%= @empresa.name %></strong> </h1>
-            <h2><mark><%= @empresa.category.name %></mark></h2>
+            <h2><mark><%= @empresa.category.name unless @empresa.category.name.blank? %></mark></h2>
           </div>
 
       </div>
@@ -89,7 +89,11 @@
 
 <p>
   <strong>Fotos:</strong>
-  <%= @empresa.fotos %>
+  <% if @empresa.fotos.any? %> 
+    <% @empresa.fotos.each do |foto| %>
+      <%= image_tag(foto.url) %>
+    <% end %>
+  <% end %>
 </p>
 
 <p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
