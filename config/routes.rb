@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tags, only: :show
 
 
+
   root 'empresas#index'
 
 
