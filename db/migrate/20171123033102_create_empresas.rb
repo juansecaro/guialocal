@@ -5,7 +5,7 @@ class CreateEmpresas < ActiveRecord::Migration[5.0]
       t.string :name
 
       t.text :description
-      t.string :schedule
+      t.string :schedule, array:true, default: []
       t.string :address
       t.string :web
       t.string :email

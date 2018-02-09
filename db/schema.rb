@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.string   "logo"
     t.string   "name"
     t.text     "description"
-    t.string   "schedule"
+    t.string   "schedule",    default: [],              array: true
     t.string   "address"
     t.string   "web"
     t.string   "email"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.integer  "tag_id"
     t.integer  "offer_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "category_id"
     t.index ["category_id"], name: "index_empresas_on_category_id", using: :btree
   end

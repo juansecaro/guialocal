@@ -45,6 +45,7 @@
 
     <p> 
       <%= fa_icon "info-circle 2x", class: "text-primary"  %>
+      <%=  if @empresa.schedule %>
       <span> <%= @empresa.schedule unless @empresa.schedule.blank? %></span>
     </p>
 

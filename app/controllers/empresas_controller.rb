@@ -10,6 +10,23 @@ class EmpresasController < ApplicationController
   # GET /empresas/1
   # GET /empresas/1.json
   def show
+    @abierto = false
+    @n = 4*Time.now.wday
+
+    if (Time.now).between?((@empresa.schedule[@n]),(@empresa.schedule[@n+1]))
+      @abierto = true
+    else
+      if (@empresa.schedule[@n+2] != nil || @empresa.schedule[@n+3] != nil)
+        if (Time.now).between?((@empresa.schedule[@n+2]),(@empresa.schedule[@n+3]))
+          @abierto = true
+        else
+          #Aquí está la chicha futura. Abirá en..
+        end
+      end
+    end
+
+
+
   end
 
   # GET /empresas/new
@@ -69,6 +86,7 @@ class EmpresasController < ApplicationController
   		flash.alert = "Le empresa que buscas no está aquí"
       redirect_to empresas_path
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresa_params
