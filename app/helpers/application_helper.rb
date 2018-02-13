@@ -13,8 +13,8 @@ module ApplicationHelper
     block.call if current_user.try(:admin?)
   end
 
-  def time_format(event_date)
-    event_date.strftime("%A, %d %b %Y %l:%M %p")
+  def time_format(datetime)
+    datetime.strftime('%H:%M') unless datetime.blank?
   end
 
   def avatar_url(user)

@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Kievit";
-  src: url(/assets/fonts/kievit.ttf) format("truetype");
+  src: url(/public/fonts/kievit.ttf) format("truetype");
 }
 
 
@@ -153,7 +153,7 @@ span.past {
    line-height: 2.2em;
 }
 #titulos {
-  margin-left: 1em; 
+  margin-left: 1em;
 }
 #description{
   font-family: "Kievit";
@@ -164,7 +164,3 @@ span.past {
 img:hover {
   -webkit-transform: scale(2);
 }
-
-
-
-

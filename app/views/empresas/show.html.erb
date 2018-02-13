@@ -1,6 +1,6 @@
 
   <div class="row" id="cabecero">
-    
+
       <div class="col-md-3">
         <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
       </div>
@@ -23,30 +23,29 @@
     <h6>Detalles de contacto</h6>
   </div>
 
-     <p> 
+     <p>
       <%= fa_icon "map-marker 2x", class: "text-primary" %>
       <span><%= @empresa.address unless @empresa.address.blank? %></span>
     </p>
 
-    <p> 
+    <p>
       <%= fa_icon "phone 2x", class: "text-primary" %>
       <span> <%= @empresa.tel unless @empresa.tel.blank? %></span>
     </p>
 
-    <p> 
+    <p>
       <%= fa_icon "at 2x", class: "text-primary" %>
       <span> <%= @empresa.email unless @empresa.email.blank? %></span>
     </p>
 
-    <p> 
+    <p>
       <%= fa_icon "link 2x", class: "text-primary"  %>
       <span> <%= link_to(@empresa.web, @empresa.web) unless @empresa.web.blank? %></span>
     </p>
 
-    <p> 
+    <p>
       <%= fa_icon "info-circle 2x", class: "text-primary"  %>
-      <%=  if @empresa.schedule %>
-      <span> <%= @empresa.schedule unless @empresa.schedule.blank? %></span>
+      <span><%= horario(Time.now)%></span>
     </p>
 
   <div class="alert alert-dark" role="alert">
@@ -61,7 +60,7 @@
       </p>
     </div>
   </div>
-<!-- --> 
+<!-- -->
   <div class="col-md-6">
     <div id="map">
       <iframe
@@ -83,7 +82,7 @@
   <div id="description">
     <%= simple_format(@empresa.description) %>
   </div>
-  
+
 </p>
 
 <p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
@@ -94,7 +93,7 @@
       <% @empresa.fotos.each do |foto| %>
         <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos") %></div>
       <% end %>
-    </div> 
+    </div>
   <% end %>
 </p>
 
