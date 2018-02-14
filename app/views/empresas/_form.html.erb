@@ -122,8 +122,13 @@
     </div>
 
     <p>
+
       <div class="row">
-        <div class="col-md-1 offset-md-3">
+        <div class="col-md-1 offset-md-2">
+          <p>¿Jornada continua?</p>
+          <input type="checkbox" class="text-center" id="cbox1" onchange="jornada_partida(cbox1)">
+        </div>
+        <div class="col-md-1">
           Lunes </br>
           De <%= f.time_field :schedule0, class: "timepicker", :value => time_format(f.object.schedule0) %> a <%= f.time_field :schedule1, class: "timepicker", :value => time_format(f.object.schedule1) %>
         </div>
@@ -157,15 +162,10 @@
           Domingo </br>
           De <%= f.time_field :schedule24, class: "timepicker", :value => time_format(f.object.schedule24) %> a <%= f.time_field :schedule25, class: "timepicker", :value => time_format(f.object.schedule25) %>
         </div>
+    </div>
 
-        <div class="row parcial">
-
-          <div class="col-md-1 offset-md-2">
-            ¿Jornada partida? </br>
-            <p><input type="checkbox" class="form-check-input" id="checkjornada"></p>
-          </div>
-
-          <div class="col-md-1">
+        <div class="row" id="parcial">
+          <div class="col-md-1 offset-md-3">
             Lunes </br>
             De <%= f.time_field :schedule2, class: "timepicker", :value => time_format(f.object.schedule2) %> a <%= f.time_field :schedule3, class: "timepicker", :value => time_format(f.object.schedule3) %>
           </div>
@@ -199,6 +199,8 @@
             Domingo </br>
             De <%= f.time_field :schedule26, class: "timepicker", :value => time_format(f.object.schedule26) %> a <%= f.time_field :schedule27, class: "timepicker", :value => time_format(f.object.schedule27) %>
           </div>
+
+
 
         </div>
       </div>
