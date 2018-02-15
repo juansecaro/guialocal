@@ -11,9 +11,6 @@ $(document).on('turbolinks:load', function () {
      }
     });
 
-
-
-
 });
 
 function jornada_partida(checkboxElem) {

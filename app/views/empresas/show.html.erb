@@ -46,6 +46,13 @@
     <p>
       <%= fa_icon "info-circle 2x", class: "text-primary"  %>
       <span><%= @hor %></span>
+
+        <% if @abierto %>
+          <span class="badge badge-success">Abierto</span>
+        <% else %>
+          <span class="badge badge-danger">Cerrado</span>
+        <% end %>
+
     </p>
 
   <div class="alert alert-dark" role="alert">
