@@ -101,7 +101,7 @@ class EmpresasController < ApplicationController
 
         if (@empresa.schedule2.blank? || @empresa.schedule3.blank?)
           if (@empresa.schedule0.blank? || @empresa.schedule1.blank?)
-            @salida = "No hay horario definido aún"
+            @salida = ""
           else
             @salida = "Hoy abre de #{@empresa.schedule0} a #{@empresa.schedule1}"
             #@abierto = now_is_between?(@empresa.schedule0, @empresa.schedule1)
@@ -111,7 +111,7 @@ class EmpresasController < ApplicationController
             @salida = "Hoy abre de #{@empresa.schedule0} a #{@empresa.schedule1} y de #{@empresa.schedule2} a #{@empresa.schedule3}"
             #@abierto= (now_is_between?(@empresa.schedule0, @empresa.schedule1) || now_is_between?(@empresa.schedule2, @empresa.schedule3))
           else
-            @salida = "No hay horario definido aún"
+            @salida = "Horario no definido correctamente"
           end
         end
 

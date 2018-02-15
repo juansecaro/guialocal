@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function () {
 
   $('.timepicker').timepicker({
-    defaultTime: '10:00',
+    scrollDefault: '10:00',
     timeFormat: 'H:i',
     step: 30,
     disableTextInput: true,
@@ -11,9 +11,7 @@ $(document).on('turbolinks:load', function () {
      }
     });
 
-  if ($('#checkjornada').change(function() {
-    document.getElementById("#empresa_schedule0").reset();
-  }));
+
 
 
 });

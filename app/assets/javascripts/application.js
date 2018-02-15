@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-
+//= require timepicker
 //= require turbolinks
 //= require_tree .
