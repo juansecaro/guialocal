@@ -102,7 +102,7 @@ class EmpresasController < ApplicationController
     end
 
     def horario
-      index = 0 #Time.now.wday
+      index = Time.now.wday
       @abierto = false
 
       case index
@@ -127,17 +127,128 @@ class EmpresasController < ApplicationController
         return @salida, @abierto
 
       when 1
+
+        if (@empresa.schedule6.blank? || @empresa.schedule7.blank?)
+          if (@empresa.schedule4.blank? || @empresa.schedule5.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule4} a #{@empresa.schedule5}"
+            @abierto = now_is_between?(@empresa.schedule4, @empresa.schedule5)
+          end
+        else
+          if (!@empresa.schedule4.blank? && !@empresa.schedule5.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule4} a #{@empresa.schedule5} y de #{@empresa.schedule6} a #{@empresa.schedule7}"
+            @abierto= (now_is_between?(@empresa.schedule4, @empresa.schedule5) || now_is_between?(@empresa.schedule6, @empresa.schedule7))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
+
       when 2
+
+        if (@empresa.schedule10.blank? || @empresa.schedule11.blank?)
+          if (@empresa.schedule8.blank? || @empresa.schedule9.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule8} a #{@empresa.schedule9}"
+            @abierto = now_is_between?(@empresa.schedule8, @empresa.schedule9)
+          end
+        else
+          if (!@empresa.schedule8.blank? && !@empresa.schedule9.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule8} a #{@empresa.schedule9} y de #{@empresa.schedule10} a #{@empresa.schedule11}"
+            @abierto= (now_is_between?(@empresa.schedule8, @empresa.schedule9) || now_is_between?(@empresa.schedule10, @empresa.schedule11))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
+
       when 3
+
+        if (@empresa.schedule14.blank? || @empresa.schedule15.blank?)
+          if (@empresa.schedule12.blank? || @empresa.schedule13.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule12} a #{@empresa.schedule13}"
+            @abierto = now_is_between?(@empresa.schedule12, @empresa.schedule13)
+          end
+        else
+          if (!@empresa.schedule12.blank? && !@empresa.schedule13.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule12} a #{@empresa.schedule13} y de #{@empresa.schedule14} a #{@empresa.schedule15}"
+            @abierto= (now_is_between?(@empresa.schedule12, @empresa.schedule13) || now_is_between?(@empresa.schedule14, @empresa.schedule15))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
+
       when 4
+
+        if (@empresa.schedule18.blank? || @empresa.schedule19.blank?)
+          if (@empresa.schedule16.blank? || @empresa.schedule17.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule16} a #{@empresa.schedule17}"
+            @abierto = now_is_between?(@empresa.schedule16, @empresa.schedule17)
+          end
+        else
+          if (!@empresa.schedule16.blank? && !@empresa.schedule17.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule16} a #{@empresa.schedule17} y de #{@empresa.schedule18} a #{@empresa.schedule19}"
+            @abierto= (now_is_between?(@empresa.schedule16, @empresa.schedule17) || now_is_between?(@empresa.schedule18, @empresa.schedule19))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
+
       when 5
+
+        if (@empresa.schedule22.blank? || @empresa.schedule23.blank?)
+          if (@empresa.schedule20.blank? || @empresa.schedule21.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule20} a #{@empresa.schedule21}"
+            @abierto = now_is_between?(@empresa.schedule20, @empresa.schedule21)
+          end
+        else
+          if (!@empresa.schedule20.blank? && !@empresa.schedule21.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule20} a #{@empresa.schedule21} y de #{@empresa.schedule22} a #{@empresa.schedule23}"
+            @abierto= (now_is_between?(@empresa.schedule20, @empresa.schedule21) || now_is_between?(@empresa.schedule22, @empresa.schedule23))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
+
       when 6
+
+        if (@empresa.schedule26.blank? || @empresa.schedule27.blank?)
+          if (@empresa.schedule24.blank? || @empresa.schedule25.blank?)
+            @salida = ""
+          else
+            @salida = "Hoy abre de #{@empresa.schedule24} a #{@empresa.schedule25}"
+            @abierto = now_is_between?(@empresa.schedule24, @empresa.schedule25)
+          end
+        else
+          if (!@empresa.schedule24.blank? && !@empresa.schedule25.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule24} a #{@empresa.schedule25} y de #{@empresa.schedule26} a #{@empresa.schedule27}"
+            @abierto= (now_is_between?(@empresa.schedule24, @empresa.schedule25) || now_is_between?(@empresa.schedule26, @empresa.schedule27))
+          else
+            @salida = "Horario no definido correctamente"
+          end
+        end
+
+        return @salida, @abierto
 
       end
 
     end
-
-
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresa_params
