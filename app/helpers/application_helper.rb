@@ -14,7 +14,10 @@ module ApplicationHelper
   end
 
   def time_format(datetime)
-    datetime.strftime('%H:%M') unless datetime.blank?
+    #datetime.strftime('%H:%M') unless datetime.blank?
+  end
+  def now_is_between?(time1,time2)
+    (time1.utc.strftime( "%H%M" ) <= Time.now.utc.strftime( "%H%M" )) && (Time.now.utc.strftime( "%H%M" ) < time2.utc.strftime( "%H%M" ))
   end
 
   def avatar_url(user)

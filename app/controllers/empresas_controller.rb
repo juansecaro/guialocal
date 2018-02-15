@@ -10,7 +10,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1
   # GET /empresas/1.json
   def show
-
+    @hor = horario()
   end
 
   # GET /empresas/new
@@ -62,21 +62,6 @@ class EmpresasController < ApplicationController
     end
   end
   def abierto
-    
-    case index
-    when 0
-    when 1
-    when 2
-    when 3
-    when 4
-    when 5
-    when 6
-
-    end
-
-  end
-
-  def horario(datetime)
     index = datetime.wday
     case index
     when 0
@@ -96,6 +81,8 @@ class EmpresasController < ApplicationController
 
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_empresa
@@ -104,6 +91,43 @@ class EmpresasController < ApplicationController
   		flash.alert = "Le empresa que buscas no está aquí"
       redirect_to empresas_path
     end
+
+    def horario
+      index = 0 #Time.now.wday
+      @abierto = false
+
+      case index
+      when 0
+
+        if (@empresa.schedule2.blank? || @empresa.schedule3.blank?)
+          if (@empresa.schedule0.blank? || @empresa.schedule1.blank?)
+            @salida = "No hay horario definido aún"
+          else
+            @salida = "Hoy abre de #{@empresa.schedule0} a #{@empresa.schedule1}"
+            #@abierto = now_is_between?(@empresa.schedule0, @empresa.schedule1)
+          end
+        else
+          if (!@empresa.schedule0.blank? && !@empresa.schedule1.blank?)
+            @salida = "Hoy abre de #{@empresa.schedule0} a #{@empresa.schedule1} y de #{@empresa.schedule2} a #{@empresa.schedule3}"
+            #@abierto= (now_is_between?(@empresa.schedule0, @empresa.schedule1) || now_is_between?(@empresa.schedule2, @empresa.schedule3))
+          else
+            @salida = "No hay horario definido aún"
+          end
+        end
+
+        return @salida
+
+      when 1
+      when 2
+      when 3
+      when 4
+      when 5
+      when 6
+
+      end
+
+    end
+
 
 
     # Never trust parameters from the scary internet, only allow the white list through.

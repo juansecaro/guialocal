@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
 
   $('.timepicker').timepicker({
     defaultTime: '10:00',
@@ -35,7 +35,6 @@ function jornada_partida(checkboxElem) {
     document.getElementById("empresa_schedule23").valueAsDate = null;
     document.getElementById("empresa_schedule26").valueAsDate = null;
     document.getElementById("empresa_schedule27").valueAsDate = null;
-
 
   } else {
     $('#parcial').show();
