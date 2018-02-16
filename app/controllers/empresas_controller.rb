@@ -99,8 +99,8 @@ class EmpresasController < ApplicationController
       t2 = Time.new(2000,1,1,time2[0,2].to_i,time2[3,2].to_i)
 
 
-      @a = (t1.strftime( "%H%M" ) <= Time.now.strftime( "%H%M" )) && (Time.now.strftime( "%H%M" ) < t2.strftime( "%H%M" ))
-      return @a
+      return (t1.strftime( "%H%M" ) <= Time.now.strftime( "%H%M" )) && (Time.now.strftime( "%H%M" ) < t2.strftime( "%H%M" ))
+
     end
 
     def horario
