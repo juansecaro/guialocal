@@ -98,7 +98,9 @@ class EmpresasController < ApplicationController
       t1 = Time.new(2000,1,1,time1[0,2].to_i,time1[3,2].to_i)
       t2 = Time.new(2000,1,1,time2[0,2].to_i,time2[3,2].to_i)
 
-      return (t1.utc.strftime( "%H%M" ) <= Time.now.utc.strftime( "%H%M" )) && (Time.now.utc.strftime( "%H%M" ) < t2.utc.strftime( "%H%M" ))
+
+      @a = (t1.strftime( "%H%M" ) <= Time.now.strftime( "%H%M" )) && (Time.now.strftime( "%H%M" ) < t2.strftime( "%H%M" ))
+      return @a
     end
 
     def horario
@@ -106,7 +108,7 @@ class EmpresasController < ApplicationController
       @abierto = false
 
       case index
-      when 0
+      when 1 #Lunes
 
         if (@empresa.schedule2.blank? || @empresa.schedule3.blank?)
           if (@empresa.schedule0.blank? || @empresa.schedule1.blank?)
@@ -126,7 +128,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 1
+      when 2
 
         if (@empresa.schedule6.blank? || @empresa.schedule7.blank?)
           if (@empresa.schedule4.blank? || @empresa.schedule5.blank?)
@@ -146,7 +148,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 2
+      when 3
 
         if (@empresa.schedule10.blank? || @empresa.schedule11.blank?)
           if (@empresa.schedule8.blank? || @empresa.schedule9.blank?)
@@ -166,7 +168,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 3
+      when 4
 
         if (@empresa.schedule14.blank? || @empresa.schedule15.blank?)
           if (@empresa.schedule12.blank? || @empresa.schedule13.blank?)
@@ -186,7 +188,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 4
+      when 5
 
         if (@empresa.schedule18.blank? || @empresa.schedule19.blank?)
           if (@empresa.schedule16.blank? || @empresa.schedule17.blank?)
@@ -206,7 +208,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 5
+      when 6
 
         if (@empresa.schedule22.blank? || @empresa.schedule23.blank?)
           if (@empresa.schedule20.blank? || @empresa.schedule21.blank?)
@@ -214,6 +216,7 @@ class EmpresasController < ApplicationController
           else
             @salida = "Hoy abre de #{@empresa.schedule20} a #{@empresa.schedule21}"
             @abierto = now_is_between?(@empresa.schedule20, @empresa.schedule21)
+
           end
         else
           if (!@empresa.schedule20.blank? && !@empresa.schedule21.blank?)
@@ -226,7 +229,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 6
+      when 0
 
         if (@empresa.schedule26.blank? || @empresa.schedule27.blank?)
           if (@empresa.schedule24.blank? || @empresa.schedule25.blank?)

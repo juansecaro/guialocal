@@ -4,6 +4,8 @@
 <table>
   <thead>
     <tr>
+
+      <th>Name</th>
       <th>Logo</th>
       <th>Description</th>
       <th>Mlon</th>
@@ -22,6 +24,7 @@
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
+        <td><%= empresa.name %></td>
         <td><%= image_tag (empresa.logo.url), class: "img-fluid" unless empresa.logo.blank? %></td>
         <td><%= empresa.description %></td>
         <td><%= empresa.mlon %></td>
