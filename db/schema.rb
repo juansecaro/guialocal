@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128093755) do
+ActiveRecord::Schema.define(version: 20180219184156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.string   "tel"
     t.string   "video"
     t.json     "fotos"
+    t.integer  "plan",        default: 0
+    t.integer  "creditos",    default: 0
     t.float    "mlon"
     t.float    "mlat"
     t.string   "schedule0"
@@ -65,8 +67,8 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.integer  "tag_id"
     t.integer  "offer_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "category_id"
     t.index ["category_id"], name: "index_empresas_on_category_id", using: :btree
   end
@@ -78,6 +80,16 @@ ActiveRecord::Schema.define(version: 20171128093755) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["empresa_id"], name: "index_offers_on_empresa_id", using: :btree
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.string   "titulo"
+    t.string   "texto"
+    t.string   "img"
+    t.integer  "empresa_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["empresa_id"], name: "index_promos_on_empresa_id", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -116,6 +128,7 @@ ActiveRecord::Schema.define(version: 20171128093755) do
   end
 
   add_foreign_key "offers", "empresas"
+  add_foreign_key "promos", "empresas"
   add_foreign_key "taggings", "empresas"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "empresas"

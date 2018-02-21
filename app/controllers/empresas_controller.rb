@@ -11,7 +11,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1.json
   def show
     (@hor, @abierto) = horario()
-
+    @promos = @empresa.promos.last(3)
   end
 
   # GET /empresas/new

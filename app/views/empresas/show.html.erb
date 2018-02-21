@@ -1,11 +1,11 @@
 
   <div class="row" id="cabecero">
 
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-8">
 
           <div class="display-1" id="titulos">
             <h1><strong><%= @empresa.name %></strong> </h1>
@@ -83,17 +83,31 @@
 </div>
 
 
+<div class="row">
 
-<p><h2 class="text-center"><b>Conoce un poco más de <%= @empresa.name %>, nuestra empresa</b></h2></p>
-<p>
-  <div id="description">
-    <%= simple_format(@empresa.description) %>
+  <div class="col-md-9">
+    <p><h2 class="text-center"><b>Conoce un poco más de <%= @empresa.name %>, nuestra empresa</b></h2></p>
+    <p>
+      <div id="description">
+        <%= simple_format(@empresa.description) %>
+      </div>
+    </p>
   </div>
 
-</p>
+  <div class="col-md-3">
+    <p>
+      <% if @empresa.promos.any?  %>
+        <div class="row alert alert-info">
+          <strong>ÚLTIMAS PROMOCIONES</strong>
+        </div>
+        <%= render @empresa.promos %>
+      <% end %>
+    </p>
+  </div>
+
+</div>
 
 <p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
-
 <p>
   <% if @empresa.fotos.any? %>
     <div class="row">
@@ -106,9 +120,8 @@
 
 <p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
 
-<p>
-  <strong>Video:</strong>
-  <%= @empresa.video %>
+<p class="text-center">
+  <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
 </p>
 
 
