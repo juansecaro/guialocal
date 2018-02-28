@@ -13,9 +13,6 @@ module ApplicationHelper
     block.call if current_user.try(:admin?)
   end
 
-  def time_format(datetime)
-    #datetime.strftime('%H:%M') unless datetime.blank?
-  end
 
   def avatar_url(user)
     hash = Digest::MD5.hexdigest(user.email.downcase)

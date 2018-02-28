@@ -4,6 +4,7 @@ class CreatePromos < ActiveRecord::Migration[5.0]
       t.string :titulo
       t.string :texto
       t.string :img
+      t.datetime :validez
       t.references :empresa, foreign_key: true
 
       t.timestamps

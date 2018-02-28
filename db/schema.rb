@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180219184156) do
     t.string   "titulo"
     t.string   "texto"
     t.string   "img"
+    t.datetime "validez"
     t.integer  "empresa_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
