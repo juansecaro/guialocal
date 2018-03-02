@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :eventos
+  get '/historia', to: 'info#historia'
+  get '/turismo', to: 'info#turismo'
+  get '/turismoactivo', to: 'info#turismoactivo'
+  get '/alojamiento', to: 'info#alojamiento'
+  get '/gastronomia', to: 'info#gastronomia'
+  get '/naturaleza', to: 'info#naturaleza'
+  get '/ocio', to: 'info#ocio'
+  get '/guiaturistico', to: 'info#guiaturistico'
+
   resources :empresas
   namespace :admin do
     root 'application#index'

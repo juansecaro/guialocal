@@ -30,6 +30,6 @@ production:
   adapter: postgresql
   database: guialocal_production
   host: localhost
-  username: juanse
-  password: llerena6
+  username: deploy
+  password: juanse
   min_messages: warning
