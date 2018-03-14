@@ -1,55 +1,42 @@
-
-
 <div class="row">
-  <div class="col-md-6">
-    
+  <div class="col-9">
+    <!-- primera fila -->
+    <div class="row">
+      <div class="col-4">
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-8">
+        Blao2
+      </div>
+    </div>
+    <!-- segunda fila -->
+
+
+  </div>
+  <!-- separador promociones -->
+  <div class="col-3">
+    <div class="row alert alert-info">
+      <strong>PROMOCIONES FLASH</strong>
+    </div>
+    <% if @promos.any?  %>
+      <%= render @promos %>
+    <% end %>
+    <div class="row alert alert-info text-right">
+      <%= link_to 'Ver todos', promos_path %>
+    </div>
+
   </div>
 </div>
-<h1>Empresas</h1>
 
-<table>
-  <thead>
-    <tr>
 
-      <th>Name</th>
-      <th>Logo</th>
-      <th>Description</th>
-      <th>Mlon</th>
-      <th>Mlat</th>
-      <th>Schedule</th>
-      <th>Address</th>
-      <th>Web</th>
-      <th>Email</th>
-      <th>Tel</th>
-      <th>Video</th>
-      <th>Fotos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @empresas.each do |empresa| %>
-      <tr>
-        <td><%= empresa.name %></td>
-        <td><%= image_tag (empresa.logo.url), class: "img-fluid" unless empresa.logo.blank? %></td>
-        <td><%= empresa.description %></td>
-        <td><%= empresa.mlon %></td>
-        <td><%= empresa.mlat %></td>
-        <td><%= empresa.schedule0 %></td>
-        <td><%= empresa.address %></td>
-        <td><%= empresa.web %></td>
-        <td><%= empresa.email %></td>
-        <td><%= empresa.tel %></td>
-        <td><%= empresa.video %></td>
-        <td><%= empresa.fotos %></td>
-        <td><%= link_to 'Show', empresa %></td>
-        <td><%= link_to 'Edit', edit_empresa_path(empresa) %></td>
-        <td><%= link_to 'Destroy', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <%= link_to 'New Empresa', new_empresa_path %>

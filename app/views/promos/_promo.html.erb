@@ -4,6 +4,6 @@
     <h6>  <%= promo.texto %>   </h6>
     <h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6>
 
-    <%= image_tag (promo.img.url), class: "img-fluid" unless promo.img.blank? %>
+    <%= image_tag (promo.img.url), class: "img-thumbnail img-fluid" unless promo.img.blank? %>
   </div>
 <% end %>

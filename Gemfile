@@ -33,7 +33,7 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'better_errors', '~> 2.4'
 gem 'binding_of_caller', '~> 0.7.3'
-
+gem 'backup', '~> 5.0.0.beta.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

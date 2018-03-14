@@ -4,7 +4,8 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.all
+    @empresas = Empresa.order("RANDOM()").limit(2)
+    @promos = Promo.last(10)
   end
 
   # GET /empresas/1
