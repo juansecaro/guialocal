@@ -1,9 +1,7 @@
 
 
 <div class="row alert alert-info">
-  <strong><h2> Promociones flash de las últimas 2 semanas </h2></strong>
+  <strong><h2> Todas las promociones flash de las últimas 2 semanas </h2></strong>
 </div>
 
-<% if @promos.any?  %>
-  <%= render @promos %>
-<% end %>
+<%= render 'promos/promofull' %>

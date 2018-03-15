@@ -29,11 +29,14 @@
     </div>
     <% if @promos.any?  %>
       <%= render @promos %>
+    <% else %>
+      <div class="row alert alert-secondary">
+        No hay promociones recientes
+      </div>
     <% end %>
     <div class="row alert alert-info text-right">
       <%= link_to 'Ver todos', promos_path %>
     </div>
-
   </div>
 </div>
 
