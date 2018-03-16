@@ -6,7 +6,6 @@ class Empresa < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :offers, dependent: :destroy
   has_many :promos, dependent: :destroy
 
   has_many :taggings, dependent: :destroy
