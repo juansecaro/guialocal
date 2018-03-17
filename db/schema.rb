@@ -81,15 +81,6 @@ ActiveRecord::Schema.define(version: 20180302000442) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "offers", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "empresa_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["empresa_id"], name: "index_offers_on_empresa_id", using: :btree
-  end
-
   create_table "promos", force: :cascade do |t|
     t.string   "titulo"
     t.string   "texto"
@@ -136,7 +127,6 @@ ActiveRecord::Schema.define(version: 20180302000442) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "offers", "empresas"
   add_foreign_key "promos", "empresas"
   add_foreign_key "taggings", "empresas"
   add_foreign_key "taggings", "tags"
