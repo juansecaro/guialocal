@@ -3,6 +3,7 @@
     <h6 class="alert-link">  <%= promo.titulo %>  </h6>
     <h6>  <%= promo.texto %>   </h6>
     <h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6>
+    <small class="text-right text-muted"><%= promo.empresa.name %></small>
 
     <%= image_tag (promo.img.url), class: "img-thumbnail img-fluid" unless promo.img.blank? %>
   </div>

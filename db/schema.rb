@@ -74,9 +74,10 @@ ActiveRecord::Schema.define(version: 20180302000442) do
   end
 
   create_table "eventos", force: :cascade do |t|
+    t.string   "titulo"
     t.text     "info"
     t.string   "img"
-    t.string   "titulo"
+    t.datetime "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
