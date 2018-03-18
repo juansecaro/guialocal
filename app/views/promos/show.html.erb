@@ -17,7 +17,7 @@
       </div>
       <div class="col-6">
         <p class="text-right">
-          <% if (Time.now > @promo.texto) %>
+          <% if (Time.now > @promo.validez) %>
             <span class="badge badge-danger still">
               <%= time_format(@promo.validez) %>
             </span>

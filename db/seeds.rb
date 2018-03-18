@@ -39,7 +39,38 @@ Promo.create!(
 Promo.create!(
 	titulo: "Rebaja del 80% en casas",
 	texto: "Información muy valiosa. Ayer nos preguntó la tía qué factores externos nos motivaban y yo le dije que ver como personas de mi entorno me retan intelectualmente con cualquier tema de la vida. Me parecía guay decirtelo. ",
-	validez: Time.now + 7.hours,
+	validez: Time.now - 7.hours,
 	empresa_id: 1,
 	id: 2
+)
+Evento.create!(
+	titulo: "XXI Matanza didáctiva",
+	img: "",
+	info: "Blao "* 100,
+	fecha: Time.now + 7.days
+)
+Evento.create!(
+	titulo: "Folleteo cerdo",
+	img: "",
+	info: "Blao "* 100,
+	fecha: Time.now + 9.days
+)
+Evento.create!(
+	titulo: "Visionado de Casablanca",
+	img: "",
+	info: "Blao "* 100,
+	fecha: Time.now + 11.days
+)
+
+Evento.create!(
+	titulo: "La vida es un carnaval",
+	img: "",
+	info: "Blao "* 100,
+	fecha: Time.now + 12.days
+)
+Evento.create!(
+	titulo: "Abierto hasta el amanecer",
+	img: "",
+	info: "Blao "* 100,
+	fecha: Time.now + 15.days
 )

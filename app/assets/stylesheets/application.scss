@@ -146,6 +146,12 @@ span.past {
 .tright{
   text-align: right;
 }
+.dia_cal{
+  font-size: xx-large;
+}
+.mes_cal{
+
+}
 .fotos{
   max-width: 100%;
   height: auto;
@@ -180,4 +186,8 @@ span.past {
 }
 #barra_pag{
   margin-bottom: 10px;
+}
+#fecha_cal{
+  line-height:2px;
+  text-align: center;
 }

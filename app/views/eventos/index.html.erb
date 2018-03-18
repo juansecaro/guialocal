@@ -2,30 +2,31 @@
 
 <h1>Eventos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Info</th>
-      <th>Img</th>
-      <th>Titulo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card-columns">
+  <% @eventos.each do |evento| %>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">
+        <span id="fecha_cal" class="text-muted">
+          <span class="dia_cal"><%= evento.fecha.day %></span><br/>
+          <span class="mes_cal"><%=  I18n.l(evento.fecha, format: "%B") %>
+          </span>
+        </span>
+      </p>
+      <h5 class="card-title"><%= evento.titulo %></h5>
+      <p class="card-text"><%= evento.info.truncate(150, separator: ' ') %></p>
+      <%= image_tag(evento.img, class: "card-img-bottom img-fluid", alt: evento.titulo) if evento.img? %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @eventos.each do |evento| %>
-      <tr>
-        <td><%= evento.info %></td>
-        <td><%= evento.img %></td>
-        <td><%= evento.titulo %></td>
-        <td><%= link_to 'Show', evento %></td>
-        <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-        <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+
+
 
 <%= link_to 'New Evento', new_evento_path %>
+
+
+
+<%#=link_to 'New Evento', new_evento_path %>
