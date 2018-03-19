@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20180302000442) do
   create_table "eventos", force: :cascade do |t|
     t.string   "titulo"
     t.text     "info"
-    t.string   "img"
+    t.string   "imgevento"
     t.datetime "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180302000442) do
   create_table "promos", force: :cascade do |t|
     t.string   "titulo"
     t.string   "texto"
-    t.string   "img"
+    t.string   "imgpromo"
     t.datetime "validez"
     t.integer  "empresa_id"
     t.datetime "created_at", null: false

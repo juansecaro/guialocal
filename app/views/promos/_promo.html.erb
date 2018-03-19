@@ -1,10 +1,10 @@
 <%= link_to promo_path(promo) do %>
   <div class="row alert alert-warning">
     <h6 class="alert-link">  <%= promo.titulo %>  </h6>
-    <h6>  <%= promo.texto %>   </h6>
-    <h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6>
     <small class="text-right text-muted"><%= promo.empresa.name %></small>
+    <small>  <%= promo.texto %>   </small>
+    <p><h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6></p>
 
-    <%= image_tag (promo.img.url), class: "img-thumbnail img-fluid" unless promo.img.blank? %>
+    <%= image_tag (promo.imgpromo.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
   </div>
 <% end %>

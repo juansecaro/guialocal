@@ -3,7 +3,7 @@ class CreateEventos < ActiveRecord::Migration[5.0]
     create_table :eventos do |t|
       t.string :titulo
       t.text :info
-      t.string :img
+      t.string :imgevento
       t.datetime :fecha
 
       t.timestamps

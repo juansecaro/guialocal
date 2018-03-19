@@ -45,32 +45,32 @@ Promo.create!(
 )
 Evento.create!(
 	titulo: "XXI Matanza didáctiva",
-	img: "",
+	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 7.days
 )
 Evento.create!(
 	titulo: "Folleteo cerdo",
-	img: "",
+	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 9.days
 )
 Evento.create!(
 	titulo: "Visionado de Casablanca",
-	img: "",
+	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 11.days
 )
 
 Evento.create!(
 	titulo: "La vida es un carnaval",
-	img: "",
+	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 12.days
 )
 Evento.create!(
 	titulo: "Abierto hasta el amanecer",
-	img: "",
+	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 15.days
 )

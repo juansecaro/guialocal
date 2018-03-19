@@ -1,23 +1,23 @@
 
 
-<h1>Eventos</h1>
+<h1>Próximos Eventos</h1>
 
 <div class="card-columns">
   <% @eventos.each do |evento| %>
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text">
-        <span id="fecha_cal" class="text-muted">
-          <span class="dia_cal"><%= evento.fecha.day %></span><br/>
-          <span class="mes_cal"><%=  I18n.l(evento.fecha, format: "%B") %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">
+          <span id="fecha_cal" class="text-muted">
+            <span class="dia_cal"><%= evento.fecha.day %></span><br/>
+            <span class="mes_cal"><%=  I18n.l(evento.fecha, format: "%B") %>
+            </span>
           </span>
-        </span>
-      </p>
-      <h5 class="card-title"><%= evento.titulo %></h5>
-      <p class="card-text"><%= evento.info.truncate(150, separator: ' ') %></p>
-      <%= image_tag(evento.img, class: "card-img-bottom img-fluid", alt: evento.titulo) if evento.img? %>
+        </p>
+        <h5 class="card-title"><%= link_to(evento.titulo, evento_path(evento)) %></h5>
+        <p class="card-text"><%= evento.info.truncate(150, separator: ' ') %></p>
+        <%= link_to image_tag(evento.imgevento, class: "card-img-bottom img-fluid", alt: evento.titulo), evento_path(evento) if evento.imgevento? %>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 

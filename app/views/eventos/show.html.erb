@@ -1,19 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Info:</strong>
-  <%= @evento.info %>
+  <div class="row">
+    <div class="col-12">
+
+    </div>
+  </div>
 </p>
 
-<p>
-  <strong>Img:</strong>
-  <%= @evento.img %>
-</p>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @evento.titulo %>
-</p>
+
+  <div class="row justify-content-md-center">
+    <div class="col-12 align-self-center">
+
+    <p>
+      <span id="fecha_cal" class="text-muted">
+        <span class="dia_cal"><%= @evento.fecha.day %></span><br/>
+        <span class="mes_cal"><%=  I18n.l(@evento.fecha, format: "%B") %>
+        </span>
+      </span>
+      <h1><%= @evento.titulo %></h1>
+    </p>
+    <p>      <%= @evento.info %>    </p>
+    <%= image_tag @evento.imgevento, class: "img-fluid mx-auto d-block", alt: @evento.titulo %>
+    </div>
+  </div>
+
+
+
 
 <%= link_to 'Edit', edit_evento_path(@evento) %> |
 <%= link_to 'Back', eventos_path %>

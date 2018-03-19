@@ -4,7 +4,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    @eventos = Evento.where("DATE(fecha) >= ?", Date.today).order(fecha: :asc)
   end
 
   # GET /eventos/1
@@ -69,6 +69,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:info, :img, :titulo)
+      params.require(:evento).permit(:info, :imgevento, :titulo, :fecha)
     end
 end

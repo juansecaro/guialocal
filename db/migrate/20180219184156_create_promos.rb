@@ -3,7 +3,7 @@ class CreatePromos < ActiveRecord::Migration[5.0]
     create_table :promos do |t|
       t.string :titulo
       t.string :texto
-      t.string :img
+      t.string :imgpromo
       t.datetime :validez
       t.references :empresa, foreign_key: true
 

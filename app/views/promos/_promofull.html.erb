@@ -6,7 +6,7 @@
     <%= link_to promo_path(promo) do %>
       <div class="row alert alert-warning">
         <div class="col-2">
-          <%= image_tag (promo.img.url), class: "img-thumbnail img-fluid" unless promo.img.blank? %>
+          <%= image_tag (promo.imgpromo.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
         </div>
         <div class="col-10">
           <h6 class="alert-link">  <%= promo.titulo %>  </h6>
