@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require timepicker
+ *= require trix
  */
 
 
@@ -148,9 +149,6 @@ span.past {
 }
 .dia_cal{
   font-size: xx-large;
-}
-.mes_cal{
-
 }
 .fotos{
   max-width: 100%;

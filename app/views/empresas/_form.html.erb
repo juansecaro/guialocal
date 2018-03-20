@@ -92,11 +92,19 @@
 
 <p>
   <div class="row">
-    <div class="col-md-2 offset-md-3">
-  <%= f.label :Descripción_detallada_de_tu_empresa %>
-  <%= f.text_area :description, size: "60x12"  %>
+    <div class="col-md-3 offset-md-3">
+      <p><%= f.label :Descripción_detallada_de_tu_empresa %></p>
     </div>
   </div>
+</p>
+
+<p>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= f.trix_editor :description, size: "60x12" %>
+  </div>
+
+</div>
 </p>
 
 <p>

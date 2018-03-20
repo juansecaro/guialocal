@@ -3,12 +3,12 @@
 
   <div class="form-inputs">
     <%= f.input :titulo %>
-    <%= f.input :info %>
-    <%= f.date_select :fecha %>
-    <%= f.input :imgevento, as: :file %>
+    <%= f.trix_editor :info %>
+    <p><%= f.date_select :fecha %></p>
+    <p><%= f.file_field :imgevento, as: :file %></p>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <p><%= f.button :submit %></p>
   </div>
 <% end %>
