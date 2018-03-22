@@ -1,0 +1,15 @@
+<%= link_to evento_path(evento) do %>
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag (evento.imgevento.url), class: "img-thumbnail img-fluid" unless evento.imgevento.blank? %>
+    </div>
+    <div class="col-8">
+          <p><h6>  <%= evento.titulo %>  </h6></p>
+          <small> <%= Nokogiri::HTML(evento.info).text.truncate(120, separator: ' ') %></small>
+    </div>
+
+    <p><h6> <strong> <%#= time_format(evento.fecha) %> </strong>  </h6></p>
+
+
+  </div>
+<% end %>

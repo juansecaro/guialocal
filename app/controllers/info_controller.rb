@@ -23,7 +23,9 @@ class InfoController < ApplicationController
   def guiaturistico
   end
 
-  def preguntasfrecuentes
+  def publica
+  end
 
+  def preguntasfrecuentes
   end
 end
