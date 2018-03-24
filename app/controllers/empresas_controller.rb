@@ -90,6 +90,11 @@ class EmpresasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def remove_logo_confirmed
+      @empresa.remove_logo!
+      @empresa.save!
+    end
+
     def set_empresa
       @empresa = Empresa.find(params[:id])
     rescue ActiveRecord::RecordNotFound
@@ -260,6 +265,6 @@ class EmpresasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresa_params
       params.require(:empresa).permit(:logo, :name, :tag_list ,:category_id, :description, :mlon, :mlat, :address, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
-         :schedule7, :schedule8, :schedule9, :schedule10, :schedule11, :schedule12, :schedule13, :schedule14, :schedule15, :schedule16, :schedule17, :schedule18, :schedule19, :schedule20, :schedule21, :schedule22, :schedule23, :schedule24, :schedule25, :schedule26, :schedule27)
+         :schedule7, :schedule8, :schedule9, :schedule10, :schedule11, :schedule12, :schedule13, :schedule14, :schedule15, :schedule16, :schedule17, :schedule18, :schedule19, :schedule20, :schedule21, :schedule22, :schedule23, :schedule24, :schedule25, :schedule26, :schedule27, :remove_logo)
     end
 end

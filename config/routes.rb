@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :eventos
+
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/guiaturistico', to: 'info#guiaturistico'
   get '/publica', to: 'info#publica'
 
+  resources :eventos
   resources :empresas
   namespace :admin do
     root 'application#index'

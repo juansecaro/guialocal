@@ -35,3 +35,21 @@ function jornada_partida(checkboxElem) {
     $('#parcial').show();
   }
 }
+
+$(function(){
+    $("input[type='submit']").click(function(){
+        var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>2){
+         alert("You can only upload a maximum of 2 files");
+        }
+    });
+});
+
+$('#enviar').change(function(){
+    if(this.files.length>10)
+        alert('Too many files');
+        });
+$('form').submit(function(){
+    if(this.files.length>10)
+        return false;
+});

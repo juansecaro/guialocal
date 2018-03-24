@@ -3,8 +3,8 @@
     <!-- primera fila -->
     <div class="row">
       <div class="col-4">
-        <div class="card " style="width: 18rem;">
-          <%=link_to image_tag(@empresas.first.logo.url, class: "card-img-top img-fluid", alt: "Card image cap"), empresa_path(@empresas.first) %>
+        <div class="card" >
+          <%= link_to image_tag(@empresas.first.logo.url,class:"card-img-top img-fluid",alt:"Card image cap"),empresa_path(@empresas.first) if @empresas.first.logo?  %>
           <div class="card-body">
             <h5 class="card-title"><%= @empresas.first.name %></h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -16,7 +16,7 @@
       </div>
       <div class="col-8">
         <div class="card bg-dark text-white ">
-          <img class="card-img" src="<%= @empresa1.fotos[2].url %>" alt="Card image">
+          <img class="card-img" src="<%= @empresas.first.fotos[2].url unless @empresas.first.fotos[2].blank? %>" alt="Card image">
           <div class="card-img-overlay">
             <h5 class="card-title">Descubre</h5>
             <p class="card-text">El rincón escondido de Llerena, el lugar donde los sueños se hace realidad y donde los niños nunca crecen</p>
@@ -44,8 +44,8 @@
 
        </div>
        <div class="col-4">
-         <div class="card " style="width: 18rem;">
-           <%=link_to image_tag(@empresa1.logo.url, class: "card-img-top img-fluid", alt: "Card image cap"), empresa_path(@empresa1) %>
+         <div class="card">
+           <%=link_to image_tag(@empresas.first.logo.url, class: "card-img-top img-fluid", alt: "Card image cap"), empresa_path(@empresas.first) unless @empresas.first.logo.blank? %>
            <div class="card-body">
              <h5 class="card-title"><%= @empresa1.name %></h5>
              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

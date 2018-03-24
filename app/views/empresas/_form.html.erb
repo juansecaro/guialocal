@@ -209,9 +209,29 @@
   <div class="row">
     <div class="col-md-2 offset-md-3">
       <%= f.label :Seleccione_varias_fotos %><br>
-      <%= f.file_field :fotos, multiple: true %>
+      <%= f.file_field :fotos, id: "enviar", multiple: true %>
     </div>
   </div>
+  <div class="row">
+
+    <p>
+     <label>Mi logo</label>
+     <%= image_tag(@empresa.logo_url) if @empresa.logo? %>
+     <%= f.file_field :logo %>
+    </p>
+
+    <p>
+     <label>
+       <%= f.check_box :remove_logo %>
+       Remove logo
+     </label>
+    </p>
+
+
+
+
+  </div>
+
 </p>
 
 <p>
