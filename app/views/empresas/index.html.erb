@@ -2,7 +2,7 @@
   <div class="col-9">
     <!-- primera fila -->
     <div class="row">
-      <div class="col-4">
+      <div class="col-md-4 col-sm-12">
         <div class="card" >
           <%= link_to image_tag(@empresas.first.logo.url,class:"card-img-top img-fluid",alt:"Card image cap"),empresa_path(@empresas.first) if @empresas.first.logo?  %>
           <div class="card-body">
@@ -14,7 +14,7 @@
         </div>
 
       </div>
-      <div class="col-8">
+      <div class="col-md-8 col-sm-12">
         <div class="card bg-dark text-white ">
           <img class="card-img" src="<%= @empresas.first.fotos[2].url unless @empresas.first.fotos[2].blank? %>" alt="Card image">
           <div class="card-img-overlay">
@@ -71,7 +71,7 @@
 
   </div>
   <!-- separador promociones -->
-  <div class="col-3">
+  <div class="col-md-3 col-sm-12">
 
     <div class="row alert alert-info">
       <strong>PROMOCIONES FLASH</strong>
