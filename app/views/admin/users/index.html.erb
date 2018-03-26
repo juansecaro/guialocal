@@ -11,6 +11,7 @@
       <th>Desde</th>
       <th>Última vez</th>
       <th>Empresa</th>
+      <th>Créditos</th>
     </tr>
   </thead>
 
@@ -23,6 +24,7 @@
         <td><%= user.created_at %></td>
         <td><%= user.last_sign_in_at %></td>
         <td><%= user.empresa.name if user.empresa.try(:any?)%></td>
+        <td><%= user.empresa.creditos if user.empresa.try(:any?)%></td>
       </tr>
 
     <% end %>
