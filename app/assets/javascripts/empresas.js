@@ -36,6 +36,16 @@ function jornada_partida(checkboxElem) {
   }
 }
 
+$(function () {
+    var viewer = ImageViewer();
+    $('.gallery-items').click(function () {
+        var imgSrc = this.src,
+            highResolutionImage = $(this).data('high-res-img');
+
+        viewer.show(imgSrc, highResolutionImage);
+    });
+});
+
 $(function(){
     $("input[type='submit']").click(function(){
         var $fileUpload = $("input[type='file']");

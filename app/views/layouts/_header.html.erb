@@ -44,6 +44,27 @@
       </li>
 
     </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span><%= image_tag avatar_url(current_user), width:20, class:"img-circle" %> </span> Mi perfil
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+          <a class="dropdown-item" href="/empresas/<%= current_user.empresa_id %>/edit/">Editar Empresa</a>
+          <a class="dropdown-item" href="<%= promos_path %>">Mis promociones</a>
+          <a class="dropdown-item" href="<%= alojamiento_path %>">¿Problemas?</a>
+
+          <div class="dropdown-divider"></div>
+          <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+
+
+      <% end %>
+    </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Ej. Peluquero hombre" aria-label="Search">
       <button class="btn n btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>

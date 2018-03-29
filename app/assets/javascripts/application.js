@@ -15,6 +15,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require timepicker
+//= require imageviewer
 //= require turbolinks
 //= require trix
 //= require_tree .

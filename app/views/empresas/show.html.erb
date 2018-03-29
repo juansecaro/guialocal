@@ -112,7 +112,7 @@
   <% if @empresa.fotos.any? %>
     <div class="row">
       <% @empresa.fotos.each do |foto| %>
-        <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos") %></div>
+        <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
       <% end %>
     </div>
   <% end %>
