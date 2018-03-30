@@ -18,7 +18,7 @@
       <li>
         <%= link_to admin_users_path do %>
           <%= fa_icon "users" %>
-          <span>Empresas</span>
+          <span>Usuarios</span>
           <span class="label label-primary pull-right"><%= @users.count %></span>
         <% end %>
       </li>
@@ -32,7 +32,7 @@
       <li>
         <%= link_to '#' do %>
           <%= fa_icon "bank" %>
-          <span>Ingresos</span>
+          <span>Créditos</span>
           <span class="label label-danger pull-right">Users</span>
         <% end %>
       </li>
@@ -40,21 +40,21 @@
         <%= link_to empresas_path do %>
           <%= fa_icon "bullhorn" %>
           <span>Ofertas</span>
-          <span class="label label-warning pull-right">Empresas</span>
+          <span class="label label-warning pull-right"><%= @promos.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to '#' do %>
           <%= fa_icon "tag" %>
           <span>Etiquetas</span>
-          <span class="label label-default pull-right">Etiquetas</span>
+          <span class="label label-default pull-right"><%= @tags.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to '#' do %>
           <%= fa_icon "warning" %>
           <span>Eventos</span>
-          <span class="label label-primary pull-right">Comentarios</span>
+          <span class="label label-primary pull-right"><%= @eventos.count %></span>
         <% end %>
       </li>
       <li>

@@ -8,8 +8,8 @@
       <div class="col-md-8">
 
           <div class="display-1" id="titulos">
-            <h1><strong><%= @empresa.name %></strong> </h1>
-            <h2><mark><%= @empresa.category.name unless @empresa.category.name.blank? %></mark></h2>
+            <h1><strong><%= @empresa.name unless @empresa.name.blank?%></strong> </h1>
+            <h2><mark><%= @empresa.category.name unless @empresa.category.blank? %></mark></h2>
           </div>
 
       </div>

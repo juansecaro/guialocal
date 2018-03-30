@@ -5,6 +5,9 @@ before_action :authorize_admin!
     @users = User.all
     @empresas = Empresa.all
     @categories = Category.all
+    @tags = Tag.all
+    @eventos = Evento.all
+    @promos = Promo.all
   end
 
   private

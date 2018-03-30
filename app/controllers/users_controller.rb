@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
-  after_action :set_empresa, only: :create
+
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+        redirect_to user_url, notice: "User succesfully created!"
+    else
+        render :new
+    end
+  end
 
 
   private
 
-  def set_user
-  @user = User.friendly.find(params[:id])
-  end
 
-  def set_empresa
-    user = User.last
-    empresa = user.build_empresa
-    user.empresa_id = empresa.id
-    byebug
-    user.save!
-  end
 end

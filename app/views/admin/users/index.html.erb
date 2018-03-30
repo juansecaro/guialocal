@@ -1,5 +1,10 @@
 <header>
   <h1>Usuarios</h1>
+  <% admins_only do %>
+    <ul class="actions">
+      <li><%= link_to "Nuevo usuario", new_user_registration_path, class: "new" %></li>
+    </ul>
+  <% end %>
 </header>
 
 <table class="table table-striped table-responsive">
@@ -23,8 +28,8 @@
         <td><%= user.email %></td>
         <td><%= user.created_at %></td>
         <td><%= user.last_sign_in_at %></td>
-        <td><%= user.empresa.name if user.empresa.try(:any?)%></td>
-        <td><%= user.empresa.creditos if user.empresa.try(:any?)%></td>
+        <td><%= link_to user.empresa.name, empresa_path(user.empresa) if user.empresa.present? %></td>
+        <td><%= user.empresa.creditos if user.empresa.try(:present?)%></td>
       </tr>
 
     <% end %>
