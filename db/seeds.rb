@@ -22,7 +22,6 @@ Empresa.create!(
 	tel: "644 252 097",
 	video: "https://www.youtube.com/embed/1qykU8LDbrY",
 	plan: 0,
-	creditos: 0,
 	mlon: 38.237937,
 	mlat:  -6.014943,
 	id: 1
@@ -73,4 +72,10 @@ Evento.create!(
 	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 15.days
+)
+User.create!(
+    email: "juanseb@gmail.com",
+    password: "123456",
+    password_confirmation: "123456",
+		role: 0
 )

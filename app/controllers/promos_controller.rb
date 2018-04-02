@@ -1,4 +1,29 @@
 class PromosController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :show]
+
+  def new
+
+  end
+
+  def create
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+  def mispromos
+    
+  end
+
   def index
     @promos = Promo.all
     #@promos = Promo.where("created_at > ?", Time.now-7.days)

@@ -19,6 +19,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+      #Credits
+      t.integer  :creditos, default: 0, null: false
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

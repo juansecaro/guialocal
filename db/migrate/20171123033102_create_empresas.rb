@@ -13,7 +13,6 @@ class CreateEmpresas < ActiveRecord::Migration[5.0]
       t.json :fotos
 
       t.integer :plan, default: 0
-      t.integer :creditos, default: 0
       t.float :mlon
       t.float :mlat
 

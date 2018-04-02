@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/ocio', to: 'info#ocio'
   get '/guiaturistico', to: 'info#guiaturistico'
   get '/publica', to: 'info#publica'
+  get '/mispromos', to: 'promos#mispromos'
 
 
   namespace :admin do

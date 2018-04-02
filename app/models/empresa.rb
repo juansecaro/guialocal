@@ -1,7 +1,8 @@
 class Empresa < ApplicationRecord
 
   skip_callback :validate, after: :create
-
+  after_initialize :set_default_plan, :if => :new_record?
+  
   attr_accessor :tag_list
 
   enum plan: [:noplan, :basic, :plus, :premium]
@@ -25,6 +26,10 @@ class Empresa < ApplicationRecord
     new_or_existing_tags = tag_names.collect {|tag_name| Tag.find_or_create_by(name: tag_name)}
 
     self.tags = new_or_existing_tags
+  end
+
+  def set_default_plan
+    self.plan ||= :noplan
   end
 
 end
