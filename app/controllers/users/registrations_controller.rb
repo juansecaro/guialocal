@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource) #Resource is the user just created
     empresa = Empresa.create(user_id: resource.id)
     resource.empresa_id = empresa.id
-    if resource.save
+    if resource.save(validate: false)
       edit_empresa_path(resource.empresa)
     else
       flash[:alert] = "Ha habido un problema"
@@ -88,7 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
-  
+
   def authorize_admin!
     unless user_signed_in? && current_user.admin?
       redirect_to root_path, alert: "Tú no eres administrador."

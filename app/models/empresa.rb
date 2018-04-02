@@ -1,5 +1,7 @@
 class Empresa < ApplicationRecord
 
+  skip_callback :validate, after: :create
+
   attr_accessor :tag_list
 
   enum plan: [:noplan, :basic, :plus, :premium]
