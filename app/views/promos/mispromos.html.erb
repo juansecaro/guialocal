@@ -1,11 +1,45 @@
 <div class="row">
   <div class="col-md-3">
-    <p><h2>Saldo actual</h2></p>
-    <p>Tienes</p>
-    <p><%= current_user.creditos %></p>
+    <p><h2 class="text-center">Saldo actual</h2></p>
+    <p class="text-center">Tienes</p>
+    <p><h2 class="text-muted text-center"><%= current_user.creditos %></h2></p>
+    <p class="text-center">créditos</p>
+    <% if current_user.creditos > -1%>
+    <p>
+      <ul class="list-unstyled">
+        <p><li><%= link_to "Nueva promoción", new_user_registration_path, class: "btn btn-primary d-block mx-auto" %></li></p>
+        <p><li><%= link_to "Obtener créditos", new_user_registration_path, class: "btn btn-success d-block mx-auto" %></li></p>
+      </ul>
+      </p>
+      <% end %>
+
 
   </div>
   <div class="col-md-9">
+    <p><h2 class="text-center">Promociones en activo</h2></p>
+
+    <% if @actuales.any?  %>
+      <%= render @actuales %>
+    <% else %>
+      <div class="row text-center text-muted">
+        <div class="col-md-12">
+          <h6 class="text-center">No hay promociones en activo</h6>
+        </div>
+      </div>
+    <% end %>
+
+
+    <p><h2 class="text-center">Promociones pasadas</h2></p>
+
+    <% if @pasadas.any?  %>
+      <%= render @pasadas %>
+    <% else %>
+      <div class="row text-muted">
+        <div class="col-md-12">
+          <h6 class="text-center">Aún no hay promociones inactivas</h6>
+        </div>
+      </div>
+    <% end %>
 
   </div>
 

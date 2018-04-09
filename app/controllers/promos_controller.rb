@@ -1,6 +1,7 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
 
+
   def new
 
   end
@@ -21,7 +22,8 @@ class PromosController < ApplicationController
 
   end
   def mispromos
-    
+    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa_id)
+    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa_id)
   end
 
   def index
