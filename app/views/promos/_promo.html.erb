@@ -1,7 +1,7 @@
 <%= link_to promo_path(promo) do %>
   <div class="row alert alert-warning">
     <h6 class="alert-link">  <%= promo.titulo %>  </h6>
-    <small class="text-right text-muted"><%= promo.empresa.name %></small>
+    <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
     <small>  <%= promo.texto %>   </small>
     <p><h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6></p>
 

@@ -1,12 +1,24 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
 
-
   def new
-
+    @promo = Promo.new
   end
 
   def create
+    @promo = Promo.new(promo_params)
+    @promo.empresa_id = current_user.empresa_id
+
+    respond_to do |format|
+      if @promo.save
+        # Restamos lo que sea
+        format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
+        format.json { render :show, status: :created, location: @promo }
+      else
+        format.html { render :new }
+        format.json { render json: @promo.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 

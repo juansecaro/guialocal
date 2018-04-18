@@ -4,8 +4,27 @@
   <div class="form-inputs">
     <%= f.input :titulo %>
     <%= f.input :texto %>
+    <p>
+      <div class="form-group">
+      Duración de promoción:</br>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline1">24 horas (5 créditos)</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline2">3 días (7 créditos) </label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline3">1 semana (10 créditos) </label>
+      </div>
+      </div>
+    </p>
     <%= f.date_select :validez %>
-    <%= f.input :imgepromo, as: :file %>
+    <p>
+    <%= f.input :imgepromo, as: :file, label: "Imagen " %>
+  </p>
   </div>
 
   <div class="form-actions">

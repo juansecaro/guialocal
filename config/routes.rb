@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :empresas
   resources :categories, only: :show
   resources :tags, only: :show
-  resources :promos, only: [:show, :index]
+  resources :promos, only: [:show, :index, :new, :create]
 
   root 'empresas#index'
 
