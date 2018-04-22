@@ -8,6 +8,18 @@ class PromosController < ApplicationController
   def create
     @promo = Promo.new(promo_params)
     @promo.empresa_id = current_user.empresa_id
+    if params[:customRadioInline1] == "on"
+      @promo.validez = Time.now + 1.day
+    elsif params[:customRadioInline2] == "on"
+      #byebug
+      @promo.validez = Time.now + 3.days
+    elsif params[:customRadioInline3] == "on"
+      @promo.validez = Time.now + 7.days
+    else
+      render 'new', alert: "No se marcó marcó una opción valida en la duración"
+    end
+
+
 
     respond_to do |format|
       if @promo.save
@@ -34,12 +46,12 @@ class PromosController < ApplicationController
 
   end
   def mispromos
-    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa_id)
-    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa_id)
+    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa_id).order("created_at DESC")
+    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa_id).order("created_at DESC")
   end
 
   def index
-    @promos = Promo.all
+    @promos = Promo.todas_dos_semanas
     #@promos = Promo.where("created_at > ?", Time.now-7.days)
   end
   def show
