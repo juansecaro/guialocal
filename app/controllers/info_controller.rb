@@ -28,4 +28,11 @@ class InfoController < ApplicationController
 
   def preguntasfrecuentes
   end
+
+  def publicitate
+
+  end
+  def precios
+
+  end
 end

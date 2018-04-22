@@ -8,10 +8,13 @@
     <hr class="my-4">
     <div class="row">
       <div class="col-6">
-        <% if @promo.empresa.logo? %>
-          <%= link_to(image_tag(@promo.empresa.logo, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
-        <% else %>
-          <%= @promo.empresa.name %>
+
+        <% if @promo.empresa.try(:any?) %>
+          <% if @promo.empresa.logo? %>
+            <%= link_to(image_tag(@promo.empresa.logo, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
+          <% else %>
+            <%= @promo.empresa.name %>
+          <% end %>
         <% end %>
 
       </div>

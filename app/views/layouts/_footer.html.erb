@@ -1,44 +1,41 @@
 
-<div class="container-fluid">
+<div class="container">
 
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-md-3">
+        Un proyecto conjunto de: </br>
+        <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+      </div>
+      <div class="col-md-3">
+        <h5>Plataforma</h5>
+        <ul class="list-unstyled text-small">
 
-  <footer class="py-5 bg-dark">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-        </div>
+          <li>  <%= link_to "Publicítate", publicitate_path, class:"text-muted" %> </li>
+          <% unless user_signed_in? %>
+          <li>  <%= link_to "Área Privada", new_user_session_path, class:"text-muted" %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Información legal</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Aviso legal</a></li>
+          <li><a class="text-muted" href="#">Política de privacidad</a></li>
+          <li><a class="text-muted" href="#">Política de Cookies</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Sobre el proyecto</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Preguntas frecuentes</a></li>
+          <li><a class="text-muted" href="#">Quejas y sugerencias</a></li>
+          <li><a class="text-muted" href="#">Agradecimientos</a></li>
+          <li><a class="text-muted" href="#">Contacto</a></li>
+        </ul>
       </div>
     </div>
-  <!-- /.container -->
   </footer>
-
-
-<div class="row bg-primary text-white">
-<p>
-<div class="com-md-3">
-  <ul class="list-unstyled">
-  <% unless user_signed_in? %>
-  <li>  <%= link_to "Area Privada", new_user_session_path, class:"btn btn-outline-warning" %> </li>
-  <% end %>
-  <li>  Preguntas frecuentes </li>
-  <li>  Quejas y sugerencias </li>
-  <li>  Publicítate </li>
-  <li>  Agradecimientos </li>
-  <li>  Aviso legal </li>
-  <li>  Contacto </li>
-</ul>
-</div>
-<div class="com-md-3">
-
-</div>
-<div class="com-md-3">
-
-</div>
-<div class="com-md-3">
-
-</div>
-</p>
-</div>
-
-</div>
