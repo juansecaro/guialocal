@@ -48,26 +48,89 @@
     <ul class="nav navbar-nav navbar-right">
       <!-- Usuarios normales -->
       <% if user_signed_in? %>
+        <% if current_user.user?%>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
-            <a class="dropdown-item" href="/empresas/<%= current_user.empresa_id %>/edit/">Editar Empresa</a>
-            <a class="dropdown-item" href="<%= mispromos_path %>">Mis promociones</a>
-            <a class="dropdown-item" href="<%= alojamiento_path %>">¿Problemas?</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+              <a class="dropdown-item" href="/empresas/<%= current_user.empresa_id %>/edit/">Editar Empresa</a>
+              <a class="dropdown-item" href="<%= mispromos_path %>">Mis promociones</a>
+              <a class="dropdown-item" href="<%= alojamiento_path %>">¿Problemas?</a>
 
-            <div class="dropdown-divider"></div>
-            <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
 
+        <% end %>
       <% end %>
-      <!-- Admins-->
-      <!-- Superadmins-->
       <!-- Editor-->
+
+      <% if user_signed_in? %>
+        <% if current_user.editor?%>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+              <a class="dropdown-item" href="<%= new_evento_path %>">Nuevo evento</a>
+              <a class="dropdown-item" href="<%= alojamiento_path %>">¿Problemas?</a>
+
+              <div class="dropdown-divider"></div>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+
+        <% end %>
+      <% end %>
+
+      <!-- Admins-->
+
+      <% if user_signed_in? %>
+        <% if current_user.admin?%>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+              <a class="dropdown-item" href="/admin">Administrar</a>
+
+              <div class="dropdown-divider"></div>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+
+        <% end %>
+      <% end %>
+
+      <!-- Superadmins-->
+
+      <% if user_signed_in? %>
+        <% if current_user.superadmin?%>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span><%= image_tag avatar_url(current_user), width:30, class:"img-circle" %> </span> Mi perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
+              <a class="dropdown-item" href="/superadmin">MODO DIOS</a>
+
+              <div class="dropdown-divider"></div>
+              <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+
+        <% end %>
+      <% end %>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Ej. Peluquero hombre" aria-label="Search">
