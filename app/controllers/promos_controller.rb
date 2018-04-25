@@ -8,29 +8,56 @@ class PromosController < ApplicationController
   def create
     @promo = Promo.new(promo_params)
     @promo.empresa_id = current_user.empresa_id
+    valid_value = false
+    #Faltan restar los créditos
     if params[:customRadioInline1] == "on"
-      @promo.validez = Time.now + 1.day
-    elsif params[:customRadioInline2] == "on"
-      #byebug
-      @promo.validez = Time.now + 3.days
-    elsif params[:customRadioInline3] == "on"
-      @promo.validez = Time.now + 7.days
-    else
-      render 'new', alert: "No se marcó marcó una opción valida en la duración"
-    end
-
-
-
-    respond_to do |format|
-      if @promo.save
-        # Restamos lo que sea
-        format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
-        format.json { render :show, status: :created, location: @promo }
+      if current_user.creditos > 5
+        current_user.creditos -= 5
+        valid_value = true
+        @promo.validez = Time.now + 1.day
       else
-        format.html { render :new }
-        format.json { render json: @promo.errors, status: :unprocessable_entity }
+        flash.now[:error] = "Error: No tienes suficiente crédito."
+        render 'new'
       end
+    elsif params[:customRadioInline2] == "on"
+      if current_user.creditos > 7
+        current_user.creditos -= 7
+        valid_value = true
+        @promo.validez = Time.now + 3.day
+      else
+        flash.now[:error] = "Error: No tienes suficiente crédito."
+        render 'new'
+      end
+    elsif params[:customRadioInline3] == "on"
+      if current_user.creditos > 10
+        current_user.creditos -= 10
+        valid_value = true
+        @promo.validez = Time.now + 7.day
+      else
+        flash.now[:error] = "Error: No tienes suficiente crédito."
+        render 'new'
+      end
+    else
+      # Params no viene con ninguna de las opciones que buscamos
+      render 'new', alert: "Error. Probablemente no se marcó marcó una opción valida en la duración"
     end
+
+    if valid_value == true
+      current_user.save!
+      respond_to do |format|
+        if @promo.save
+          # Restamos lo que sea
+          format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
+          format.json { render :show, status: :created, location: @promo }
+        else
+          format.html { render :new }
+          format.json { render json: @promo.errors, status: :unprocessable_entity }
+        end
+      end
+
+    end
+
+
 
   end
 
