@@ -1,0 +1,38 @@
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+
+    </label>
+  </article>
+
+  <p>
+    <div class="form-group">
+    Duración de promoción:</br>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline1" name="cuantia" class="custom-control-input" value="baja">
+      <label class="custom-control-label" for="customRadioInline1">24 horas (5 créditos)</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline2" name="cuantia" class="custom-control-input" value="media">
+      <label class="custom-control-label" for="customRadioInline2">3 días (7 créditos) </label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline3" name="cuantia" class="custom-control-input " value="alta">
+      <label class="custom-control-label" for="customRadioInline3">1 semana (10 créditos) </label>
+    </div>
+    </div>
+  </p>
+
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Recarga de créditos"
+          data-amount="500"
+          data-label="Pagar"
+          data-locale="es"></script>
+<% end %>

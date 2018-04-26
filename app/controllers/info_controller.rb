@@ -35,4 +35,7 @@ class InfoController < ApplicationController
   def precios
 
   end
+  def consiguemascreditos
+
+  end
 end

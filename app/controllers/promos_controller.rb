@@ -10,7 +10,7 @@ class PromosController < ApplicationController
     @promo.empresa_id = current_user.empresa_id
     valid_value = false
     #Faltan restar los créditos
-    if params[:customRadioInline1] == "on"
+    if params[:customRadioInline] == "baja"
       if current_user.creditos > 5
         current_user.creditos -= 5
         valid_value = true
@@ -19,7 +19,7 @@ class PromosController < ApplicationController
         flash.now[:error] = "Error: No tienes suficiente crédito."
         render 'new'
       end
-    elsif params[:customRadioInline2] == "on"
+    elsif params[:customRadioInline] == "media"
       if current_user.creditos > 7
         current_user.creditos -= 7
         valid_value = true
@@ -28,7 +28,7 @@ class PromosController < ApplicationController
         flash.now[:error] = "Error: No tienes suficiente crédito."
         render 'new'
       end
-    elsif params[:customRadioInline3] == "on"
+    elsif params[:customRadioInline] == "alta"
       if current_user.creditos > 10
         current_user.creditos -= 10
         valid_value = true

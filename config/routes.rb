@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/publica', to: 'info#publica'
   get '/publicitate', to: 'info#publicitate'
   get '/precios', to: 'info#precios'
+  get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/mispromos', to: 'promos#mispromos'
 
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
       }
 
   resources :eventos
+  resources :charges
   resources :empresas
   resources :categories, only: :show
   resources :tags, only: :show
