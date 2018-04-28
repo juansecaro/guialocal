@@ -34,18 +34,18 @@
     </div>
 
           <script>
-
-          var handler = StripeCheckout.configure({
-            key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-            image: 'http://adeter.org/guialocal/ADETER_chica.png',
-            locale: 'es',
-            token: function(token) {
-                document.getElementById("stripeToken").value = token.id;
-                document.getElementById("stripeEmail").value = token.email;
-                document.getElementById("chargeForm").submit();
-            }
-          });
           document.getElementById('btn-buy').addEventListener('click', function(e) {
+
+            var handler = StripeCheckout.configure({
+              key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+              image: 'http://adeter.org/guialocal/ADETER_chica.png',
+              locale: 'es',
+              token: function(token) {
+                  document.getElementById("stripeToken").value = token.id;
+                  document.getElementById("stripeEmail").value = token.email;
+                  document.getElementById("chargeForm").submit();
+              }
+            });
 
             if ($("input[type=radio]:checked").length != 1) {
                 alert("Debes seleccionar al menos una opción");
@@ -68,8 +68,6 @@
           window.addEventListener('popstate', function() {
             handler.close();
           });
-          //<!-- segunda versión-->
-          
           </script>
 
 
