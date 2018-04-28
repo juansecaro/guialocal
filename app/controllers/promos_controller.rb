@@ -58,7 +58,6 @@ class PromosController < ApplicationController
     end
 
 
-
   end
 
   def edit
