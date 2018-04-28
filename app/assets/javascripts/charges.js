@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 
   radiobtn1 = document.getElementById("customRadioInline1");
   radiobtn2 = document.getElementById("customRadioInline2");
