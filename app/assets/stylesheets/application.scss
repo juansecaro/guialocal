@@ -151,6 +151,20 @@ span.past {
 .dia_cal{
   font-size: xx-large;
 }
+.mthumbnail{
+    width: 300px;
+    // or you could use percentage values for responsive layout
+    // width : 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.mthumbnail img{
+    // your styles for the image
+    width: 100%;
+    height: auto;
+    display: block;
+}
 .fotos{
   max-width: 100%;
   height: auto;
