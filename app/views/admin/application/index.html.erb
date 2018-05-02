@@ -39,7 +39,7 @@
       <li>
         <%= link_to empresas_path do %>
           <%= fa_icon "bullhorn" %>
-          <span>Ofertas</span>
+          <span>Promociones</span>
           <span class="label label-warning pull-right"><%= @promos.count %></span>
         <% end %>
       </li>
@@ -59,9 +59,16 @@
       </li>
       <li>
         <%= link_to '#' do %>
-          <%= fa_icon "heart" %>
-          <span>Likes</span>
-          <span class="label label-danger pull-right">Likes</span>
+          <%= fa_icon "bug" %>
+          <span>Incidencias</span>
+          <span class="label label-danger pull-right">Incidencias</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          <%= fa_icon "star" %>
+          <span>Destacados</span>
+          <span class="label label-danger pull-right">Incidencias</span>
         <% end %>
       </li>
 
