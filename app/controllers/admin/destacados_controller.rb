@@ -35,7 +35,7 @@ class Admin::DestacadosController < ApplicationController
     end
   end
   def destroy
-    @category.destroy
+    @destacado.destroy
     flash[:alert] = "Se ha borrado el destacado."
     redirect_to admin_destacados_path
   end
