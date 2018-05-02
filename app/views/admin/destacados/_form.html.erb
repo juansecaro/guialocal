@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin, @destacado] do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :info %>
+      <%= f.input :imgdestacado, as: :file, label: "Imagen " %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+<% end %>
