@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :incidents
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
