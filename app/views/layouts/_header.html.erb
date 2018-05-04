@@ -58,7 +58,7 @@
               <a class="dropdown-item" href="/users/edit/">Editar usuario</a>
               <a class="dropdown-item" href="/empresas/<%= current_user.empresa_id %>/edit/">Editar Empresa</a>
               <a class="dropdown-item" href="<%= mispromos_path %>">Mis promociones</a>
-              <a class="dropdown-item" href="<%= alojamiento_path %>">¿Problemas?</a>
+              <a class="dropdown-item" href="<%= new_incident_path %>">¿Problemas?</a>
 
               <div class="dropdown-divider"></div>
               <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

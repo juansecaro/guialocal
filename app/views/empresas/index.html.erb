@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col-md-4 col-sm-12">
         <div class="card" >
-          <%= link_to image_tag(@empresas.first.logo.url,class:"card-img-top img-fluid",alt:"Card image cap") ,empresa_path(@empresas.first) if @empresas.first.logo?  %>
+          <%= link_to image_tag(@empresa1.try(:logo).url, class:"card-img-top img-fluid", alt:"Card image cap"), empresa_path(@empresa1) unless @empresa1.logo.blank? %>
           <div class="card-body">
-            <h5 class="card-title"><%= @empresas.first.name %></h5>
+            <h5 class="card-title"><%= @empresa1.name if @empresa1.try(:present?) %></h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="#" class="btn btn-primary">Échale un ojo</a>
             <p class="card-text"><small class="text-muted"> - Promocionado - </small></p>
@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-8 col-sm-12">
         <div class="card bg-dark text-white ">
-          <img class="card-img" src="<%= @empresas.first.fotos[2].url unless @empresas.first.fotos[2].blank? %>" alt="Card image">
+          <img class="card-img" src="<%= @empresa1.try(:fotos[2]).try(:url) unless @empresa1.try(:empty?) %>" alt="Card image">
           <div class="card-img-overlay">
             <h5 class="card-title">Descubre</h5>
             <p class="card-text">El rincón escondido de Llerena, el lugar donde los sueños se hace realidad y donde los niños nunca crecen</p>
@@ -45,9 +45,9 @@
        </div>
        <div class="col-4">
          <div class="card">
-           <%=link_to image_tag(@empresas.first.logo.url, class: "card-img-top img-fluid", alt: "Card image cap"), empresa_path(@empresas.first) unless @empresas.first.logo.blank? %>
+           <%=link_to image_tag(@empresa1.try(:logo).url, class: "card-img-top img-fluid", alt: "Card image cap"), empresa_path(@empresa1) unless @empresa1.logo.blank? %>
            <div class="card-body">
-             <h5 class="card-title"><%= @empresa1.name %></h5>
+             <h5 class="card-title"><%= @empresa1.name if @empresa1.present? %></h5>
              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
              <a href="#" class="btn btn-primary">Échale un ojo</a>
              <p class="card-text"><small class="text-muted"> - Promocionado - </small></p>

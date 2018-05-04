@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create!(
+    email: "juanseb@gmail.com",
+    password: "123456",
+    password_confirmation: "123456",
+		role: "admin"
+)
 Category.create!(
 	name: "Ocio y Turismo Activo",
 	summary: "Tonterías varias")
@@ -24,6 +30,7 @@ Empresa.create!(
 	plan: 0,
 	mlon: 38.237937,
 	mlat:  -6.014943,
+	user_id: 1,
 	id: 1
 )
 
@@ -72,10 +79,4 @@ Evento.create!(
 	imgevento: "",
 	info: "Blao "* 100,
 	fecha: Time.now + 15.days
-)
-User.create!(
-    email: "juanseb@gmail.com",
-    password: "123456",
-    password_confirmation: "123456",
-		role: "admin"
 )
