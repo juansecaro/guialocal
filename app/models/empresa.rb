@@ -2,13 +2,13 @@ class Empresa < ApplicationRecord
 
   skip_callback :validate, after: :create
   after_initialize :set_default_plan, :if => :new_record?
-  
+
   attr_accessor :tag_list
 
   enum plan: [:noplan, :basic, :plus, :premium]
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, optional: true
   has_many :promos, dependent: :destroy
 
   has_many :taggings, dependent: :destroy

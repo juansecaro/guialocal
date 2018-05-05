@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     root 'application#index'
     resources :users, only: [:show, :index]
     resources :destacados
+    resources :incidents
+    resources :empresas
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
 
   resources :eventos
   resources :charges
+  resources :incidents, only: [:new, :create, :show]
   resources :empresas
   resources :categories, only: :show
   resources :tags, only: :show

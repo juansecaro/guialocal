@@ -2,13 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :subject %>
-    <%= f.input :info %>
-    <%= f.input :status %>
-    <%= f.association :user %>
+    <%= f.input :subject, label: "Asunto" %>
+    <%= f.input :info, label: "Detalles" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Enviar", class: "btn btn-primary" %>
   </div>
 <% end %>

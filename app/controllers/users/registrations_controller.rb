@@ -72,6 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource) #Resource is the user just created
+
     empresa = Empresa.create(user_id: resource.id)
     resource.empresa_id = empresa.id
     if resource.save(validate: false)

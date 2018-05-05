@@ -1,0 +1,237 @@
+
+<%= form_for [:admin, @empresa], html: {multipart: true}  do |f| %>
+    <div class="form-group">
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :name %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :Seleccione_una_fotografía_de_su_logo %>
+        </div>
+        <div class="col-md-3">
+          <%= f.file_field :logo, as: :file %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :Email %>
+        </div>
+      <div class="col-md-3">
+      <%= f.text_field :email %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+      <%= f.label :Número_de_teléfono %>
+        </div>
+        <div class="col-md-3">
+      <%= f.text_field :tel %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+      <%= f.label :Dirección %>
+        </div>
+        <div class="col-md-3">
+      <%= f.text_field :address %>
+        </div>
+      </div>
+    </p>
+
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :Página_web %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :web %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :Seleccione_categoría_empresarial %>
+        </div>
+        <div class="col-md-3">
+          <%= f.collection_select :category_id, Category.all, :id, :name, :selected => Category.first  %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <%= f.label :Palabras_clave, hint: "Meta las palabras clave separadas por comas" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :tag_list %>
+        </div>
+      </div>
+    </p>
+
+    <p>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          <p><%= f.label :Descripción_detallada_de_tu_empresa %></p>
+        </div>
+      </div>
+    </p>
+
+    <p>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= f.trix_editor :description, size: "60x12" %>
+      </div>
+
+    </div>
+    </p>
+
+    <p>
+        <div class="row">
+          <div class="col-md-3 offset-md-3">
+            <%= f.label :Latitud %>
+            <%= f.number_field(:mlat, step:0.000001) %>
+          </div>
+          <div class="col-md-3">
+            <%= f.label :Longitud %>
+            <%= f.number_field(:mlon, step:0.000001) %>
+          </div>
+        </div>
+
+        <p>
+
+          <div class="row">
+            <div class="col-md-1 offset-md-2">
+              <p>¿Jornada continua?</p>
+              <input type="checkbox" class="text-center" id="cbox1" onchange="jornada_partida(cbox1)">
+            </div>
+            <div class="col-md-1">
+              Lunes </br>
+              De <%= f.time_field :schedule0, class: "timepicker", :value => f.object.schedule0 %> a <%= f.time_field :schedule1, class: "timepicker", :value => f.object.schedule1 %>
+            </div>
+
+            <div class="col-md-1">
+              Martes </br>
+              De <%= f.time_field :schedule4, class: "timepicker", :value => f.object.schedule4 %> a <%= f.time_field :schedule5, class: "timepicker", :value => f.object.schedule5 %>
+            </div>
+
+            <div class="col-md-1">
+              Miércoles </br>
+              De <%= f.time_field :schedule8, class: "timepicker", :value => f.object.schedule8 %> a <%= f.time_field :schedule9, class: "timepicker", :value => f.object.schedule9 %>
+            </div>
+
+            <div class="col-md-1">
+              Jueves </br>
+              De <%= f.time_field :schedule12, class: "timepicker", :value => f.object.schedule12 %> a <%= f.time_field :schedule13, class: "timepicker", :value => f.object.schedule13 %>
+            </div>
+
+            <div class="col-md-1">
+              Viernes </br>
+              De <%= f.time_field :schedule16, class: "timepicker", :value => f.object.schedule16 %> a <%= f.time_field :schedule17, class: "timepicker", :value => f.object.schedule17 %>
+            </div>
+
+            <div class="col-md-1">
+              Sábado </br>
+              De <%= f.time_field :schedule20, class: "timepicker", :value => f.object.schedule20 %> a <%= f.time_field :schedule21, class: "timepicker", :value => f.object.schedule21 %>
+            </div>
+
+            <div class="col-md-1">
+              Domingo </br>
+              De <%= f.time_field :schedule24, class: "timepicker", :value => f.object.schedule24 %> a <%= f.time_field :schedule25, class: "timepicker", :value => f.object.schedule25 %>
+            </div>
+        </div>
+
+            <div class="row" id="parcial">
+              <div class="col-md-1 offset-md-3">
+                Lunes </br>
+                De <%= f.time_field :schedule2, class: "timepicker", :value => f.object.schedule2 %> a <%= f.time_field :schedule3, class: "timepicker", :value => f.object.schedule3 %>
+              </div>
+
+              <div class="col-md-1">
+                Martes </br>
+                De <%= f.time_field :schedule6, class: "timepicker", :value => f.object.schedule6 %> a <%= f.time_field :schedule7, class: "timepicker", :value => f.object.schedule7 %>
+              </div>
+
+              <div class="col-md-1">
+                Miércoles </br>
+                De <%= f.time_field :schedule10, class: "timepicker", :value => f.object.schedule10 %> a <%= f.time_field :schedule11, class: "timepicker", :value => f.object.schedule11 %>
+              </div>
+
+              <div class="col-md-1">
+                Jueves </br>
+                De <%= f.time_field :schedule14, class: "timepicker", :value => f.object.schedule14 %> a <%= f.time_field :schedule15, class: "timepicker", :value => f.object.schedule15 %>
+              </div>
+
+              <div class="col-md-1">
+                Viernes </br>
+                De <%= f.time_field :schedule18, class: "timepicker", :value => f.object.schedule18 %> a <%= f.time_field :schedule19, class: "timepicker", :value => f.object.schedule19 %>
+              </div>
+
+              <div class="col-md-1">
+                Sábado </br>
+                De <%= f.time_field :schedule22, class: "timepicker", :value => f.object.schedule22 %> a <%= f.time_field :schedule23, class: "timepicker", :value => f.object.schedule23 %>
+              </div>
+
+              <div class="col-md-1">
+                Domingo </br>
+                De <%= f.time_field :schedule26, class: "timepicker", :value => f.object.schedule26 %> a <%= f.time_field :schedule27, class: "timepicker", :value => f.object.schedule27 %>
+              </div>
+
+
+
+            </div>
+          </div>
+        </p>
+
+
+    <p>
+      <div class="row">
+        <div class="col-md-2 offset-md-3">
+          <%= f.label :Seleccione_varias_fotos %><br>
+          <%= f.file_field :fotos, id: "enviar", multiple: true %>
+        </div>
+      </div>
+      <div class="row">
+
+        <p>
+         <label>Mi logo</label>
+         <%= image_tag(@empresa.logo_url) if @empresa.logo? %>
+         <%= f.file_field :logo %>
+        </p>
+
+
+
+
+
+      </div>
+
+    </p>
+
+    <p>
+      <div class="text-center">
+      <%= f.button "Enviar", class: "btn btn-primary text", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enviando..."} %>
+      </div>
+    </p>
+    </div>
+<% end %>
