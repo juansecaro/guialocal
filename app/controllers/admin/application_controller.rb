@@ -8,6 +8,7 @@ before_action :authorize_admin!
     @tags = Tag.all
     @eventos = Evento.all
     @promos = Promo.all
+    @incidents = Incident.all
   end
 
   private

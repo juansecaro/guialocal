@@ -1,0 +1,27 @@
+<h1>Incidencias recientes</h1>
+
+
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+
+        <th>Asunto</th>
+        <th>Detalles</th>
+        <th>Estado</th>
+        <th>Usuario</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @incidents.each do |incidencia| %>
+        <tr>
+          <td> <%= incidencia.subject %> </td>
+          <td> <%= incidencia.info %> </td>
+          <td> <%= incidencia.status %> </td>
+          <td> <%= link_to incidencia.user.email, '#' if incidencia.user.try(:present?) %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>

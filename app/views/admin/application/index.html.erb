@@ -61,14 +61,14 @@
         <%= link_to admin_incidents_path do %>
           <%= fa_icon "bug" %>
           <span>Incidencias</span>
-          <span class="label label-danger pull-right">Incidencias</span>
+          <span class="label label-danger pull-right"><%= @incidents.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_destacados_path do %>
           <%= fa_icon "star" %>
           <span>Destacados</span>
-          <span class="label label-danger pull-right">Incidencias</span>
+          <span class="label label-danger pull-right">Destacados</span>
         <% end %>
       </li>
 
