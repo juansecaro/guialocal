@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     root 'application#index'
     resources :users, only: [:show, :index]
     resources :destacados
-    resources :incidents
+    resources :incidents do
+      resources :comments
+    end
     resources :empresas
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end

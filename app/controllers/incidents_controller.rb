@@ -71,6 +71,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:subject, :info, :status, :user_id)
+      params.require(:incident).permit(:info, :subject, :status, :user_id, comments_attributes: [:info])
     end
 end

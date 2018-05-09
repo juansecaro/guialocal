@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin, @incident] do |f| %>
+  <%= f.error_notification %>
+
+
+  <%= f.simple_fields_for :comments, @incident.comments.build do |fc| %>
+      <%= fc.input :info, label: "Informe de seguimiento" %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit "Enviar", class: "btn btn-primary" %>
+  </div>
+<% end %>

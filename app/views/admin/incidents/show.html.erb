@@ -1,0 +1,36 @@
+
+<h2>Informe de incidencia</h2>
+<p>
+  <h6>Incidencia nº <%= @incident.id %></h6>
+  <h6>Fecha de incidencia: <%= @incident.created_at %>, Hace <%= time_ago_in_words @incident.created_at %></h6>
+  <h6>Última actualización: <%= @incident.updated_at %>, Hace <%= time_ago_in_words @incident.updated_at %></h6>
+  <h6>Estado:
+            <td class="text-center">
+               <% if @incident.status == "abierto" %>
+                  <span class="badge badge-success">Abierto</span>
+               <% elsif  @incident.status == "tramite" %>
+                  <span class="badge badge-warning">En trámite</span>
+               <% elsif  @incident.status == "pendiente" %>
+                  <span class="badge badge-danger">Pendiente</span>
+               <% elsif  @incident.status == "cerrado" %>
+                  <span class="badge badge-dark">Cerrado</span>
+               <% else %>
+                  <span class="badge badge-secondary">¡Fallo!</span>
+               <% end %>
+            </td>
+  </h6>
+  <h6>Asunto: <strong><%= @incident.subject %></strong></h6>
+  <h6>Detalles:</h6>
+
+    <span class="text-muted"><%= @incident.info %></span>
+</p>
+
+    <%= render 'form' %>
+
+    <div class="dropdown-divider"></div>
+
+    <% if @incident.comments.try(:any?) %>
+      <%= render @incident.comments %>
+    <% else %>
+      Aún no se han realizado acciones
+    <% end %>

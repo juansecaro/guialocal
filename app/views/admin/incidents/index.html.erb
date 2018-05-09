@@ -9,6 +9,8 @@
         <th>Detalles</th>
         <th>Estado</th>
         <th>Usuario</th>
+        <th>Últ. Actualización</th>
+        <th>Iniciado</th>
 
       </tr>
     </thead>
@@ -16,10 +18,25 @@
     <tbody>
       <% @incidents.each do |incidencia| %>
         <tr>
-          <td> <%= incidencia.subject %> </td>
-          <td> <%= incidencia.info %> </td>
-          <td> <%= incidencia.status %> </td>
-          <td> <%= link_to incidencia.user.email, '#' if incidencia.user.try(:present?) %></td>
+          <td class="text-center"> <%= link_to incidencia.subject, admin_incident_path(incidencia) %> </td>
+          <td class="text-center"> <%= Nokogiri::HTML(incidencia.info).text.truncate(30, separator: ' ') %> </td>
+          <td class="text-center">
+             <% if incidencia.status == "abierto" %>
+                <span class="badge badge-success">Abierto</span>
+             <% elsif  incidencia.status == "tramite" %>
+                <span class="badge badge-warning">En trámite</span>
+             <% elsif  incidencia.status == "pendiente" %>
+                <span class="badge badge-danger">Pendiente</span>
+             <% elsif  incidencia.status == "cerrado" %>
+                <span class="badge badge-dark">Cerrado</span>
+             <% else %>
+                <span class="badge badge-secondary">¡Fallo!</span>
+             <% end %>
+          </td>
+
+          <td class="text-center"> <%= link_to incidencia.user.email, '#' if incidencia.user.try(:present?) %></td>
+          <td class="text-center"> <%= time_ago_in_words incidencia.created_at %> </td>
+          <td class="text-center"> <%= time_ago_in_words incidencia.updated_at %> </td>
         </tr>
 
       <% end %>
