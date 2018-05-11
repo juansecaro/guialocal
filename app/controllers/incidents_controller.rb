@@ -44,7 +44,7 @@ class IncidentsController < ApplicationController
   def update
     respond_to do |format|
       if @incident.update(incident_params)
-        format.html { redirect_to @incident, notice: 'Incident was successfully updated.' }
+        format.html { redirect_to admin_incident(@incident), notice: 'Incident was successfully updated.' }
         format.json { render :show, status: :ok, location: @incident }
       else
         format.html { render :edit }

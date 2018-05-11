@@ -5,12 +5,12 @@
     <thead>
       <tr>
 
-        <th>Asunto</th>
-        <th>Detalles</th>
-        <th>Estado</th>
-        <th>Usuario</th>
-        <th>Últ. Actualización</th>
-        <th>Iniciado</th>
+        <th class="text-center">Asunto</th>
+        <th class="text-center">Detalles</th>
+        <th class="text-center">Estado</th>
+        <th class="text-center">Usuario</th>
+        <th class="text-center">Últ. Actualización</th>
+        <th class="text-center">Iniciado</th>
 
       </tr>
     </thead>
@@ -23,20 +23,20 @@
           <td class="text-center">
              <% if incidencia.status == "abierto" %>
                 <span class="badge badge-success">Abierto</span>
-             <% elsif  incidencia.status == "tramite" %>
-                <span class="badge badge-warning">En trámite</span>
+             <% elsif  incidencia.status == "reportar" %>
+                <span class="badge badge-warning">Reportada</span>
              <% elsif  incidencia.status == "pendiente" %>
-                <span class="badge badge-danger">Pendiente</span>
-             <% elsif  incidencia.status == "cerrado" %>
-                <span class="badge badge-dark">Cerrado</span>
+                <span class="badge badge-primary">Pendiente</span>
+             <% elsif  incidencia.status == "concluida" %>
+                <span class="badge badge-danger">Concluida</span>
              <% else %>
                 <span class="badge badge-secondary">¡Fallo!</span>
              <% end %>
           </td>
 
           <td class="text-center"> <%= link_to incidencia.user.email, '#' if incidencia.user.try(:present?) %></td>
-          <td class="text-center"> <%= time_ago_in_words incidencia.created_at %> </td>
           <td class="text-center"> <%= time_ago_in_words incidencia.updated_at %> </td>
+          <td class="text-center"> <%= time_ago_in_words incidencia.created_at %> </td>
         </tr>
 
       <% end %>

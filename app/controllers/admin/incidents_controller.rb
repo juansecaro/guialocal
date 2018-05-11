@@ -3,8 +3,10 @@ class Admin::IncidentsController < ApplicationController
   def index
     @incidents = Incident.all
   end
+
   def show
-    @incident.comments.build
+    user ||= current_user
+    @incident.comments.build(user: user)
   end
 
   def edit
@@ -12,13 +14,24 @@ class Admin::IncidentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @incident.update(incident_params)
-        format.html { redirect_to @incident, notice: 'Incidencia actualizada actualizada con éxito.' }
-        format.json { render :show, status: :ok, location: @incident }
-      else
-        format.html { render :edit }
-        format.json { render json: @incident.errors, status: :unprocessable_entity }
+    if params[:incident][:comments_attributes]["0"][:info] == ""
+      redirect_to admin_incident_path(@incident), alert: 'Necesitas añadir información antes de actualizar el estado'
+    else
+      if params[:commit]=="Concluida"
+        @incident.concluida!
+      elsif params[:commit]=="Reportar"
+        @incident.reportar!
+      elsif params[:commit]=="Pendiente"
+        @incident.pendiente! 
+      end
+      respond_to do |format|
+        if @incident.update(incident_params)
+          format.html { redirect_to admin_incident_path(@incident), notice: 'Incidencia actualizada actualizada con éxito.' }
+          format.json { render :show, status: :ok, location: @incident }
+        else
+          format.html { render :edit }
+          format.json { render json: @incident.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

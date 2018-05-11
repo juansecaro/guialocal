@@ -19,6 +19,10 @@ module ApplicationHelper
     "https://www.gravatar.com/avatar/#{hash}"
   end
 
+  def time_format_mini(datetime)
+    datetime.strftime("%A, %d %b %Y %H:%M")
+  end
+
   def full_title(page_title = "")
   default_title = "Eventsboard - Creare events for everybody"
   if page_title.empty?

@@ -7,8 +7,4 @@ module PromosHelper
     end
   end
 
-  def time_format_mini(datetime)
-    datetime.strftime("%A, %d %b %Y %H:%M")
-  end
-
 end

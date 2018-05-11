@@ -3,10 +3,14 @@
 
 
   <%= f.simple_fields_for :comments, @incident.comments.build do |fc| %>
-      <%= fc.input :info, label: "Informe de seguimiento" %>
+      <%= fc.input :info, required: true, label: "Informe de seguimiento" %>
   <% end %>
 
   <div class="form-actions">
-    <%= f.submit "Enviar", class: "btn btn-primary" %>
+    <div class="btn-group">
+      <%= f.submit "Pendiente", class: "btn btn-primary" %>
+      <%= f.submit "Reportar", class: "btn btn-warning" %>
+      <%= f.submit "Concluida", class: "btn btn-danger" %>
+    </div>
   </div>
 <% end %>

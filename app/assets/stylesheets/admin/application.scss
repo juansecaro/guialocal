@@ -30,6 +30,15 @@
 .user-panel:after {
   clear:both;
 }
+.comment {
+  background-color: #FFFFCC;
+  border-style: solid;
+  border-width: medium;
+  border-color: #FFCC99;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
 
 .user-panel>.image>img {
   width:100%;

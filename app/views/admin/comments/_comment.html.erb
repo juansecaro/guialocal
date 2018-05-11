@@ -1,5 +1,11 @@
-<div>
-  <blockquote>
-    <%= comment.info %>
-  </blockquote>
+<div class="row comment">
+    <div class="col-md-10">
+      <%= comment.info %>
+    </div>
+    <div class="col-md-4">
+      <small class="text-muted">
+        <%= comment.user.try(:email) if comment.user %>
+        <%= comment.created_at.strftime("%d %b %Y - %H:%M") if comment and comment.created_at %>
+      </small>
+    </div>
 </div>
