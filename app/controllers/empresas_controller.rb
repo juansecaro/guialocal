@@ -6,6 +6,7 @@ class EmpresasController < ApplicationController
   def index
     @empresas = Empresa.order("RANDOM()").limit(2)
     @empresa1 = @empresas.first
+    @destacado = Destacado.all.shuffle.take(3)
 
     @promos = Promo.last(10)
     @eventos = Evento.last(3)

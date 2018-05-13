@@ -5,6 +5,7 @@ class CreateEmpresas < ActiveRecord::Migration[5.0]
       t.string :name
 
       t.text :description
+      t.text :excerpt
       t.string :address
       t.string :web
       t.string :email

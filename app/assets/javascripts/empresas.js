@@ -11,6 +11,16 @@ $(document).on('turbolinks:load', function () {
      }
     });
 
+    $("input[type='submit']").click(function(e){
+      var $fileUpload = $("#enviar");
+      var max_files = num_files_plan($('#empresa_plan').val());
+      if (parseInt($fileUpload.get(0).files.length)>max_files){
+        e.preventDefault();
+        alert('En tu actual plan, sólo puedes subir ' + max_files + ' fotos');
+      }
+    });
+
+
 });
 
 function jornada_partida(checkboxElem) {
@@ -36,6 +46,20 @@ function jornada_partida(checkboxElem) {
   }
 }
 
+function num_files_plan(plan){
+  if (plan == "basic") {return 3;}
+  else if (plan == "plus") {return 6;}
+  else if (plan == "premium") {return 9;}
+  else {return 0;} // no plan
+}
+
+function num_tags_plan(plan){
+  if (plan == "basic") {return 3;}
+  else if (plan == "plus") {return 7;}
+  else if (plan == "premium") {return 12;}
+  else {return 0;} // no plan
+}
+
 $(function () {
     var viewer = ImageViewer();
     $('.gallery-items').click(function () {
@@ -44,22 +68,4 @@ $(function () {
 
         viewer.show(imgSrc, highResolutionImage);
     });
-});
-
-$(function(){
-    $("input[type='submit']").click(function(){
-        var $fileUpload = $("input[type='file']");
-        if (parseInt($fileUpload.get(0).files.length)>2){
-         alert("You can only upload a maximum of 2 files");
-        }
-    });
-});
-
-$('#enviar').change(function(){
-    if(this.files.length>10)
-        alert('Too many files');
-        });
-$('form').submit(function(){
-    if(this.files.length>10)
-        return false;
 });

@@ -4,7 +4,7 @@
 <p>
   <div class="row">
     <div class="col-md-3 offset-md-3">
-      <%= f.label :name %>
+      <%= f.label "Nombre" %>
     </div>
     <div class="col-md-3">
       <%= f.text_field :name %>
@@ -212,31 +212,12 @@
       <%= f.file_field :fotos, id: "enviar", multiple: true %>
     </div>
   </div>
-  <div class="row">
-
-    <p>
-     <label>Mi logo</label>
-     <%= image_tag(@empresa.logo_url) if @empresa.logo? %>
-     <%= f.file_field :logo %>
-    </p>
-
-    <p>
-     <label>
-       <%= f.check_box :remove_logo %>
-       Remove logo
-     </label>
-    </p>
-
-
-
-
-  </div>
-
 </p>
+<%= f.hidden_field :plan %>
 
 <p>
   <div class="text-center">
-  <%= f.button "Enviar", class: "btn btn-primary text", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enviando..."} %>
+  <%= f.submit "Enviar", class: "btn btn-primary text", id: "emp_enviar" %>
   </div>
 </p>
 </div>
