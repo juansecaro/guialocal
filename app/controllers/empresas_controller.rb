@@ -4,6 +4,10 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
+
+  end
+
+  def home
     @empresas = Empresa.order("RANDOM()").limit(2)
     @empresa1 = @empresas.first
     @destacado = Destacado.all.shuffle.take(3)

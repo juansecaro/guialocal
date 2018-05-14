@@ -79,6 +79,19 @@
   </div>
 </p>
 
+<% if @empresa.premium? %>
+<p>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <%= f.label :URL_Video %><br>
+      </div>
+      <div class="col-md-3">
+        <%= f.url_field :video %>
+      </div>
+    </div>
+  </p>
+<% end %>
+
 <p>
   <div class="row">
     <div class="col-md-3 offset-md-3">
@@ -89,6 +102,22 @@
     </div>
   </div>
 </p>
+
+
+  <div class="row">
+    <p>
+      <div class="col-md-3 offset-md-3">
+        <%= f.label :Extracto_en_100_caracteres %><br>
+      </div>
+    </p>
+
+    <p>
+      <div class="col-md-6 offset-md-3">
+        <%= f.text_field :excerpt, size: "50x2" %>
+      </div>
+    </p>
+  </div>
+
 
 <p>
   <div class="row">
@@ -213,6 +242,7 @@
     </div>
   </div>
 </p>
+
 <%= f.hidden_field :plan %>
 
 <p>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :incidents
+  root 'empresas#home'
+
+
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   resources :tags, only: :show
   resources :promos, only: [:show, :index, :new, :create]
 
-  root 'empresas#index'
+
 
 
 end

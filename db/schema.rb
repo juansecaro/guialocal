@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180512023302) do
     t.string   "logo"
     t.string   "name"
     t.text     "description"
+    t.text     "excerpt"
     t.string   "address"
     t.string   "web"
     t.string   "email"
