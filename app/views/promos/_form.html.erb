@@ -1,9 +1,15 @@
-<%= simple_form_for(@promo) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@promo) do |f| %>
+<% if @promo.errors.any? %>
+  <ul>
+  <% @promo.errors.full_messages.each do |msg| %>
+    <li class="list-unstyled"><%= flash.now[:error] = msg %></li>
+  <% end %>
+  </ul>
+<% end %>
 
   <div class="form-inputs">
-    <%= f.input :titulo %>
-    <%= f.input :texto %>
+    <p><%= f.text_field  :titulo %></p>
+    <p><%= f.text_field  :texto %></p>
     <p>
       <div class="form-group">
       Duración de promoción:</br>
@@ -22,11 +28,11 @@
       </div>
     </p>
     <p>
-    <%= f.input :imgpromo, as: :file, label: "Imagen " %>
+    <%= f.file_field :imgpromo, as: :file, label: "Imagen " %>
   </p>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.submit "Enviar", class: "btn btn-primary" %>
   </div>
 <% end %>

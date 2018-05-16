@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-4">
+    <!-- Alfabético -->
+    <div class="card">
+      <%= link_to empresas_path do %>
+      <img class="card-img-top imf-fluid" src="https://i1.wp.com/haxdevsite-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/atoz.png?resize=640%2C360&ssl=1" alt="Empresas por orden alfabético">
+      <div class="card-body">
+        <p class="card-text text-center">Orden Alfabético</p>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+    <!-- Por categoría -->
+    <div class="card">
+      <%= link_to categories_path do %>
+      <img class="card-img-top imf-fluid" src="https://marketing4ecommerce.mx/wp-content/uploads/2016/07/CategoriaOk.jpg" alt="Empresas por categorías">
+      <div class="card-body">
+        <p class="card-text text-center">Por categorías</p>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+    <!-- Palabra clave -->
+    <div class="card">
+      <%= link_to tags_path do %>
+      <img class="card-img-top imf-fluid" src="https://blog.blogness.net/wp-content/uploads/2017/02/hashtags-1080x675.jpg" alt="Empresas por palabras clave">
+      <div class="card-body">
+        <p class="card-text text-center">Por palabras clave</p>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

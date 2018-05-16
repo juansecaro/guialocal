@@ -8,54 +8,61 @@ class PromosController < ApplicationController
   def create
     @promo = Promo.new(promo_params)
     @promo.empresa_id = current_user.empresa_id
-    valid_value = false
-    #Faltan restar los créditos
-    if params[:customRadioInline] == "baja"
-      if current_user.creditos > 5
-        current_user.creditos -= 5
-        valid_value = true
-        @promo.validez = Time.now + 1.day
-      else
-        flash.now[:error] = "Error: No tienes suficiente crédito."
-        render 'new'
-      end
-    elsif params[:customRadioInline] == "media"
-      if current_user.creditos > 7
-        current_user.creditos -= 7
-        valid_value = true
-        @promo.validez = Time.now + 3.day
-      else
-        flash.now[:error] = "Error: No tienes suficiente crédito."
-        render 'new'
-      end
-    elsif params[:customRadioInline] == "alta"
-      if current_user.creditos > 10
-        current_user.creditos -= 10
-        valid_value = true
-        @promo.validez = Time.now + 7.day
-      else
-        flash.now[:error] = "Error: No tienes suficiente crédito."
-        render 'new'
-      end
-    else
-      # Params no viene con ninguna de las opciones que buscamos
-      render 'new', alert: "Error. Probablemente no se marcó marcó una opción valida en la duración"
-    end
 
-    if valid_value == true
-      current_user.save!
-      respond_to do |format|
-        if @promo.save
-          # Restamos lo que sea
-          format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
-          format.json { render :show, status: :created, location: @promo }
+      valid_value = false
+      #nos aseguramos que el radiobutton corresponda con una de nuestras opciones
+      if params[:customRadioInline] == "baja"
+        if current_user.creditos > 5
+          saldo = 5
+          valid_value = true
+          @promo.validez = Time.now + 1.day
         else
-          format.html { render :new }
-          format.json { render json: @promo.errors, status: :unprocessable_entity }
+          flash.now[:error] = "Error: No tienes suficiente crédito."
+          render 'new'
+        end
+      elsif params[:customRadioInline] == "media"
+        if current_user.creditos > 7
+          saldo = 7
+          valid_value = true
+          @promo.validez = Time.now + 3.day
+        else
+          flash.now[:error] = "Error: No tienes suficiente crédito."
+          render 'new'
+        end
+      elsif params[:customRadioInline] == "alta"
+        if current_user.creditos > 10
+          saldo = 10
+          valid_value = true
+          @promo.validez = Time.now + 7.day
+        else
+          flash.now[:error] = "Error: No tienes suficiente crédito."
+          render 'new'
         end
       end
 
-    end
+  # Ya tenemos todo para saber si es válido o no
+      if valid_value == true
+
+          respond_to do |format|
+            if @promo.save
+              # Restamos lo que sea
+              current_user.update_attributes(creditos: current_user.creditos -= saldo)
+              format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
+              format.json { render :show, status: :created, location: @promo }
+            else
+              format.html { render :new, alert: @promo.errors }
+              format.json { render json: @promo.errors, status: :unprocessable_entity }
+            end
+          end
+
+      else
+        flash.now[:error] = "Debes seleccionar al menos una opción."
+        render 'new'
+      end
+
+
+
+
 
 
   end

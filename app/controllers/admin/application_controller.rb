@@ -14,7 +14,7 @@ before_action :authorize_admin!
   private
   def authorize_admin!
     authenticate_user!
-    unless current_user.admin?
+    unless (current_user.admin? || current_user.superadmin?)
       redirect_to root_path, alert: "Tú no eres administrador."
     end
   end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'empresas#home'
+  get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
 
 
   get '/historia', to: 'info#historia'
@@ -39,8 +40,8 @@ Rails.application.routes.draw do
   resources :charges
   resources :incidents, only: [:new, :create, :show]
   resources :empresas
-  resources :categories, only: :show
-  resources :tags, only: :show
+  resources :categories, only: [:index, :show]
+  resources :tags, only: [:index, :show]
   resources :promos, only: [:show, :index, :new, :create]
 
 

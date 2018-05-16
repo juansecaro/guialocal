@@ -28,7 +28,7 @@
         <td><%= user.email %></td>
         <td><%= user.created_at %></td>
         <td><%= user.last_sign_in_at %></td>
-        <td><%= link_to user.empresa.name, empresa_path(user.empresa) if user.empresa.try(:present?) %></td>
+        <td><%= link_to user.empresa.name, edit_empresa_path(user.empresa) if user.empresa.try(:present?) %></td>
         <td><%= user.creditos %></td>
       </tr>
 

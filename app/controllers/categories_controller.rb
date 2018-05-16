@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: :show
   def show
+
+  end
+  def index
     @categories = Category.all
   end
   private
@@ -10,6 +13,6 @@ class CategoriesController < ApplicationController
     #Si no lo encuentra
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "La categoría que buscas no existe"
-    redirect_to (request.referrer || empresas_path)
+    redirect_to (request.referrer || categories_path)
   end
 end

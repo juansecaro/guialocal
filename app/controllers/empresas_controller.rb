@@ -1,10 +1,15 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
+
+
+  def empresas_ordenadas
+
+  end
   # GET /empresas
   # GET /empresas.json
   def index
-
+    @empresas = Empresa.order(name: :asc)
   end
 
   def home
@@ -71,25 +76,7 @@ class EmpresasController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def abierto
-    index = datetime.wday
-    case index
-    when 0
-      if (@empresa.schedule2.blank? || @empresa.schedule3.blank?)
 
-      else
-
-      end
-    when 1
-    when 2
-    when 3
-    when 4
-    when 5
-    when 6
-
-    end
-
-  end
 
 
 
@@ -269,7 +256,7 @@ class EmpresasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresa_params
-      params.require(:empresa).permit(:logo, :name, :tag_list ,:category_id, :description, :mlon, :mlat, :address, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
+      params.require(:empresa).permit(:logo, :name, :tag_list ,:category_id, :description,:plan, :mlon, :mlat, :address, :excerpt, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
          :schedule7, :schedule8, :schedule9, :schedule10, :schedule11, :schedule12, :schedule13, :schedule14, :schedule15, :schedule16, :schedule17, :schedule18, :schedule19, :schedule20, :schedule21, :schedule22, :schedule23, :schedule24, :schedule25, :schedule26, :schedule27, :remove_logo)
     end
 end
