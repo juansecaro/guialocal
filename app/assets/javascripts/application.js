@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require timepicker
 //= require imageviewer
+//= require charactercount
 //= require turbolinks
 //= require trix
 //= require_tree .

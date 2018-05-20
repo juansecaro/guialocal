@@ -1,4 +1,6 @@
 <%= form_for(@promo) do |f| %>
+
+
 <% if @promo.errors.any? %>
   <ul>
   <% @promo.errors.full_messages.each do |msg| %>
@@ -6,10 +8,17 @@
   <% end %>
   </ul>
 <% end %>
-
   <div class="form-inputs">
-    <p><%= f.text_field  :titulo %></p>
-    <p><%= f.text_field  :texto %></p>
+    <div class="row">
+      <%= f.text_field  :titulo, class: "form-control c", placeholder: "Título" %>
+      <div class="cd"></div>
+    </div>
+<p></p>
+    <div class="row">
+      <%= f.text_area :texto, class: "form-control d", placeholder: "Texto" %>
+      <div class="dd"></div>
+    </div>
+
     <p>
       <div class="form-group">
       Duración de promoción:</br>
