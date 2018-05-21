@@ -4,12 +4,11 @@ class CategoriesController < ApplicationController
 
   end
   def index
-    @categories = Category.all
+    @categories = Category.order(name: :asc)
   end
   private
   def set_category
     @category = Category.find(params[:id])
-
     #Si no lo encuentra
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "La categoría que buscas no existe"

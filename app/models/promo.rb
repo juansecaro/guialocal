@@ -1,7 +1,7 @@
 class Promo < ApplicationRecord
   belongs_to :empresa
 
-  validates :titulo, presence: true, length:{ maximum: 50, too_long: "El título no puede ser mayor de 32 carácteres y tienes %{count}" }
+  validates :titulo, presence: true, length:{ maximum: 60, too_long: "El título no puede ser mayor de 50 carácteres y tienes %{count}" }
   validates :texto, presence: true, length:{ maximum: 250, too_long: "El texto no puede ser mayor de  250 carácteres y tienes %{count}" }
 
   mount_uploader :imgpromo, ImgpromoUploader
