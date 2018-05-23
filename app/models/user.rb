@@ -4,8 +4,8 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
 
   has_one :empresa, dependent: :destroy
-  has_many :incidents
-  has_many :comments
+  has_many :incidents, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 

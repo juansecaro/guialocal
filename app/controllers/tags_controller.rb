@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   def show
   end
   def index
-    @tag = Tag.all
+    @tags = Tag.all
   end
 
 
