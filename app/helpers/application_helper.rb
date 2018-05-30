@@ -28,11 +28,16 @@ module ApplicationHelper
   end
 
   def full_title(page_title = "")
-  default_title = "Eventsboard - Creare events for everybody"
-  if page_title.empty?
-    default_title
-  else
-    "#{page_title} | #{default_title}"
+    default_title = "Eventsboard - Creare events for everybody"
+    if page_title.empty?
+      default_title
+    else
+      "#{page_title} | #{default_title}"
+    end
   end
+
+  def current_city
+
   end
+  
 end

@@ -1,0 +1,46 @@
+
+<h1>Puntos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Img1</th>
+      <th>Img2</th>
+      <th>Img3</th>
+      <th>Img4</th>
+      <th>Subtitle</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Schedule</th>
+      <th>Price</th>
+      <th>Info</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @puntos.each do |punto| %>
+      <tr>
+        <td><%= punto.title %></td>
+        <td><%#= punto.img1 %></td>
+        <td><%#= punto.img2 %></td>
+        <td><%#= punto.img3 %></td>
+        <td><%#= punto.img4 %></td>
+        <td><%= punto.subtitle %></td>
+        <td><%= punto.description %></td>
+        <td><%= punto.location %></td>
+        <td><%= punto.schedule %></td>
+        <td><%= punto.price %></td>
+        <td><%= punto.info %></td>
+        <td><%= link_to 'Show', punto %></td>
+        <td><%= link_to 'Edit', edit_punto_path(punto) %></td>
+        <td><%= link_to 'Destroy', punto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Punto', new_punto_path %>

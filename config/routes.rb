@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :puntos
   root 'empresas#home'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
 

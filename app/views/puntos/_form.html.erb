@@ -1,0 +1,34 @@
+<%= form_for @punto, html: {multipart: true, class: "form-control form-group"} do |f| %>
+
+  <div class="form-inputs">
+    <p>
+    <%= f.label :Título %>
+    <%= f.text_field :title, label: "Título", class: "form-control" %>
+    </p>
+
+
+    <p><%= f.label :subtítulo %>
+    <%= f.text_field :subtitle, label: "Subtítulo", class: "form-control" %></p>
+
+    <p><%= f.label :Descripción %>
+    <%= f.text_field :description, size: "60x12", class: "form-control" %></p>
+
+  <p>  <%= f.label :Latitud %>
+    <%= f.number_field(:mlat, step:0.000001) %>
+    <%= f.label :Longitud %>
+    <%= f.number_field(:mlon, step:0.000001) %> </p>
+
+    <p><%= f.label :Horario %> <%= f.text_field :schedule, class: "form-control" %> </p>
+    <p><%= f.label :Precio %> <%= f.number_field(:price, step:0.01) %></p>
+    <p><%= f.label :Información_adicional_ %><%= f.text_field :info, class: "form-control" %></p>
+    <p><%= f.label :Video_URL %><%= f.text_field :video, class: "form-control" %></p>
+
+
+    <p><%= f.file_field :fotospunto, as: :file, multiple: true, label: "Imágenes", class: "form-control" %></p>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button "Enviar", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
