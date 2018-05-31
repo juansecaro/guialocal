@@ -15,6 +15,5 @@ module Guiallerena
     # -- all .rb files in that directory are automatically loaded.
 
     config.i18n.default_locale = 'es'
-    config.cities = ["Llerena", "Olivenza"]
   end
 end

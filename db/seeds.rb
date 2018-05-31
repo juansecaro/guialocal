@@ -12,6 +12,10 @@ User.create!(
     password_confirmation: "123456",
 		role: "admin"
 )
+Config.create!(
+  current_city: "Llerena",
+  cities: ["Llerena", "Olivenza", "Zafra"]
+)
 Category.create!(
 	name: "Ocio y Turismo Activo",
 	summary: "Tonterías varias")

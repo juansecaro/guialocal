@@ -36,8 +36,19 @@ module ApplicationHelper
     end
   end
 
+
+
   def current_city
+    if $current_city != nil
+      $current_city
+    else
+      $current_city = Config.first.current_city
+    end
 
   end
-  
+
+  def current_city=(val)
+    $current_city = val
+  end
+
 end
