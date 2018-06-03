@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title = "")
-    default_title = "Eventsboard - Creare events for everybody"
+    default_title = "Guia Llerena - Creare events for everybody"
     if page_title.empty?
       default_title
     else
@@ -39,16 +39,17 @@ module ApplicationHelper
 
 
   def current_city
-    if $current_city != nil
-      $current_city
+    if ($current_city == "sinasignar" || $current_city == nil)
+      $current_city = Config.first.city
+      if $current_city == "sinasignar"
+        flash[:alert] = "No hay una ciudad correctamente asignada al servidor"
+      end
     else
-      $current_city = Config.first.current_city
+      $current_city
     end
 
   end
 
-  def current_city=(val)
-    $current_city = val
-  end
+
 
 end

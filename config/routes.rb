@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :puntos
+  namespace :superadmin do
+    root 'application#index'
+    get 'configs', to: 'config#edit'
+    patch 'configs', to: 'config#update'
+  end
+
+
+
   root 'empresas#home'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
-
-
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
@@ -39,6 +44,7 @@ Rails.application.routes.draw do
 
   resources :eventos
   resources :charges
+  resources :puntos
   resources :incidents, only: [:new, :create, :show]
   resources :empresas
   resources :categories, only: [:index, :show]

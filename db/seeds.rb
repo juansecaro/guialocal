@@ -13,8 +13,7 @@ User.create!(
 		role: "admin"
 )
 Config.create!(
-  current_city: "Llerena",
-  cities: ["Llerena", "Olivenza", "Zafra"]
+  city: "llerena"
 )
 Category.create!(
 	name: "Ocio y Turismo Activo",

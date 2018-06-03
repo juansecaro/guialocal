@@ -20,3 +20,11 @@
 //= require turbolinks
 //= require trix
 //= require_tree .
+
+
+
+
+function capital_city() {
+     var string = document.getElementsByName(city_name)
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

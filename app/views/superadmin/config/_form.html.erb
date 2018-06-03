@@ -1,0 +1,16 @@
+<%= simple_form_for [:superadmin, @config], url: superadmin_configs_url do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <% superadmins_only do %>
+      <p class="text-muted">Sólo para superadmins</p>
+      <%= f.select :city, Config.cities.keys %>
+
+      <p class="text-muted">Fin sólo para superadmins</p>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>
