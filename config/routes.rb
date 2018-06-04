@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root 'application#index'
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
 

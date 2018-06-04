@@ -1,0 +1,27 @@
+<%= simple_form_for [:superadmin, @user] do |f| %>
+
+
+<%= f.input  :dni, class: "s", label: "DNI"%>
+<%= f.input  :first_name, class: "s", label: "Nombre" %>
+<%= f.input  :last_name, class: "", label: "Apellidos" %>
+<%= f.input :birthdate, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 16,
+                              order: [:day, :month, :year], label: "Fecha de Nacimiento" %>
+
+<%#= f.hidden_field :plan %>
+<%= f.input  :phone, class: "s", label: "Teléfono" %>
+<%= f.input  :address, class: "s", label: "Dirección"%>
+<%= f.input  :gender, collection: [ "Hombre", "Mujer"], class: "s", label: "Sexo" %>
+
+<% superadmins_only do %>
+<p class="text-muted">Sólo para superadmins</p>
+<%= f.select :role, User.roles.keys %>
+<p class="text-muted">Fin sólo para superadmins</p>
+<% end %>
+
+<%= f.button :submit, "Actualizar", class: "btn btn-primary" %>
+
+
+
+
+<% end %>

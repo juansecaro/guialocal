@@ -27,15 +27,18 @@ module ApplicationHelper
     datetime.strftime("%A, %d %b %Y %H:%M")
   end
 
+  def time_format_mini_mini(datetime)
+    datetime.strftime("%d %b %Y %H:%M")
+  end
+
   def full_title(page_title = "")
-    default_title = "Guia Llerena - Creare events for everybody"
+    default_title = "Guia #{$current_city} - Turismo y Empresas"
     if page_title.empty?
       default_title
     else
       "#{page_title} | #{default_title}"
     end
   end
-
 
 
   def current_city

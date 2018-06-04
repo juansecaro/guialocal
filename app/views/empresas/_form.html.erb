@@ -245,12 +245,6 @@
 
 <%= f.hidden_field :plan %>
 
-<% admins_only do %>
-<p class="text-muted">Sólo para admins</p>
-<%= f.select :plan, Empresa.plans.keys %>
-<p class="text-muted">Fin sólo para admins</p>
-<% end %>
-
 
 
 <p>

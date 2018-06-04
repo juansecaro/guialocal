@@ -1,0 +1,39 @@
+<header>
+  <h1>Usuarios</h1>
+  <% superadmins_only do %>
+    <ul class="actions">
+      <li><%= link_to "Nuevo usuario", new_user_registration_path, class: "new" %></li>
+    </ul>
+  <% end %>
+</header>
+
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th class="text-center">Nombre</th>
+      <th class="text-center">Apellidos</th>
+      <th class="text-center">DNI</th>
+      <th class="text-center">E-Mail</th>
+      <th class="text-center">Empresa</th>
+      <th class="text-center">Última vez</th>
+      <th class="text-center">Créditos</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="text-center"><%= user.first_name%></td>
+        <td class="text-center"><%= user.last_name %></td>
+        <td class="text-center"><%= link_to user.dni, superadmin_user_path(user) %></td>
+        <td class="text-center"><%= user.email %></td>
+        <td class="text-center"><%= link_to user.empresa.name, edit_empresa_path(user.empresa) if user.empresa.try(:present?) %></td>
+        <td class="text-center"><%= time_format_mini_mini user.last_sign_in_at %></td>
+        <td class="text-center"><%= user.creditos %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Atrás", superadmin_root_path %></p>
