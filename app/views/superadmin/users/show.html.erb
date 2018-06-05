@@ -1,2 +1,16 @@
-<h1>Perfil de usuario maestro</h1>
-<p>Find me in app/views/superadmin/users/show.html.erb</p>
+<h1>Perfil de usuario</h1>
+
+<p><span>DNI: </span><%= @user.dni %></p>
+<p><span>Nombre: </span><%= @user.first_name %></p>
+<p><span>Apellidos: </span><%= @user.last_name %></p>
+<p><span>Empresa: </span><%= @user.empresa.name %></p>
+<p><span>Fecha de Nacimiento: </span><%= @user.birthdate %></p>
+<p><span>Teléfono: </span><%= @user.phone %></p>
+<p><span>E-Mail: </span><%= @user.email %></p>
+<p><span>Dirección: </span><%= @user.address %></p>
+<p><span>Sexo: </span><%= @user.gender %></p>
+<p><span>Créditos: </span><strong><%= @user.creditos %></strong></p>
+<p><span>Rol: </span><strong><%= @user.role %></strong></p>
+
+
+<%= link_to "Atrás", superadmin_users_path %> | <%= link_to "Editar", edit_superadmin_user_path(@user) %>
