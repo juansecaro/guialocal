@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     root 'application#index'
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
+    post '/creditos/update', to: 'creditos#update'
+    get '/creditos/edit', to: 'creditos#edit'
     resources :users, only: [:index, :show, :edit, :update]
   end
 

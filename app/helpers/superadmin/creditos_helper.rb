@@ -1,0 +1,2 @@
+module Superadmin::CreditosHelper
+end

@@ -1,0 +1,12 @@
+<div class="row">
+  <%= form_tag superadmin_creditos_update_path do %>
+    <%= superadmins_only do %>
+      
+        Insertar a <%= select_tag "plan", options_for_select([ "todos", "basic", "plus", "premium " ], "todos"), class: "custom-select col-md-2" %>
+
+        <%= number_field_tag 'quantity', class: "form-control col-md-2" %> créditos
+        <%= submit_tag "Aplicar", class: "btn btn-primary", data: { confirm: "¿Seguro?", disable_with: "Procesando..." } %>
+
+    <% end %>
+  <% end %>
+</div>
