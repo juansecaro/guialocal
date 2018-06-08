@@ -34,8 +34,6 @@ class Superadmin::CreditosController < ApplicationController
       end
     end
 
-
-
   end
 
   private
@@ -45,10 +43,5 @@ class Superadmin::CreditosController < ApplicationController
   rescue ArgumentError
     nil
   end
-
-  def increment_credits()
-
-  end
-
 
 end

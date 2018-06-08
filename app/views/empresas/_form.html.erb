@@ -1,4 +1,6 @@
 
+<%= hidden_field_tag 'user_role', current_user.role  %>
+
 <%= form_for @empresa, html: {multipart: true}  do |f| %>
 <div class="form-group">
 <p>

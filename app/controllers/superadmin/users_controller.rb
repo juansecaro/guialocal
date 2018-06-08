@@ -1,5 +1,5 @@
 class Superadmin::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.order(:email)
   end
@@ -20,6 +20,12 @@ class Superadmin::UsersController < ApplicationController
       flash.now[:alert] = "Hubo un problema. No se pudo actualizar la información del usuario."
       render 'edit'
     end
+  end
+
+  def destroy
+    @user.destroy
+    flash.alert = "Usuario borrado"
+    redirect_to superadmin_users_path
 
   end
 

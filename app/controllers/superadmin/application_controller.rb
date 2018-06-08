@@ -9,6 +9,7 @@ class Superadmin::ApplicationController < ApplicationController
       @eventos = Evento.all
       @promos = Promo.all
       @incidents = Incident.all
+      @destacados = Destacado.all
     end
 
     private

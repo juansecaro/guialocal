@@ -91,7 +91,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def authorize_admin!
-    unless user_signed_in? && current_user.admin?
+    unless user_signed_in? && (current_user.admin? || current_user.superadmin?)
       redirect_to root_path, alert: "Tú no eres administrador."
     end
   end

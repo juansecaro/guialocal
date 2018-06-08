@@ -13,4 +13,6 @@
 <p><span>Rol: </span><strong><%= @user.role %></strong></p>
 
 
-<%= link_to "Atrás", superadmin_users_path %> | <%= link_to "Editar", edit_superadmin_user_path(@user) %>
+<%= link_to "Atrás", superadmin_users_path %> |
+<%= link_to "Editar", edit_superadmin_user_path(@user) %> |
+<%= link_to "Borrar", superadmin_user_path(@user), method: :delete, data: {confirm: "¿Seguro?"}, class: "delete"%>

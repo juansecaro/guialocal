@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     patch 'configs', to: 'config#update'
     post '/creditos/update', to: 'creditos#update'
     get '/creditos/edit', to: 'creditos#edit'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
 
 

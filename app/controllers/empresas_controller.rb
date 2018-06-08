@@ -1,15 +1,13 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
-
-
   def empresas_ordenadas
 
   end
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.order(name: :asc)
+    @empresas = Empresa.where.not(plan: :noplan).order(name: :asc)
   end
 
   def home

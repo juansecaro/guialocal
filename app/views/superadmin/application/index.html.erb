@@ -6,7 +6,7 @@
           <span><%= image_tag avatar_url(current_user), width:30, class: "img-circle" %></span>
         </div>
         <div class="pull-left info"><p>
-          Full name
+          <%= current_user.first_name %>
         </p>
 
         </div>
@@ -27,13 +27,6 @@
           <%= fa_icon "th" %>
           <span>Categorías</span>
           <span class="label label-info pull-right"><%= @categories.count %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to superadmin_creditos_edit_path do %>
-          <%= fa_icon "bank" %>
-          <span>Créditos</span>
-          <span class="label label-danger pull-right">*</span>
         <% end %>
       </li>
       <li>
@@ -68,7 +61,14 @@
         <%= link_to admin_destacados_path do %>
           <%= fa_icon "star" %>
           <span>Destacados</span>
-          <span class="label label-danger pull-right">Destacados</span>
+          <span class="label label-danger pull-right"><%= @destacados.count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to superadmin_creditos_edit_path do %>
+          <%= fa_icon "bank" %>
+          <span>Créditos</span>
+          <span class="label label-danger pull-right">*</span>
         <% end %>
       </li>
       <li>

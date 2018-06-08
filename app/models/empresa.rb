@@ -9,6 +9,7 @@ class Empresa < ApplicationRecord
 
   belongs_to :user
   belongs_to :category, optional: true
+
   has_many :promos, dependent: :destroy
 
   has_many :taggings, dependent: :destroy

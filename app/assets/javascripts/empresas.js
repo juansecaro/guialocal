@@ -14,16 +14,20 @@ $(document).on('turbolinks:load', function () {
     //Validation based on plan (tags and pics)
     $("input[type='submit']").click(function(e){
       var $fileUpload = $("#enviar");
+
       var max_files = num_files_plan($('#empresa_plan').val());
       var max_tags = num_tags_plan($('#empresa_plan').val());
+      var role = $('#user_role').val();
+      if(role == 'user' || role == 'noplan'){
 
-      if (parseInt($fileUpload.get(0).files.length) > max_files){
-        e.preventDefault();
-        alert('En tu actual plan, sólo puedes subir ' + max_files + ' fotos');
-      }
-      if (num_words($('#empresa_tag_list').val()) > max_tags){
-        e.preventDefault();
-        alert('En tu actual plan, sólo puedes tener ' + max_tags + ' palabras clave (hashtags)');        
+        if (parseInt($fileUpload.get(0).files.length) > max_files){
+          e.preventDefault();
+          alert('En tu actual plan, sólo puedes subir ' + max_files + ' fotos');
+        }
+        if (num_words($('#empresa_tag_list').val()) > max_tags){
+          e.preventDefault();
+          alert('En tu actual plan, sólo puedes tener ' + max_tags + ' palabras clave (hashtags)');
+        }
       }
 
     });
