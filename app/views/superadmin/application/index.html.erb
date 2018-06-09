@@ -30,21 +30,21 @@
         <% end %>
       </li>
       <li>
-        <%= link_to empresas_path do %>
+        <%= link_to superadmin_promos_path do %>
           <%= fa_icon "bullhorn" %>
           <span>Promociones</span>
           <span class="label label-warning pull-right"><%= @promos.count %></span>
         <% end %>
       </li>
       <li>
-        <%= link_to '#' do %>
+        <%= link_to superadmin_tags_path do %>
           <%= fa_icon "tag" %>
           <span>Etiquetas</span>
           <span class="label label-default pull-right"><%= @tags.count %></span>
         <% end %>
       </li>
       <li>
-        <%= link_to '#' do %>
+        <%= link_to superadmin_eventos_path do %>
           <%= fa_icon "warning" %>
           <span>Eventos</span>
           <span class="label label-primary pull-right"><%= @eventos.count %></span>

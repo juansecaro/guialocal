@@ -1,0 +1,20 @@
+<h1>Listado de promociones</h1>
+<% @promos.each do |promo| %>
+  <div class="row border border-info filas">
+    <div class="col-md-3">
+      <%= link_to(image_tag(promo.imgpromo, class: "img-fluid"), promo_path(promo)) if promo.imgpromo? %>
+    </div>
+    <div class="col-md-8">
+      <p><strong><%= promo.titulo %></strong></p>
+      <p><%= promo.texto %><p>
+      Creado el <strong><%= time_format_mini_mini promo.created_at %></strong> y válido hasta: <strong><%= time_format_mini_mini promo.validez %></strong>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Editar", edit_superadmin_promo_path(promo) %>
+      <%= link_to "Borrar", superadmin_promo_path(promo), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <%= %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Atrás", superadmin_root_path %>

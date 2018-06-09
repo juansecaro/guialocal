@@ -1,4 +1,4 @@
-class Admin::DestacadosController < ApplicationController
+class Admin::DestacadosController < Admin::ApplicationController
   before_action :set_destacado, only: [:show, :edit, :update, :destroy]
   def index
     @destacados = Destacado.all

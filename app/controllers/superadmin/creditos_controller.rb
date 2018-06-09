@@ -1,4 +1,4 @@
-class Superadmin::CreditosController < ApplicationController
+class Superadmin::CreditosController < Superadmin::ApplicationController
   def edit
   end
 

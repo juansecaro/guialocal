@@ -1,4 +1,4 @@
-class Superadmin::UsersController < ApplicationController
+class Superadmin::UsersController < Superadmin::ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.order(:email)

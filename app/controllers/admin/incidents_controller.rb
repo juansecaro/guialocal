@@ -1,4 +1,4 @@
-class Admin::IncidentsController < ApplicationController
+class Admin::IncidentsController < Admin::ApplicationController
   before_action :set_incident, only: [:show, :edit, :update]
   def index
     @incidents = Incident.all
@@ -22,7 +22,7 @@ class Admin::IncidentsController < ApplicationController
       elsif params[:commit]=="Reportar"
         @incident.reportar!
       elsif params[:commit]=="Pendiente"
-        @incident.pendiente! 
+        @incident.pendiente!
       end
       respond_to do |format|
         if @incident.update(incident_params)

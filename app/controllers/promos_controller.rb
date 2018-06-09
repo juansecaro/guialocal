@@ -7,7 +7,7 @@ class PromosController < ApplicationController
 
   def create
     @promo = Promo.new(promo_params)
-    @promo.empresa_id = current_user.empresa_id
+    @promo.empresa_id = current_user.empresa.id
 
       valid_value = false
       #nos aseguramos que el radiobutton corresponda con una de nuestras opciones
@@ -79,8 +79,8 @@ class PromosController < ApplicationController
 
   end
   def mispromos
-    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa_id).order("created_at DESC")
-    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa_id).order("created_at DESC")
+    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa.id).order("created_at DESC")
+    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa.id).order("created_at DESC")
   end
 
   def index

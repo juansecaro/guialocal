@@ -1,0 +1,26 @@
+<%= simple_form_for [:superadmin, @promo] do |f| %>
+
+
+<%= f.input  :titulo, label: "Título" %>
+<%= f.input  :texto, label: "Texto"%>
+<%= f.input :validez, as: :date, order: [:day, :month, :year], label: "Fecha de validez" %>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <%= image_tag(@promo.imgpromo, class: "img-fluid") if @promo.imgpromo? %>
+  </div>
+
+</div>
+<p><%= f.file_field :imgpromo, as: :file %></p>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <p><%= f.button :submit, "Actualizar", class: "btn btn-primary" %></p>
+  </div>
+</div>
+
+
+<% end %>
