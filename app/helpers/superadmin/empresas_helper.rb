@@ -1,0 +1,2 @@
+module Superadmin::EmpresasHelper
+end

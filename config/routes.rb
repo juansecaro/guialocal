@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post '/creditos/update', to: 'creditos#update'
     get '/creditos/edit', to: 'creditos#edit'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :empresas
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :eventos, except: [:show]
     resources :tags, only: [:index, :show, :destroy]
