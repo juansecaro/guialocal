@@ -1,0 +1,55 @@
+
+<div class="row">
+  <div class="col-md-8">
+         <h1>Horarios de <%= @empresa.name%></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1 filas">
+    <span class=""><strong>Lunes</strong></span>
+      <%= @empresa.schedule4 if @empresa.schedule4? %>-<%= @empresa.schedule5 if @empresa.schedule5? %>
+      <%= @empresa.schedule6 if @empresa.schedule6? %>-<%= @empresa.schedule7 if @empresa.schedule7? %>
+    </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Martes</strong></span>
+      <%= @empresa.schedule8 if @empresa.schedule8? %>-<%= @empresa.schedule9 if @empresa.schedule9? %>
+      <%= @empresa.schedule10 if @empresa.schedule10? %>-<%= @empresa.schedule11 if @empresa.schedule11? %>
+  </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Miércoles</strong></span>
+      <%= @empresa.schedule12 if @empresa.schedule12? %>-<%= @empresa.schedule13 if @empresa.schedule13? %>
+      <%= @empresa.schedule14 if @empresa.schedule14? %>-<%= @empresa.schedule15 if @empresa.schedule15? %>
+  </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Jueves</strong></span>
+      <%= @empresa.schedule16 if @empresa.schedule16? %>-<%= @empresa.schedule17 if @empresa.schedule17? %>
+      <%= @empresa.schedule18 if @empresa.schedule18? %>-<%= @empresa.schedule19 if @empresa.schedule19? %>
+  </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Viernes</strong></span>
+      <%= @empresa.schedule20 if @empresa.schedule20? %>-<%= @empresa.schedule21 if @empresa.schedule21? %>
+      <%= @empresa.schedule22 if @empresa.schedule22? %>-<%= @empresa.schedule23 if @empresa.schedule23? %>
+  </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Sábado</strong></span>
+      <%= @empresa.schedule24 if @empresa.schedule24? %>-<%= @empresa.schedule25 if @empresa.schedule25? %>
+      <%= @empresa.schedule26 if @empresa.schedule26? %>-<%= @empresa.schedule27 if @empresa.schedule27? %>
+  </div>
+
+  <div class="col-md-1 filas">
+    <span class=""><strong>Domingo</strong></span>
+      <%= @empresa.schedule0 if @empresa.schedule0? %>-<%= @empresa.schedule1 if @empresa.schedule1? %>
+      <%= @empresa.schedule2 if @empresa.schedule2? %>-<%= @empresa.schedule3 if @empresa.schedule3? %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= link_to "Volver", empresa_path(@empresa) %>
+  </div>
+</div>

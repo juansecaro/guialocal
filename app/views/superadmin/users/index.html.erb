@@ -10,6 +10,7 @@
 <table class="table table-striped table-responsive">
   <thead>
     <tr>
+      <th class="text-center">ID</th>
       <th class="text-center">Nombre</th>
       <th class="text-center">Apellidos</th>
       <th class="text-center">DNI</th>
@@ -23,6 +24,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td class="text-center"><%= link_to user.id, superadmin_user_path(user) %></td>
         <td class="text-center"><%= user.first_name if user.first_name %></td>
         <td class="text-center"><%= user.last_name if user.last_name %></td>
         <td class="text-center"><%= link_to user.dni, superadmin_user_path(user) if user.dni %></td>

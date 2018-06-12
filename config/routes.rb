@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   root 'empresas#home'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
+  get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'

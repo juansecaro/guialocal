@@ -1,5 +1,5 @@
 class EmpresasController < ApplicationController
-  before_action :set_empresa, only: [:show, :edit, :update, :destroy]
+  before_action :set_empresa, only: [:show, :edit, :update, :destroy, :horarios]
 
   def empresas_ordenadas
 
@@ -17,6 +17,10 @@ class EmpresasController < ApplicationController
 
     @promos = Promo.last(10)
     @eventos = Evento.last(3)
+  end
+
+  def horarios
+
   end
 
   # GET /empresas/1
@@ -107,7 +111,7 @@ class EmpresasController < ApplicationController
       @abierto = false
 
       case index
-      when 1 #Lunes
+      when 0 #Domingo
 
         if (@empresa.schedule2.blank? || @empresa.schedule3.blank?)
           if (@empresa.schedule0.blank? || @empresa.schedule1.blank?)
@@ -127,7 +131,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 2
+      when 1
 
         if (@empresa.schedule6.blank? || @empresa.schedule7.blank?)
           if (@empresa.schedule4.blank? || @empresa.schedule5.blank?)
@@ -147,7 +151,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 3
+      when 2
 
         if (@empresa.schedule10.blank? || @empresa.schedule11.blank?)
           if (@empresa.schedule8.blank? || @empresa.schedule9.blank?)
@@ -167,7 +171,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 4
+      when 3
 
         if (@empresa.schedule14.blank? || @empresa.schedule15.blank?)
           if (@empresa.schedule12.blank? || @empresa.schedule13.blank?)
@@ -187,7 +191,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 5
+      when 4
 
         if (@empresa.schedule18.blank? || @empresa.schedule19.blank?)
           if (@empresa.schedule16.blank? || @empresa.schedule17.blank?)
@@ -207,7 +211,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 6
+      when 5
 
         if (@empresa.schedule22.blank? || @empresa.schedule23.blank?)
           if (@empresa.schedule20.blank? || @empresa.schedule21.blank?)
@@ -228,7 +232,7 @@ class EmpresasController < ApplicationController
 
         return @salida, @abierto
 
-      when 0
+      when 6
 
         if (@empresa.schedule26.blank? || @empresa.schedule27.blank?)
           if (@empresa.schedule24.blank? || @empresa.schedule25.blank?)

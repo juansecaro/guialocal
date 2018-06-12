@@ -48,11 +48,11 @@
       <span><%= @hor %></span>
 
         <% if @abierto %>
-          <span class="badge badge-success">Abierto ahora</span>
+          <span class="badge badge-success">Abierto</span>
         <% else %>
-          <span class="badge badge-danger">Está cerrado</span>
+          <span class="badge badge-danger">Cerrado</span>
         <% end %>
-
+        <%= link_to "+ info", controller: "empresas", action: "horarios", id: @empresa %>
     </p>
 
   <div class="alert alert-dark" role="alert">

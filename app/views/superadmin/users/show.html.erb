@@ -1,15 +1,16 @@
 <h1>Perfil de usuario</h1>
 
-<p><span>DNI: </span><%= @user.dni %></p>
-<p><span>Nombre: </span><%= @user.first_name %></p>
-<p><span>Apellidos: </span><%= @user.last_name %></p>
-<p><span>Empresa: </span><%= @user.empresa.name %></p>
-<p><span>Fecha de Nacimiento: </span><%= @user.birthdate %></p>
-<p><span>Teléfono: </span><%= @user.phone %></p>
-<p><span>E-Mail: </span><%= @user.email %></p>
-<p><span>Dirección: </span><%= @user.address %></p>
-<p><span>Sexo: </span><%= @user.gender %></p>
-<p><span>Créditos: </span><strong><%= @user.creditos %></strong></p>
+<p><span>ID: </span><strong><%= @user.id %></strong></p>
+<p><span>DNI: </span><%= @user.dni if @user.dni %></p>
+<p><span>Nombre: </span><%= @user.first_name if @user.first_name %></p>
+<p><span>Apellidos: </span><%= @user.last_name if @user.last_name  %></p>
+<p><span>Empresa: </span><%= @user.empresa.name if @user.try(:empresa).try(:name) %></p>
+<p><span>Fecha de Nacimiento: </span><%= time_format_mini_mini @user.birthdate if @user.birthdate %></p>
+<p><span>Teléfono: </span><%= @user.phone if @user.phone%></p>
+<p><span>E-Mail: </span><%= @user.email if @user.email %></p>
+<p><span>Dirección: </span><%= @user.address if @user.address%></p>
+<p><span>Sexo: </span><%= @user.gender if @user.gender %></p>
+<p><span>Créditos: </span><strong><%= @user.creditos if @user.creditos %></strong></p>
 <p><span>Rol: </span><strong><%= @user.role %></strong></p>
 
 
