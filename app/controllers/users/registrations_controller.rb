@@ -76,7 +76,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     empresa = Empresa.create(user_id: resource.id)
     resource.empresa = empresa
     if resource.save(validate: false)
-      edit_empresa_path(resource.empresa)
+      if current_user.superadmin?
+        edit_superadmin_empresa_path(resource.empresa)
+      elsif current_user.admin?
+        edit_admin_empresa_path(resource.empresa)
+      else
+        flash[:alert] = "Ha habido un problema"
+        redirect_to (root_path)
+      end
     else
       flash[:alert] = "Ha habido un problema"
       redirect_to (root_path)

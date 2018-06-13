@@ -5,6 +5,26 @@ class Superadmin::EmpresasController < Superadmin::ApplicationController
     @empresas = Empresa.all.order(name: :asc)
   end
 
+  # GET /empresas/new
+  def new
+    @empresa = Empresa.new
+  end
+  # POST /empresas
+  # POST /empresas.json
+  def create
+    @empresa = Empresa.new(empresa_params)
+
+    respond_to do |format|
+      if @empresa.save
+        format.html { redirect_to @empresa, notice: 'Empresa creada con éxito.' }
+        format.json { render :show, status: :created, location: @empresa }
+      else
+        format.html { render :new }
+        format.json { render json: @empresa.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def edit
 
   end

@@ -107,16 +107,19 @@
 
 </div>
 
+
+
+<% if @empresa.fotos.any? %>
 <p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
 <p>
-  <% if @empresa.fotos.any? %>
-    <div class="row">
-      <% @empresa.fotos.each do |foto| %>
-        <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="row">
+    <% @empresa.fotos.each do |foto| %>
+      <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
+    <% end %>
+  </div>
+<% end %>
 </p>
+
 <% if @empresa.video? %>
   <p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
 
