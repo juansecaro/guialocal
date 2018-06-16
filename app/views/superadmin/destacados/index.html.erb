@@ -1,8 +1,8 @@
 <header>
   <h1>Imágenes en portada</h1>
-<% admins_only do %>
+<% superadmins_only do %>
   <ul class="actions">
-    <li><%= link_to "Nuevo destacado", new_admin_destacado_path, class: "new" %></li>
+    <li><%= link_to "Nuevo destacado", new_superadmin_destacado_path, class: "new" %></li>
   </ul>
 <% end %>
 </header>
@@ -22,9 +22,9 @@
         <td><%= image_tag destacado.imgdestacado.url, class: "img-fluid img-thumbnail" if destacado.imgdestacado?  %></td>
         <td><%= destacado.info %></td>
         <td>
-          <%= link_to "Ver", admin_destacado_path(destacado) %> |
-          <%= link_to "Editar", edit_admin_destacado_path(destacado) %> |
-          <%= link_to "Borrar", admin_destacado_path(destacado), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarla?"} %>
+          <%= link_to "Ver", superadmin_destacado_path(destacado) %> |
+          <%= link_to "Editar", edit_superadmin_destacado_path(destacado) %> |
+          <%= link_to "Borrar", superadmin_destacado_path(destacado), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarla?"} %>
 
         </td>
       </tr>

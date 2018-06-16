@@ -1,4 +1,4 @@
-class Superadmin::EventosController < Superadmin::ApplicationController
+class Admin::EventosController < Admin::ApplicationController
   before_action :set_evento, only: [:edit, :update, :destroy]
   def index
     @eventos = Evento.all.order(created_at: :desc)
@@ -27,7 +27,7 @@ class Superadmin::EventosController < Superadmin::ApplicationController
   def update
     respond_to do |format|
       if @evento.update(evento_params)
-        format.html { redirect_to superadmin_eventos_path, notice: 'El evento se ha actualizado con éxito' }
+        format.html { redirect_to admin_eventos_path, notice: 'El evento se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :edit }
@@ -38,7 +38,7 @@ class Superadmin::EventosController < Superadmin::ApplicationController
   def destroy
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to superadmin_eventos_path, notice: 'Evento eliminado.' }
+      format.html { redirect_to admin_eventos_path, notice: 'Evento eliminado.' }
       format.json { head :no_content }
     end
   end

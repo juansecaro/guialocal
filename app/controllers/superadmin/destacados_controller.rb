@@ -1,4 +1,4 @@
-class Admin::DestacadosController < Admin::ApplicationController
+class Superadmin::DestacadosController < Superadmin::ApplicationController
   before_action :set_destacado, only: [:show, :edit, :update, :destroy]
   def index
     @destacados = Destacado.all
@@ -10,7 +10,7 @@ class Admin::DestacadosController < Admin::ApplicationController
     @destacado = Destacado.new(destacado_params)
     respond_to do |format|
       if @destacado.save
-        format.html { redirect_to admin_destacados_path, notice: 'Destacado creado con éxito.' }
+        format.html { redirect_to superadmin_destacados_path, notice: 'Destacado creado con éxito.' }
         format.json { render :index, status: :created, location: @destacado }
       else
         format.html { render :new }
@@ -28,7 +28,7 @@ class Admin::DestacadosController < Admin::ApplicationController
   def update
     if @destacado.update(destacado_params)
       flash[:notice] = "Destacado editado con éxito."
-      redirect_to admin_destacados_path
+      redirect_to superadmin_destacados_path
     else
       flash.now[:alert] = "Hubo un problema. No se pudo actualizar el destacado."
       render 'edit'
@@ -37,7 +37,7 @@ class Admin::DestacadosController < Admin::ApplicationController
   def destroy
     @destacado.destroy
     flash[:alert] = "Se ha borrado el destacado."
-    redirect_to admin_destacados_path
+    redirect_to superadmin_destacados_path
   end
 
   private

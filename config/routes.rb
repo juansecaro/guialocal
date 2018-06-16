@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   namespace :superadmin do
     root 'application#index'
     get 'configs', to: 'config#edit'
@@ -11,10 +10,9 @@ Rails.application.routes.draw do
     resources :empresas
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :eventos, except: [:show]
+    resources :destacados
     resources :tags, only: [:index, :show, :destroy]
   end
-
-
 
   root 'empresas#home'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
@@ -33,11 +31,11 @@ Rails.application.routes.draw do
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/mispromos', to: 'promos#mispromos'
 
-
   namespace :admin do
     root 'application#index'
     resources :users, only: [:show, :index]
-    resources :destacados
+    resources :eventos, except: [:show]
+    resources :promos, only: [:index, :edit, :update, :destroy]
     resources :incidents do
       resources :comments
     end

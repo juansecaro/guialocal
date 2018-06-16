@@ -1,0 +1,13 @@
+<%= simple_form_for [:superadmin, @destacado] do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :info %>
+      <%= f.input :imgdestacado, as: :file, label: "Imagen " %>
+      <p><%= image_tag(@destacado.imgdestacado, class: "img-fluid") if @destacado.imgdestacado? %></p>
+    </div>
+
+    <div class="form-actions">
+    <p>  <%= f.button :submit, class: "btn btn-primary" %> </p>
+    </div>
+<% end %>

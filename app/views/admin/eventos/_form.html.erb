@@ -1,0 +1,21 @@
+<%= simple_form_for [:admin, @evento] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :titulo %>
+    <%= f.trix_editor :info %>
+    <p><%= f.date_select :fecha %></p>
+    <div class="row">
+      <div class="col-md-12">
+
+      <%= image_tag(@evento.imgevento, class: "img-fluid") if @evento.imgevento? %>
+      </div>
+
+    </div>
+    <p><%= f.file_field :imgevento, as: :file %></p>
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>

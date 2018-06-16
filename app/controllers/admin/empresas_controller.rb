@@ -1,5 +1,5 @@
 class Admin::EmpresasController < Admin::ApplicationController
-  before_action :set_empresa, only: [:show, :edit, :update, :destroy]
+  before_action :set_empresa, only: [:show, :edit, :update]
 
   # GET /empresas
   # GET /empresas.json
@@ -50,16 +50,6 @@ class Admin::EmpresasController < Admin::ApplicationController
         format.html { render :edit }
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /empresas/1
-  # DELETE /empresas/1.json
-  def destroy
-    @empresa.destroy
-    respond_to do |format|
-      format.html { redirect_to empresas_url, notice: 'Empresa eliminada con éxito.' }
-      format.json { head :no_content }
     end
   end
 
