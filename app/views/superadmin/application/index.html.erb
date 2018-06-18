@@ -30,7 +30,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to admin_categories_path do %>
+        <%= link_to superadmin_categories_path do %>
           <%= fa_icon "th" %>
           <span>Categorías</span>
           <span class="label label-info pull-right"><%= @categories.count %></span>
@@ -58,7 +58,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to admin_incidents_path do %>
+        <%= link_to superadmin_incidents_path do %>
           <%= fa_icon "comments" %>
           <span>Incidencias</span>
           <span class="label label-danger pull-right"><%= @incidents.count %></span>

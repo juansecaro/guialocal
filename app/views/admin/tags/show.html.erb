@@ -1,0 +1,16 @@
+<% provide(:title, @tag.name) %>
+
+<header>
+  <h2>Empresas con: <%= render @tag %> </h2>
+</header>
+
+
+<% @tag.empresas.each do |empresa| %>
+
+        <%= link_to empresa.name, edit_admin_empresas_path(empresa) %>
+
+<% end %>
+
+<p>
+  <%= link_to "Borrar", admin_tag_path(@tag), method: :delete, data: {confirm: "¿Seguro?"}, class: "delete" %>
+</p>

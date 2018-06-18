@@ -1,5 +1,5 @@
-class Admin::IncidentsController < Admin::ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update]
+class Superadmin::IncidentsController < Superadmin::ApplicationController
+  before_action :set_incident, only: [:show, :edit, :update, :destroy]
   def index
     @incidents = Incident.all
   end
@@ -35,7 +35,7 @@ class Admin::IncidentsController < Admin::ApplicationController
 
   def update
     if params[:incident][:comments_attributes]["0"][:info] == ""
-      redirect_to admin_incident_path(@incident), alert: 'Necesitas añadir información antes de actualizar el estado'
+      redirect_to superadmin_incident_path(@incident), alert: 'Necesitas añadir información antes de actualizar el estado'
     else
       if params[:commit]=="Concluida"
         @incident.concluida!
@@ -47,13 +47,21 @@ class Admin::IncidentsController < Admin::ApplicationController
       respond_to do |format|
         if @incident.update(incident_params)
           @incident.touch
-          format.html { redirect_to admin_incident_path(@incident), notice: 'Incidencia actualizada actualizada con éxito.' }
+          format.html { redirect_to superadmin_incident_path(@incident), notice: 'Incidencia actualizada actualizada con éxito.' }
           format.json { render :show, status: :ok, location: @incident }
         else
           format.html { render :edit }
           format.json { render json: @incident.errors, status: :unprocessable_entity }
         end
       end
+    end
+  end
+
+  def destroy
+    @incident.destroy
+    respond_to do |format|
+      format.html { redirect_to superadmin_incidents_path, notice: 'Incidencia eliminada.' }
+      format.json { head :no_content }
     end
   end
 

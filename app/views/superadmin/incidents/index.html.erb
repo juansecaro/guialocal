@@ -1,7 +1,7 @@
 <header>
     <h1>Incidencias recientes</h1>
   <ul class="actions">
-    <li><%= link_to "Nuevo incidente", new_admin_incident_path, class: "new" %></li>
+    <li><%= link_to "Nuevo incidente", new_superadmin_incident_path, class: "new" %></li>
   </ul>
 </header>
 
@@ -23,7 +23,7 @@
     <tbody>
       <% @incidents.each do |incidencia| %>
         <tr>
-          <td class="text-center"> <%= link_to incidencia.subject, admin_incident_path(incidencia) %> </td>
+          <td class="text-center"> <%= link_to incidencia.subject, superadmin_incident_path(incidencia) %> </td>
           <td class="text-center"> <%= Nokogiri::HTML(incidencia.info).text.truncate(30, separator: ' ') %> </td>
           <td class="text-center">
              <% if incidencia.status == "abierto" %>

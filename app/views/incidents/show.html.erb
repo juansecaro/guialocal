@@ -1,24 +1,19 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @incident.subject %>
-</p>
 
-<p>
-  <strong>Info:</strong>
-  <%= @incident.info %>
-</p>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h5>
+      <p class="text-center">
+        Gracias por hacernos llegar tus problemas y preocupaciones. Nos pondremos en contacto contigo lo antes posible para que todo esto tenga un final feliz.
+      </p>
+      <p class="text-center">Lamentamos las molestias que hayas podido tener.</p>
+    </h5>
+  </div>
+</div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @incident.status %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @incident.user %>
-</p>
 
-<%= link_to 'Edit', edit_incident_path(@incident) %> |
-<%= link_to 'Back', incidents_path %>
+
+<div class="text-center">
+  <%= link_to 'Volver', root_path %>
+</div>

@@ -7,7 +7,7 @@
 
 <% @tag.empresas.each do |empresa| %>
 
-        <%= link_to empresa.name, empresa_path(empresa) %>
+        <%= link_to empresa.name, edit_superadmin_empresa_path(empresa) %>
 
 <% end %>
 

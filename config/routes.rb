@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :eventos, except: [:show]
     resources :destacados
+    resources :categories, except: [:show]
     resources :tags, only: [:index, :show, :destroy]
+    resources :incidents do
+      resources :comments
+    end
   end
 
   root 'empresas#home'
@@ -33,8 +37,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'application#index'
-    resources :users, only: [:show, :index]
+    resources :users, only: [:show, :index, :edit, :update]
     resources :eventos, except: [:show]
+    resources :tags, only: [:index, :show, :destroy]
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :incidents do
       resources :comments

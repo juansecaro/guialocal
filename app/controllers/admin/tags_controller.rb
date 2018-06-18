@@ -1,4 +1,4 @@
-class Superadmin::TagsController < Superadmin::ApplicationController
+class Admin::TagsController < Admin::ApplicationController
   before_action :set_tag, only: [:show, :destroy]
   def show
   end
@@ -9,7 +9,7 @@ class Superadmin::TagsController < Superadmin::ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to superadmin_tags_path, notice: 'Etiqueta destruida.' }
+      format.html { redirect_to admin_tags_path, notice: 'Etiqueta destruida.' }
       format.json { head :no_content }
     end
   end
@@ -21,6 +21,6 @@ class Superadmin::TagsController < Superadmin::ApplicationController
     #Si no lo encuentra
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "La palabra clave que buscas no existe"
-    redirect_to (request.referrer || superadmin_tags_path)
+    redirect_to (request.referrer || admin_tags_path)
   end
 end
