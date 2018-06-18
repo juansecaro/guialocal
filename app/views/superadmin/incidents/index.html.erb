@@ -42,6 +42,7 @@
           <td class="text-center"> <%= link_to incidencia.user.email, '#' if incidencia.user.try(:present?) %></td>
           <td class="text-center"> <%= time_ago_in_words incidencia.updated_at %> </td>
           <td class="text-center"> <%= time_ago_in_words incidencia.created_at %> </td>
+          <td> <%= link_to "Borrar", superadmin_incident_path(incidencia), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarla?"} %></td>
         </tr>
 
       <% end %>

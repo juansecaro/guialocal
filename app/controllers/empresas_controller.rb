@@ -7,7 +7,11 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.where.not(plan: :noplan).order(name: :asc)
+      if params[:query].present?
+        @empresas = Empresa.search(params[:query])
+      else
+        @empresas = Empresa.where.not(plan: :noplan).order(name: :asc)
+      end
   end
 
   def home

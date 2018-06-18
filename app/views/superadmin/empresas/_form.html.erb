@@ -249,9 +249,11 @@
 </p>
 
 <% superadmins_only do %>
-  <p class="text-muted">Sólo para superadmins</p>
-    <%= f.select :plan, Empresa.plans.keys %>
-  <p class="text-muted">Fin sólo para superadmins</p>
+  <div class="col-md-3 offset-md-3">
+    <p class="text-muted">Sólo para superadmins</p>
+      <%= f.select :plan, Empresa.plans.keys %>
+    <p class="text-muted">Fin sólo para superadmins</p>
+  </div>
 <% end %>
 
 

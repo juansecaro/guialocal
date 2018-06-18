@@ -1,7 +1,9 @@
 <h2>Listado de palabras clave (Hashtags)</h2>
 
- <% if @tags.any? %>
-   <%= render @tags %>
- <% else %>
-    Aún no hay hashtags
- <% end %>
+<div id="entrante">
+  <% if @tags.any? %>
+  <%= render @tags %>
+  <% else %>
+  Aún no hay hashtags
+  <% end %>
+</div>
