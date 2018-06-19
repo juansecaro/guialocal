@@ -24,7 +24,6 @@
 
 
 
-function capital_city() {
-     var string = document.getElementsByName(city_name)
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+$(document).on('turbolinks:load', function () {
+  document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
+});

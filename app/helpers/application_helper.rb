@@ -53,6 +53,10 @@ module ApplicationHelper
 
   end
 
+  def current_city_capitalized
+    city = current_city
+    return city.capitalize
+  end
 
 
 end
