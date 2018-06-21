@@ -60,11 +60,6 @@ class PromosController < ApplicationController
         render 'new'
       end
 
-
-
-
-
-
   end
 
   def edit
@@ -95,6 +90,9 @@ class PromosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_promo
       @promo = Promo.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "La promoción que buscas no existe"
+      redirect_to (request.referrer || root_path)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

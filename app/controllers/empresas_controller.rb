@@ -1,5 +1,6 @@
 class EmpresasController < ApplicationController
-  before_action :set_empresa, only: [:show, :edit, :update, :destroy, :horarios]
+  before_action :set_empresa, only: [:show, :edit, :update, :horarios]
+  before_action :verify_id!, only: [:edit, :update]
 
   def empresas_ordenadas
 
@@ -35,11 +36,9 @@ class EmpresasController < ApplicationController
   end
 
 
-
   # GET /empresas/1/edit
   def edit
   end
-
 
 
   # PATCH/PUT /empresas/1
@@ -63,6 +62,14 @@ class EmpresasController < ApplicationController
     def remove_logo_confirmed
       @empresa.remove_logo!
       @empresa.save!
+    end
+
+    #We check that the user that is about to edit/update a profile is the owner
+    def verify_id!
+        authenticate_user!
+        unless (@empresa.user == current_user)
+          redirect_to root_path, alert: "No eres el propietario de esta empresa y no puedes editarla."
+        end
     end
 
     def set_empresa

@@ -70,6 +70,9 @@ class EventosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
       @evento = Evento.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash.alert = "El evento que buscas no está aquí"
+      redirect_to root_path
     end
 
     def authorize_editor!
