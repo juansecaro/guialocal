@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 20180608102532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
+  enable_extension "uuid-ossp"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -116,7 +118,7 @@ ActiveRecord::Schema.define(version: 20180608102532) do
     t.index ["user_id"], name: "index_incidents_on_user_id", using: :btree
   end
 
-  create_table "promos", force: :cascade do |t|
+  create_table "promos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "titulo"
     t.string   "texto"
     t.string   "imgpromo"
