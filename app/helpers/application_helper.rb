@@ -48,9 +48,6 @@ module ApplicationHelper
   def current_city
     if ($current_city == "sinasignar" || $current_city == nil)
       $current_city = Config.first.city
-      if $current_city == "sinasignar"
-        flash[:alert] = "No hay una ciudad correctamente asignada al servidor"
-      end
     else
       $current_city
     end
@@ -58,8 +55,9 @@ module ApplicationHelper
   end
 
   def current_city_capitalized
-    city = current_city
-    return city.capitalize
+    if (current_city)
+      return $current_city.capitalize
+    end
   end
 
 
