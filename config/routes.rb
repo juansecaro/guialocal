@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/precios', to: 'info#precios'
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/mispromos', to: 'promos#mispromos'
+  get '/gesteventos', to: 'eventos#editor_index'
 
   namespace :admin do
     root 'application#index'

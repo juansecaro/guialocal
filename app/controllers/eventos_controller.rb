@@ -1,5 +1,6 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_editor!, only: [:editor_index, :new, :edit, :update, :destroy]
 
   # GET /eventos
   # GET /eventos.json
@@ -19,6 +20,10 @@ class EventosController < ApplicationController
 
   # GET /eventos/1/edit
   def edit
+  end
+
+  def editor_index
+    @eventos = Evento.order(created_at: :desc)
   end
 
   # POST /eventos
@@ -65,6 +70,13 @@ class EventosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
       @evento = Evento.find(params[:id])
+    end
+
+    def authorize_editor!
+      authenticate_user!
+      unless (current_user.editor?)
+        redirect_to root_path, alert: "Tú no eres editor."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

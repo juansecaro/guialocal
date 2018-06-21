@@ -17,6 +17,10 @@ module ApplicationHelper
     block.call if current_user.try(:superadmin?)
   end
 
+  def editors_only(&block)
+    block.call if current_user.try(:editor?)
+  end
+
 
   def avatar_url(user)
     hash = Digest::MD5.hexdigest(user.email.downcase)

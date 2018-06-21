@@ -1,0 +1,32 @@
+
+<header>
+  <h1>Listado de eventos</h1>
+  <%# editors_only do %>
+    <ul class="actions">
+      <li><%= link_to "Nuevo evento", new_evento_path, class: "new" %></li>
+    </ul>
+  <%# end %>
+</header>
+
+
+<% @eventos.each do |evento| %>
+  <div class="row border border-info filas">
+    <div class="col-md-3">
+      <%= link_to(image_tag(evento.imgevento, class: "img-fluid"), evento_path(evento)) if evento.imgevento? %>
+    </div>
+    <div class="col-md-8">
+      <p><strong><%= evento.titulo %></strong></p>
+      <p><%= Nokogiri::HTML(evento.info).text.truncate(250, separator: ' ') %><p>
+      Fecha: <strong><%= time_format_mini_mini evento.fecha %></strong>
+    </div>
+    <div class="col-md-1">
+      <%editors_only do%>
+      <%= link_to "Editar", edit_evento_path(evento) %>
+      <%= link_to "Borrar", evento_path(evento), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <% end %>
+      <%= %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Atrás", root_path %>
