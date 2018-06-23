@@ -1,46 +1,59 @@
-<h2>Enséñale esto al comerciante para obtener tu descuento</h2>
-<div class="row">
-  <div class="jumbotron">
-    <h1 class="display-4"><%= @promo.titulo %></h1>
-    <p class="lead"><%= @promo.texto %>
+<p><h2 class="text-center">Enséñale esto al comerciante o imprímelo para obtener tu descuento</h2></p>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-9">
 
-    </p>
+      <% if @promo.empresa.try(:present?) %>
+        <% if @promo.empresa.logo? %>
+          <%= link_to(image_tag(@promo.empresa.logo.url, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
+        <% else %>
+          <%= @promo.empresa.name %>
+        <% end %>
+      <% end %>
+      <p><h1><strong><%= @promo.titulo %></strong></h1></p>
+    </div>
+
+
+    <div class="col-md-3">
+      <img src="https://chart.googleapis.com/chart?cht=qr&chl=<%= domain_base %><%= request.fullpath %>&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive mx-auto d-block">
+      <p class="text-center">
+        <% if (Time.now > @promo.validez) %>
+          <span class="badge badge-danger still">
+            <%= time_format(@promo.validez) %>
+          </span>
+        <% else %>
+          <span class="badge badge-success still">
+            <%= time_format(@promo.validez) %>
+          </span><br/>
+          <small>Fin: <%= time_format_mini(@promo.validez) %></small>
+
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+    <p class="lead cards"><%= @promo.texto %></p>
+
+
     <hr class="my-4">
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6">
 
-        <% if @promo.empresa.try(:any?) %>
-          <% if @promo.empresa.logo? %>
-            <%= link_to(image_tag(@promo.empresa.logo, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
-          <% else %>
-            <%= @promo.empresa.name %>
-          <% end %>
-        <% end %>
+
 
       </div>
-      <div class="col-6">
-        <p class="text-right">
-          <% if (Time.now > @promo.validez) %>
-            <span class="badge badge-danger still">
-              <%= time_format(@promo.validez) %>
-            </span>
-          <% else %>
-            <span class="badge badge-success still">
-              <%= time_format(@promo.validez) %>
-            </span><br/>
-            <small>Fin: <%= time_format_mini(@promo.validez) %></small>
 
-          <% end %>
-        </p>
-      </div>
 
     </div>
     <div class="col-12">
       <div class="img-fluid">
-        <%= image_tag @promo.imgpromo, class: "mx-auto d-block" if @promo.imgpromo? %>
+        <%= image_tag @promo.imgpromo, class: "img-fluid mx-auto d-block" if @promo.imgpromo? %>
       </div>
     </div>
 
 
-  </div>
 </div>

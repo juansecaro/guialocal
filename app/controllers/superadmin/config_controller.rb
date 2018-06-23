@@ -7,6 +7,9 @@ class Superadmin::ConfigController < Superadmin::ApplicationController
 
   def update
     if @config.update(config_params)
+      if params[:reindex] == 'YES'
+        Empresa.reindex
+      end
       helpers.change_current_city(params[:city])
       flash[:notice] = "Configuración actualizada"
       redirect_to superadmin_configs_path

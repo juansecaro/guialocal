@@ -4,7 +4,14 @@
   <div class="form-inputs">
     <% superadmins_only do %>
       <p class="text-muted">Sólo para superadmins</p>
+      <%= f.label :Ciudad_base %>
       <%= f.select :city, Config.cities.keys %>
+
+      <p>
+      <%= f.label :Reindexar? %>
+      <%= select_tag "reindex", options_for_select([ "NO", "YES" ], "NO") %>
+    </p>
+
 
       <p class="text-muted">Fin sólo para superadmins</p>
     <% end %>

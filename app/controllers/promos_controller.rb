@@ -1,5 +1,6 @@
 class PromosController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show]
+  before_action :authenticate_user!, except:[:index, :show ]
+  #before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
     @promo = Promo.new
@@ -93,6 +94,13 @@ class PromosController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "La promoción que buscas no existe"
       redirect_to (request.referrer || root_path)
+    end
+
+    def verify_id!
+        authenticate_user!
+        unless (@promo.user == current_user)
+          redirect_to root_path, alert: "No eres el propietario de esta empresa y no puedes operarla."
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

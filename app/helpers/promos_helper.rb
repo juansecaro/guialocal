@@ -7,4 +7,8 @@ module PromosHelper
     end
   end
 
+  def domain_base
+    return "www.guia#{$current_city}.es"
+  end
+
 end
