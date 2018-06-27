@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  achievement1: false
+  achievement2: false
+  achievement3: false
+  achievement4: false
+  achievement5: false
+  achievement6: false
+  achievement7: false
+  achievement8: false
+  achievement9: false
+  achievement0: false
+  user: one
+
+two:
+  achievement1: false
+  achievement2: false
+  achievement3: false
+  achievement4: false
+  achievement5: false
+  achievement6: false
+  achievement7: false
+  achievement8: false
+  achievement9: false
+  achievement0: false
+  user: two

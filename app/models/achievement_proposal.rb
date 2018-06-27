@@ -1,0 +1,2 @@
+class AchievementProposal < ApplicationRecord
+end

@@ -1,0 +1,38 @@
+<header>
+  <h1>Retos propuestos</h1>
+  <% superadmins_only do %>
+  <ul class="actions">
+    <li><%= link_to "Nuevo reto", new_superadmin_achievement_proposal_path, class: "new" %></li>
+  </ul>
+  <% end %>
+</header>
+
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Reto</th>
+      <th>Recompensa</th>
+      <th>Información</th>
+    </tr>
+
+  </thead>
+  <tbody>
+
+<% @proposals.each do |proposal| %>
+
+<tr>
+  <td class="text-center"><%= proposal.title %></td>
+  <td class="text-center"><%= proposal.reward %> €</td>
+  <td class="text-center"><%= Nokogiri::HTML(proposal.info).text.truncate(150, separator: ' ') %></td>
+  <td>
+    <%= link_to "Ver", superadmin_achievement_proposal_path(proposal) %> |
+    <%= link_to "Editar", edit_superadmin_achievement_proposal_path(proposal) %> |
+    <%= link_to "Borrar", superadmin_achievement_proposal_path(proposal), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarlo?"} %>
+  </td>
+</tr>
+<% end %>
+
+</tbody>
+</table>
+
+<%= link_to "Volver", superadmin_root_path %>

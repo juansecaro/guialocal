@@ -1,0 +1,6 @@
+
+    <p><strong><%= @proposal.title %></strong></p>
+    <p>Recompensa: <%= @proposal.reward %>€</p>
+    <p class="card-text"><%= Nokogiri::HTML(@proposal.info).text.truncate(150, separator: ' ') %></p>
+
+    <%= link_to "Volver", consiguemascreditos_path %>

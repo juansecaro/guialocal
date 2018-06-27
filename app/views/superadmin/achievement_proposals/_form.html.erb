@@ -1,0 +1,19 @@
+<%= simple_form_for [:superadmin, @proposal] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :reward, as: :integer %>
+    <%= f.trix_editor :info %>
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>
