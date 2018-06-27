@@ -1,5 +1,6 @@
 class InfoController < ApplicationController
   before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos]
+  before_action :authenticate_user!, only: :consiguemascreditos
 
   def historia
     render "cities/#{@city}/historia.html.erb"
@@ -46,7 +47,8 @@ class InfoController < ApplicationController
 
   end
   def consiguemascreditos
-
+    @user = current_user
+    @proposals = AchievementProposal.all
   end
 
   private

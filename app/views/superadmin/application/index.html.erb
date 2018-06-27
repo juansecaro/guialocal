@@ -72,6 +72,13 @@
         <% end %>
       </li>
       <li>
+        <%= link_to superadmin_achievement_proposals_path do %>
+          <%= fa_icon "flag-checkered " %>
+          <span>Logros</span>
+          <span class="label label-danger pull-right"><%= @proposals.count %></span>
+        <% end %>
+      </li>
+      <li>
         <%= link_to superadmin_creditos_edit_path do %>
           <%= fa_icon "bank" %>
           <span>Créditos</span>

@@ -10,12 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608102532) do
+ActiveRecord::Schema.define(version: 20180627013709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
   enable_extension "uuid-ossp"
+
+  create_table "achievement_proposals", force: :cascade do |t|
+    t.string   "title"
+    t.text     "info"
+    t.integer  "reward"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "achievements", force: :cascade do |t|
+    t.boolean  "achievement0", default: false
+    t.boolean  "achievement1", default: false
+    t.boolean  "achievement2", default: false
+    t.boolean  "achievement3", default: false
+    t.boolean  "achievement4", default: false
+    t.boolean  "achievement5", default: false
+    t.boolean  "achievement6", default: false
+    t.boolean  "achievement7", default: false
+    t.boolean  "achievement8", default: false
+    t.boolean  "achievement9", default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["user_id"], name: "index_achievements_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -185,6 +210,7 @@ ActiveRecord::Schema.define(version: 20180608102532) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "achievements", "users"
   add_foreign_key "comments", "incidents"
   add_foreign_key "comments", "users"
   add_foreign_key "incidents", "users"

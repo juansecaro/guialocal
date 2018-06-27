@@ -1,23 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :superadmin do
-    root 'application#index'
-    get 'configs', to: 'config#edit'
-    patch 'configs', to: 'config#update'
-    post '/creditos/update', to: 'creditos#update'
-    get '/creditos/edit', to: 'creditos#edit'
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :empresas
-    resources :promos, only: [:index, :edit, :update, :destroy]
-    resources :eventos, except: [:show]
-    resources :destacados
-    resources :categories, except: [:show]
-    resources :tags, only: [:index, :show, :destroy]
-    resources :incidents do
-      resources :comments
-    end
-  end
-
   root 'empresas#home'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
@@ -36,21 +18,6 @@ Rails.application.routes.draw do
   get '/mispromos', to: 'promos#mispromos'
   get '/gesteventos', to: 'eventos#editor_index'
 
-  namespace :admin do
-    root 'application#index'
-    resources :users, only: [:show, :index, :edit, :update]
-    resources :eventos, except: [:show]
-    resources :tags, only: [:index, :show, :destroy]
-    resources :promos, only: [:index, :edit, :update, :destroy]
-    resources :incidents do
-      resources :comments
-    end
-    resources :empresas
-    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
-  end
-
-
-
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
@@ -63,8 +30,39 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]
   resources :promos, only: [:show, :index, :new, :create]
+  resources :achievement_proposals, only: :show
 
+  namespace :superadmin do
+    root 'application#index'
+    get 'configs', to: 'config#edit'
+    patch 'configs', to: 'config#update'
+    post '/creditos/update', to: 'creditos#update'
+    get '/creditos/edit', to: 'creditos#edit'
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :empresas
+    resources :promos, only: [:index, :edit, :update, :destroy]
+    resources :eventos, except: [:show]
+    resources :destacados
+    resources :achievement_proposals
+    resources :categories, except: [:show]
+    resources :tags, only: [:index, :show, :destroy]
+    resources :incidents do
+      resources :comments
+    end
+  end
 
+  namespace :admin do
+    root 'application#index'
+    resources :users, only: [:show, :index, :edit, :update]
+    resources :eventos, except: [:show]
+    resources :tags, only: [:index, :show, :destroy]
+    resources :promos, only: [:index, :edit, :update, :destroy]
+    resources :incidents do
+      resources :comments
+    end
+    resources :empresas
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
 
 
 end
