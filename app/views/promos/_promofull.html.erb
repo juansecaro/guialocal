@@ -5,13 +5,24 @@
 
     <%= link_to promo_path(promo) do %>
       <div class="row alert alert-warning">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= image_tag (promo.imgpromo.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
+          <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
           <h6 class="alert-link">  <%= promo.titulo %>  </h6>
           <h6>  <%= promo.texto %>   </h6>
-          <h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6>
+          <% if (Time.now > promo.validez) %>
+            <span class="badge badge-danger still">
+              <%= time_format(promo.validez) %>
+            </span>
+          <% else %>
+            <span class="badge badge-success still">
+              <%= time_format(promo.validez) %>
+            </span><br/>
+            <small>Fin: <%= time_format_mini(promo.validez) %></small>
+
+          <% end %>
         </div>
       </div>
     <% end %>

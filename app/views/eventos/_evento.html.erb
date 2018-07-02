@@ -5,7 +5,7 @@
     </div>
     <div class="col-8">
           <p><h6>  <%= evento.titulo %>  </h6></p>
-          <small> <%= Nokogiri::HTML(evento.info).text.truncate(120, separator: ' ') %></small>
+          <small class="event-text"> <%= Nokogiri::HTML(evento.info).text.truncate(120, separator: ' ') %></small>
     </div>
 
     <p><h6> <strong> <%#= time_format(evento.fecha) %> </strong>  </h6></p>

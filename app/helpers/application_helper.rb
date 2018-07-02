@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def time_format_mini(datetime)
-    datetime.strftime("%A, %d %b %Y %H:%M")
+    I18n.l(datetime, format: '%A') + datetime.strftime(", %d %b %Y %H:%M")
   end
 
   def time_format_mini_mini(datetime)

@@ -81,7 +81,6 @@ class PromosController < ApplicationController
 
   def index
     @promos = Promo.todas_dos_semanas
-    #@promos = Promo.where("created_at > ?", Time.now-7.days)
   end
   def show
     @promo = Promo.find(params[:id])
