@@ -12,6 +12,161 @@
 <p><span>Sexo: </span><%= @user.gender if @user.gender %></p>
 <p><span>Créditos: </span><strong><%= @user.creditos if @user.creditos %></strong></p>
 <p><span>Rol: </span><strong><%= @user.role %></strong></p>
+<p><span>Retos: </span>
+
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th class="text-center">Reto</th>
+        <th class="text-center">Recompensa</th>
+        <th class="text-center">Conseguido</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% if @proposals[0] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[0].title, achievement_proposal_path(@proposals[0]) if @proposals[0].try(:title) %></td>
+          <td class="text-center"><%= @proposals[0].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement0 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[1] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[1].title, achievement_proposal_path(@proposals[1]) if @proposals[1].try(:title) %></td>
+          <td class="text-center"><%= @proposals[1].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement1 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[2] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[2].title, achievement_proposal_path(@proposals[2]) if @proposals[2].try(:title) %></td>
+          <td class="text-center"><%= @proposals[2].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement2 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[3] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[3].title, achievement_proposal_path(@proposals[3]) if @proposals[3].try(:title) %></td>
+          <td class="text-center"><%= @proposals[3].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement3 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[4] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[4].title, achievement_proposal_path(@proposals[4]) if @proposals[4].try(:title) %></td>
+          <td class="text-center"><%= @proposals[4].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement4 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[5] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[5].title, achievement_proposal_path(@proposals[5]) if @proposals[5].try(:title) %></td>
+          <td class="text-center"><%= @proposals[5].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement5 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[6] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[6].title, achievement_proposal_path(@proposals[6]) if @proposals[6].try(:title) %></td>
+          <td class="text-center"><%= @proposals[6].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement6 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[7] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[7].title, achievement_proposal_path(@proposals[7]) if @proposals[7].try(:title) %></td>
+          <td class="text-center"><%= @proposals[7].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement7 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[8] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[8].title, achievement_proposal_path(@proposals[8]) if @proposals[8].try(:title) %></td>
+          <td class="text-center"><%= @proposals[8].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement8 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @proposals[9] %>
+        <tr>
+          <td class="text-center"><%= link_to @proposals[9].title, achievement_proposal_path(@proposals[9]) if @proposals[9].try(:title) %></td>
+          <td class="text-center"><%= @proposals[9].try(:reward) %> créditos</td>
+          <td class="text-center">
+            <% if @user.achievement.achievement9 == false %>
+               <span class="fail"><%= fa_icon "times" %></span>
+            <% else %>
+               <span class="pass"><%= fa_icon "check" %></span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+    </tbody>
+  </table>
+</p>
 
 
 <%= link_to "Atrás", superadmin_users_path %> |
