@@ -1,9 +1,9 @@
 <%= link_to promo_path(promo) do %>
-  <div class="alert alert-warning">
+  <div class="alert alert-success">
     <h6 class="alert-link">  <%= promo.titulo %>  </h6>
     <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
-    <small>  <%= promo.texto %>   </small>
-    <p><h6> <strong> <%= time_format(promo.validez) %> </strong>  </h6></p>
+    <small><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %> </small>
+    <p><h6> <strong> <%= time_format(promo.validez) %> </strong></h6></p>
 
     <%= image_tag (promo.imgpromo.url), class: "img-fluid img-thumbnail fotos" unless promo.imgpromo.blank? %>
   </div>

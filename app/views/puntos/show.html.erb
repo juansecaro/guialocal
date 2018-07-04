@@ -1,9 +1,11 @@
 
 <div class="row">
-  <p>  <h1 class="display-4"><%= @punto.title %></h1>  </p>
+  <div class="col-md-12">
+    <p class="">
+      <h1 class="display-4 text-center"><%= @punto.title %></h1>
+    </p>
 
-  <p>
-
+  </div>
 </div>
     <% if @punto.fotospunto.any? %>
       <div class="row">
@@ -56,22 +58,19 @@
     </p>
 
     <p>
-      <strong>Info:</strong>
+      <strong>Información adicional:</strong>
       <%= @punto.info %>
     </p>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <% if @punto.video %>
-    <p class="text-center">
-      <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
+    <% unless @punto.video.blank? %>
+    <p class="text-center cards">
+      <iframe width="560" height="315" src="<%= @punto.video %>" frameborder="0" allowfullscreen></iframe>
     </p>
     <% end %>
   </div>
 </div>
 
-
-
-<%= link_to 'Edit', edit_punto_path(@punto) %> |
-<%= link_to 'Back', puntos_path %>
+<%= link_to 'Volver', puntos_path %>

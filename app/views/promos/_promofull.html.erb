@@ -4,7 +4,7 @@
   <% @promos.each do |promo| %>
 
     <%= link_to promo_path(promo) do %>
-      <div class="row alert alert-warning">
+      <div class="row alert alert-success">
         <div class="col-md-3">
           <%= image_tag (promo.imgpromo.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
         </div>

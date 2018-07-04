@@ -4,9 +4,8 @@
 <h2>Categoría <mark><%= @category.name %></mark></h2>
 </header>
 
-<div class="card-desk">
+<div class="card-columns">
 <% @category.empresas.each do |empresa| %>
-  <div class="col-md-3">
     <div class="card cards">
       <img class="card-img-top img-fluid" src="<%= empresa.logo.url if empresa.logo? %>" alt="<%= empresa.name if empresa.name? %>">
       <div class="card-body">
@@ -15,6 +14,5 @@
         <%= link_to "Ver empresa", empresa_path(empresa), class: "btn btn-primary" %>
       </div>
     </div>
-  </div>
 <% end %>
   </div>
