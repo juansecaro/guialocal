@@ -3,7 +3,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="<%= @destacado.first.try(:imgdestacado).try(:url) unless @destacado.first.blank? %>" alt="First slide">
+          <img class="d-block w-100 rounded" src="<%= @destacado.first.try(:imgdestacado).try(:url) unless @destacado.first.blank? %>" alt="First slide">
         </div>
         <!-- <div class="carousel-item">
           <img class="d-block w-100" src="<%= @destacado.second.try(:imgdestacado).try(:url) unless @destacado.second.blank? %>" alt="Second slide">
@@ -66,12 +66,10 @@
        <%= link_to 'Ver todos', eventos_path %>
      </div>
 
+     <div class="dropdown-divider"></div>
 
-     <div>
-       <a class="weatherwidget-io" href="https://forecast7.com/es/38d24n6d02/llerena/" data-label_1="LLERENA" data-label_2="Extremadura" data-theme="original" >LLERENA Extremadura</a>
-       <script>
-       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-       </script>
+     <div id="weather">
+      <%= render "weather/llerena" %>
      </div>
 
    </div>
@@ -115,11 +113,6 @@
 
      </div>
 
-
    </div>
-
-
-
-
 
 </div>

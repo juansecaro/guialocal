@@ -7,14 +7,16 @@
         <p class="text-center">Un proyecto conjunto de: </br></p>
           <div class="row justify-content-md-center">
             <div class="col-6">
+              <%= link_to "http://www.adeter.org" do%>
               <img src="http://www.adeter.org/guialocal/logos/adeter.png" alt="adeter logo" class="img-fluid">
+              <% end %>
             </div>
             <div class="col-6">
               <img src="http://www.adeter.org/guialocal/logos/<%= current_city %>.png" alt="<%= current_city %> logo" class="img-fluid">
             </div>
           </div>
 
-        <p><small class="d-block mb-3 text-muted text-center">&copy; 2017-2018</small></p>
+        <p><small class="d-block mb-3 text-muted text-center">&copy; 2017-<%= Time.now.year %></small></p>
       </div>
       <div class="col-md-3">
         <h5>Plataforma</h5>
