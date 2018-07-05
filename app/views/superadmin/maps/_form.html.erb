@@ -1,0 +1,19 @@
+<%= simple_form_for [:superadmin, @map] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p><%= f.input :level %></p>
+    <div class="row">
+      <div class="col-md-12">
+        <%= image_tag(@map.imgsrc, class: "img-fluid") if @map.imgsrc? %>
+      </div>
+      <p><%= f.file_field :imgsrc, as: :file %></p>
+    </div>
+    <%= f.input :body %>
+
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>

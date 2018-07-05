@@ -11,6 +11,8 @@ class Superadmin::ApplicationController < ApplicationController
       @incidents = Incident.all
       @destacados = Destacado.all
       @proposals = AchievementProposal.all
+      @puntos = Punto.all
+      @maps = Map.all
     end
 
     private

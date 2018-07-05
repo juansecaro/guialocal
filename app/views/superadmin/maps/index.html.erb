@@ -1,0 +1,29 @@
+
+<header>
+  <h1>Listado de Mapas</h1>
+  <% superadmins_only do %>
+    <ul class="actions">
+      <li><%= link_to "Nuevo mapa", new_superadmin_map_path, class: "new" %></li>
+    </ul>
+  <% end %>
+</header>
+
+
+<% @maps.each do |map| %>
+  <div class="row border border-info filas">
+    <div class="col-md-3">
+      <%= link_to(image_tag(map.imgsrc, class: "img-fluid"), superadmin_map_path(map)) if map.imgsrc? %>
+    </div>
+    <div class="col-md-8">
+      <p><strong><%= map.level %></strong></p>
+      <p><%= map.body %><p>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Editar", edit_superadmin_map_path(map) %>
+      <%= link_to "Borrar", superadmin_map_path(map), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <%= %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Atrás", superadmin_root_path %>

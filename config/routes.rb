@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/precios', to: 'info#precios'
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/mispromos', to: 'promos#mispromos'
+  get '/mapadeltesoro/:id', to: 'puntos#mapa'
   get '/gesteventos', to: 'eventos#editor_index'
 
   devise_for :users, controllers: {
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :eventos, except: [:show]
     resources :destacados
+    resources :maps
     resources :achievement_proposals
     resources :categories, except: [:show]
     resources :tags, only: [:index, :show, :destroy]

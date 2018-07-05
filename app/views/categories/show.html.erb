@@ -5,14 +5,15 @@
 </header>
 
 <div class="card-columns">
-<% @category.empresas.each do |empresa| %>
-    <div class="card cards">
-      <img class="card-img-top img-fluid" src="<%= empresa.logo.url if empresa.logo? %>" alt="<%= empresa.name if empresa.name? %>">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to empresa.name, empresa_path(empresa) if empresa.name? %></h5>
-        <p class="card-text"><%= empresa.excerpt if empresa.excerpt? %></p>
-        <%= link_to "Ver empresa", empresa_path(empresa), class: "btn btn-primary" %>
-      </div>
-    </div>
-<% end %>
+  <% @category.empresas.each do |empresa| %>
+    <%= link_to empresa_path(empresa) do %>
+        <div class="card cards">
+          <img class="card-img-top img-fluid img-pad" src="<%= empresa.logo.url if empresa.logo? %>" alt="<%= empresa.name if empresa.name? %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to empresa.name, empresa_path(empresa) if empresa.name? %></h5>
+            <p class="card-text"><%= empresa.excerpt if empresa.excerpt? %></p>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
   </div>

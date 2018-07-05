@@ -5,8 +5,8 @@ es:
       messages:
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
-          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+          has_one: "No se puede eliminar el registro porque existe un %{record} dependiente"
+          has_many: "No se puede eliminar el registro porque existen %{record} dependientes"
   date:
     abbr_day_names:
     - dom
@@ -63,27 +63,27 @@ es:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: alrededor de 1 hora
-        other: alrededor de %{count} horas
+        one: 1 hora aprox.
+        other: "%{count} horas aprox."
       about_x_months:
-        one: alrededor de 1 mes
-        other: alrededor de %{count} meses
+        one: 1 mes aprox.
+        other: "%{count} meses aprox."
       about_x_years:
-        one: alrededor de 1 año
-        other: alrededor de %{count} años
+        one: 1 año aprox.
+        other: "%{count} años aprox."
       almost_x_years:
         one: casi 1 año
-        other: casi %{count} años
+        other: "casi %{count} años"
       half_a_minute: medio minuto
       less_than_x_minutes:
         one: menos de 1 minuto
-        other: menos de %{count} minutos
+        other: "menos de %{count} minutos"
       less_than_x_seconds:
         one: menos de 1 segundo
-        other: menos de %{count} segundos
+        other: "menos de %{count} segundos"
       over_x_years:
         one: más de 1 año
-        other: más de %{count} años
+        other: "más de %{count} años"
       x_days:
         one: 1 día
         other: "%{count} días"
@@ -114,15 +114,15 @@ es:
       present: debe estar en blanco
       confirmation: no coincide
       empty: no puede estar vacío
-      equal_to: debe ser igual a %{count}
+      equal_to: "debe ser igual a %{count}"
       even: debe ser par
       exclusion: está reservado
-      greater_than: debe ser mayor que %{count}
-      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      greater_than: "debe ser mayor que %{count}"
+      greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
       inclusion: no está incluido en la lista
       invalid: no es válido
-      less_than: debe ser menor que %{count}
-      less_than_or_equal_to: debe ser menor que o igual a %{count}
+      less_than: "debe ser menor que %{count}"
+      less_than_or_equal_to: "debe ser menor que o igual a %{count}"
       model_invalid: "La validación falló: %{errors}"
       not_a_number: no es un número
       not_an_integer: debe ser un entero
@@ -138,19 +138,19 @@ es:
       wrong_length:
         one: "no tiene la longitud correcta (1 carácter exactos)"
         other: "no tiene la longitud correcta (%{count} caracteres exactos)"
-      other_than: debe ser distinto de %{count}
+      other_than: "debe ser distinto de %{count}"
     template:
       body: 'Se encontraron problemas con los siguientes campos:'
       header:
-        one: No se pudo guardar este/a %{model} porque se encontró 1 error
-        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+        one: "No se pudo guardar este/a %{model} porque se encontró 1 error"
+        other: "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
   helpers:
     select:
       prompt: Por favor seleccione
     submit:
-      create: Crear %{model}
-      submit: Guardar %{model}
-      update: Actualizar %{model}
+      create: "Crear %{model}"
+      submit: "Guardar %{model}"
+      update: "Actualizar %{model}"
   number:
     currency:
       format:

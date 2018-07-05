@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require timepicker
 //= require imageviewer
+//= require imagemap
 //= require charactercount
 //= require turbolinks
 //= require trix
@@ -23,7 +24,11 @@
 
 
 
-
 $(document).on('turbolinks:load', function () {
   document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
+});
+
+$(document).on('turbolinks:load', function () {
+    //$('painted_map').imageMapResize();
+    imageMapResize();
 });

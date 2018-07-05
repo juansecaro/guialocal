@@ -52,7 +52,7 @@
 
  <!-- segunda fila -->
    <div class="col-md-6">
-     <strong class="text-center">PRÓXIMOS EVENTOS</strong>
+    <p class="text-center"><strong>== PRÓXIMOS EVENTOS ==</strong></p>
 
      <% if @eventos.any?  %>
        <%= render @eventos %>
@@ -69,7 +69,7 @@
      <div class="dropdown-divider"></div>
 
      <div id="weather">
-      <%= render "weather/llerena" %>
+      <%= render "cities/weather/#{current_city}" %>
      </div>
 
    </div>

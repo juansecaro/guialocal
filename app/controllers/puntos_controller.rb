@@ -4,7 +4,11 @@ class PuntosController < ApplicationController
   # GET /puntos
   # GET /puntos.json
   def index
-    @puntos = Punto.all
+    redirect_to :action => "mapa", :id => 1
+  end
+
+  def mapa
+    @map = Map.find(params[:id])
   end
 
   # GET /puntos/1
