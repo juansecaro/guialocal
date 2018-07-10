@@ -1,6 +1,9 @@
 class Empresa < ApplicationRecord
 
   searchkick
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   skip_callback :validate, after: :create
   after_initialize :set_default_plan, :if => :new_record?
 

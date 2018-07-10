@@ -97,10 +97,10 @@
   <div class="col-md-3">
     <p>
       <% if @empresa.promos.any?  %>
-        <div class="row alert alert-info">
+        <div class="alert alert-info">
           <strong>ÚLTIMAS PROMOCIONES</strong>
         </div>
-        <%= render @empresa.promos %>
+        <%= render @empresa.promos.order(created_at: :asc).limit(2) %>
       <% end %>
     </p>
   </div>

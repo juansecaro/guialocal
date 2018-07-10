@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: :show
-  
+
   def show
   end
 
@@ -10,7 +10,7 @@ class TagsController < ApplicationController
 
   private
   def set_tag
-    @tag = Tag.find(params[:id])
+    @tag = Tag.friendly.find(params[:id])
     #Si no lo encuentra
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "La palabra clave que buscas no existe"

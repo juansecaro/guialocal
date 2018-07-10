@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :eventos
   resources :charges
-  resources :puntos
+  resources :puntos, only: [:show, :index]
   resources :incidents, only: [:new, :create, :show]
   resources :empresas
   resources :categories, only: [:index, :show]
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :promos, only: [:index, :edit, :update, :destroy]
     resources :eventos, except: [:show]
     resources :destacados
+    resources :puntos
     resources :maps
     resources :achievement_proposals
     resources :categories, except: [:show]
@@ -65,6 +66,5 @@ Rails.application.routes.draw do
     resources :empresas
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
 
 end

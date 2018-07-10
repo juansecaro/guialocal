@@ -10,7 +10,17 @@
       <p>
       <%= f.label :Reindexar? %>
       <%= select_tag "reindex", options_for_select([ "NO", "YES" ], "NO") %>
-    </p>
+      </p>
+
+    <div class="col-auto">
+      <div >
+        <%= f.input :promo_active, label: "Promo activa", as: :boolean, class: "align-text-bottom"%>
+      </div>
+      <div >
+        <%= f.input :promo_text, label: false, class: " align-middle" %>
+      </div>
+    </div>
+
 
 
       <p class="text-muted">Fin sólo para superadmins</p>

@@ -80,7 +80,7 @@ class PromosController < ApplicationController
   end
 
   def index
-    @promos = Promo.todas_dos_semanas
+    @promos = Promo.todas_diez_dias.paginate(page: params[:page], per_page: 20)
   end
   def show
     @promo = Promo.find(params[:id])

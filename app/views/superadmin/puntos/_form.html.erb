@@ -1,0 +1,25 @@
+<%= simple_form_for [:superadmin, @punto], html: {multipart: true}  do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p><%= f.input :title %></p>
+    <p><%= f.input :subtitle %></p>
+    <p><%= f.input :description %></p>
+    <p><%= f.input :video %></p>
+    <p><%= f.input :schedule %></p>
+    <p><%= f.input :info %></p>
+    <p><%= f.input :price %></p>
+    <p><%= f.input :mlat %></p>
+    <p><%= f.input :mlon %></p>
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+      <p><%= f.file_field :fotospunto, id: "enviar", multiple: true %></p>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>

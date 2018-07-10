@@ -3,9 +3,15 @@
 <div class="row alert alert-info">
   <div class="col-md-12">
     <span class="text-center">
-      <h2> Todas las promociones flash de las últimas 2 semanas </h2>
+      <h2> Todas las promociones flash de los últimos 10 días </h2>
     </span>
   </div>
 </div>
 
 <%= render 'promos/promofull' %>
+
+<div class="row">
+  <div class="col-md-12">
+      <%= will_paginate @empresas, list_classes: %w(pagination justify-content-center) %>
+  </div>
+</div>

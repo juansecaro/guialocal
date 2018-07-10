@@ -2,7 +2,7 @@ class InfoController < ApplicationController
   before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos]
   before_action :authenticate_user!, only: :consiguemascreditos
 
-  def historia 
+  def historia
     render "cities/#{@city}/historia.html.erb"
   end
 
@@ -44,6 +44,9 @@ class InfoController < ApplicationController
 
   end
   def precios
+    if Config.first.promo_active == true
+      flash.now[:notice] = Config.first.promo_text
+    end
 
   end
   def consiguemascreditos

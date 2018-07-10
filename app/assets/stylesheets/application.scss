@@ -19,14 +19,14 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "admin/application";
-@import url('https://fonts.googleapis.com/css?family=Hind+Madurai');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 
 body {
-  font-family: 'Hind Madurai', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
   color: #333;
-  // background: #f2f2f2;
-  //padding-bottom: 70px;
+
 }
 
 
@@ -146,6 +146,9 @@ span.past {
 .dia_cal{
   font-size: xx-large;
 }
+.date_cal{
+  color: gray;
+}
 .fotos{
   max-width: 100%;
   height: auto;
@@ -183,7 +186,6 @@ span.past {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-
 .fail{
   color: red;
 }
@@ -202,6 +204,7 @@ span.past {
 .img-pad{
   padding: 10px;
 }
+
 #cabecero {
 
   padding-bottom: 20px;

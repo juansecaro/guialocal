@@ -4,7 +4,7 @@ class PuntosController < ApplicationController
   # GET /puntos
   # GET /puntos.json
   def index
-    redirect_to :action => "mapa", :id => 1
+    redirect_to "/mapadeltesoro/#{Map.find_by_level("1_1").id}"
   end
 
   def mapa
@@ -68,7 +68,7 @@ class PuntosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_punto
-      @punto = Punto.find(params[:id])
+      @punto = Punto.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

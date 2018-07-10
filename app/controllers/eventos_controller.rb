@@ -5,7 +5,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.where("DATE(fecha) >= ?", Date.today).order(fecha: :asc)
+    @eventos = Evento.where("DATE(fecha) >= ?", Date.today).order(fecha: :asc).paginate(page: params[:page], per_page: 20)
   end
 
   # GET /eventos/1
@@ -69,7 +69,7 @@ class EventosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
-      @evento = Evento.find(params[:id])
+      @evento = Evento.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash.alert = "El evento que buscas no está aquí"
       redirect_to root_path

@@ -4,5 +4,6 @@
     <%= image_tag @map.imgsrc.url, class: "img-fluid mx-auto d-block", name: "painted_map", usemap: "#painted_map" unless @map.nil? %>
   </div>
 </div>
+<!--  HTML Mapping-->
 <%= raw @map.try(:body) %>
 <%=  %>

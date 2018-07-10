@@ -1,0 +1,31 @@
+
+<header>
+  <h1>Listado de Puntos de Interés</h1>
+  <% superadmins_only do %>
+    <ul class="actions">
+      <li><%= link_to "Nuevo punto", new_superadmin_punto_path, class: "new" %></li>
+    </ul>
+  <% end %>
+</header>
+
+
+
+<% @puntos.each do |punto| %>
+  <div class="row border border-info filas">
+    <div class="col-md-3">
+      <%#= link_to(image_tag(punto.fotospunto, class: "img-fluid"), superadmin_map_path(map)) if map.imgsrc? %>
+    </div>
+    <div class="col-md-8">
+      <p><strong><%= punto.title %></strong></p>
+      <p><%= punto.subtitle %><p>
+      <p><%= punto.description %><p>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Editar", edit_superadmin_punto_path(punto) %>
+      <%= link_to "Borrar", superadmin_punto_path(punto), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <%= %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to "Atrás", superadmin_root_path %>

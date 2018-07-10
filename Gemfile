@@ -36,6 +36,8 @@ gem 'binding_of_caller', '~> 0.7.3'
 gem 'backup', '~> 5.0.0.beta.2'
 gem 'stripe'
 gem 'trix'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -6,6 +6,6 @@ class Promo < ApplicationRecord
 
   mount_uploader :imgpromo, ImgpromoUploader
   scope :activas, -> { where("validez > ?", Time.now).order("created_at ASC")  }
-  scope :todas_dos_semanas, -> { where("created_at > ?", Time.now-2.weeks).order("created_at DESC") }
+  scope :todas_diez_dias, -> { where("created_at > ?", Time.now-10.days).order("created_at DESC") }
 
 end

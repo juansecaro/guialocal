@@ -8,11 +8,11 @@
           <div class="row justify-content-md-center">
             <div class="col-6">
               <%= link_to "http://www.adeter.org" do%>
-              <img src="http://www.adeter.org/guialocal/logos/adeter.png" alt="adeter logo" class="img-fluid">
+              <img src="<%= "#{$url_base}" %>/logos/adeter.png" alt="adeter logo" class="img-fluid">
               <% end %>
             </div>
             <div class="col-6">
-              <img src="http://www.adeter.org/guialocal/logos/<%= current_city %>.png" alt="<%= current_city %> logo" class="img-fluid">
+              <img src="<%= "#{$url_base}" %>/logos/<%= current_city %>.png" alt="<%= current_city %> logo" class="img-fluid">
             </div>
           </div>
 

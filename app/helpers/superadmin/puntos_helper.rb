@@ -1,0 +1,2 @@
+module Superadmin::PuntosHelper
+end

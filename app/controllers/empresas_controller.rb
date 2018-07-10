@@ -9,9 +9,10 @@ class EmpresasController < ApplicationController
   # GET /empresas.json
   def index
       if params[:query].present?
-        @empresas = Empresa.search(params[:query]) # ajustar a :noplan
+        @empresas = Empresa.search(params[:query], page: params[:page], per_page: 20)
+         # ajustar a :noplan
       else
-        @empresas = Empresa.where.not(plan: :noplan).order(name: :asc)
+        @empresas = Empresa.where.not(plan: :noplan).order(name: :asc).paginate(page: params[:page], per_page: 20)
       end
   end
 
@@ -20,7 +21,7 @@ class EmpresasController < ApplicationController
     @destacado = Destacado.all.shuffle.take(3)
 
     @promos = Promo.order(created_at: :desc).limit(3)
-    @eventos = Evento.order(created_at: :desc).limit(5)
+    @eventos = Evento.order(fecha: :asc).limit(5)
   end
 
   def horarios
@@ -72,7 +73,7 @@ class EmpresasController < ApplicationController
     end
 
     def set_empresa
-      @empresa = Empresa.find(params[:id])
+      @empresa = Empresa.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
   		flash.alert = "Le empresa que buscas no está aquí"
       redirect_to empresas_path
