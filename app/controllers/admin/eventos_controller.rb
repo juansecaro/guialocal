@@ -44,7 +44,7 @@ class Admin::EventosController < Admin::ApplicationController
   end
   private
   def set_evento
-    @evento = Evento.find(params[:id])
+    @evento = Evento.friendly.find(params[:id])
   end
   def evento_params
     params.require(:evento).permit(:titulo, :imgevento, :info, :fecha)

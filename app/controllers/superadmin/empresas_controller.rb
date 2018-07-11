@@ -57,7 +57,7 @@ class Superadmin::EmpresasController < Superadmin::ApplicationController
   end
 
   def set_empresa
-    @empresa = Empresa.find(params[:id])
+    @empresa = Empresa.friendly.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash.alert = "Le empresa que buscas no está aquí"
     redirect_to empresas_path

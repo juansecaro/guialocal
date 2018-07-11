@@ -16,7 +16,7 @@ class Admin::TagsController < Admin::ApplicationController
 
   private
   def set_tag
-    @tag = Tag.find(params[:id])
+    @tag = Tag.friendly.find(params[:id])
 
     #Si no lo encuentra
   rescue ActiveRecord::RecordNotFound

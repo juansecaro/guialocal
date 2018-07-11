@@ -10,56 +10,32 @@ class PromosController < ApplicationController
     @promo = Promo.new(promo_params)
     @promo.empresa_id = current_user.empresa.id
 
-      valid_value = false
-      #nos aseguramos que el radiobutton corresponda con una de nuestras opciones
-      if params[:customRadioInline] == "baja"
-        if current_user.creditos > 5
-          saldo = 5
-          valid_value = true
-          @promo.validez = Time.now + 1.day
-        else
-          flash.now[:error] = "Error: No tienes suficiente crédito."
-          render 'new'
-        end
-      elsif params[:customRadioInline] == "media"
-        if current_user.creditos > 7
-          saldo = 7
-          valid_value = true
-          @promo.validez = Time.now + 3.day
-        else
-          flash.now[:error] = "Error: No tienes suficiente crédito."
-          render 'new'
-        end
-      elsif params[:customRadioInline] == "alta"
-        if current_user.creditos > 10
-          saldo = 10
-          valid_value = true
-          @promo.validez = Time.now + 7.day
-        else
-          flash.now[:error] = "Error: No tienes suficiente crédito."
-          render 'new'
-        end
-      end
-
-  # Ya tenemos todo para saber si es válido o no
-      if valid_value == true
-
-          respond_to do |format|
-            if @promo.save
-              # Restamos lo que sea
-              current_user.update_attributes(creditos: current_user.creditos -= saldo)
-              format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
-              format.json { render :show, status: :created, location: @promo }
-            else
-              format.html { render :new, alert: @promo.errors }
-              format.json { render json: @promo.errors, status: :unprocessable_entity }
-            end
-          end
-
+    plan = current_user.empresa.plan
+    last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
+    last_promo_when = helpers.time_format_mini(last_promo)
+    if (plan == 'noplan')
+      flash.now[:error] = "No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo."
+      redirect_to root_path
+    elsif (plan == 'basic')
+      if (last_promo.nil? || last_promo < Time.zone.now-7.days)
+        create_promo
       else
-        flash.now[:error] = "Debes seleccionar al menos una opción."
+        flash.now[:error] = "Con el plan #{plan} tienes que dejar 7 días entre promociones(Últ: #{last_promo_when}) . Si quieres evitar esto, mejora tu plan."
         render 'new'
       end
+    elsif (plan == 'plus')
+      byebug
+      if (last_promo.nil? || last_promo < Time.zone.now-3.days)
+        create_promo
+      else
+        flash.now[:error] = "Con el plan #{plan} tienes que dejar 3 días entre promociones(Últ: #{last_promo_when}) . Si quieres evitar esto, mejora tu plan."
+        render 'new'
+      end
+    else
+      # Premium -unlimited-
+      create_promo
+    end
+
 
   end
 
@@ -75,8 +51,8 @@ class PromosController < ApplicationController
 
   end
   def mispromos
-    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.now, current_user.empresa.id).order("created_at DESC")
-    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.now, current_user.empresa.id).order("created_at DESC")
+    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.zone.now, current_user.empresa.id).order("created_at DESC")
+    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.zone.now, current_user.empresa.id).order("created_at DESC")
   end
 
   def index
@@ -93,6 +69,62 @@ class PromosController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "La promoción que buscas no existe"
       redirect_to (request.referrer || root_path)
+    end
+
+    def create_promo
+      #===========> Inicio
+
+
+        valid_value = false
+        #nos aseguramos que el radiobutton corresponda con una de nuestras opciones
+        if params[:customRadioInline] == "baja"
+          if current_user.creditos > 5
+            saldo = 5
+            valid_value = true
+            @promo.validez = Time.zone.now + 1.day
+          else
+            flash.now[:error] = "Error: No tienes suficiente crédito."
+            render 'new'
+          end
+        elsif params[:customRadioInline] == "media"
+          if current_user.creditos > 7
+            saldo = 7
+            valid_value = true
+            @promo.validez = Time.zone.now + 3.day
+          else
+            flash.now[:error] = "Error: No tienes suficiente crédito."
+            render 'new'
+          end
+        elsif params[:customRadioInline] == "alta"
+          if current_user.creditos > 10
+            saldo = 10
+            valid_value = true
+            @promo.validez = Time.zone.now + 7.day
+          else
+            flash.now[:error] = "Error: No tienes suficiente crédito."
+            render 'new'
+          end
+        end
+
+    # Ya tenemos todo para saber si es válido o no
+        if valid_value == true
+            respond_to do |format|
+              if @promo.save
+                # Restamos lo que sea
+                current_user.update_attributes(creditos: current_user.creditos -= saldo)
+                format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
+                format.json { render :show, status: :created, location: @promo }
+              else
+                format.html { render :new, alert: @promo.errors }
+                format.json { render json: @promo.errors, status: :unprocessable_entity }
+              end
+            end
+        else
+          flash.now[:error] = "Debes seleccionar al menos una opción."
+          render 'new'
+        end
+          #===========> Final
+
     end
 
     def verify_id!
