@@ -78,6 +78,19 @@
 
      <div class="col-md-3">
 
+       <%= link_to '#' do %>
+       <div class="card card-space-bottom">
+         <div class="ribbon">
+           <span>Descubre</span>
+         </div>
+         <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
+         <div class="card-body">
+           <h5 class="card-title">La campiña sur </h5>
+           <p class="card-text event-text">Un tesoro turístico escondido en el corazón de Extremadura.</p>
+         </div>
+       </div>
+       <% end %>
+
        <%= link_to empresa_path(@empresas[0]) do %>
        <div class="card" >
          <%= image_tag(@empresas[0].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[0].logo.blank? %>
@@ -94,17 +107,6 @@
          <%= image_tag(@empresas[1].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[1].logo.blank? %>
          <div class="card-body">
            <h5 class="card-title"><%= @empresas[1].name if @empresas[1].present? %></h5>
-           <p class="card-text event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-           <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
-         </div>
-       </div>
-       <% end %>
-
-       <%= link_to empresa_path(@empresas[2]) do %>
-       <div class="card cards">
-         <%= image_tag(@empresas[2].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[2].logo.blank? %>
-         <div class="card-body">
-           <h5 class="card-title"><%= @empresas[2].name if @empresas[2].present? %></h5>
            <p class="card-text event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
            <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
          </div>
