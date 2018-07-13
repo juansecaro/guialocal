@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20180710101531) do
 
   create_table "configs", force: :cascade do |t|
     t.integer  "city"
-    t.json     "map_levels",   default: "{}",  null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "promo_text",   default: ""

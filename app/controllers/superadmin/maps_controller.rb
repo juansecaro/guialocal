@@ -1,11 +1,15 @@
 class Superadmin::MapsController < Superadmin::ApplicationController
-  before_action :set_map, only: [:edit, :update, :destroy]
+  before_action :set_map, only: [:show, :edit, :update, :destroy]
   def index
     @maps = Map.all
   end
 
   def new
     @map = Map.new
+  end
+
+  def show
+
   end
 
   def create

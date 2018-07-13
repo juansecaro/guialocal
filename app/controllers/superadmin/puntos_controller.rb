@@ -8,6 +8,7 @@ class Superadmin::PuntosController < Superadmin::ApplicationController
     @punto = Punto.new
   end
 
+
   def create
     @punto = Punto.new(punto_params)
 

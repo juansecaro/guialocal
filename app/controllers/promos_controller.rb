@@ -12,9 +12,10 @@ class PromosController < ApplicationController
 
     plan = current_user.empresa.plan
     last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
-    last_promo_when = helpers.time_format_mini(last_promo)
+    last_promo_when = helpers.time_format_mini(last_promo) if last_promo.nil? == false
+    
     if (plan == 'noplan')
-      flash.now[:error] = "No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo."
+      flash[:error] = "No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo."
       redirect_to root_path
     elsif (plan == 'basic')
       if (last_promo.nil? || last_promo < Time.zone.now-7.days)
@@ -24,7 +25,6 @@ class PromosController < ApplicationController
         render 'new'
       end
     elsif (plan == 'plus')
-      byebug
       if (last_promo.nil? || last_promo < Time.zone.now-3.days)
         create_promo
       else
@@ -73,8 +73,6 @@ class PromosController < ApplicationController
 
     def create_promo
       #===========> Inicio
-
-
         valid_value = false
         #nos aseguramos que el radiobutton corresponda con una de nuestras opciones
         if params[:customRadioInline] == "baja"
