@@ -161,10 +161,12 @@ ActiveRecord::Schema.define(version: 20180710101531) do
 
   create_table "maps", force: :cascade do |t|
     t.string   "level"
+    t.text     "title"
+    t.text     "description"
     t.string   "imgsrc"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "promos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

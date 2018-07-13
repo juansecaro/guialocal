@@ -17,7 +17,7 @@ class Superadmin::MapsController < Superadmin::ApplicationController
 
     respond_to do |format|
       if @map.save
-        format.html { redirect_to @map, notice: 'El mapa se ha creado con éxito' }
+        format.html { redirect_to superadmin_maps_path, notice: 'El mapa se ha creado con éxito' }
         format.json { render :show, status: :created, location: @map }
       else
         format.html { render :new }
@@ -54,6 +54,6 @@ class Superadmin::MapsController < Superadmin::ApplicationController
     @map = Map.find(params[:id])
   end
   def map_params
-    params.require(:map).permit(:imgsrc, :body, :level)
+    params.require(:map).permit(:imgsrc, :body, :level, :description, :title)
   end
 end

@@ -10,6 +10,8 @@
       <p><%= f.file_field :imgsrc, as: :file %></p>
     </div>
     <%= f.input :body %>
+    <%= f.input :title %>
+    <%= f.input :description %>
 
   </div>
 
@@ -17,3 +19,4 @@
     <p><%= f.button :submit, class: "btn btn-primary" %></p>
   </div>
 <% end %>
+ 

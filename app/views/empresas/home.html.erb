@@ -31,7 +31,7 @@
 
  <!-- segunda fila -->
    <div class="col-md-6 negative-margin">
-      <h1 class="mainribbon"> <strong class="ribbon-content">PRÓXIMOS EVENTOS</strong> </h1>
+      <h1 class="mainribbon"> <strong> <span class="capital_color">PRÓXIMOS</span> EVENTOS</strong></h1>
 
      <% if @eventos.any?  %>
        <%= render @eventos %>
@@ -57,17 +57,19 @@
 
      <div class="col-md-3">
 
-       <%= link_to '#' do %>
-       <div class="card card-space-bottom">
-         <div class="ribbon">
-           <span>Descubre</span>
+       <% if @mapa.nil? == false %>
+         <%= link_to puntos_path do %>
+         <div class="card card-space-bottom">
+           <div class="ribbon">
+             <span>Descubre</span>
+           </div>
+           <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
+           <div class="card-body">
+             <h5 class="card-title"><%= @mapa.title%> </h5>
+             <p class="card-text event-text"><%= @mapa.description %></p>
+           </div>
          </div>
-         <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
-         <div class="card-body">
-           <h5 class="card-title">La campiña sur </h5>
-           <p class="card-text event-text">Un tesoro turístico escondido en el corazón de Extremadura.</p>
-         </div>
-       </div>
+         <% end %>
        <% end %>
 
        <% if @empresas.count > 0%>
@@ -77,7 +79,7 @@
            <%= image_tag(@empresas[0].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[0].logo.blank? %>
            <div class="card-body">
              <h5 class="card-title"><%= @empresas[0].name if @empresas[0].try(:present?) %></h5>
-             <p class="card-text event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             <p class="card-text event-text"><%= @empresas[0].excerpt if @empresas[0].excerpt %></p>
              <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
            </div>
          </div>
@@ -92,7 +94,7 @@
            <%= image_tag(@empresas[1].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[1].logo.blank? %>
            <div class="card-body">
              <h5 class="card-title"><%= @empresas[1].name if @empresas[1].present? %></h5>
-             <p class="card-text event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             <p class="card-text event-text"><%= @empresas[1].excerpt if @empresas[1].excerpt %></p>
              <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
            </div>
          </div>
