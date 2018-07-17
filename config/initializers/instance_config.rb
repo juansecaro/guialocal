@@ -2,4 +2,4 @@
 
 $current_city = nil
 
-$url_base = "http://www.adeter.org/guialocal"
+$url_base = "https://www.adeter.org/guialocal"
