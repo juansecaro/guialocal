@@ -6,7 +6,7 @@ class Superadmin::IncidentsController < Superadmin::ApplicationController
 
   def show
     user ||= current_user
-    @incident.comments.build(user: user)
+    @incident.comments.build(user_id: current_user.id)
   end
 
   def new
@@ -46,7 +46,7 @@ class Superadmin::IncidentsController < Superadmin::ApplicationController
       end
       respond_to do |format|
         if @incident.update(incident_params)
-          @incident.touch
+          @incident.comments.first.update_column(:user_id, current_user.id)
           format.html { redirect_to superadmin_incident_path(@incident), notice: 'Incidencia actualizada actualizada con éxito.' }
           format.json { render :show, status: :ok, location: @incident }
         else
@@ -71,7 +71,7 @@ class Superadmin::IncidentsController < Superadmin::ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:info, :subject, :status, :user_id, comments_attributes: [:id, :info, :_destroy])
+    params.require(:incident).permit(:info, :subject, :status, :user_id, comments_attributes: [:id, :info, :user_id, :_destroy])
   end
 
 end

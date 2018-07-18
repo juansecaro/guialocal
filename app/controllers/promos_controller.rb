@@ -1,5 +1,6 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show ]
+  before_action :control_max_promos, only: :create
   #before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
@@ -13,7 +14,7 @@ class PromosController < ApplicationController
     plan = current_user.empresa.plan
     last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
     last_promo_when = helpers.time_format_mini(last_promo) if last_promo.nil? == false
-    
+
     if (plan == 'noplan')
       flash[:error] = "No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo."
       redirect_to root_path
@@ -69,6 +70,11 @@ class PromosController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "La promoción que buscas no existe"
       redirect_to (request.referrer || root_path)
+    end
+
+    def control_max_promos
+      byebug
+      current_user.empresa.promos.first.destroy if current_user.empresa.promos.count > 20
     end
 
     def create_promo

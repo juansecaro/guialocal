@@ -46,7 +46,7 @@ class Admin::IncidentsController < Admin::ApplicationController
       end
       respond_to do |format|
         if @incident.update(incident_params)
-          @incident.touch
+          @incident.comments.first.update_column(:user_id, current_user.id)
           format.html { redirect_to admin_incident_path(@incident), notice: 'Incidencia actualizada actualizada con éxito.' }
           format.json { render :show, status: :ok, location: @incident }
         else
