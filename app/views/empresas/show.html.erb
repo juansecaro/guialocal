@@ -24,27 +24,27 @@
   </div>
 
      <p>
-      <%= fa_icon "map-marker 2x", class: "text-primary" %>
+      <%= fa_icon "map-marker-alt", class: "text-primary" %>
       <span><%= @empresa.address unless @empresa.address.blank? %></span>
     </p>
 
     <p>
-      <%= fa_icon "phone 2x", class: "text-primary" %>
+      <%= fa_icon "phone", class: "text-primary" %>
       <span> <%= @empresa.tel unless @empresa.tel.blank? %></span>
     </p>
 
     <p>
-      <%= fa_icon "at 2x", class: "text-primary" %>
+      <%= fa_icon "at", class: "text-primary" %>
       <span> <%= @empresa.email unless @empresa.email.blank? %></span>
     </p>
 
     <p>
-      <%= fa_icon "link 2x", class: "text-primary"  %>
+      <%= fa_icon "link", class: "text-primary"  %>
       <span> <%= link_to(@empresa.web, @empresa.web) unless @empresa.web.blank? %></span>
     </p>
 
     <p>
-      <%= fa_icon "info-circle 2x", class: "text-primary"  %>
+      <%= fa_icon "clock", class: "text-primary"  %>
       <span><%= @hor %></span>
 
         <% if @abierto %>

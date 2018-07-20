@@ -17,7 +17,7 @@
 
 
 @import "bootstrap";
-@import "font-awesome";
+@import 'font_awesome5';
 @import "admin/application";
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
@@ -73,7 +73,7 @@ a.new {
   @extend .btn-success;
 
   &:before {
-    @extend .fa-plus;
+    @extend .fa-exclamation !optional;
   }
 }
 
@@ -81,7 +81,7 @@ a.edit {
   @extend .btn-primary;
 
   &:before {
-    @extend .fa-pencil;
+    //@extend .fa-pencil;
   }
 }
 
@@ -89,7 +89,7 @@ a.delete {
   @extend .btn-danger;
 
   &:before {
-    @extend .fa-trash;
+    //@extend .fa-trash;
   }
 }
 
@@ -125,13 +125,13 @@ span.past {
 
 span.upcoming {
   &:before {
-    @extend .fa-check;
+    //@extend .fa-check;
   }
 }
 
 span.past {
   &:before {
-    @extend .fa-close;
+    //@extend .fa-close;
   }
 }
 .hashtag {

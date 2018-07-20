@@ -73,8 +73,8 @@ class PromosController < ApplicationController
     end
 
     def control_max_promos
-      byebug
-      current_user.empresa.promos.first.destroy if current_user.empresa.promos.count > 20
+      #Delete the oldest when reach 20
+      current_user.empresa.promos.order(created_at: :desc).last.destroy if current_user.empresa.promos.count > 19
     end
 
     def create_promo

@@ -48,7 +48,7 @@ class Superadmin::PuntosController < Superadmin::ApplicationController
 
   private
   def set_punto
-    @punto = Punto.find(params[:id])
+    @punto = Punto.friendly.find(params[:id])
   end
   def punto_params
     params.require(:punto).permit(:title, :subtitle, :description, :video, :mlon, :mlat, :schedule, :price, :info, {fotospunto:[]} )

@@ -19,49 +19,49 @@
         <%= link_to admin_users_path do %>
           <%= fa_icon "users" %>
           <span>Usuarios</span>
-          <span class="label label-primary pull-right"><%= @users.count %></span>
+          <span class="label label-primary float-right"><%= @users.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_empresas_path do %>
-          <%= fa_icon "fort-awesome" %>
+          <%= fa_icon "building" %>
           <span>Empresas</span>
-          <span class="label label-primary pull-right"><%= @empresas.count %></span>
+          <span class="label label-primary float-right"><%= @empresas.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_categories_path do %>
           <%= fa_icon "th" %>
           <span>Categorías</span>
-          <span class="label label-info pull-right"><%= @categories.count %></span>
+          <span class="label label-info float-right"><%= @categories.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_promos_path do %>
           <%= fa_icon "bullhorn" %>
           <span>Promociones</span>
-          <span class="label label-warning pull-right"><%= @promos.count %></span>
+          <span class="label label-warning float-right"><%= @promos.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_tags_path do %>
           <%= fa_icon "tag" %>
           <span>Etiquetas</span>
-          <span class="label label-default pull-right"><%= @tags.count %></span>
+          <span class="label label-default float-right"><%= @tags.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_eventos_path do %>
-          <%= fa_icon "warning" %>
+          <%= fa_icon "globe" %>
           <span>Eventos</span>
-          <span class="label label-primary pull-right"><%= @eventos.count %></span>
+          <span class="label label-primary float-right"><%= @eventos.count %></span>
         <% end %>
       </li>
       <li>
         <%= link_to admin_incidents_path do %>
           <%= fa_icon "comments" %>
           <span>Incidencias</span>
-          <span class="label label-danger pull-right"><%= @incidents.count %></span>
+          <span class="label label-danger float-right"><%= @incidents.count %></span>
         <% end %>
       </li>
 

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
+//= require font_awesome5
 //= require timepicker
 //= require imageviewer
 //= require imagemap
@@ -23,12 +24,10 @@
 //= require_tree .
 
 
-
 $(document).on('turbolinks:load', function () {
   document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
 });
 
 $(document).on('turbolinks:load', function () {
-    //$('painted_map').imageMapResize();
-    imageMapResize();
+  imageMapResize();
 });
