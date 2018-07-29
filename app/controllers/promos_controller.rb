@@ -77,6 +77,7 @@ class PromosController < ApplicationController
       current_user.empresa.promos.order(created_at: :desc).last.destroy if current_user.empresa.promos.count > 19
     end
 
+
     def create_promo
       #===========> Inicio
         valid_value = false

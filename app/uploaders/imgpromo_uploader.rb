@@ -1,7 +1,9 @@
 class ImgpromoUploader < CarrierWave::Uploader::Base
+
+  permissions 0777
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -27,6 +29,11 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  process resize_to_fit: [900, 900]
+
+  version :thumb do
+    process resize_to_fit: [400,600]
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do

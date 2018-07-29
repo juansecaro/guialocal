@@ -5,5 +5,6 @@ class FriendlyOldTablesAdaptation < ActiveRecord::Migration[5.0]
     add_column :tags, :slug, :string, unique: true
     add_column :eventos, :slug, :string, unique: true
     add_column :puntos, :slug, :string, unique: true
+    add_column :maps, :slug, :string, unique: true
   end
 end

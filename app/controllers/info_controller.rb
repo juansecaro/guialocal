@@ -43,6 +43,19 @@ class InfoController < ApplicationController
   def publicitate
 
   end
+
+  def legal
+
+  end
+
+  def privacidad
+
+  end
+
+  def cookies
+
+  end
+
   def precios
     if Config.first.promo_active == true
       flash.now[:notice] = Config.first.promo_text

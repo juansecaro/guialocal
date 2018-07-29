@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20180710101531) do
     t.text     "body"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
 
   create_table "promos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

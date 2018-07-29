@@ -1,9 +1,11 @@
 class Empresa < ApplicationRecord
 
+  before_destroy :clean_s3
+
   searchkick
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
+
   skip_callback :validate, after: :create
   after_initialize :set_default_plan, :if => :new_record?
 
@@ -35,6 +37,15 @@ class Empresa < ApplicationRecord
 
   def set_default_plan
     self.plan ||= :noplan
+  end
+
+  private
+
+  def clean_s3
+    fotos.each(&:remove!)
+  rescue Excon::Errors::Error => error
+    puts "Couldn't be removed"
+    false
   end
 
 end

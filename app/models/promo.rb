@@ -1,4 +1,6 @@
 class Promo < ApplicationRecord
+  before_destroy :clean_s3, prepend: true
+
   belongs_to :empresa
 
   validates :titulo, presence: true, length:{ maximum: 60, too_long: "El título no puede ser mayor de 50 carácteres y tienes %{count}" }
@@ -8,5 +10,17 @@ class Promo < ApplicationRecord
   default_scope {order(created_at: :desc)}
   scope :activas, -> { where("validez > ?", Time.now).order("created_at ASC")  }
   scope :todas_diez_dias, -> { where("created_at > ?", Time.now-10.days).order("created_at DESC") }
+
+
+
+  private
+  def clean_s3
+    byebug
+    imgpromo.remove!
+    imgpromo.thumb.remove! # if you have thumb version or any other version
+  rescue Excon::Errors::Error => error
+    puts "Something gone wrong"
+    false
+  end
 
 end

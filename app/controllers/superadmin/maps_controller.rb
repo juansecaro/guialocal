@@ -51,7 +51,7 @@ class Superadmin::MapsController < Superadmin::ApplicationController
 
   private
   def set_map
-    @map = Map.find(params[:id])
+    @map = Map.friendly.find(params[:id])
   end
   def map_params
     params.require(:map).permit(:imgsrc, :body, :level, :description, :title)
