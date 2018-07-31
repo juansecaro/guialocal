@@ -12,12 +12,9 @@ class Promo < ApplicationRecord
   scope :todas_diez_dias, -> { where("created_at > ?", Time.now-10.days).order("created_at DESC") }
 
 
-
   private
   def clean_s3
-    byebug
-    imgpromo.remove!
-    imgpromo.thumb.remove! # if you have thumb version or any other version
+    self.remove_imgpromo!
   rescue Excon::Errors::Error => error
     puts "Something gone wrong"
     false

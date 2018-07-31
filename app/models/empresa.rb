@@ -1,6 +1,6 @@
 class Empresa < ApplicationRecord
 
-  before_destroy :clean_s3
+  before_destroy :clean_s3, prepend: true
 
   searchkick
   extend FriendlyId
@@ -43,6 +43,7 @@ class Empresa < ApplicationRecord
 
   def clean_s3
     fotos.each(&:remove!)
+    self.remove_logo!
   rescue Excon::Errors::Error => error
     puts "Couldn't be removed"
     false

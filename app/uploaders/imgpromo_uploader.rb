@@ -1,6 +1,5 @@
 class ImgpromoUploader < CarrierWave::Uploader::Base
 
-  permissions 0777
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -12,7 +11,7 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{$current_city}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{ENV["CURRENT_CITY"]}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

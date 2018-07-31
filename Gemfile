@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'awesome_print', '~> 1.7', :require => 'ap'
-gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'searchkick', '~> 3.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'

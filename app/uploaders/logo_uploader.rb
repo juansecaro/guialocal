@@ -11,7 +11,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{$current_city}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{ENV["CURRENT_CITY"]}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -28,6 +28,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  process resize_to_fit: [300, 300]
 
   # Create different versions of your uploaded files:
   # version :thumb do

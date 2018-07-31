@@ -1,14 +1,14 @@
 class Evento < ApplicationRecord
-  before_destroy :clean_s3
+  before_destroy :clean_s3, prepend: true
 
   mount_uploader :imgevento, ImgeventoUploader
 
   extend FriendlyId
   friendly_id :titulo, use: :slugged
 
+  private
   def clean_s3
-    imgevento.remove!
-    imgevento.thumb.remove! # if you have thumb version or any other version
+    self.remove_imgevento!
   rescue Excon::Errors::Error => error
     puts "Something gone wrong"
     false

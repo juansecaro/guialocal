@@ -1,6 +1,7 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show ]
   before_action :control_max_promos, only: :create
+  before_action :set_promo, only: :show
   #before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
@@ -59,8 +60,9 @@ class PromosController < ApplicationController
   def index
     @promos = Promo.todas_diez_dias.paginate(page: params[:page], per_page: 20)
   end
+
   def show
-    @promo = Promo.find(params[:id])
+    
   end
 
   private
