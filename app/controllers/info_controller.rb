@@ -34,7 +34,12 @@ class InfoController < ApplicationController
     render "cities/#{@city}/guiaturistico.html.erb"
   end
 
+  def agradecimientos
+    render "cities/#{@city}/agradecimientos.html.erb"
+  end
+
   def publica
+
   end
 
   def preguntasfrecuentes
@@ -44,15 +49,20 @@ class InfoController < ApplicationController
 
   end
 
-  def legal
+  def cookies
 
   end
 
   def privacidad
 
   end
+  
+  def novedades
 
-  def cookies
+  end
+
+
+  def condicionesdeuso
 
   end
 

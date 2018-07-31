@@ -210,6 +210,9 @@ span.past {
 .img-pad{
   padding: 10px;
 }
+.hidden {
+  display: none;
+}
 
 .ribbon {
   position: absolute;
@@ -269,6 +272,11 @@ span.past {
  padding: 1em 1em; /* Adjust to suit */
  margin: 2em 2em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
 }
+
+.help-block {
+  border: 1px solid red;
+}
+
 
 #cabecero {
 

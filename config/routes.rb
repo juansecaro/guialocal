@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   get '/ocio', to: 'info#ocio'
   get '/guiaturistico', to: 'info#guiaturistico'
   get '/publica', to: 'info#publica'
+  get '/novedades', to: 'info#novedades'
   get '/publicitate', to: 'info#publicitate'
+  get '/agradecimientos', to: 'info#agradecimientos'
   get '/precios', to: 'info#precios'
-  get '/avisolegal', to: 'info#legal'
+  get '/cookies', to: 'info#cookies'
   get '/politicadeprivacidad', to: 'info#privacidad'
-  get '/politicadecookies', to: 'info#cookies'
+  get '/condicionesdeuso', to: 'info#condicionesdeuso'
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/mispromos', to: 'promos#mispromos'
   get '/mapadeltesoro/:id', to: 'puntos#mapa'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   resources :puntos, only: [:show, :index]
   resources :incidents, only: [:new, :create, :show]
   resources :empresas
+  resources :contacts, only: [:new, :create]
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]
   resources :promos, only: [:show, :index, :new, :create]
