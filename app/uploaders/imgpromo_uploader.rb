@@ -5,7 +5,7 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -30,9 +30,9 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   # end
   process resize_to_fit: [900, 900]
 
-  version :thumb do
-    process resize_to_fit: [400,600]
-  end
+  # version :thumb do
+  #   process resize_to_fit: [400,600]
+  # end
 
   # Create different versions of your uploaded files:
   # version :thumb do

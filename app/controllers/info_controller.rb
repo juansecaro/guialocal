@@ -1,5 +1,5 @@
 class InfoController < ApplicationController
-  before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos]
+  before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos, :cookies, :privacidad, :novedades, :condicionesdeuso]
   before_action :authenticate_user!, only: :consiguemascreditos
 
   def historia

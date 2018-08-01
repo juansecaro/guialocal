@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   root 'empresas#home'
+  get '/mapadeltesoro/:id', to: 'puntos#mapa'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
+  get '/mispromos', to: 'promos#mispromos'
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
@@ -17,12 +19,11 @@ Rails.application.routes.draw do
   get '/agradecimientos', to: 'info#agradecimientos'
   get '/quejasysugerencias', to: 'info#quejasysugerencias'
   get '/precios', to: 'info#precios'
+  get '/preguntasfrecuentes', to: 'info#preguntasfrecuentes'
   get '/cookies', to: 'info#cookies'
   get '/politicadeprivacidad', to: 'info#privacidad'
   get '/condicionesdeuso', to: 'info#condicionesdeuso'
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
-  get '/mispromos', to: 'promos#mispromos'
-  get '/mapadeltesoro/:id', to: 'puntos#mapa'
   get '/gesteventos', to: 'eventos#editor_index'
 
   devise_for :users, controllers: {
