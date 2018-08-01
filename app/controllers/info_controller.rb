@@ -56,7 +56,7 @@ class InfoController < ApplicationController
   def privacidad
 
   end
-  
+
   def novedades
 
   end
@@ -64,6 +64,10 @@ class InfoController < ApplicationController
 
   def condicionesdeuso
 
+  end
+
+  def quejasysugerencias
+    @contact = Contact.new
   end
 
   def precios

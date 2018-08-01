@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/novedades', to: 'info#novedades'
   get '/publicitate', to: 'info#publicitate'
   get '/agradecimientos', to: 'info#agradecimientos'
+  get '/quejasysugerencias', to: 'info#quejasysugerencias'
   get '/precios', to: 'info#precios'
   get '/cookies', to: 'info#cookies'
   get '/politicadeprivacidad', to: 'info#privacidad'

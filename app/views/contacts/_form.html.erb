@@ -1,0 +1,22 @@
+<div class="skinny_wrapper wrapper_padding">
+  <%= simple_form_for @contact do |f| %>
+    <% if flash[:error].present? %>
+        <p> flash[:error]</p>
+    <% end %>
+
+    <%= f.input :name, label: "Nombre", required: true%>
+    <%= f.input :email, label: "E-Mail", required: true%>
+
+
+
+    <%= f.input :message, as: :text, label: "Mensaje", required: true %>
+
+    <div class="hidden">
+      <%= f.input :nickname, hint: 'leave this field blank' %>
+    </div>
+
+    <p class="text-center">
+      <%= f.submit 'Enviar', class: "btn btn-primary" %>
+    </p>
+  <% end %>
+</div>
