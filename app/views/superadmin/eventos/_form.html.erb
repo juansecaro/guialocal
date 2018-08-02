@@ -12,7 +12,7 @@
       </div>
 
     </div>
-    <p><%= f.file_field :imgevento, as: :file %></p>
+    <p><%= f.file_field :imgevento, as: :file, error: f.object.errors.full_messages_for(:imgevento).to_sentence %></p>
   </div>
 
   <div class="form-actions">

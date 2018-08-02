@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <%= image_tag(@map.imgsrc, class: "img-fluid") if @map.imgsrc? %>
       </div>
-      <p><%= f.file_field :imgsrc, as: :file %></p>
+      <p><%= f.file_field :imgsrc, as: :file, error: f.object.errors.full_messages_for(:imgsrc).to_sentence %></p>
     </div>
     <%= f.input :body %>
     <%= f.input :title %>
@@ -19,4 +19,3 @@
     <p><%= f.button :submit, class: "btn btn-primary" %></p>
   </div>
 <% end %>
- 
