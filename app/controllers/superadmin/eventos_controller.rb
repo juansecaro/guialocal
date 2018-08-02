@@ -12,7 +12,7 @@ class Superadmin::EventosController < Superadmin::ApplicationController
     @evento = Evento.new(evento_params)
 
     respond_to do |format|
-      if @evento.save
+      if @evento.save!
         format.html { redirect_to @evento, notice: 'El evento se ha creado con éxito' }
         format.json { render :show, status: :created, location: @evento }
       else

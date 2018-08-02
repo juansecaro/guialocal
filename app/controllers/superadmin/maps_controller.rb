@@ -16,7 +16,7 @@ class Superadmin::MapsController < Superadmin::ApplicationController
     @map = Map.new(map_params)
 
     respond_to do |format|
-      if @map.save
+      if @map.save!
         format.html { redirect_to superadmin_maps_path, notice: 'El mapa se ha creado con éxito' }
         format.json { render :show, status: :created, location: @map }
       else
