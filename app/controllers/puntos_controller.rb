@@ -4,12 +4,9 @@ class PuntosController < ApplicationController
   # GET /puntos
   # GET /puntos.json
   def index
-    redirect_to "/mapadeltesoro/#{Map.friendly.find_by_level("1_1").id}"
+    render 'mapas/index'
   end
 
-  def mapa
-    @map = Map.friendly.find(params[:id])
-  end
 
   # GET /puntos/1
   # GET /puntos/1.json

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'empresas#home'
-  get '/mapadeltesoro/:id', to: 'puntos#mapa'
   get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/mispromos', to: 'promos#mispromos'
@@ -26,10 +25,12 @@ Rails.application.routes.draw do
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/gesteventos', to: 'eventos#editor_index'
 
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
 
+  resources :mapas, only: [:show, :index]
   resources :eventos
   resources :charges
   resources :puntos, only: [:show, :index]
