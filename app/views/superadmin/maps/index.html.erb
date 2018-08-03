@@ -12,7 +12,7 @@
 <% @maps.each do |map| %>
   <div class="row border border-info filas">
     <div class="col-md-3">
-      <%= link_to(image_tag(map.imgsrc, class: "img-fluid"), superadmin_map_path(map)) if map.imgsrc? %>
+      <%= link_to(image_tag(map.imgsrc, class: "img-fluid"), mapa_path(map)) if map.imgsrc? %>
     </div>
     <div class="col-md-8">
       <p><strong><%= map.level %></strong></p>

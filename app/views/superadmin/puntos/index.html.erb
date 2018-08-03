@@ -13,12 +13,13 @@
 <% @puntos.each do |punto| %>
   <div class="row border border-info filas">
     <div class="col-md-3">
-      <%#= link_to(image_tag(punto.fotospunto, class: "img-fluid"), superadmin_map_path(map)) if map.imgsrc? %>
+      <%= link_to(image_tag(punto.fotospunto.try(:first).url, class: "img-fluid"), punto_path(punto)) if punto.try(:fotospunto?) %>
     </div>
     <div class="col-md-8">
       <p><strong><%= punto.title %></strong></p>
       <p><%= punto.subtitle %><p>
       <p><%= punto.description %><p>
+      <p>Ruta del punto: <strong>/puntos/<%= punto.slug %></strong><p>
     </div>
     <div class="col-md-1">
       <%= link_to "Editar", edit_superadmin_punto_path(punto) %>
