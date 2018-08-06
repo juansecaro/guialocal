@@ -60,8 +60,6 @@ module ApplicationHelper
     end
   end
 
-  module ApplicationHelper
-
   def ga_script
     tracking_id = "UA-123191480-1"
     if Rails.env.production?
@@ -72,8 +70,6 @@ module ApplicationHelper
   def ga_track
     javascript_tag("if(window.ga != undefined){ga('send', 'pageview');}")
   end
-
-end
 
 
 end
