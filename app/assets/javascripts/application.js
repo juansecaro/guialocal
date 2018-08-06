@@ -31,3 +31,6 @@ $(document).on('turbolinks:load', function () {
 $(document).on('turbolinks:load', function () {
   imageMapResize();
 });
+$(document).on('page:change', function() {
+  ga('send', 'pageview', window.location.pathname);
+});

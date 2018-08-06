@@ -19,7 +19,6 @@ class EmpresasController < ApplicationController
   def home
     @empresas = Empresa.where.not(plan: :noplan).order("RANDOM()").limit(2)
     @mapa = Map.find_by_level("1_1")
-    #@destacado = Destacado.all.shuffle.take(3)
 
     @promos = Promo.order(created_at: :desc).limit(3)
     @eventos = Evento.order(fecha: :asc).limit(5)
