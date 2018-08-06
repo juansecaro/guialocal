@@ -2,6 +2,7 @@ class MapasController < ApplicationController
   before_action :set_map
 
   def index
+    flash.now[:notice] = "Es un mapa interactivo: clica en los dibujos para obtener información"
   end
 
   def show
