@@ -41,6 +41,7 @@ gem 'will_paginate-bootstrap4', '~> 0.2.2'
 gem 'mail_form'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'google-analytics-rails', '~> 1.1', '>= 1.1.1'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
