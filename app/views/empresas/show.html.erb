@@ -40,7 +40,7 @@
 
     <p>
       <%= fa_icon "link", class: "text-primary"  %>
-      <span> <%= link_to(@empresa.web, @empresa.web) unless @empresa.web.blank? %></span>
+      <span> <%= link_to @empresa.web, "https://#{@empresa.web}", target: "_blank" unless @empresa.web.blank? %></span>
     </p>
 
     <p>
