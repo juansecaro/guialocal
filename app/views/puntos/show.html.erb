@@ -24,7 +24,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <p><%= @punto.description %></p>
+    <p><%= simple_format(@punto.description) %></p>
   </div>
 
 </div>
@@ -37,7 +37,7 @@
         height="300"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKVHaq85J1cJcT1nZjehdz85Ha3iIs5IY
-          &q=<%=@punto.mlat%>,<%=@punto.mlon%>&zoom=16&language=es" allowfullscreen>
+          &q=<%=@punto.mlon%>,<%=@punto.mlat%>&zoom=16&language=es" allowfullscreen>
       </iframe>
 
     </div>
