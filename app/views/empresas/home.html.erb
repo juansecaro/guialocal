@@ -10,27 +10,54 @@
   <!-- separador promociones -->
   <div class="col-md-3 col-sm-12">
 
-    <div class="alert alert-info">
-      <strong>PROMOCIONES FLASH</strong>
-    </div>
-    <% if @promos.any?  %>
-      <%= render @promos %>
-    <% else %>
-      <div class="alert alert-secondary">
-        No hay promociones recientes
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col-12">
-        <div class="text-right">
-          <%= link_to 'Ver todas', promos_path %>
+    <% if @mapa.nil? == false %>
+      <%= link_to mapas_path do %>
+      <div class="card card-space-bottom">
+        <div class="ribbon">
+          <span>Descubre</span>
+        </div>
+        <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @mapa.title%> </h5>
+          <p class="card-text event-text"><%= @mapa.description %></p>
         </div>
       </div>
-    </div>
+      <% end %>
+    <% end %>
+
+    <% if @empresas.count > 0 %>
+
+      <%= link_to empresa_path(@empresas[0]) do %>
+      <div class="card" >
+        <%= image_tag(@empresas[0].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[0].logo.blank? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @empresas[0].name if @empresas[0].try(:present?) %></h5>
+          <p class="card-text event-text"><%= @empresas[0].excerpt if @empresas[0].excerpt %></p>
+          <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
+        </div>
+      </div>
+      <% end %>
+
+    <% end %>
+
+    <% if @empresas.count > 1 %>
+
+      <%= link_to empresa_path(@empresas[1]) do %>
+      <div class="card cards">
+        <%= image_tag(@empresas[1].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[1].logo.blank? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @empresas[1].name if @empresas[1].present? %></h5>
+          <p class="card-text event-text"><%= @empresas[1].excerpt if @empresas[1].excerpt %></p>
+          <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
   </div>
 
  <!-- segunda fila -->
-   <div class="col-md-6 negative-margin">
+   <div class="col-md-6 col-sm-12 negative-margin">
       <h1 class="mainribbon"> <strong> <span class="capital_color">PRÓXIMOS</span> EVENTOS</strong></h1>
 
      <% if @eventos.any?  %>
@@ -55,51 +82,27 @@
 
      <!-- tercera columna -->
 
-     <div class="col-md-3">
+     <div class="col-md-3 col-sm-12">
 
-       <% if @mapa.nil? == false %>
-         <%= link_to mapas_path do %>
-         <div class="card card-space-bottom">
-           <div class="ribbon">
-             <span>Descubre</span>
-           </div>
-           <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
-           <div class="card-body">
-             <h5 class="card-title"><%= @mapa.title%> </h5>
-             <p class="card-text event-text"><%= @mapa.description %></p>
+       <div class="alert alert-info">
+         <strong>PROMOCIONES FLASH</strong>
+       </div>
+       <% if @promos.any?  %>
+         <%= render @promos %>
+       <% else %>
+         <div class="alert alert-secondary">
+           No hay promociones recientes
+         </div>
+       <% end %>
+       <div class="row">
+         <div class="col-12">
+           <div class="text-right">
+             <%= link_to 'Ver todas', promos_path %>
            </div>
          </div>
-         <% end %>
-       <% end %>
+       </div>
 
-       <% if @empresas.count > 0 %>
 
-         <%= link_to empresa_path(@empresas[0]) do %>
-         <div class="card" >
-           <%= image_tag(@empresas[0].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[0].logo.blank? %>
-           <div class="card-body">
-             <h5 class="card-title"><%= @empresas[0].name if @empresas[0].try(:present?) %></h5>
-             <p class="card-text event-text"><%= @empresas[0].excerpt if @empresas[0].excerpt %></p>
-             <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
-           </div>
-         </div>
-         <% end %>
-
-       <% end %>
-
-       <% if @empresas.count > 1 %>
-
-         <%= link_to empresa_path(@empresas[1]) do %>
-         <div class="card cards">
-           <%= image_tag(@empresas[1].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[1].logo.blank? %>
-           <div class="card-body">
-             <h5 class="card-title"><%= @empresas[1].name if @empresas[1].present? %></h5>
-             <p class="card-text event-text"><%= @empresas[1].excerpt if @empresas[1].excerpt %></p>
-             <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
-           </div>
-         </div>
-         <% end %>
-       <% end %>
 
      </div>
 
