@@ -47,4 +47,8 @@ class LogoUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def size_range
+    0..0.5.megabytes
+  end
+
 end

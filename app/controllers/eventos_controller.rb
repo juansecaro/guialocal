@@ -1,6 +1,7 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   before_action :authorize_editor!, only: [:editor_index, :new, :edit, :update, :destroy]
+  before_action :control_max_eventos, only: :create
 
   # GET /eventos
   # GET /eventos.json
@@ -73,6 +74,11 @@ class EventosController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash.alert = "El evento que buscas no está aquí"
       redirect_to root_path
+    end
+
+    def control_max_eventos
+      #Delete the oldest when reach 100
+      Evento.order(fecha: :desc).last.destroy if Evento.count > 99
     end
 
     def authorize_editor!
