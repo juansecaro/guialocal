@@ -124,7 +124,9 @@
   <p><h2 class="text-center"><b>Y porque a veces eso no es suficiente</b></h2></p>
 
   <p class="text-center">
-    <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe width="560" height="315" src="<%= @empresa.video %>" frameborder="0" allowfullscreen></iframe>
+    </div>
   </p>
 <% end %>
 
