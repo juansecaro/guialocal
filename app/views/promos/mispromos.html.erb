@@ -1,18 +1,52 @@
+<%= hidden_field_tag 'plan', current_user.empresa.plan %>
+<%= hidden_field_tag 'waiting', @waiting %>
+
+
 <div class="row">
   <div class="col-md-3">
-    <p><h2 class="text-center">Saldo actual</h2></p>
-    <p class="text-center">Tienes</p>
-    <p><h2 class="text-muted text-center"><%= current_user.creditos %></h2></p>
-    <p class="text-center">créditos</p>
-    <% if current_user.creditos > -1%>
-    <p>
-      <ul class="list-unstyled">
-        <p><li><%= link_to "Nueva promoción", new_promo_path, class: "btn btn-primary d-block mx-auto" %></li></p>
-        <p><li><%= link_to "Obtener créditos", consiguemascreditos_path, class: "btn btn-success d-block mx-auto" %></li></p>
-      </ul>
-      </p>
-      <% end %>
+    <p><h2 class="text-center">Disponibilidad</h2></p>
 
+    <% if @ready == true %>
+      <p class="text-center">¡Listo!</p>
+      <p><h2 class="text-muted text-center"></h2></p>
+      <ul class="list-unstyled"><p><li><%= link_to "Nueva promoción", new_promo_path, class: "btn btn-primary d-block mx-auto" %></li></p></ul>
+    <% else %>
+
+      <ul class="list-unstyled"> <p><li><%= link_to "Nueva promoción", new_promo_path, class: "btn btn-primary disabled d-block mx-auto" %></li></p> </ul>
+      <p class="text-center"><small>Aún tienes que esperar</small></p>
+      <p class="text-center"><span id="time"></span></p>
+
+      <div id="clockdiv" class="mx-autdo d-block">
+        <div>
+          <span class="days"></span>
+          <div class="smalltext">Días</div>
+        </div>
+        <div>
+          <span class="hours"></span>
+          <div class="smalltext">Horas</div>
+        </div>
+        <div>
+          <span class="minutes"></span>
+          <div class="smalltext">Minutos</div>
+        </div>
+        <div>
+          <span class="seconds"></span>
+          <div class="smalltext">Segundos</div>
+        </div>
+      </div>
+
+
+      <p class="text-center"><small>hasta la próxima promoción</small></p>
+
+    <% end %>
+
+    <div id="nopremium">
+      <p> <div class="text-muted text-center">¿No te gusta esperar?</div></p>
+      <p class="text-center"><%= link_to "Pásate a Premium", "/precios"%></p>
+    </div>
+
+
+    <%#= link_to "Obtener créditos", consiguemascreditos_path, class: "btn btn-success d-block mx-auto" %>
 
   </div>
   <div class="col-md-9">

@@ -3,6 +3,7 @@
 
   <div class="form-inputs">
     <% superadmins_only do %>
+
       <p class="text-muted">Sólo para superadmins</p>
       <%= f.label :Ciudad_base %>
       <%= f.select :city, Config.cities.keys %>
@@ -18,6 +19,12 @@
       </div>
       <div >
         <%= f.input :promo_text, label: false, class: " align-middle" %>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <div >
+        <%= f.input :happyhour, label: "Happy Hour", as: :boolean, class: "align-text-bottom"%>
       </div>
     </div>
 
