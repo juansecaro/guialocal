@@ -1,9 +1,29 @@
 <div class="row">
   <div class="col-md-3">
-    <p><h2 class="text-center">Saldo actual</h2></p>
-    <p class="text-center">Tienes</p>
-    <p><h2 class="text-muted text-center"><%= current_user.creditos %></h2></p>
-    <p class="text-center">créditos</p>
+    <p><h2 class="text-center">Tu estado</h2></p>
+    <p class="text-muted text-center">Tu plan: <%= @plan.upcase %></p>
+    <p class="text-center">Restricciones:</p>
+
+    <p class="text-muted text-center">Espera entre promociones:
+      <%= case @plan
+    when "basic"
+      "1 semana"
+    when "plus"
+      "3 días"
+    when "premium"
+      "No"
+    end %> </p>
+    <p class="text-muted text-center">Promociones simultáneas:
+      <%= case @plan
+        when "basic"
+          "NO"
+        when "plus"
+          "NO"
+        when "premium"
+          "Sí (3 máx)"
+        end %> </p>
+    <p class="text-center"><%= link_to "Comparativa entre planes", comparativa_promociones_path%> </p>
+
 
   </div>
   <div class="col-md-9">

@@ -38,6 +38,10 @@ class InfoController < ApplicationController
     render "cities/#{@city}/agradecimientos.html.erb"
   end
 
+  def comparativa_promociones
+
+  end
+
   def publica
 
   end

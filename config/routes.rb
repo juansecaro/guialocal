@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'empresas#home'
-  get '/empresas_ordenadas', to: 'empresas#empresas_ordenadas'
+  get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/mispromos', to: 'promos#mispromos'
   get '/historia', to: 'info#historia'
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/politicadeprivacidad', to: 'info#privacidad'
   get '/condicionesdeuso', to: 'info#condicionesdeuso'
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
+  get '/comparativa-promociones', to: 'info#comparativa_promociones'
   get '/gesteventos', to: 'eventos#editor_index'
 
 

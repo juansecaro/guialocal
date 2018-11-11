@@ -6,6 +6,7 @@ class PromosController < ApplicationController
 
   def new
     @promo = Promo.new
+    @plan = current_user.empresa.plan
   end
 
   def create
