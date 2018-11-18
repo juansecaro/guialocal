@@ -24,7 +24,6 @@ class PromosController < ApplicationController
       create_promo
     end
 
-
   end
 
   def edit
@@ -82,6 +81,33 @@ class PromosController < ApplicationController
   end
 
   def show
+
+    titulo ||= @promo.titulo
+    site ||= "Guia#{$current_city.capitalize}.es"
+    info ||= Nokogiri::HTML(@promo.texto).text.truncate(255, separator: ' ')
+
+    set_meta_tags title: titulo,
+                site: site,
+                reverse: true,
+                description: info,
+                keywords: titulo,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: titulo + " | " + site,
+                  description:  info,
+                  image: @promo.imgpromo.url
+                },
+
+                og: {
+                  title:    titulo + " | " + site,
+                  description: info,
+                  type:     'article',
+                  url:      promo_url(@promo),
+                  image:    @promo.imgpromo.url
+                }
+
 
   end
 

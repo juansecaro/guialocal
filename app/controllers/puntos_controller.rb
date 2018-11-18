@@ -11,6 +11,33 @@ class PuntosController < ApplicationController
   # GET /puntos/1
   # GET /puntos/1.json
   def show
+
+    titulo ||= @punto.title
+    site ||= "Guia#{$current_city.capitalize}.es"
+    info ||= @punto.subtitle
+
+    set_meta_tags title: titulo,
+                site: site,
+                reverse: true,
+                description: titulo + " " + info,
+                keywords: titulo + " " + info,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: titulo + " | " + site,
+                  description:  titulo + " " + info,
+                  image: @punto.fotospunto.first.url
+                },
+
+                og: {
+                  title:    titulo + " | " + site,
+                  description: info,
+                  type:     'article',
+                  url:      punto_url(@punto),
+                  image:    @punto.fotospunto.first.url
+                }
+
   end
 
   # GET /puntos/new

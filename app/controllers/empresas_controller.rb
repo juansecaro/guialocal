@@ -30,6 +30,34 @@ class EmpresasController < ApplicationController
   # GET /empresas/1
   # GET /empresas/1.json
   def show
+    empresa_name ||= @empresa.name
+    site ||= "Guia#{$current_city.capitalize}.es"
+    tags ||= @empresa.tag_list
+    description ||=  empresa_name + " | " +  @empresa.category.name + " : " + tags
+    excerpt ||= @empresa.excerpt
+
+    set_meta_tags title: empresa_name,
+                site: site,
+                reverse: true,
+                description: description,
+                keywords: tags,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: empresa_name + " | " + site,
+                  description:  excerpt,
+                  image: @empresa.logo.url
+                },
+
+                og: {
+                  title:    empresa_name,
+                  description: excerpt,
+                  type:     'website',
+                  url:      empresa_url(@empresa),
+                  image:    @empresa.logo.url
+                }
+
     (@hor, @abierto) = horario()
     @promos = @empresa.promos.last(3)
   end
