@@ -10,7 +10,7 @@
     <% if @punto.fotospunto.any? %>
       <div class="row">
         <% @punto.fotospunto.each do |foto| %>
-          <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
+          <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items", alt: @punto.title ) %></div>
         <% end %>
       </div>
     <% end %>
