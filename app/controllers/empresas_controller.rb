@@ -21,6 +21,31 @@ class EmpresasController < ApplicationController
     @mapa = Map.find_by_level("1_1")
     @promos = Promo.order(created_at: :desc).limit(3)
     @eventos = Evento.where("fecha > ?", Time.zone.now).order(fecha: :asc).limit(5)
+
+    site ||= "Guia#{$current_city.capitalize}.es"
+    desc = "Toda la información sobre turismo y empresas en #{$current_city.capitalize} y su comarca"
+    @city = helpers.current_city
+
+    set_meta_tags title: desc,
+                site: site,
+                reverse: true,
+                description: desc + " | " + site,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: desc,
+                  description:  desc + " | " + site,
+                  image: "#{$url_base}/cities/#{@city}/logo_oscuro.png"
+                },
+
+                og: {
+                  title:    site,
+                  description: desc,
+                  type:     'website',
+                  url:      root_url,
+                  image:    "#{$url_base}/cities/#{@city}/logo_oscuro.png"
+                }
   end
 
   def horarios
