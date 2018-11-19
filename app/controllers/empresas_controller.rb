@@ -36,7 +36,7 @@ class EmpresasController < ApplicationController
                   site: site,
                   title: desc,
                   description:  desc + " | " + site,
-                  image: "#{$url_base}/cities/#{@city}/logo_oscuro.png"
+                  image: "#{$url_base}/cities/#{@city}/logo.jpg"
                 },
 
                 og: {
@@ -44,7 +44,7 @@ class EmpresasController < ApplicationController
                   description: desc,
                   type:     'website',
                   url:      root_url,
-                  image:    "#{$url_base}/cities/#{@city}/logo_oscuro.png"
+                  image:    "#{$url_base}/cities/#{@city}/logo.jpg"
                 }
   end
 
