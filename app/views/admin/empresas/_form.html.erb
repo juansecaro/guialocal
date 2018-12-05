@@ -247,16 +247,16 @@
     </div>
   </div>
 </p>
+<% admins_only do %>
 
 <div class="row">
   <div class="col-md-2 offset-md-3">
-      <% admins_only do %>
         <p class="text-muted">Sólo para admins</p>
           <%= f.select :plan, Empresa.plans.keys %>
         <p class="text-muted">Fin sólo para admins</p>
-      <% end %>
   </div>
 </div>
+<% end %>
 
 <p>
   <div class="text-center">

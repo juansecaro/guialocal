@@ -32,8 +32,7 @@ $(document).on('turbolinks:load', function () {
   imageMapResize();
 });
 
-$(document).on('page:load', function(d, s, id) {
-
+$(document).on('turbolinks:load', function(d, s, id) {
 
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
