@@ -33,7 +33,7 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'better_errors', '~> 2.4'
 gem 'binding_of_caller', '~> 0.7.3'
-gem 'fog', '~> 2.0'
+#gem 'fog', '~> 2.0'
 gem 'stripe'
 gem 'trix'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
@@ -67,6 +67,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'mysql2'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

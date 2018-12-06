@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <%= display_meta_tags %>
     <meta property="fb:app_id" content="196364291287642"/>
     <%= csrf_meta_tags %>
-
+ <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
 
     <% if Rails.env.production? %>
       <script type="text/javascript">
@@ -30,6 +31,7 @@
       <%= render 'layouts/messages' %>
 
       <%= yield %>
+      
     </div>
       <%= render "layouts/facebook" %>
       <%= render "layouts/footer" %>
