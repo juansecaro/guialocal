@@ -47,7 +47,7 @@ module ApplicationHelper
 
   def current_city
     if ($current_city == "sinasignar" || $current_city == nil)
-      $current_city = Config.first.city
+      $current_city = Config.first.city || "Dev"
     else
       $current_city
     end
