@@ -40,7 +40,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
 gem 'mail_form'
 gem 'meta-tags'
-
+gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

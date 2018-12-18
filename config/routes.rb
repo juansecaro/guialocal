@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/mispromos', to: 'promos#mispromos'
+  get '/ofertas-y-promociones', to: 'promos#index'
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/gastronomia', to: 'info#gastronomia'
   get '/naturaleza', to: 'info#naturaleza'
   get '/ocio', to: 'info#ocio'
+  get '/mercadillo-digital', to: 'suscriptors#new'
   get '/guiaturistico', to: 'info#guiaturistico'
   get '/publica', to: 'info#publica'
   get '/novedades', to: 'info#novedades'
@@ -40,8 +42,14 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]
-  resources :promos, only: [:show, :index, :new, :create]
+  resources :promos, only: [:show, :new, :create]
   resources :achievement_proposals, only: :show
+
+  resources :suscriptors do
+    member do
+      get :confirm_email
+    end
+  end
 
   namespace :superadmin do
     root 'application#index'

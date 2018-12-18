@@ -12,6 +12,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :achievement, allow_destroy: true
 
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+
   def set_default_role
     self.role ||= :user
   end

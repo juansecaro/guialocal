@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="jumbotron">
+      <h1 class="display-4">Mercadillo digital</h1>
+      <p class="lead">Cada semana te tendremos al tanto de todas las ofertas, rebajas y chollos para que no se te pase nada y seas el primero en enterarte de todo.
+      Cuando le das la oportunidad a una empresa local de mostrarte sus productos, estás contribuyendo a una economía local sana, y a que las zonas rurales prosperen.</p>
+      <hr class="my-4">
+      <p>Se envía un único correo semanal, con información útil y sin SPAM. Puedes darte de baja cuando quieras y nunca, <u>nunca</u> vamos a ceder tus datos.</p>
+      <p class="lead">
+        <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+      </p>
+
+      <div class="form-row align-items-center">
+
+        <%= simple_form_for(@suscriptor) do |f| %>
+
+        <div class="input-group">
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Dirección de Email</label>
+              <%= f.input :email, class: "form-control", "aria-described-by": "emailHelp", placeholder: "tucorreo@email.com", required: true %>
+              <small id="emailHelp" class="form-text text-muted">Lo guardaremos y usaremos con cuidado.</small>
+            </div>
+
+
+            <div class="input-group-append">
+              <%= f.submit "¡Hecho!", class: "btn btn-primary" %>
+            </div>
+
+
+          <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+</div>

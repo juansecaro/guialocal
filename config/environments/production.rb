@@ -67,7 +67,7 @@ Rails.application.configure do
   :user_name => ENV['SENDGRID_USERNAME'],
   :password => ENV['SENDGRID_PASSWORD'],
   :domain => "guia#{$current_city}.es",
-  :address => 'smtp.sendgrid.net',
+  :address => 'smtp.mailgun.org',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true

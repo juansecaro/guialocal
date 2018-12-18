@@ -2,10 +2,6 @@
 
 one:
   title: MyString
-  img1: MyString
-  img2: MyString
-  img3: MyString
-  img4: MyString
   subtitle: MyString
   description: MyText
   location: MyString
@@ -15,10 +11,6 @@ one:
 
 two:
   title: MyString
-  img1: MyString
-  img2: MyString
-  img3: MyString
-  img4: MyString
   subtitle: MyString
   description: MyText
   location: MyString
