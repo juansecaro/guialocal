@@ -23,8 +23,8 @@ class EmpresasController < ApplicationController
     @promos = Promo.order(created_at: :desc).limit(3)
     @eventos = Evento.where("fecha > ?", Time.zone.now).order(fecha: :asc).limit(5)
 
-    site ||= "Guia#{$current_city.capitalize}.es"
-    desc = "Toda la información sobre turismo y empresas en #{$current_city.capitalize} y su comarca"
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
+    desc = "Toda la información sobre turismo y empresas en #{ENV['CURRENT_CITY_CAP']} y su comarca"
     @city = helpers.current_city
 
     set_meta_tags title: desc,
@@ -57,7 +57,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1.json
   def show
     empresa_name ||= @empresa.name
-    site ||= "Guia#{$current_city.capitalize}.es"
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     tags ||= @empresa.tag_list
     description ||=  empresa_name + " | " +  @empresa.category.name + " : " + tags
     excerpt ||= @empresa.excerpt
