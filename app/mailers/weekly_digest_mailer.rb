@@ -1,17 +1,12 @@
 class WeeklyDigestMailer < ApplicationMailer
-
+  default :from => "info@adeter.org"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.weekly_digest_mailer.weekly_promos.subject
   #
-  def weekly_promos
-
-    @promos = Promo.where("fecha > ?", Time.zone.now).order(created_at: :desc)
-
-    Suscriptor.find_each do |suscriptor|
-      mail(:to => "<#{suscriptor.email}>", :subject => "Mercadillo digital semanal de GuiaLlerena.es")
-    end
-
+  def weekly_promos(suscriptor, promos)
+      @promos = promos
+      mail(:to => "<#{suscriptor.email}>", :subject => "Mercadillo digital semanal de Guia#{ENV['CURRENT_CITY_CAP']}.es")
   end
 end

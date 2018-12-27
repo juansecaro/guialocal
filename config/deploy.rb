@@ -1,5 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
+require "whenever/capistrano"
 
 set :application, "guialocal"
 set :repo_url, "git@github.com:juansecaro/guialocal.git"

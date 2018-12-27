@@ -41,6 +41,7 @@ gem 'will_paginate-bootstrap4', '~> 0.2.2'
 gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
+gem "letter_opener", :group => :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -56,6 +57,9 @@ gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'fog', '~> 2.0'
+gem 'whenever', :require => false
+
+
 
 # Add this if you're using rvm
 gem 'capistrano-rvm'
@@ -63,6 +67,7 @@ gem 'capistrano-rvm'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
 end
 
 group :development do

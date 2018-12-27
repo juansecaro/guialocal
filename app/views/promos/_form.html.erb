@@ -19,23 +19,23 @@
       <div class="dd"></div>
     </div>
 
-    <p>
-      <div class="form-group">
-      Duración de promoción:</br>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input" value="baja">
-        <label class="custom-control-label" for="customRadioInline1">24 horas</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input" value="media">
-        <label class="custom-control-label" for="customRadioInline2">3 días </label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline3" name="customRadioInline" class="custom-control-input" value="alta">
-        <label class="custom-control-label" for="customRadioInline3">1 semana </label>
-      </div>
-      </div>
-    </p>
+<div class="form-group">
+      <p>
+    Duración de la promoción:</br>
+            <%= f.radio_button :validezElegida, "baja" %>
+            <%= f.label 'validez_baja', ' 24 horas' %>
+
+            <%= f.radio_button :validezElegida, "media" %>
+            <%= f.label 'validez_media', ' 3 días' %>
+
+            <%= f.radio_button :validezElegida, "alta" %>
+            <%= f.label 'validez_alta', ' 1 semana' %>
+
+      </p>
+</div>
+
+
+
     <p>
     <%= f.file_field :imgpromo, as: :file, label: "Imagen " %>
   </p>

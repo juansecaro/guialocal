@@ -128,7 +128,7 @@ class PromosController < ApplicationController
 
     def set_validez
 
-      case params[:customRadioInline]
+      case params[:promo][:validezElegida]
       when 'alta'
         @promo.validez = Time.zone.now + 7.days
       when 'media'
@@ -222,6 +222,10 @@ class PromosController < ApplicationController
           flash.now[:error] = "Debes seleccionar al menos una opción."
           render 'new' and return
         end
+
+        rescue ActiveRecord::RecordInvalid => e
+          flash[:error] = e
+          redirect_to '/promos/new'
           #===========> Final
     end
 

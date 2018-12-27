@@ -1,5 +1,19 @@
-<h1>WeeklyDigest#weekly_promos</h1>
+<h1>Esta semana en el mercadillo digital de <%= "Guia#{ENV['CURRENT_CITY']}.es" %></h1>
 
 <p>
-  <%= @promos %>, find me in app/views/weekly_digest_mailer/weekly_promos.html.erb
+  <% @promos.reverse.each do |promo| %>
+
+
+      <p><h2><%= promo.titulo %></h2></p>
+      <p><%= promo.texto %></p>
+      <p><%= image_tag (promo.imgpromo.url) unless promo.imgpromo.blank? %></p>
+      <p>hasta: <span><%= promo.validez %></span> </p>
+
+      <%= link_to '#', '#'%>
+
+  <% end %>
+</p>
+
+<p>
+
 </p>

@@ -5,8 +5,15 @@ class SuscriptorsController < ApplicationController
 
   def create
     @suscriptor = Suscriptor.new(suscriptor_params)
-    if @suscriptor.save
-      SuscriptorMailer.registration_confirmation(@suscriptor).deliver
+
+    @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) 
+    if @suscriptor.persisted?
+      if (@suscriptor.email_confirmation == true)
+        flash[:notice] = "Ya estás registrado/a"
+        redirect_to root_path
+      else
+        SuscriptorMailer.registration_confirmation(@suscriptor).deliver
+      end
     else
       flash[:error] = "Ha ocurrido un error. Contáctanos desde la sección contacto y explícanos"
       render 'new'
@@ -16,9 +23,9 @@ class SuscriptorsController < ApplicationController
   def confirm_email
     @suscriptor = Suscriptor.find_by_token_confirmation(params[:id])
     if !@suscriptor.blank?
-      @suscriptor.email_confirmation = true
-      @suscriptor.token_confirmation = nil
-      @suscriptor.save!(:validate => false)
+        @suscriptor.email_confirmation = true
+        @suscriptor.token_confirmation = nil
+        @suscriptor.save!(:validate => false)
     else
       flash[:error] = "Ha ocurrido un error. Contactanos sobre esto"
       redirect_to root_path
