@@ -6,18 +6,25 @@ class SuscriptorsController < ApplicationController
   def create
     @suscriptor = Suscriptor.new(suscriptor_params)
 
-    @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) 
-    if @suscriptor.persisted?
-      if (@suscriptor.email_confirmation == true)
-        flash[:notice] = "Ya estás registrado/a"
-        redirect_to root_path
-      else
-        SuscriptorMailer.registration_confirmation(@suscriptor).deliver
-      end
-    else
-      flash[:error] = "Ha ocurrido un error. Contáctanos desde la sección contacto y explícanos"
+    if !@suscriptor.valid?
+      flash[:error] = "El email debe ser válido"
       render 'new'
+    else
+      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) 
+      if @suscriptor.persisted?
+        if (@suscriptor.email_confirmation == true)
+          flash[:notice] = "Ya estás registrado/a"
+          redirect_to root_path
+        else
+          SuscriptorMailer.registration_confirmation(@suscriptor).deliver
+        end
+      else
+        flash[:error] = "Ha ocurrido un error. Contáctanos desde la sección contacto y explícanos"
+        render 'new'
+      end
     end
+
+
   end
 
   def confirm_email
@@ -38,6 +45,9 @@ class SuscriptorsController < ApplicationController
     if !@suscriptor.blank?
       @suscriptor.email_confirmation = false
       @suscriptor.save!(:validate => false)
+      flash[:notice] = "Suscripción al mercadillo digital anulada. No volverás a recibir correos."
+      redirect_to root_path
+
     else
       flash[:error] = "Ha ocurrido un error. Contactanos sobre esto"
       redirect_to root_path

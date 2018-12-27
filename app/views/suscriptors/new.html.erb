@@ -21,7 +21,7 @@
 
             <div class="form-group">
               <label for="exampleInputEmail1">Dirección de Email</label>
-              <%= f.input :email, class: "form-control", "aria-described-by": "emailHelp", placeholder: "tucorreo@email.com", hint: 'You cannot change your username.', required: true %>
+              <%= f.input :email, class: "form-control", placeholder: "tucorreo@email.com", required: true %>
               <small id="emailHelp" class="form-text text-muted">Lo guardaremos y usaremos con cuidado.</small>
             </div>
 
@@ -30,12 +30,9 @@
               <%= f.submit "¡Hecho!", class: "btn btn-primary" %>
             </div>
 
-
-          <% end %>
-
           </div>
-        </div>
-
+        <% end %>
+        
       </div>
 
 

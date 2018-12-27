@@ -411,6 +411,8 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    recaptcha (4.13.1)
+      json
     redis (4.0.3)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -543,6 +545,7 @@ DEPENDENCIES
   pg (< 1.0)
   puma (~> 3.0)
   rails (~> 5.0.4)
+  recaptcha
   sass-rails (~> 5.0)
   searchkick (~> 3.1)
   sidekiq (~> 5.2, >= 5.2.3)

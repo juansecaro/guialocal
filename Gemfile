@@ -33,7 +33,7 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'better_errors', '~> 2.4'
 gem 'binding_of_caller', '~> 0.7.3'
-#gem '', '~> 2.0'
+gem "recaptcha"
 gem 'stripe'
 gem 'trix'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
