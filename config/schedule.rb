@@ -21,4 +21,8 @@ every :wednesday, at: '12pm' do # Use any day of the week or :weekend, :weekday
   runner "Task.do_something_great"
 end
 
+
+every 1.day, :at => '5:00 am' do
+  rake "-s sitemap:refresh"
+end
 # Learn more: http://github.com/javan/whenever

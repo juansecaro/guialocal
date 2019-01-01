@@ -61,11 +61,6 @@ class InfoController < ApplicationController
 
   end
 
-  def novedades
-
-  end
-
-
   def condicionesdeuso
 
   end

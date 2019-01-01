@@ -1,6 +1,7 @@
 # Load DSL and set up stages
 require "capistrano/setup"
 require "whenever/capistrano"
+require 'capistrano/sitemap_generator'
 
 # Include default deployment tasks
 require "capistrano/deploy"
