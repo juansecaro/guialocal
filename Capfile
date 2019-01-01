@@ -1,7 +1,6 @@
 # Load DSL and set up stages
 require "capistrano/setup"
-require "whenever/capistrano"
-require 'capistrano/sitemap_generator'
+
 
 # Include default deployment tasks
 require "capistrano/deploy"
@@ -37,6 +36,9 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/passenger"
 require 'capistrano/rails'
 require 'capistrano/passenger'
+
+require "whenever/capistrano"
+require 'capistrano/sitemap_generator'
 
 
 # If you are using rvm add these lines:
