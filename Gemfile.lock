@@ -547,7 +547,7 @@ DEPENDENCIES
   pg (< 1.0)
   puma (~> 3.0)
   rails (~> 5.0.4)
-  recaptcha
+  recaptcha (~> 4.13, >= 4.13.1)
   sass-rails (~> 5.0)
   searchkick (~> 3.1)
   sidekiq (~> 5.2, >= 5.2.3)

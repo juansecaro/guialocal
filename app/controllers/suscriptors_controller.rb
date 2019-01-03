@@ -10,7 +10,7 @@ class SuscriptorsController < ApplicationController
       flash[:error] = "El email debe ser válido"
       render 'new'
     else
-      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) 
+      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) if verify_recaptcha(model: @suscriptor)
       if @suscriptor.persisted?
         if (@suscriptor.email_confirmation == true)
           flash[:notice] = "Ya estás registrado/a"

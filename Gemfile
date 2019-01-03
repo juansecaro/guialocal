@@ -33,7 +33,6 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'better_errors', '~> 2.4'
 gem 'binding_of_caller', '~> 0.7.3'
-gem "recaptcha"
 gem 'stripe'
 gem 'trix'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
@@ -42,6 +41,7 @@ gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
+gem 'recaptcha', '~> 4.13', '>= 4.13.1'
 gem "letter_opener", :group => :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

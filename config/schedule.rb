@@ -20,6 +20,7 @@
 # every :wednesday, at: '12pm' do # Use any day of the week or :weekend, :weekday
 #   runner "Task.do_something_great"
 # end
+set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
 every :thursday, at: '9:00 am' do # Use any day of the week or :weekend, :weekday
   rake "send_weekly_email"
