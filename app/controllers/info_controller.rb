@@ -85,5 +85,33 @@ class InfoController < ApplicationController
     @city = helpers.current_city
   end
 
+  # def meta_tags (titulo, info)
+  #   titulo ||= @evento.titulo
+  #   site ||= "Guia#{$current_city.capitalize}.es"
+  #   info ||= Nokogiri::HTML(@evento.info).text.truncate(255, separator: ' ')
+  #
+  #   set_meta_tags title: titulo,
+  #               site: site,
+  #               reverse: true,
+  #               description: info,
+  #               keywords: info,
+  #
+  #               twitter: {
+  #                 card: "summary",
+  #                 site: site,
+  #                 title: titulo + " | " + site,
+  #                 description:  info,
+  #                 image: @evento.imgevento.url
+  #               },
+  #
+  #               og: {
+  #                 title:    titulo + " | " + site,
+  #                 description: info,
+  #                 type:     'article',
+  #                 url:      evento_url(@evento),
+  #                 image:    @evento.imgevento.url
+  #               }
+  # end
+
 
 end

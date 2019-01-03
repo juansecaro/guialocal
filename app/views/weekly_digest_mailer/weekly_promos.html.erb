@@ -1,19 +1,51 @@
-<h1>Esta semana en el mercadillo digital de <%= "Guia#{ENV['CURRENT_CITY']}.es" %></h1>
 
-<p>
-  <% @promos.reverse.each do |promo| %>
+<div style="font-family:Verdana,Helvetica,Arial; align: center;">
 
 
-      <p><h2><%= promo.titulo %></h2></p>
-      <p><%= promo.texto %></p>
-      <p><%= image_tag (promo.imgpromo.url) unless promo.imgpromo.blank? %></p>
-      <p>hasta: <span><%= promo.validez %></span> </p>
+  <table>
 
-      <%= link_to '#', '#'%>
+    <tr style="text-align: center;">
+      <td  width="100%">
+        <%= image_tag "https://www.adeter.org/guialocal/logos/llerena_email_mini.png",
+        style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block; padding: 5px;",
+        align:"center" %>
+      </td>
+    </tr>
 
-  <% end %>
-</p>
+    <tr>
+      <td  width="100%%">
+        <h3 style="text-align: center;">Esta semana en el mercadillo digital os traemos...</h3>
 
-<p>
+      </td>
+    </tr>
+  </table>
 
-</p>
+
+
+  <table>
+      <% if @promos.any? %>
+
+        <% @promos.reverse.each do |promo| %>
+        <tr style="margin-bottom: 10px;">
+
+        <td width="25%">
+          <p><%= image_tag "https://www.adeter.org/guialocal/logos/llerena.png",
+          style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" %></p>
+        </td>
+
+        <td width="75%">
+          <p><h4><%= link_to promo.titulo, promo_url(promo) %></h4></p>
+          <p><%= promo.texto %></p>
+          <p><%#= image_tag (promo.imgpromo.url) unless promo.imgpromo.blank? %></p>
+          <p>Termina el <span style="color:red; font-weight: bold;"><%= time_format_mini promo.validez %></span> </p>
+        </td>
+
+
+          <% end %>
+      </tr>
+    <% else %>
+      <h4>Vaya... Esta semana no tenemos nada interesante, pero volveremos pronto con con más y mejores promociones</h4>
+    <% end %>
+</table>
+
+</div>
