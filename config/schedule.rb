@@ -17,8 +17,12 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every :wednesday, at: '12pm' do # Use any day of the week or :weekend, :weekday
-  runner "Task.do_something_great"
+# every :wednesday, at: '12pm' do # Use any day of the week or :weekend, :weekday
+#   runner "Task.do_something_great"
+# end
+
+every 1.day, at: '4:00 am' do # Use any day of the week or :weekend, :weekday
+  rake "send_weekly_email"
 end
 
 

@@ -29,8 +29,8 @@
         <tr style="margin-bottom: 10px;">
 
         <td width="25%">
-          <p><%= image_tag "https://www.adeter.org/guialocal/logos/llerena.png",
-          style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" %></p>
+          <p><%= image_tag (promo.imgpromo.url),
+          style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" unless promo.imgpromo.blank? %></p>
         </td>
 
         <td width="75%">

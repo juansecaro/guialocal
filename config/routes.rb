@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     resources :destacados
     resources :puntos
     resources :maps
+    resources :suscriptors
     resources :achievement_proposals
     resources :categories, except: [:show]
     resources :tags, only: [:index, :show, :destroy]
