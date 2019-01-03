@@ -20,8 +20,6 @@
     </tr>
   </table>
 
-
-
   <table>
       <% if @promos.any? %>
 
@@ -29,8 +27,10 @@
         <tr style="margin-bottom: 10px;">
 
         <td width="25%">
+          <%= link_to promo_url(promo) do %>
           <p><%= image_tag (promo.imgpromo.url),
           style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" unless promo.imgpromo.blank? %></p>
+          <% end %>
         </td>
 
         <td width="75%">
@@ -47,5 +47,9 @@
       <h4>Vaya... Esta semana no tenemos nada interesante, pero volveremos pronto con con más y mejores promociones</h4>
     <% end %>
 </table>
+
+<div style="color:grey; font-size: 8pt">
+ <p>Recibes este correo porque estás suscrito a la lista semanal de promociones de <%= "Guia#{ENV['CURRENT_CITY_CAP']}.es"%>. Si quieres dejar de recibir este tipo de correos envía un correo con el asunto "baja" a info@adeter.org</p>
+</div>
 
 </div>

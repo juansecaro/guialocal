@@ -21,11 +21,11 @@
 #   runner "Task.do_something_great"
 # end
 
-every 1.day, at: '4:00 am' do # Use any day of the week or :weekend, :weekday
+every :thursday, at: '9:00 am' do # Use any day of the week or :weekend, :weekday
   rake "send_weekly_email"
 end
 
-
+# XML Sitemap updating
 every 1.day, :at => '5:00 am' do
   rake "-s sitemap:refresh"
 end

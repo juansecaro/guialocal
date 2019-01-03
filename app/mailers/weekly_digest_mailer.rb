@@ -8,7 +8,6 @@ class WeeklyDigestMailer < ApplicationMailer
   helper ApplicationHelper
 
   def weekly_promos(suscriptor, promos)
-      attachments.inline["logo.png"] = File.read("#{Rails.root}/app/assets/images/#{ENV['CURRENT_CITY']}/logoguia.png")
       @promos = promos
       mail(:to => "<#{suscriptor.email}>", :subject => "Mercadillo digital semanal de Guia#{ENV['CURRENT_CITY_CAP']}.es")
   end
