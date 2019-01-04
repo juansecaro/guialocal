@@ -1,12 +1,12 @@
 
-<div style="font-family:Verdana,Helvetica,Arial; align: center;">
+<div style="font-family:Verdana,Helvetica,Arial;">
 
 
-  <table>
+  <table style="margin-left:auto; margin-right:auto; text-align:center;" align="center"e>
 
-    <tr style="text-align: center;">
+    <tr>
       <td  width="100%">
-        <%= image_tag "https://www.adeter.org/guialocal/logos/llerena_email_mini.png",
+        <%= image_tag "https://www.adeter.org/guialocal/logos/mercadillo_#{ENV['CURRENT_CITY']}.jpg",
         style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block; padding: 5px;",
         align:"center" %>
       </td>
@@ -14,13 +14,14 @@
 
     <tr>
       <td  width="100%%">
-        <h3 style="text-align: center;">Esta semana en el mercadillo digital os traemos...</h3>
-
+        <h3 style="text-align: center;">Esta semana os traemos...</h3>
       </td>
     </tr>
   </table>
 
-  <table>
+
+
+  <table style="margin-left:auto; margin-right:auto; text-align:center;" align="center">
       <% if @promos.any? %>
 
         <% @promos.reverse.each do |promo| %>
@@ -48,8 +49,7 @@
     <% end %>
 </table>
 
-<div style="color:grey; font-size: 8pt">
- <p>Recibes este correo porque estás suscrito a la lista semanal de promociones de <%= "Guia#{ENV['CURRENT_CITY_CAP']}.es"%>. Si quieres dejar de recibir este tipo de correos envía un correo con el asunto "baja" a info@adeter.org</p>
-</div>
 
+<div style="color:grey; font-size: 8pt; text-align: center;">
+ <p>Recibes este correo porque estás suscrito a la lista semanal de promociones de <%= "Guia#{ENV['CURRENT_CITY_CAP']}.es"%>. Si quieres dejar de recibir este tipo de correos envía un correo con el asunto "baja" a info@adeter.org</p>
 </div>

@@ -357,6 +357,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (5.0.2)
     netrc (0.11.0)
+    new_google_recaptcha (1.0.0)
+      rails (>= 4.2.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -411,8 +413,6 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    recaptcha (4.13.1)
-      json
     redis (4.0.3)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -544,10 +544,10 @@ DEPENDENCIES
   mail_form
   meta-tags
   mini_magick (~> 4.7)
+  new_google_recaptcha
   pg (< 1.0)
   puma (~> 3.0)
   rails (~> 5.0.4)
-  recaptcha (~> 4.13, >= 4.13.1)
   sass-rails (~> 5.0)
   searchkick (~> 3.1)
   sidekiq (~> 5.2, >= 5.2.3)

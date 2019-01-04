@@ -27,7 +27,8 @@
 
 
             <div class="input-group-append">
-              <%= invisible_recaptcha_tags text: '¡Hecho!', class: "btn btn-primary" %>
+              <%= recaptcha_tags %>
+              <%= f.submit "¡Hecho!", class: "btn btn-primary" %>
             </div>
 
           </div>

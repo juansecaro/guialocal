@@ -41,7 +41,6 @@ gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
-gem 'recaptcha', '~> 4.13', '>= 4.13.1'
 gem "letter_opener", :group => :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
