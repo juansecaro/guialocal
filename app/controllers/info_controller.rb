@@ -1,6 +1,8 @@
 class InfoController < ApplicationController
   before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos, :cookies, :privacidad, :novedades, :condicionesdeuso]
   before_action :authenticate_user!, only: :consiguemascreditos
+  invisible_captcha only: :quejasysugerencias, honeypot: :subtitle, on_spam: :spam_received
+
 
   def historia
     render "cities/#{@city}/historia.html.erb"
@@ -83,6 +85,10 @@ class InfoController < ApplicationController
   private
   def set_region
     @city = helpers.current_city
+  end
+
+  def spam_received
+    redirect_to root_path
   end
 
   # def meta_tags (titulo, info)

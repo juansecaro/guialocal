@@ -2,7 +2,7 @@
 <div style="font-family:Verdana,Helvetica,Arial;">
 
 
-  <table style="margin-left:auto; margin-right:auto; text-align:center;" align="center"e>
+  <table style="margin-left:auto; margin-right:auto; text-align:center;">
 
     <tr>
       <td  width="100%">
@@ -21,7 +21,7 @@
 
 
 
-  <table style="margin-left:auto; margin-right:auto; text-align:center;" align="center">
+  <table style="margin-left:auto; margin-right:auto; text-align:center;">
       <% if @promos.any? %>
 
         <% @promos.reverse.each do |promo| %>
@@ -38,7 +38,7 @@
           <p><h4><%= link_to promo.titulo, promo_url(promo) %></h4></p>
           <p><%= promo.texto %></p>
           <p><%#= image_tag (promo.imgpromo.url) unless promo.imgpromo.blank? %></p>
-          <p>Termina el <span style="color:red; font-weight: bold;"><%= time_format_mini promo.validez %></span> </p>
+          <p><span style="color:red; font-weight: bold; font-size: 8pt;">Acaba el <%= time_format_mini promo.validez %></span> </p>
         </td>
 
 

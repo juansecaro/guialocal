@@ -1,4 +1,5 @@
 class SuscriptorsController < ApplicationController
+  invisible_captcha only: :create, honeypot: :subtitle, on_spam: :spam_received
   def new
     @suscriptor = Suscriptor.new
   end
@@ -10,7 +11,7 @@ class SuscriptorsController < ApplicationController
       flash[:error] = "El email debe ser válido"
       render 'new'
     else
-      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) if verify_recaptcha(model: @suscriptor)
+      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email)
       if @suscriptor.persisted?
         if (@suscriptor.email_confirmation == true)
           flash[:notice] = "Ya estás registrado/a"
@@ -56,8 +57,11 @@ class SuscriptorsController < ApplicationController
 
   private
   def suscriptor_params
-    params.require(:suscriptor).permit(:email, :email_confirmation, :token_confirmation)
+    params.require(:suscriptor).permit(:email, :email_confirmation, :token_confirmation, :subtitle)
   end
 
+  def spam_received
+    redirect_to root_path
+  end
 
 end

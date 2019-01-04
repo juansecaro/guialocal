@@ -30,9 +30,9 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   # end
   process resize_to_fit: [900, 900]
 
-  # version :thumb do
-  #   process resize_to_fit: [400,600]
-  # end
+  version :thumb do
+    process :resize_to_fill => [200, 200]
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do

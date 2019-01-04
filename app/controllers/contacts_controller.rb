@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  invisible_captcha only: :create, honeypot: :subtitle, on_spam: :spam_received
   def new
     @contact = Contact.new
   end
@@ -12,5 +13,10 @@ class ContactsController < ApplicationController
       flash.now[:alert] = "No se ha podido enviar el mensaje"
       render 'new'
     end
+  end
+  
+  private
+  def spam_received
+    redirect_to root_path
   end
 end

@@ -315,6 +315,8 @@ GEM
     httpclient (2.8.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
+    invisible_captcha (0.12.0)
+      rails (>= 3.2.0)
     ipaddress (0.8.3)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -357,8 +359,6 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (5.0.2)
     netrc (0.11.0)
-    new_google_recaptcha (1.0.0)
-      rails (>= 4.2.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -537,6 +537,7 @@ DEPENDENCIES
   fog (~> 2.0)
   font_awesome5_rails (~> 0.3.4)
   friendly_id (~> 5.2, >= 5.2.1)
+  invisible_captcha (~> 0.12.0)
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
@@ -544,7 +545,6 @@ DEPENDENCIES
   mail_form
   meta-tags
   mini_magick (~> 4.7)
-  new_google_recaptcha
   pg (< 1.0)
   puma (~> 3.0)
   rails (~> 5.0.4)

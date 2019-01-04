@@ -22,12 +22,12 @@
             <div class="form-group">
               <label for="exampleInputEmail1">Dirección de Email</label>
               <%= f.input :email, class: "form-control", placeholder: "tucorreo@email.com", required: true %>
+              <%= f.invisible_captcha :subtitle %>
               <small id="emailHelp" class="form-text text-muted">Lo guardaremos y usaremos con cuidado.</small>
             </div>
 
 
             <div class="input-group-append">
-              <%= recaptcha_tags %>
               <%= f.submit "¡Hecho!", class: "btn btn-primary" %>
             </div>
 
