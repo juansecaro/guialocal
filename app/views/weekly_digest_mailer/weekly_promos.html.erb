@@ -14,7 +14,7 @@
 
     <tr>
       <td  width="100%%">
-        <h3 style="text-align: center;">Esta semana os traemos...</h3>
+        <h3 style="text-align: center;">Esta semana te traemos...</h3>
       </td>
     </tr>
   </table>
@@ -36,8 +36,7 @@
 
         <td width="75%">
           <p><h4><%= link_to promo.titulo, promo_url(promo) %></h4></p>
-          <p><%= promo.texto %></p>
-          <p><%#= image_tag (promo.imgpromo.url) unless promo.imgpromo.blank? %></p>
+          <p><%= Nokogiri::HTML(promo.texto).text.truncate(160, separator: ' ') %></p>
           <p><span style="color:red; font-weight: bold; font-size: 8pt;">Acaba el <%= time_format_mini promo.validez %></span> </p>
         </td>
 

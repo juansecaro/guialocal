@@ -42,11 +42,26 @@
 
 
     </div>
-    <div class="col-12">
+    <div class="col-md-12">
       <div class="img-fluid">
-        <%= image_tag @promo.imgpromo, class: "img-fluid mx-auto d-block" if @promo.imgpromo? %>
+        <%= image_tag @promo.imgpromo, class: "img-fluid img-thumbnail mx-auto d-block" if @promo.imgpromo? %>
       </div>
     </div>
+
+
+    <!--Buttons for PC  -->
+    <div class="text-center">
+      <div class="pc_buttons">
+        <a class="btn btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=<%= domain_base %><%= request.fullpath %>" title="Facebook" rel="nofollow noopener" target="_blank" style="background-color: #3b5998;"><i class="fab fa-facebook-square"></i></span> Compártelo</a>
+        <a class="btn btn-primary" href="https://twitter.com/intent/tweet?text=Hello%20world" style="background-color:#55acee;"><i class="fab fa-twitter"></i> Tuitéalo</a>
+      </div>
+    <!-- Buttons for mobile -->
+      <div class="mobile_buttons">
+        <a class="btn btn-primary" href="whatsapp://send?text=<%= domain_base %><%= request.fullpath %>" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i> Compartir por WhatsApp</a>
+        <a class="btn btn-primary" href="fb-messenger://share/?link=<%= domain_base %><%= request.fullpath %>" style="background-color: #198ff7;"><i class="fab fa-facebook-messenger"></i> Compartir por Messenger</a>
+      </div>
+    </div>
+
 
 
 </div>

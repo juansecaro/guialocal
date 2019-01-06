@@ -1,0 +1,35 @@
+<header>
+  <h1>Suscriptores</h1>
+<% superadmins_only do %>
+  <ul class="actions">
+    <li><%#= link_to "Nueva categoría", new_superadmin_category_path, class: "new" %></li>
+  </ul>
+<% end %>
+</header>
+
+<table class=" table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>e-mail</th>
+      <th>Desde</th>
+      <th>Empresas</th>
+      <th colspan="3"></th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <% @suscriptors.reverse.each do |suscriptor| %>
+      <tr>
+        <td><%= suscriptor.name %></td>
+        <td><%= time_format(suscriptor.created_at) %></td>
+        <td><%= "Empresas" %></td>
+        <td>
+          <%= link_to "Editar", edit_superadmin_category_path(cat) %> |
+          <%= link_to "Borrar", superadmin_category_path(cat), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarla?"} %>
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
