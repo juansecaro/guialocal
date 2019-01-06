@@ -1,7 +1,7 @@
 module PromosHelper
   def time_format(datetime)
     if (datetime-Time.now) > 0
-      "Aún tienes " + distance_of_time_in_words_to_now(datetime)
+      "Aún disponible " #+ distance_of_time_in_words_to_now(datetime)
     else
       "La promoción ha terminado"
     end

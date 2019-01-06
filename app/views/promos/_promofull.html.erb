@@ -6,7 +6,7 @@
     <%= link_to promo_path(promo) do %>
       <div class="row alert alert-success">
         <div class="col-md-3">
-          <%= image_tag (promo.imgpromo.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
+          <%= image_tag (promo.imgpromo.thumb.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
         </div>
         <div class="col-md-9">
           <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>

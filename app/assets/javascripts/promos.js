@@ -59,6 +59,7 @@ $(document).on('turbolinks:load', function () {
       var timeinterval = setInterval(updateClock, 1000);
     }
     var deadline = new Date(Date.parse(new Date()) +  waiting  * 1000);
+    console.log(deadline);
     initializeClock('clockdiv', deadline);
 });
 

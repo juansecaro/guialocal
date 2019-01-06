@@ -1,16 +1,40 @@
-<p><h2 class="text-center">Enséñale esto al comerciante o imprímelo para obtener tu descuento</h2></p>
-<div class="jumbotron">
+<%= hidden_field_tag 'waiting', @waiting %>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-3">
+
+
+      <%= image_tag @promo.imgpromo, class: "img-fluid img-thumbnail fotos gallery-items" if @promo.imgpromo? %>
+
 
       <% if @promo.empresa.try(:present?) %>
         <% if @promo.empresa.logo? %>
           <%= link_to(image_tag(@promo.empresa.logo.url, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
         <% else %>
-          <%= @promo.empresa.name %>
+          <div class="text-center">
+            <p class="h3"><span class="text-muted"><del>120€</del></span> <span class="font-weight-bold text-danger">100 €</span> (-20%)</p>
+            <small class="text-muted">Empresa: <%= link_to @promo.empresa.name, empresa_path(@promo.empresa) %></small>
+          </div>
         <% end %>
       <% end %>
-      <p><h1><strong><%= @promo.titulo %></strong></h1></p>
+    </div>
+
+    <div class="col-md-6">
+      <p><h2><strong><%= @promo.titulo %></strong></h2></p>
+      <p class="lead cards"><%= @promo.texto %></p>
+
+      <div class="text-center">
+      <!--Buttons for PC  -->
+        <div class="pc_buttons filas">
+          <a class="btn btn-primary filas" href="https://www.facebook.com/sharer/sharer.php?u=<%= domain_base %><%= request.fullpath %>" title="Facebook" rel="nofollow noopener" target="_blank" style="background-color: #3b5998;"><i class="fab fa-facebook-square"></i></span> Compártelo</a>
+          <a class="btn btn-primary filas" href="https://twitter.com/intent/tweet?text=Hello%20world" style="background-color:#55acee;" rel="nofollow noopener" target="_blank"><i class="fab fa-twitter"></i> Tuitéalo</a>
+        </div>
+      <!-- Buttons for mobile -->
+        <div class="mobile_buttons filas">
+          <a class="btn btn-primary filas" href="whatsapp://send?text=<%= domain_base %><%= request.fullpath %>" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i> Compartir por WhatsApp</a>
+          <a class="btn btn-primary filas" href="fb-messenger://share/?link=<%= domain_base %><%= request.fullpath %>" style="background-color: #198ff7;"><i class="fab fa-facebook-messenger"></i> Compartir por Messenger</a>
+        </div>
+      </div>
+
     </div>
 
 
@@ -25,45 +49,29 @@
           <span class="badge badge-success still">
             <%= time_format(@promo.validez) %>
           </span><br/>
-          <small>Fin: <%= time_format_mini(@promo.validez) %></small>
-
         <% end %>
       </p>
-    </div>
-  </div>
 
-    <p class="lead cards"><%= @promo.texto %></p>
+      <% if @waiting > 0%>
+          <div id="clockdiv" class="mx-autdo d-block">
+            <div>
+              <span class="days"></span>
+              <div class="smalltext">Días</div>
+            </div>
+            <div>
+              <span class="hours"></span>
+              <div class="smalltext">Horas</div>
+            </div>
+            <div>
+              <span class="minutes"></span>
+              <div class="smalltext">Minutos</div>
+            </div>
+            <div>
+              <span class="seconds"></span>
+              <div class="smalltext">Segundos</div>
+            </div>
+          </div>
 
-    <hr class="my-4">
-    <div class="row">
-      <div class="col-md-6">
-
+          <% end %>
+        </div>
       </div>
-
-
-    </div>
-    <div class="col-md-12">
-      <div class="img-fluid">
-        <%= image_tag @promo.imgpromo, class: "img-fluid img-thumbnail mx-auto d-block" if @promo.imgpromo? %>
-      </div>
-    </div>
-
-
-    <!--Buttons for PC  -->
-    <div class="text-center">
-      <div class="pc_buttons">
-        <a class="btn btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=<%= domain_base %><%= request.fullpath %>" title="Facebook" rel="nofollow noopener" target="_blank" style="background-color: #3b5998;"><i class="fab fa-facebook-square"></i></span> Compártelo</a>
-        <a class="btn btn-primary" href="https://twitter.com/intent/tweet?text=Hello%20world" style="background-color:#55acee;"><i class="fab fa-twitter"></i> Tuitéalo</a>
-      </div>
-    <!-- Buttons for mobile -->
-      <div class="mobile_buttons">
-        <a class="btn btn-primary" href="whatsapp://send?text=<%= domain_base %><%= request.fullpath %>" style="background-color: #25d366;"><i class="fab fa-whatsapp"></i> Compartir por WhatsApp</a>
-        <a class="btn btn-primary" href="fb-messenger://share/?link=<%= domain_base %><%= request.fullpath %>" style="background-color: #198ff7;"><i class="fab fa-facebook-messenger"></i> Compartir por Messenger</a>
-      </div>
-    </div>
-
-
-
-</div>
-
-<%= link_to "Volver", promos_path %>

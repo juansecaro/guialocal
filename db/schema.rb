@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181209220327) do
+ActiveRecord::Schema.define(version: 20190106081122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,8 +177,10 @@ ActiveRecord::Schema.define(version: 20181209220327) do
     t.string   "imgpromo"
     t.datetime "validez"
     t.integer  "empresa_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.decimal  "normal_price"
+    t.decimal  "special_price"
     t.index ["empresa_id"], name: "index_promos_on_empresa_id", using: :btree
   end
 

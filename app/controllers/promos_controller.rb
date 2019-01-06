@@ -81,9 +81,11 @@ class PromosController < ApplicationController
   end
 
   def show
+    flash.now[:notice] = "Enséñale esto al comerciante para obtener tu descuento"
+    @waiting = (@promo.validez - Time.zone.now).to_i
 
-    titulo ||= @promo.titulo
-    site ||= "Guia#{$current_city.capitalize}.es"
+    titulo ||= "Oferta flash: " + @promo.titulo
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     info ||= Nokogiri::HTML(@promo.texto).text.truncate(255, separator: ' ')
 
     set_meta_tags title: titulo,

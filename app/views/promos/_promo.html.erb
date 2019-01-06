@@ -5,6 +5,6 @@
     <small><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %> </small>
     <p><h6> <strong> <%= time_format(promo.validez) %> </strong></h6></p>
 
-    <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail fotos" unless promo.imgpromo.blank? %>
+    <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail" unless promo.imgpromo.blank? %>
   </div>
 <% end %>
