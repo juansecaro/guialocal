@@ -11,7 +11,8 @@
           <%= link_to(image_tag(@promo.empresa.logo.url, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
         <% else %>
           <div class="text-center">
-            <p class="h3"><span class="text-muted"><del>120€</del></span> <span class="font-weight-bold text-danger">100 €</span> (-20%)</p>
+            <p class="h3"><span class="text-muted"><del><%= @promo.normal_price if @promo.normal_price %></del></span>
+               <span class="font-weight-bold text-danger"><%= @promo.special_price if @promo.special_price %></span> (-20%)</p>
             <small class="text-muted">Empresa: <%= link_to @promo.empresa.name, empresa_path(@promo.empresa) %></small>
           </div>
         <% end %>

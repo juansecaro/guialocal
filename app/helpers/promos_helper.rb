@@ -11,6 +11,4 @@ module PromosHelper
     return "www.guia#{$current_city}.es"
   end
 
-
-
 end

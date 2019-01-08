@@ -13,6 +13,7 @@ class Superadmin::ApplicationController < ApplicationController
       @proposals = AchievementProposal.all
       @puntos = Punto.all
       @maps = Map.all
+      @suscriptors = Suscriptor.all
     end
 
     private

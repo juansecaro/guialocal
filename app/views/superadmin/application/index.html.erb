@@ -17,7 +17,7 @@
       <li class="text-uppercase text-center header">Main Navigation</li>
       <li>
         <%= link_to superadmin_users_path do %>
-          <%= fa_icon "users" %>
+          <%= fa_icon "user" %>
           <span>Usuarios</span>
           <span class="label label-primary float-right"><%= @users.count %></span>
         <% end %>
@@ -93,12 +93,20 @@
         <% end %>
       </li>
       <li>
+        <%= link_to superadmin_suscriptors_path do %>
+          <%= fa_icon "users" %>
+          <span>Suscriptores</span>
+          <span class="label label-danger float-right"><%= @suscriptors.count %></span>
+        <% end %>
+      </li>
+      <li>
         <%= link_to superadmin_creditos_edit_path do %>
           <%= fa_icon "university" %>
           <span>Créditos</span>
           <span class="label label-danger float-right">*</span>
         <% end %>
       </li>
+
       <li>
         <%= link_to superadmin_configs_path do %>
           <%= fa_icon "cogs" %>

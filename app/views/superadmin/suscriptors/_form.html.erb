@@ -1,0 +1,19 @@
+<%= simple_form_for [:superadmin, @suscriptor], html: {multipart: true}  do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p><%= f.input :email %></p>
+    <p><%= f.input :email_confirmation %></p>
+
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+      <p><%#= f.file_field :fotospunto, id: "enviar", multiple: true %></p>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <p><%= f.button :submit, class: "btn btn-primary" %></p>
+  </div>
+<% end %>

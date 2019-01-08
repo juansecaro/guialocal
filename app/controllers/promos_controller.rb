@@ -83,6 +83,7 @@ class PromosController < ApplicationController
   def show
     flash.now[:notice] = "Enséñale esto al comerciante para obtener tu descuento"
     @waiting = (@promo.validez - Time.zone.now).to_i
+    #@saving = ((@promo.normal_price - @promo.special_price)/@promo.normal_price)*100
 
     titulo ||= "Oferta flash: " + @promo.titulo
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
