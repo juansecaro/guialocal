@@ -33,7 +33,7 @@
         <td><%= time_format_mini(suscriptor.updated_at) %></td>
 
         <td class="text-center">
-          <%= link_to edit_superadmin_suscriptor_path suscriptor do %>
+          <%= link_to edit_superadmin_suscriptor_path(suscriptor) do %>
             <%= fa_icon "edit" %>
           <% end %>
         </td>
