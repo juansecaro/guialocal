@@ -21,7 +21,7 @@
         </p>
         <h5 class="card-title"><%= link_to(evento.titulo, evento_path(evento)) %></h5>
         <p class="card-text"><%= Nokogiri::HTML(evento.info).text.truncate(150, separator: ' ') %></p>
-        <%= link_to image_tag(evento.imgevento, class: "card-img-bottom img-fluid", alt: evento.titulo), evento_path(evento) if evento.imgevento? %>
+        <%= link_to image_tag(evento.imgevento.thumb.url, class: "card-img-bottom img-fluid", alt: evento.titulo), evento_path(evento) if evento.imgevento? %>
       </div>
     </div>
   <% end %>
