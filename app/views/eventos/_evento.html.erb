@@ -1,11 +1,11 @@
 <%= link_to evento_path(evento) do %>
   <div class="row">
     <div class="col-4">
-      <%= image_tag (evento.imgevento.url), class: "img-thumbnail img-fluid fotos" unless evento.imgevento.blank? %>
+      <%= image_tag (evento.imgevento.thumb.url), class: "img-thumbnail img-fluid fotos" unless evento.imgevento.blank? %>
     </div>
     <div class="col-8">
           <p><h6>
-              <%= evento.titulo %> 
+              <%= evento.titulo %>
              <span class="date_cal">| <%= evento.fecha.day %> <%=  I18n.l(evento.fecha, format: "%B") %></span>
             </h6></p>
           <small class="event-text"> <%= Nokogiri::HTML(evento.info).text.truncate(120, separator: ' ') %></small>
