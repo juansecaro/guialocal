@@ -7,15 +7,12 @@
 
 
       <% if @promo.empresa.try(:present?) %>
-        <% if @promo.empresa.logo? %>
-          <%= link_to(image_tag(@promo.empresa.logo.url, class: "img-fluid"), empresa_path(@promo.empresa)) if @promo.empresa.logo? %>
-        <% else %>
           <div class="text-center">
-            <p class="h3"><span class="text-muted"><del><%= @promo.normal_price if @promo.normal_price %></del></span>
-               <span class="font-weight-bold text-danger"><%= @promo.special_price if @promo.special_price %></span> (-20%)</p>
+            <p class="h3"><span class="text-muted"><del><%= number_to_currency(@promo.normal_price, precision: 2, locale: :es) if @promo.normal_price %></del></span>
+               <span class="font-weight-bold text-danger"><%= number_to_currency(@promo.special_price, precision: 2, locale: :es) if @promo.special_price %></span>
+               <span><%= discount(@promo) %></span></p>
             <small class="text-muted">Empresa: <%= link_to @promo.empresa.name, empresa_path(@promo.empresa) %></small>
           </div>
-        <% end %>
       <% end %>
     </div>
 

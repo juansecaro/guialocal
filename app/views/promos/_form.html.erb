@@ -34,6 +34,21 @@
       </p>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <p>
+    <%= f.label(:normal, "Precio normal") %> </br>
+    <%= f.number_field(:normal_price, step: 0.05) %>
+    </p>
+
+    <p>
+    <%= f.label(:rebajado, "Precio rebajado") %></br>
+    <%= f.number_field(:special_price, step: 0.05) %>
+    </p>
+  </div>
+
+</div>
+
 
 
     <p>

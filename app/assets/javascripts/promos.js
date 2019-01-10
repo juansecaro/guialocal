@@ -73,12 +73,10 @@ function isMobile() {
 if (isMobile()){
   $(".pc_buttons").hide();
   $(".mobile_buttons").show();
-  console.log("isMobile");
 }
 else {
   $(".pc_buttons").show();
   $(".mobile_buttons").hide();
-  console.log("isNotMobile");
 }
 
 });
