@@ -1,5 +1,23 @@
 $(document).on('turbolinks:load', function () {
 
+
+  $(function() { //shorthand document.ready function
+    $('#new_promo').on('submit', function(e) {
+
+      var normal = $('#promo_normal_price').val();
+      var special = $('#promo_special_price').val();
+
+      // if (normal > special) {
+      //   this.submit();
+      // } else {
+      //   alert("El precio rebajado debe ser menor que el original");
+      //   e.preventDefault();
+      // }
+
+    });
+});
+
+
   var plan = $('#plan').val();
   var waiting = $('#waiting').val();
 

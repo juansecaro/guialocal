@@ -26,7 +26,6 @@
 
 $(document).on('turbolinks:load', function () {
 	document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
-	console.log('loaded')
 });
 
 
@@ -62,7 +61,6 @@ Reasons to get rid of turbolinks count: 1
   var fbRoot;
 
   function saveFacebookRoot() {
-  	console.log('holi')
     if ($('#fb-root').length) {
       fbRoot = $('#fb-root').detach();
     }
