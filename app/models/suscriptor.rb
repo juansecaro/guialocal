@@ -1,4 +1,6 @@
 class Suscriptor < ApplicationRecord
+  belongs_to :empresa, optional: true
+
   before_create :confirmation_token
   attr_accessor :subtitle
 

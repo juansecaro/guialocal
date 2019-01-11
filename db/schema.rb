@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190106081122) do
+ActiveRecord::Schema.define(version: 20190111121354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(version: 20190106081122) do
     t.string   "token_confirmation"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "empresa_id"
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/ocio', to: 'info#ocio'
   get '/mercadillo-digital', to: 'suscriptors#new'
   get '/guiaturistico', to: 'info#guiaturistico'
+  get '/salon-de-la-fama', to: 'info#salon_de_la_fama'
   get '/publica', to: 'info#publica'
   get '/novedades', to: 'info#novedades'
   get '/publicitate', to: 'info#publicitate'

@@ -26,13 +26,14 @@
               <%= f.input :email, class: "form-control", placeholder: "tucorreo@email.com", required: true %>
               <%= f.invisible_captcha :subtitle %>
               <small id="emailHelp" class="form-text text-muted">Lo guardaremos y usaremos con cuidado.</small>
+
+              <%= f.input :empresa_id, collection: Empresa.all %>
             </div>
 
 
             <div class="input-group-append">
               <%= f.submit "¡Hecho!", class: "btn btn-primary" %>
             </div>
-
           </div>
         <% end %>
 

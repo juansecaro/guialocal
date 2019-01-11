@@ -40,6 +40,10 @@ class InfoController < ApplicationController
     render "cities/#{@city}/agradecimientos.html.erb"
   end
 
+  def salon_de_la_fama
+    render "cities/#{@city}/salon_de_la_fama.html.erb"
+  end
+
   def comparativa_promociones
 
   end

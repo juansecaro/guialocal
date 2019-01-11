@@ -11,7 +11,14 @@ class SuscriptorsController < ApplicationController
       flash[:error] = "El email debe ser válido"
       render 'new'
     else
-      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email)
+      @suscriptor = Suscriptor.find_or_create_by(email: @suscriptor.email) do |suscriptor|
+        empresa_id = suscriptor_params[:empresa_id].to_i
+        if (empresa_id == 0)
+          suscriptor.empresa_id = nil
+        else
+          suscriptor.empresa_id = empresa_id
+        end
+      end
       if @suscriptor.persisted?
         if (@suscriptor.email_confirmation == true)
           flash[:notice] = "Ya estás registrado/a"
@@ -57,7 +64,7 @@ class SuscriptorsController < ApplicationController
 
   private
   def suscriptor_params
-    params.require(:suscriptor).permit(:email, :email_confirmation, :token_confirmation, :subtitle)
+    params.require(:suscriptor).permit(:email, :email_confirmation, :token_confirmation, :subtitle, :empresa_id)
   end
 
   def spam_received
