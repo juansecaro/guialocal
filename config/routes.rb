@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/historia', to: 'info#historia'
   get '/turismo', to: 'info#turismo'
   get '/turismoactivo', to: 'info#turismoactivo'
+  get '/informacion_prepromo', to: 'info#prepromo'
+  get '/informacion_postpromo', to: 'info#postpromo'
   get '/alojamiento', to: 'info#alojamiento'
   get '/gastronomia', to: 'info#gastronomia'
   get '/naturaleza', to: 'info#naturaleza'

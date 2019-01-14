@@ -1,1 +1,30 @@
-EE
+<h1>Salón de la fama</h1>
+
+<p>
+<h3></h3>
+</p>
+
+
+
+
+
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th class="text-center">Empresa</th>
+      <th class="text-center">Amigos</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= @index.each do |k,v|%>
+      <tr>
+        <td class="text-center"><%= Empresa.find_by_id(k).try(:name) %></td> 
+        <td class="text-center"><%= v %></td>
+
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
