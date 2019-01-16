@@ -1,7 +1,7 @@
 <h1>Salón de la fama</h1>
 
 <p>
-<h3></h3>
+<h3>En el Salón de la Fama puedes ver todos los amigos que cada empresa ha conseguido reunir en su apoyo.</h3>
 </p>
 
 
@@ -13,15 +13,17 @@
     <tr>
       <th class="text-center">Empresa</th>
       <th class="text-center">Amigos</th>
+      <th class="text-center">% del total</th>
 
     </tr>
   </thead>
 
   <tbody>
-    <%= @index.each do |k,v|%>
+    <% @index.each do |k,v|%>
       <tr>
-        <td class="text-center"><%= Empresa.find_by_id(k).try(:name) %></td> 
+        <td class="text-center"><%= Empresa.find_by_id(k).try(:name) %></td>
         <td class="text-center"><%= v %></td>
+        <td class="text-center"><%= (v*100)/@empresas.count %>%</td>
 
       </tr>
 

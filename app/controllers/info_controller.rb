@@ -43,14 +43,13 @@ class InfoController < ApplicationController
   def salon_de_la_fama
     # We get all the suscriptor's references removing those who hasn't one
     suscriptors = Suscriptor.where.not(empresa_id: [nil,0]).where(email_confirmation: true)
-    empresas = []
+    @empresas = []
     # We push each reference in an array as a Empresa_id
     suscriptors.each do |s|
-      empresas.push(s.empresa_id)
+      @empresas.push(s.empresa_id)
     end
     # We count the times each Empresa is refered, and show it ordered by the highest
-    @index = empresas.group_by(&:itself).transform_values(&:count).sort_by {|k,v| v}.reverse
-    render "cities/#{@city}/salon_de_la_fama.html.erb"
+    @index = @empresas.group_by(&:itself).transform_values(&:count).sort_by {|k,v| v}.reverse
   end
 
   def comparativa_promociones
@@ -58,9 +57,6 @@ class InfoController < ApplicationController
   end
 
   def prepromo
-  end
-
-  def postpromo
   end
 
   def publica
