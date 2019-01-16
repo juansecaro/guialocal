@@ -25,7 +25,7 @@
             <div class="form-group text">
               <%= f.input :email, class: "form-control", placeholder: "tucorreo@email.com", required: true %>
               <%= f.invisible_captcha :subtitle %>
-              <small id="emailHelp" class="form-text text-muted">Lo guardaremos y usaremos con cuidado.</small>
+              <small id="emailHelp" class="form-text text-muted">¿Tienes una empresa amiga? (Opcional)</small>
 
               <%= f.input :empresa_id, collection: Empresa.all %>
             </div>
