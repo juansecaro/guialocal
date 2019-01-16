@@ -27,7 +27,7 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   #
   # def scale(width, height)
   #   # do something
-  # end
+  # endl
   process resize_to_fit: [900, 900]
 
   version :thumb do
@@ -46,7 +46,7 @@ class ImgpromoUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..2.megabytes
+    0..10.megabytes
   end
 
   # Override the filename of the uploaded files:
