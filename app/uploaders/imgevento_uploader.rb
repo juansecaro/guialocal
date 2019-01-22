@@ -50,7 +50,7 @@ class ImgeventoUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..0.5.megabytes
+    0..10.megabytes
   end
 
   # Override the filename of the uploaded files:
