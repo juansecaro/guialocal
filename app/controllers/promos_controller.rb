@@ -78,6 +78,32 @@ class PromosController < ApplicationController
 
   def index
     @promos = Promo.todas_diez_dias.paginate(page: params[:page], per_page: 20)
+
+    titulo ||= "Ofertas flash semanales"
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
+    info = "Las mejores promociones y ofertas de la empresa local"
+
+    set_meta_tags title: titulo,
+                site: site,
+                reverse: true,
+                description: info,
+                keywords: titulo,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: titulo + " | " + site,
+                  description:  info,
+                  image: "#{$url_base}/cities/#{@city}/logo.jpg"
+                },
+
+                og: {
+                  title:    titulo + " | " + site,
+                  description: info,
+                  type:     'article',
+                  url:      ofertas_y_promociones_url,
+                  image:    "#{$url_base}/cities/#{@city}/logo.jpg"
+                }
   end
 
   def show

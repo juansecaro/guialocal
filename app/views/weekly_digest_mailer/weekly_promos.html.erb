@@ -29,7 +29,7 @@
 
         <td width="25%">
           <%= link_to promo_url(promo) do %>
-          <p><%= image_tag (promo.imgpromo.url),
+          <p><%= image_tag (promo.imgpromo.thumb.url),
           style:"outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" unless promo.imgpromo.blank? %></p>
           <% end %>
         </td>
