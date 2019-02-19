@@ -5,7 +5,7 @@ SitemapGenerator::Sitemap.create do
 
   add '/mapas', :priority => 1, :changefreq => 'yearly'
   add '/mercadillo-digital', :priority => 1, :changefreq => 'yearly'
-  add '/ofertas_y_promociones', :priority => 1, :changefreq => 'daily'
+  add '/ofertas-y-promociones', :priority => 1, :changefreq => 'daily'
   add '/salon-de-la-fama', :priority => 1, :changefreq => 'weekly'
   add '/empresas-ordenadas', :priority => 0.5, :changefreq => 'never'
   add '/historia', :priority => 1, :changefreq => 'yearly'
