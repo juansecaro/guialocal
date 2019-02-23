@@ -1,8 +1,13 @@
+<div data-controller="map">
+
+
 <div class="row">
   <div class="col-md-12">
-    <!-- <p><img name="budgetmap" src="images/ex1.gif" usemap="#m_budgetmap" border="0" height="383" width="600"></p> -->
+    <div data-target="facebook.resize"></div>
     <%= image_tag @map.imgsrc.url, class: "img-fluid mx-auto d-block", alt: "Mapa interactivo de Llerena y la Campiña Sur", name: "painted_map", usemap: "#painted_map" unless @map.nil? %>
   </div>
 </div>
 <!--  HTML Mapping-->
 <%= raw @map.try(:body) %>
+
+</div>

@@ -1,13 +1,15 @@
 
 <p>
 <div class="row" data-turbolinks="false">
+
   <div class="col-md-12 text-center">
     <!-- Load Facebook SDK for JavaScript -->
-      <div id="fb-root"></div>
-
+        <div id="fb-root"></div>
       <!-- Your like button code -->
 
-      <div class="fb-like"
+      <div
+      data-target="facebook.fbbutton"
+      class="fb-like"
       data-href="https://www.facebook.com/guiallerena"
       data-width="200"
       data-layout="standard"
@@ -15,5 +17,9 @@
       data-show-faces="true"
       data-share="false"></div>
 
+  </div>
+
+  <div data-controller="facebook">
+    <div data-target="facebook.button" type="text"></div>
   </div>
 </p>
