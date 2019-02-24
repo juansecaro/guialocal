@@ -1,4 +1,6 @@
 
+
+
   <div class="row" id="cabecero">
 
       <div class="col-md-4">
@@ -107,17 +109,17 @@
 
 </div>
 
-
-
+<div data-controller="zoom">
 <% if @empresa.fotos.any? %>
 <p><h2 class="text-center"><b>Y porque una imagen vale más que mil palabras</b></h2></p>
 <p>
   <div class="row">
     <% @empresa.fotos.each do |foto| %>
-      <div class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items") %></div>
+      <div data-target="zoom.pictures" class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items", alt: @empresa.name) %></div>
     <% end %>
   </div>
 <% end %>
+</div>
 </p>
 
 <% if @empresa.video? %>

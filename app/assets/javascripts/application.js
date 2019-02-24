@@ -27,8 +27,3 @@
 $(document).on('turbolinks:load', function () {
 	document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
 });
-
-
-// $(document).on('turbolinks:load', function () {
-// 	imageMapResize();
-// });

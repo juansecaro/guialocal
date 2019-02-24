@@ -78,12 +78,12 @@ function num_words(str){
   return strResult.length;
 }
 
-$(function () {
-    var viewer = ImageViewer();
-    $('.gallery-items').click(function () {
-        var imgSrc = this.src,
-            highResolutionImage = $(this).data('high-res-img');
+// $(function () {
+//     var viewer = ImageViewer();
+//     $('.gallery-items').click(function () {
+//         var imgSrc = this.src,
+//             highResolutionImage = $(this).data('high-res-img');
 
-        viewer.show(imgSrc, highResolutionImage);
-    });
-});
+//         viewer.show(imgSrc, highResolutionImage);
+//     });
+// });
