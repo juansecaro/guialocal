@@ -1,10 +1,8 @@
 {
-  "application.js": "/packs/application-276ffac20c69f9d6540b.js",
-  "application.js.map": "/packs/application-276ffac20c69f9d6540b.js.map",
-  "controllers/facebook_controller.js": "/packs/controllers/facebook_controller-c50c15e83c8a042b93b1.js",
-  "controllers/facebook_controller.js.map": "/packs/controllers/facebook_controller-c50c15e83c8a042b93b1.js.map",
-  "controllers/map_controller.js": "/packs/controllers/map_controller-1cec855d6cbd2a85094f.js",
-  "controllers/map_controller.js.map": "/packs/controllers/map_controller-1cec855d6cbd2a85094f.js.map",
-  "controllers/zoom_controller.js": "/packs/controllers/zoom_controller-a3e294219202e6380fc5.js",
-  "controllers/zoom_controller.js.map": "/packs/controllers/zoom_controller-a3e294219202e6380fc5.js.map"
+  "application.js": "/packs/application-ccc50c55e152d617ac5a.js",
+  "application.js.map": "/packs/application-ccc50c55e152d617ac5a.js.map",
+  "controllers/map_controller.js": "/packs/controllers/map_controller-a6834542bb8ecfed28fa.js",
+  "controllers/map_controller.js.map": "/packs/controllers/map_controller-a6834542bb8ecfed28fa.js.map",
+  "controllers/zoom_controller.js": "/packs/controllers/zoom_controller-581b358d34305720d22e.js",
+  "controllers/zoom_controller.js.map": "/packs/controllers/zoom_controller-581b358d34305720d22e.js.map"
 }
