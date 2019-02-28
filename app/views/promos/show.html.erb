@@ -1,7 +1,7 @@
+
 <%= hidden_field_tag 'waiting', @waiting %>
   <div class="row">
     <div class="col-md-3">
-
       <div data-controller="zoom">
         <div data-target="zoom.pictures">
           <%= image_tag @promo.imgpromo, class: "img-fluid img-thumbnail fotos gallery-items" if @promo.imgpromo? %>
