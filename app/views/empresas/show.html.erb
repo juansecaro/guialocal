@@ -1,8 +1,7 @@
-
-
+<%= hidden_field_tag 'mlat', @empresa.mlat %>
+<%= hidden_field_tag 'mlon', @empresa.mlon %>
 
   <div class="row" id="cabecero">
-
       <div class="col-md-4">
         <%= image_tag (@empresa.logo.url), class: "img-fluid" unless @empresa.logo.blank? %>
       </div>
@@ -16,8 +15,6 @@
 
       </div>
   </div>
-
-
 
 <div class="row">
   <div class="col-md-6">
@@ -71,16 +68,10 @@
   </div>
 <!-- -->
   <div class="col-md-6">
-    <div id="map" data-turbolinks="false">
-      <iframe
-        width="100%"
-        height="450"
-        frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKVHaq85J1cJcT1nZjehdz85Ha3iIs5IY
-          &q=<%=@empresa.mlat%>,<%=@empresa.mlon%>&zoom=16&language=es" allowfullscreen>
-      </iframe>
+      <div id="map">
 
-    </div>
+
+      </div>
   </div>
 </div>
 

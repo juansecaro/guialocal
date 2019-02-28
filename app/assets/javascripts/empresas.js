@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).ready(function() {
 
   $('.timepicker').timepicker({
     scrollDefault: '10:00',

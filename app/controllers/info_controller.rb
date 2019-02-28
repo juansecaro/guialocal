@@ -56,9 +56,6 @@ class InfoController < ApplicationController
 
   end
 
-  def prepromo
-  end
-
   def publica
 
   end

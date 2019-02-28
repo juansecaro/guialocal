@@ -62,7 +62,8 @@
       </p>
 
       <% if @waiting > 0%>
-          <div id="clockdiv" class="mx-autdo d-block">
+        <div data-controller="clock">
+          <div id="clockdiv" class="mx-autdo d-block" data-target="clock.display">
             <div>
               <span class="days"></span>
               <div class="smalltext">Días</div>
@@ -80,6 +81,7 @@
               <div class="smalltext">Segundos</div>
             </div>
           </div>
+        </div>
 
           <% end %>
         </div>

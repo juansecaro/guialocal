@@ -19,11 +19,10 @@
 //= require imageviewer
 //= require imagemap
 //= require charactercount
-//= require turbolinks
 //= require trix
 //= require_tree .
 
 
-$(document).on('turbolinks:load', function () {
+$(document).ready(function() {
 	document.getElementById('capital_city').innerHTML = document.getElementById('city_name').value;
 });
