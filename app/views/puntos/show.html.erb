@@ -9,15 +9,9 @@
 </div>
     <% if @punto.fotospunto.any? %>
       <div class="row">
-        <div data-controller="zoom">
-          <div data-target="zoom.pictures">
-          <div class="col-md-4">
-            <% @punto.fotospunto.each do |foto| %>
-              <%= image_tag(foto.url, class: "img-fluid fotos gallery-items", alt: @punto.title ) %>
-            <% end %>
-          </div>
-        </div>
-        </div>
+          <% @punto.fotospunto.each do |foto| %>
+            <div class="col-md-4" data-controller="zoom"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items", 'data-target':'zoom.pictures', alt: @punto.title ) %></div>
+          <% end %>
       </div>
     <% end %>
   </p>
