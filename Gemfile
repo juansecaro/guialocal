@@ -60,7 +60,6 @@ gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'fog', '~> 2.0'
 gem 'whenever', :require => false
-gem 'google-analytics-rails', '~> 1.1', '>= 1.1.1'
 
 
 
