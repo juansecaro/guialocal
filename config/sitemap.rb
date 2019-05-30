@@ -11,6 +11,7 @@ SitemapGenerator::Sitemap.create do
   add '/historia', :priority => 1, :changefreq => 'yearly'
   add '/turismo', :priority => 1, :changefreq => 'yearly'
   add '/alojamiento', :priority => 1, :changefreq => 'yearly'
+  add '/gastronomia', :priority => 1, :changefreq => 'yearly'
   add '/naturaleza', :priority => 1, :changefreq => 'yearly'
   add '/ocio', :priority => 1, :changefreq => 'yearly'
   add '/publicitate', :priority => 1, :changefreq => 'yearly'

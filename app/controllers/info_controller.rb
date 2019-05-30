@@ -21,6 +21,31 @@ class InfoController < ApplicationController
   end
 
   def gastronomia
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
+    desc = "Guía gastronómica de #{ENV['CURRENT_CITY_CAP']}. Para comer bien, para disfrutar comiendo."
+    @city = helpers.current_city
+
+    set_meta_tags title: desc,
+                site: site,
+                reverse: true,
+                description: desc + " | " + site,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: desc,
+                  description:  desc + " | " + site,
+                  image: "#{$url_base}/cities/#{@city}/logo.jpg"
+                },
+
+                og: {
+                  title:    site,
+                  description: desc,
+                  type:     'website',
+                  url:      root_url,
+                  image:    "#{$url_base}/cities/#{@city}/logo.jpg"
+                }
+
     render "cities/#{@city}/gastronomia.html.erb"
   end
 
