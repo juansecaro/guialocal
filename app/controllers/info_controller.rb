@@ -42,7 +42,7 @@ class InfoController < ApplicationController
                   title:    site,
                   description: desc,
                   type:     'website',
-                  url:      root_url,
+                  url:      "#{root_url}/gastronomia",
                   image:    "#{$url_base}/cities/#{@city}/logo.jpg"
                 }
 
