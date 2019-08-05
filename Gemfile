@@ -57,6 +57,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-yarn'
+gem 'capistrano-nvm', require: false
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'fog', '~> 2.0'
 gem 'whenever', :require => false

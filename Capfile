@@ -36,7 +36,8 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/passenger"
 require 'capistrano/rails'
 require 'capistrano/passenger'
-
+require 'capistrano/nvm'
+require 'capistrano/yarn'
 require "whenever/capistrano"
 require 'capistrano/sitemap_generator'
 
