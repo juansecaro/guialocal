@@ -60,7 +60,7 @@ gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-yarn'
 #gem 'capistrano-nvm', require: false
-gem 'fog', '~> 2.0'
+gem 'fog-aws', '~> 0.7.6'
 gem 'whenever', :require => false
 
 
