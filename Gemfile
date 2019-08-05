@@ -47,7 +47,6 @@ gem 'invisible_captcha', '~> 0.12.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -60,7 +59,7 @@ gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-yarn'
 #gem 'capistrano-nvm', require: false
-gem 'fog-aws', '~> 0.7.6'
+gem 'fog', '~> 2.2'
 gem 'whenever', :require => false
 
 
