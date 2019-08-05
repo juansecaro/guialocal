@@ -1,9 +1,15 @@
 {
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "stimulus": "^1.1.1"
+    "stimulus": "^1.1.1",
+    "snyk": "^1.210.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
