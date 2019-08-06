@@ -143,12 +143,7 @@
       <% end %>
 
     </ul>
-    <%= form_tag empresas_path, class: "form-inline my-2 my-lg-0", method: :get do %>
-      <div class="form-group">
-        <%= text_field_tag :query, params[:query], placeholder: "Ej. Peluquero hombre", autofocus: true, class: "form-control mr-sm-2" %>
-      </div>
-      <%= submit_tag "Buscar", class: "btn n btn-outline-light my-2 my-sm-0" %>
-    <% end %>
+
 
     <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Ej. Peluquero hombre" aria-label="Search">

@@ -2,7 +2,6 @@ class Empresa < ApplicationRecord
 
   before_destroy :clean_s3, prepend: true
 
-  searchkick
   extend FriendlyId
   friendly_id :name, use: :slugged
 

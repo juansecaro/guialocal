@@ -8,12 +8,7 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-      if params[:query].present?
-        @empresas = Empresa.search(params[:query], page: params[:page], per_page: 20)
-         # ajustar a :noplan
-      else
-        @empresas = Empresa.where.not(plan: :noplan).order(name: :asc).paginate(page: params[:page], per_page: 20)
-      end
+    @empresas = Empresa.where.not(plan: :noplan).order(name: :asc).paginate(page: params[:page], per_page: 20)
   end
 
   def home

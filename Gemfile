@@ -24,7 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'awesome_print', '~> 1.7', :require => 'ap'
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
-gem 'searchkick', '~> 3.1'
+#gem 'searchkick', '~> 3.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'font_awesome5_rails', '~> 0.3.4'
 gem 'simple_form', '~> 3.5'
