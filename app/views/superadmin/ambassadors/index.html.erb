@@ -1,0 +1,36 @@
+<header>
+  <h1>Embajadores</h1>
+<% superadmins_only do %>
+  <ul class="actions">
+    <li><%= link_to "Nuevo embajador", new_superadmin_ambassador_path, class: "new" %></li>
+  </ul>
+<% end %>
+</header>
+
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Idioma</th>
+      <th colspan="3"></th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <% @ambassadors.each do |ambassador| %>
+      <tr>
+        <td><%= ambassador.name %></td>
+        <td><%= ambassador.country %></td>
+        <td><%= ambassador.language %></td>
+        <td>
+          <%= link_to "Ver", ambassador_path(ambassador) %> |
+          <%= link_to "Editar", edit_superadmin_ambassador_path(ambassador) %> |
+          <%= link_to "Borrar", superadmin_ambassador_path(ambassador), method: :delete, data: {confirm: "¿Estás seguro de que quieres borrarlo?"} %>
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

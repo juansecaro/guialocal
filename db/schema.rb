@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190111121354) do
+ActiveRecord::Schema.define(version: 20190823200918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,25 @@ ActiveRecord::Schema.define(version: 20190111121354) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
+
+  create_table "ambassadors", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "picture"
+    t.integer "country"
+    t.integer "language"
+    t.string "bio_original"
+    t.string "bio_english"
+    t.string "bio_native"
+    t.text "review_original"
+    t.text "review_english"
+    t.text "review_native"
+    t.string "video_interview"
+    t.string "video_testimonial"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_ambassadors_on_slug", unique: true
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|

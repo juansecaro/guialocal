@@ -1,0 +1,77 @@
+
+
+
+<% provide(:title, @ambassador.name) %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="text-center">
+      <div class="display-4">
+        <p>Nuestros embajadores internacionales<p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group float-right" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary active">Spanish</button>
+      <%= link_to  "English", "/ambassadors/#{@ambassador.slug}/english", class: "btn btn-secondary" %>
+      <% if @ambassador.language != "english" %>
+      <%= link_to @ambassador.language.capitalize, "/ambassadors/#{@ambassador.slug}/#{@ambassador.language}", class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+      <%= image_tag @ambassador.picture, alt: @ambassador.name + " from " +  @ambassador.country.capitalize, class: "img-fluid img-thumbnail" unless @ambassador.picture.blank?  %>
+  </div>
+
+  <div class="col-md-8">
+    <div class="">
+        <p>
+
+          <h1>
+            <%= @ambassador.name %>
+          </h1>
+        </p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>Desde <%= country_to_spanish(@ambassador.country)%> <%= image_tag country_flag(@ambassador.country), class: "img-fluid", size: 25 %></p>
+        <p class="lead"><%= @ambassador.bio_original %><p>
+        <p class="text-muted">Una experiencia vivida con:  <%= link_to "", ambassador_path()%><p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-center h2">Su historia en Llerena</p>
+    <p><%= simple_format(@ambassador.review_original) %></p>
+    <p class="text-center h2">Lo que nos contó en su entrevista</p>
+    <p>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="<%= @ambassador.video_interview %>" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </p>
+    <p class="text-center h2">Y ya que has llegado hasta aquí...</p>
+
+    <p>
+
+    </p>
+
+  </div>
+
+<div class="row">
+
+</div>

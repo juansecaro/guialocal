@@ -1,0 +1,9 @@
+<h2>Embajadores</h2>
+
+<div class="card-desk">
+
+ <% @ambassadors.each do |ambassador| %>
+   <p><%= link_to ambassador.name, ambassador_path(ambassador) %></p>
+ <% end %>
+
+</div>

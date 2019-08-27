@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'empresas#home'
   get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/comparativa-promociones', to: 'info#comparativa_promociones'
   get '/gesteventos', to: 'eventos#editor_index'
+  get '/ambassadors/:name/english', to: 'ambassadors#english'
+  get '/ambassadors/:name/:language', to: 'ambassadors#native'
 
 
   devise_for :users, controllers: {
@@ -46,6 +49,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :promos, only: [:show, :new, :create]
   resources :achievement_proposals, only: :show
+  resources :ambassadors, only: [:index, :show]
 
   resources :suscriptors do
     member do
@@ -70,6 +74,7 @@ Rails.application.routes.draw do
     resources :achievement_proposals
     resources :categories, except: [:show]
     resources :tags, only: [:index, :show, :destroy]
+    resources :ambassadors
     resources :incidents do
       resources :comments
     end

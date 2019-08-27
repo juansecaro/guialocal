@@ -1,0 +1,33 @@
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= simple_form_for([:superadmin, ambassador]) do |f| %>
+
+      <%= f.input :name, label: "Nombre" %>
+
+      <%= f.label :Fotografía_de_perfil%>
+      <%= f.input :picture, as: :file, label: false %>
+      <p>
+      <%= f.label :País %> </br>
+      <%= f.select :country, Ambassador.countries.keys %>
+      </p>
+      <p>
+      <%= f.label :Idioma %> </br>
+      <%= f.select :language, Ambassador.languages.keys %>
+      </p>
+      <%= f.input :bio_original %>
+      <%= f.input :bio_english %>
+      <%= f.input :bio_native %>
+
+      <%= f.input :review_original %>
+      <%= f.input :review_english %>
+      <%= f.input :review_native %>
+
+      <%= f.input :video_interview %>
+      <%= f.input :video_testimonial %>
+
+      <%= f.button :submit, class: "btn btn-primary"  %>
+
+    <% end %>
+  </div>
+</div>
