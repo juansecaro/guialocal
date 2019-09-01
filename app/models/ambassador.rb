@@ -1,4 +1,6 @@
 class Ambassador < ApplicationRecord
+
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -8,5 +10,6 @@ class Ambassador < ApplicationRecord
      :italian, :lithuanian, :macedonian, :polish, :romanian, :serbian, :slovene]
 
   mount_uploader :picture, ImgambassadorUploader
+  mount_uploaders :gallery, AmbassadorGalleryUploader
 
 end
