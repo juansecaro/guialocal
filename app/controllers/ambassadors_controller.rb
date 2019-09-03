@@ -12,7 +12,7 @@ class AmbassadorsController < ApplicationController
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     info = "Embajadores sin fronteras"
 
-    set_meta_tags title: @ambassador.picture.url ,
+    set_meta_tags title: titulo,
                 site: site,
                 reverse: true,
                 description: info,

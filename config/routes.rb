@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'pantalla/index'
+
   root 'empresas#home'
   get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'

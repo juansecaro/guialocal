@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20190901014340) do
     t.string "partner_name"
     t.string "partner_profile"
     t.json "gallery"
+    t.integer "gender"
     t.index ["slug"], name: "index_ambassadors_on_slug", unique: true
   end
 

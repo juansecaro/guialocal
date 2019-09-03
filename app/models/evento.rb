@@ -34,7 +34,6 @@ class Evento < ApplicationRecord
     enlaces = enlaces.uniq
 
     enlaces.each do |enlace|
-      byebug
       url = open(URI.parse(enlace))
       page = Nokogiri::HTML(url)
       title = page.css('h1').text

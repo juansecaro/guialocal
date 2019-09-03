@@ -15,13 +15,28 @@
       <%= f.label :Idioma %> </br>
       <%= f.select :language, Ambassador.languages.keys %>
       </p>
+      <p>
+      <%= f.label :Sexo %> </br>
+      <%= f.select :gender, Ambassador.genders.keys %>
+      </p>
+
+
       <%= f.input :bio_original %>
       <%= f.input :bio_english %>
       <%= f.input :bio_native %>
 
-      <%= f.input :review_original %>
-      <%= f.input :review_english %>
-      <%= f.input :review_native %>
+      <p>
+      <%= f.label :Reseña_Español %> </br>
+      <%= f.trix_editor :review_original %>
+      </p>
+      <p>
+      <%= f.label :Reseña_Inglés %> </br>
+      <%= f.trix_editor :review_english %>
+      </p>
+      <p>
+      <%= f.label :Reseña_nativa %> </br>
+      <%= f.trix_editor :review_native %>
+      </p>
 
       <%= f.input :partner_name %>
       <%= f.input :partner_profile %>

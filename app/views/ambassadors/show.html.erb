@@ -42,7 +42,7 @@
       <div class="col-md-10">
         <p>Desde <%= country_to_spanish(@ambassador.country)%> <%= image_tag country_flag(@ambassador.country), class: "img-fluid", size: 25 %></p>
         <p class="lead"><%= @ambassador.bio_original %><p>
-        <% if @ambassador.partner_name && @ambassador.partner_profile %>
+        <% if @ambassador.partner_name != "" || @ambassador.partner_profile != "" %>
         <p class="text-muted">Una experiencia narrada con:  <%= link_to @ambassador.partner_name, @ambassador.partner_profile %><p>
         <% end %>
 
@@ -71,7 +71,7 @@
       <p>
         <div class="row">
           <% @ambassador.gallery.each do |foto| %>
-            <div data-target="zoom.pictures" class="col-md-4"><%= image_tag(foto.url, class: "img-fluid fotos gallery-items", alt: @ambassador.name) %></div>
+            <div data-target="zoom.pictures" class="col-md-4"><%= image_tag(foto.url, class: "img-fluid img-flex fotos gallery-items", alt: @ambassador.name) %></div>
           <% end %>
         </div>
 
@@ -84,9 +84,4 @@
 
     <%= render "cities/#{ENV["CURRENT_CITY"]}/recomendacion" %>
 
-
   </div>
-
-<div class="row">
-
-</div>

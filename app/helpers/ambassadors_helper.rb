@@ -93,5 +93,20 @@ module AmbassadorsHelper
     end
   end
 
+  def english_herhis(ambassador)
+    if ambassador.gender == "male"
+      "his"
+    else
+      "her"
+    end
+  end
+
+  def english_shehe(ambassador)
+    if ambassador.gender == "male"
+      "he"
+    else
+      "she"
+    end
+  end
 
 end
