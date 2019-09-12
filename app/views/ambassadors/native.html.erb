@@ -3,7 +3,7 @@
   <div class="col-md-12">
     <div class="text-center">
       <div class="display-4">
-        <p>Our native<p>
+        <p>Our international ambassadors<p>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
         <p>Desde <%= country_to_spanish(@ambassador.country)%> <%= image_tag country_flag(@ambassador.country), class: "img-fluid", size: 25 %></p>
         <p class="lead"><%= @ambassador.bio_original %><p>
         <% if @ambassador.partner_name && @ambassador.partner_profile %>
-        <p class="text-muted">Una experiencia narrada con:  <%= link_to @ambassador.partner_name, @ambassador.partner_profile %><p>
+          <p class="text-muted">An experience narrated with:  <%= link_to @ambassador.partner_name, @ambassador.partner_profile %><p>
         <% end %>
 
       </div>
@@ -55,16 +55,15 @@
 
 <div class="row">
   <div class="col-md-12">
-    <p class="text-center h2 my-3">Su historia en Llerena</p>
     <p><%= simple_format(@ambassador.review_original) %></p>
-    <p class="text-center h2 my-3">Lo que nos contó en su entrevista</p>
+    <p class="text-center h2 my-3">What <%= english_shehe(@ambassador) %> told us in the interview</p>
       <div class="embed-responsive embed-responsive-16by9">
         <p><iframe width="560" height="315" src="<%= @ambassador.video_interview %>" frameborder="0" allowfullscreen></iframe></p>
       </div>
 
     <% if @ambassador.gallery.any? %>
 
-    <p class="text-center h2 my-3">Algunas fotos de su experiencia</p>
+    <p class="text-center h2 my-3">A few pictures of <%= english_herhis(@ambassador) %> experience in Llerena</p>
 
       <div data-controller="zoom">
 
@@ -81,9 +80,9 @@
 
     <% end %>
 
-    <p class="text-center h2 my-3">Y ya que has llegado hasta aquí...</p>
+    <p class="text-center h2 my-3">And since you are still here...</p>
 
 
-    <%= render "cities/#{ENV["CURRENT_CITY"]}/recomendacion" %>
+    <%= render "cities/#{ENV["CURRENT_CITY"]}/recomendation" %>
 
   </div>
