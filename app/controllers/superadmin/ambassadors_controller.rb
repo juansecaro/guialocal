@@ -53,7 +53,7 @@ class Superadmin::AmbassadorsController < Superadmin::ApplicationController
   end
 
   def ambassador_params
-    params.require(:ambassador).permit(:name, :picture, :country, :language, :bio_original, :bio_english, :bio_native,
-       :review_original, :review_english, :review_native, :gender, :partner_name, :partner_profile, :video_interview, :video_testimonial,{gallery:[]})
+    params.require(:ambassador).permit(:name, :picture, :country, :language, :gender, :bio_original, :bio_english, :bio_native,
+       :review_original, :review_english, :review_native, :partner_name, :partner_profile, :video_interview, :video_testimonial,{gallery:[]})
   end
 end
