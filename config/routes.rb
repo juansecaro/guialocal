@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/comparativa-promociones', to: 'info#comparativa_promociones'
   get '/gesteventos', to: 'eventos#editor_index'
+  get '/ambassadors/list', to: 'ambassadors#list'
   get '/ambassadors/:name/english', to: 'ambassadors#english'
   get '/ambassadors/:name/:language', to: 'ambassadors#native'
 

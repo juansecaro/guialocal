@@ -4,6 +4,10 @@ class AmbassadorsController < ApplicationController
     @ambassadors = Ambassador.all
   end
 
+  def list # index in english
+    @ambassadors = Ambassador.all
+  end
+
   def show
 
     @ambassador = Ambassador.friendly.find(params[:id])
