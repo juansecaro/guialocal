@@ -1,7 +1,7 @@
 <div class="row">
   <% @ambassadors.each do |ambassador|%>
-  <div class="col-md-1">
-    <%= link_to image_tag(ambassador.picture.url, class: "img-fluid mx-2", alt: ambassador.name), ambassador_path(ambassador) if ambassador.picture? %>
+  <div class="col-md-1 col-sm-2">
+    <%= link_to image_tag(ambassador.picture.url, class: "img-fluid m-1", alt: ambassador.name), ambassador_path(ambassador) if ambassador.picture? %>
   </div>
   <% end %>
 </div>
