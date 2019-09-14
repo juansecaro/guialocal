@@ -13,7 +13,6 @@
 <div class="row">
   <div class="col-md-12">
     <div class="btn-group float-right" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary">Spanish</button>
       <%= link_to  "Spanish", "/ambassadors/#{@ambassador.slug}", class: "btn btn-secondary" %>
       <%= link_to  "English", "/ambassadors/#{@ambassador.slug}/english", class: "btn btn-secondary" %>
       <% if @ambassador.language != "english" %>
@@ -41,9 +40,9 @@
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        <p>Desde <%= country_to_spanish(@ambassador.country)%> <%= image_tag country_flag(@ambassador.country), class: "img-fluid", size: 25 %></p>
+        <p><%= country_to_spanish(@ambassador.country)%> <%= image_tag country_flag(@ambassador.country), class: "img-fluid", size: 25 %></p>
         <p class="lead"><%= @ambassador.bio_native %><p>
-        <% if @ambassador.partner_name && @ambassador.partner_profile %>
+        <% if @ambassador.partner_name != "" || @ambassador.partner_profile != "" %>
           <p class="text-muted">An experience narrated with:  <%= link_to @ambassador.partner_name, @ambassador.partner_profile %><p>
         <% end %>
 
