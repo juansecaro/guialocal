@@ -1,7 +1,26 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h1><p> International Ambassadors for Llerena (Spain) to th world </p></h1>
+  </div>
+</div>
+
 <div class="row">
   <% @ambassadors.each do |ambassador|%>
   <div class="col-md-1 col-sm-2">
     <%= link_to image_tag(ambassador.picture.url, class: "img-fluid m-1", alt: ambassador.name), ambassador_path(ambassador) if ambassador.picture? %>
   </div>
   <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2><p>Llerena's ambassadors in Europe</p></h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <img src="<%= "#{$url_base}" %>/cities/<%= current_city %>/europe_ambassadors.jpg" alt="<%= current_city %> ambassadors map" class="img-fluid">
+  </div>
 </div>
