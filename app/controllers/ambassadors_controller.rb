@@ -7,7 +7,7 @@ class AmbassadorsController < ApplicationController
   def list # index in english
     @ambassadors = Ambassador.all
 
-    titulo ||= @ambassador.name + " | International Ambassadors for Llerena (SPAIN)"
+    titulo ||= "International Ambassadors for Llerena (SPAIN)"
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     info = "Borderless Ambassadors"
 
