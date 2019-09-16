@@ -6,6 +6,32 @@ class AmbassadorsController < ApplicationController
 
   def list # index in english
     @ambassadors = Ambassador.all
+
+    titulo ||= @ambassador.name + " | International Ambassadors for Llerena (SPAIN)"
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
+    info = "Borderless Ambassadors"
+
+    set_meta_tags title: titulo,
+                site: site,
+                reverse: true,
+                description: info,
+                keywords: titulo,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: titulo + " | " + site,
+                  description:  info,
+                  image: "#{$url_base}/cities/#{ENV['CURRENT_CITY']}/europe_ambassadors.jpg"
+                },
+
+                og: {
+                  title:    titulo + " | " + site,
+                  description: info,
+                  type:     'article',
+                  url:      "ambassador_path(@ambassador)",
+                  image:    "#{$url_base}/cities/#{ENV['CURRENT_CITY']}/europe_ambassadors.jpg"
+                }
   end
 
   def show
