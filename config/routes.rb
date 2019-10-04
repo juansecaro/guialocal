@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-
-  get 'pantalla/index'
-
   root 'empresas#home'
+  get 'pantalla/index', to: 'pantalla#index'
   get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/mispromos', to: 'promos#mispromos'
@@ -35,6 +33,8 @@ Rails.application.routes.draw do
   get '/ambassadors/list', to: 'ambassadors#list'
   get '/ambassadors/:name/english', to: 'ambassadors#english'
   get '/ambassadors/:name/:language', to: 'ambassadors#native'
+  get '/api/v1/geteventos', to: 'pantalla#lastest_events'
+  get '/api/v1/getpromos', to: 'pantalla#lastest_promos'
 
 
   devise_for :users, controllers: {

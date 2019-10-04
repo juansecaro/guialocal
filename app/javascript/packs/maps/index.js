@@ -2,8 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-
-console.log("Helsslo");
 if ($('#map')[0]) {
 
     var mlat = document.getElementById("mlat").value;
@@ -24,6 +22,5 @@ if ($('#map')[0]) {
     }
   });
 }
-
 
 });

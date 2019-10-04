@@ -1,12 +1,14 @@
 {
-  "application.js": "/packs/application-60e1bbc8f51fd696bd2b.js",
-  "application.js.map": "/packs/application-60e1bbc8f51fd696bd2b.js.map",
-  "controllers/clock_controller.js": "/packs/controllers/clock_controller-fa20a70036277e7f38ec.js",
-  "controllers/clock_controller.js.map": "/packs/controllers/clock_controller-fa20a70036277e7f38ec.js.map",
-  "controllers/map_controller.js": "/packs/controllers/map_controller-3251e28d7ac99d687356.js",
-  "controllers/map_controller.js.map": "/packs/controllers/map_controller-3251e28d7ac99d687356.js.map",
-  "controllers/zoom_controller.js": "/packs/controllers/zoom_controller-77ac390a42ef1524d55c.js",
-  "controllers/zoom_controller.js.map": "/packs/controllers/zoom_controller-77ac390a42ef1524d55c.js.map",
-  "maps/index.js": "/packs/maps/index-fe3f05997fb000be9996.js",
-  "maps/index.js.map": "/packs/maps/index-fe3f05997fb000be9996.js.map"
+  "application.js": "/packs/application-27f5ee83e6e268608a5b.js",
+  "application.js.map": "/packs/application-27f5ee83e6e268608a5b.js.map",
+  "controllers/clock_controller.js": "/packs/controllers/clock_controller-27cd553d493ab24708d4.js",
+  "controllers/clock_controller.js.map": "/packs/controllers/clock_controller-27cd553d493ab24708d4.js.map",
+  "controllers/map_controller.js": "/packs/controllers/map_controller-95fb257a8cc6437d2ab0.js",
+  "controllers/map_controller.js.map": "/packs/controllers/map_controller-95fb257a8cc6437d2ab0.js.map",
+  "controllers/media_controller.js": "/packs/controllers/media_controller-30808d2968362accc53c.js",
+  "controllers/media_controller.js.map": "/packs/controllers/media_controller-30808d2968362accc53c.js.map",
+  "controllers/zoom_controller.js": "/packs/controllers/zoom_controller-6bd2d118fbadbad38332.js",
+  "controllers/zoom_controller.js.map": "/packs/controllers/zoom_controller-6bd2d118fbadbad38332.js.map",
+  "maps/index.js": "/packs/maps/index-f1266eb429d3efd50a03.js",
+  "maps/index.js.map": "/packs/maps/index-f1266eb429d3efd50a03.js.map"
 }
