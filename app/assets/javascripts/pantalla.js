@@ -66,15 +66,24 @@ function destroy_html_carousel(){
       el.removeChild(el.lastChild);
   }
 }
-//auto_clean_eventos
-//auto_clean_promos
 
 
 $(document).ready(function() {
 
-  console.log("Entra");
+
   var current_time = parseFloat(d.getTime());
   get_new_eventos(current_time);
+
+  $('.carousel').on('slid.bs.carousel', function ( data ) {
+  var lastSlide = $('.carousel-item').length - 1;
+  console.log(lastSlide);
+  console.log("Entra");
+  console.log(data.to);
+  if( data.to == lastSlide ) {
+    $(".carousel").carousel("pause"); // <--- Aquí, cuando ha terminado el ciclo entero. Me logea pausa, pero no me lo para
+    console.log("PAUSA");
+  }
+});
 
   //setTimeout(function(){window.location.reload(1);}, 86400000); //at least one full reload every 24 hours
 });
