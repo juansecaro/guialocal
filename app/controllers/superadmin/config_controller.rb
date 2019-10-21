@@ -24,6 +24,6 @@ class Superadmin::ConfigController < Superadmin::ApplicationController
     @config = Config.first
   end
   def config_params
-    params.require(:config).permit(:city, :promo_text, :promo_active, :happyhour)
+    params.require(:config).permit(:city, :promo_text, :promo_active, :happyhour, :number_of_points, :number_of_promos, :number_of_events)
   end
 end

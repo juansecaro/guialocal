@@ -23,6 +23,13 @@
     </div>
 
     <div class="col-auto">
+      <%= f.input :number_of_points, as: :integer %>
+      <%= f.input :number_of_promos, as: :integer %>
+      <%= f.input :number_of_events, as: :integer %>
+
+    </div>
+
+    <div class="col-auto">
       <div >
         <%= f.input :happyhour, label: "Happy Hour", as: :boolean, class: "align-text-bottom"%>
       </div>

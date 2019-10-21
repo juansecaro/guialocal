@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title = "")
-    default_title = "Guia#{$current_city.capitalize} - Turismo y Empresas"
+    default_title = "Guia#{current_city.capitalize} - Turismo y Empresas"
     if page_title.empty?
       default_title
     else

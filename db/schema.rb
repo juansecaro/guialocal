@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190913003757) do
+ActiveRecord::Schema.define(version: 20191006090742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,9 @@ ActiveRecord::Schema.define(version: 20190913003757) do
     t.string "promo_text", default: ""
     t.boolean "promo_active", default: false
     t.boolean "happyhour", default: false
+    t.integer "number_of_points"
+    t.integer "number_of_promos"
+    t.integer "number_of_events"
   end
 
   create_table "destacados", id: :serial, force: :cascade do |t|

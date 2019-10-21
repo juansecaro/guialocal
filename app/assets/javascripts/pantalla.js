@@ -3,61 +3,156 @@
 //= require popper
 //= require bootstrap-sprockets
 
-var slider_eventos = []
-var slider_promos = []
-var slider_puntos = []
-var d = new Date();
+var carousel;
+var slider_eventos = [];
+var slider_promos = [];
+var slider_puntos = [];
+
+var virtual_slider = [];
+
+var number_of_promos = 0;
+var number_of_points = 0;
+var number_of_events = 0;
+
+var time_between_mill = 0;
+var last_time_events = 0;
+var last_time_promos = 0;
+
+var i_total = 0;
+var j_total = 0;
+var k_total = 0;
+
+function get_puntos(){
+
+    return $.get( "/api/v1/getpuntos" ).then(function(data) {
+      for (var i = 0; i < data.length; i++) {
+        slider_puntos.push(data[i]);
+      }
+      console.log( "$.get succeeded puntos" );
+    }, function() {
+      alert( "$.get failed!" );
+    }
+  );
+}
 
 function get_new_eventos(n){
 
-  $.ajax({
-    url: "/api/v1/geteventos",
-    type: "get",
-    data: { last_events_retrieval: n},
-    success: function(data) {
-
+   // Removes expired events
+   if (slider_eventos.length > 0) {
+     var time_now = Date.now();
+     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { //Borra todo!
+       console.log( Date.parse(slider_eventos[0].fecha), time_now);
+       slider_eventos.shift();
+     }
+   } // falla el controlador, el signo <
+    // Get new ones
+    return $.get( "/api/v1/geteventos", { last_events_retrieval: n } ).then(function(data) {
       for (var i = 0; i < data.length; i++) {
         slider_eventos.push(data[i]);
       }
-      create_html_carousel();
-
-    },
-    error: function(data) {}
-  })
-  return slider_eventos;
+      console.log( "$.get succeeded eventos" );
+    }, function() {
+      console.log( "$.get failed eventos!" );
+    }
+  );
 }
-
 function get_new_promos(n){
 
-  $.ajax({
-    url: "/api/v1/getpromos",
-    type: "get",
-    data: { last_promos_retrieval: n},
-    success: function(data) {
-      //cleanEventos();
-      //loadNewEventos();
+  //removed unvalid events
+  if (slider_promos.length > 0) {
+    var time_now = Date.now();
+    while ( Date.parse(slider_promos[0].validez) < time_now ) {
+      slider_promos.shift();
+    }
+  }
 
+    return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
       for (var i = 0; i < data.length; i++) {
         slider_promos.push(data[i]);
       }
-    },
-    error: function(data) {}
-  })
+      console.log( "$.get succeeded promos" );
+    }, function() {
+      console.log( "$.get failed promos!" );
+    }
+  );
 }
+
 
 function create_html_carousel(){
 
+  //Deletion
   $(".carousel").carousel("pause").removeData();
+  destroy_html_carousel();
+  carousel = $('#carousel-inner');
+  virtual_slider.forEach(function(element) {
+    create_slide(element);
+  });
+  // We add an empty one, that won't be showed
+  carousel.append("<div class=\"carousel-item\"><img class=\"d-block w-100\"></div>");
 
-  var carousel = $('#carousel-inner');
-  for (var i = 0; i < slider_eventos.length; i++) {
-    carousel.append("<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ slider_eventos[i].imgevento.url +" alt=\"Fuck\"></div>");
-  }
+  // Activation
   $(".carousel-item:first-child").addClass("active");
-
   $('.carousel').carousel({
     interval: 2000
-  })
+  });
+  $('.carousel').carousel('cycle');
+}
+
+
+function create_slide(element){
+  if (element.fotospunto){
+    carousel.append(
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.fotospunto[0].url +"></div>");
+  }
+  if (element.imgpromo){
+    carousel.append(
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgpromo.url +"></div>");
+  }
+  if (element.imgevento){
+    carousel.append(
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +"></div>");
+  }
+}
+
+function refill_virtual_slider(){
+  while(virtual_slider.length > 0) { virtual_slider.pop(); }
+  //Eventos
+  for (var i=0; i < number_of_events; i++) {
+    virtual_slider.push(slider_eventos[i_total]);
+
+    if (i_total == slider_eventos.length - 1){
+
+      $.when(get_new_eventos(last_time_events)).then(function( x ) {
+        last_time_events = Date.now();
+      });
+      i_total = 0;
+    }
+    else {
+      i_total++;
+     }
+  }
+
+  //Promos
+  for (var i=0; i < number_of_promos; i++) {
+    virtual_slider.push(slider_promos[j_total]);
+
+    if (j_total == slider_promos.length - 1){
+      $.when(get_new_promos(last_time_promos)).then(function( x ) {
+        last_time_promos = Date.now();
+      });
+      j_total = 0;
+    }
+    else {
+      j_total++;
+    }
+  }
+
+  //Puntos
+  for (var i=0; i < number_of_points; i++) {
+    virtual_slider.push(slider_puntos[k_total]);
+    if (k_total == slider_puntos.length -1 ) { k_total = 0; } else { k_total++; }
+  }
+  console.log(i_total, j_total, k_total);
 }
 
 function destroy_html_carousel(){
@@ -67,23 +162,79 @@ function destroy_html_carousel(){
   }
 }
 
+function load_everything(){
+
+  $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
+    refill_virtual_slider();
+    create_html_carousel();
+  });
+
+  last_time_events = Date.now(); // updated last time
+  last_time_promos = Date.now();
+}
+
+function reload_everything(){
+
+  $.when(get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
+    refill_virtual_slider();
+    create_html_carousel();
+  });
+
+  last_time_events = Date.now(); // updated last time
+  last_time_promos = Date.now();
+}
 
 $(document).ready(function() {
 
+  // Dejamos cargados los valores en memoria (!= 0)
+  number_of_promos = parseInt(document.getElementById('number_of_promos').value);
+  number_of_points = parseInt(document.getElementById('number_of_points').value);
+  number_of_events = parseInt(document.getElementById('number_of_events').value);
+  //time_between_mill = parseInt(document.getElementById('time_between').value);
 
-  var current_time = parseFloat(d.getTime());
-  get_new_eventos(current_time);
+  load_everything();
 
   $('.carousel').on('slid.bs.carousel', function ( data ) {
   var lastSlide = $('.carousel-item').length - 1;
-  console.log(lastSlide);
-  console.log("Entra");
-  console.log(data.to);
+
   if( data.to == lastSlide ) {
-    $(".carousel").carousel("pause"); // <--- Aquí, cuando ha terminado el ciclo entero. Me logea pausa, pero no me lo para
-    console.log("PAUSA");
+    reload_everything();
   }
-});
+
+  });
 
   //setTimeout(function(){window.location.reload(1);}, 86400000); //at least one full reload every 24 hours
 });
+
+//  <div data-controller="media">
+//   <input data-target="media.name" type="text">
+//
+//   <button data-action="click->media#greet">
+//     Greet
+//   </button>
+//
+//   <span data-target="hello.output">
+//   </span>
+// </div> -->
+//
+// <!-- <img src="https://via.placeholder.com/1920x1080.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/ "
+// style=" position: fixed;
+//     top: 0;
+//     left: 0;
+//     z-index: 999;
+//     /* Full sized */
+//     width: 100%;
+//     height: 100vh;
+//     /* Dark background */
+//     background: rgba(0, 0, 0, 0.7);
+//   }
+//   div.fullimg img {
+//     width: 100%;
+//     height: auto;
+//   }
+//   /* [DOES NOT MATTER] */
+//   html, body {
+//     padding: 0;
+//     margin: 0;
+//   }", class="img-fluid">
+// </div>
