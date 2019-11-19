@@ -102,7 +102,8 @@ function create_html_carousel(){
 function create_slide(element){
   if (element.fotospunto){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.fotospunto[0].url +"></div>");
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.fotospunto[0].url +">\
+        <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
   }
   if (element.imgpromo){
     carousel.append(
