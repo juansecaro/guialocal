@@ -27,7 +27,7 @@ gem 'mini_magick', '~> 4.7' #carrierwave dependent
 #gem 'searchkick', '~> 3.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'font_awesome5_rails', '~> 0.3.4'
-gem 'simple_form', '~> 3.5'
+gem "simple_form", ">= 5.0.0"
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n-views'
