@@ -245,9 +245,9 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    simple_form (3.5.1)
-      actionpack (> 4, < 5.2)
-      activemodel (> 4, < 5.2)
+    simple_form (5.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
     sprockets (3.7.2)
@@ -325,7 +325,7 @@ DEPENDENCIES
   rails (~> 5.1, >= 5.1.6.1)
   sass-rails (~> 5.0)
   sidekiq (~> 5.2, >= 5.2.3)
-  simple_form (~> 3.5)
+  simple_form (>= 5.0.0)
   sitemap_generator (~> 6.0, >= 6.0.1)
   stripe
   trix
