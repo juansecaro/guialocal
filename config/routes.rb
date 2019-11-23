@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '/comparativa-promociones', to: 'info#comparativa_promociones'
   get '/gesteventos', to: 'eventos#editor_index'
   get '/ambassadors/list', to: 'ambassadors#list'
+  get '/embajadores', to: 'ambassadors#index'
   get '/ambassadors/:name/english', to: 'ambassadors#english'
   get '/ambassadors/:name/:language', to: 'ambassadors#native'
   get '/api/v1/geteventos', to: 'pantalla#lastest_events'
@@ -53,7 +54,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :promos, only: [:show, :new, :create]
   resources :achievement_proposals, only: :show
-  resources :ambassadors, only: [:index, :show]
+  resources :ambassadors, only: [:show]
 
   resources :suscriptors do
     member do
