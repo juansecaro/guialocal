@@ -59,7 +59,7 @@
     <p><%= simple_format(@ambassador.review_english) %></p>
     <p class="text-center h2 my-3">What <%= english_shehe(@ambassador) %> told us in the interview</p>
       <div class="embed-responsive embed-responsive-16by9">
-        <p><iframe width="560" height="315" src="<%= @ambassador.video_interview %>" frameborder="0" allowfullscreen></iframe></p>
+        <p><iframe width="560" height="315" src="<%= @ambassador.video_interview + "?cc_load_policy=1&cc_lang_pref=en" %>" frameborder="0" allowfullscreen></iframe></p>
       </div>
 
     <% if @ambassador.gallery.any? %>
