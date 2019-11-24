@@ -2,12 +2,38 @@ class AmbassadorsController < ApplicationController
 
   def index
     @ambassadors = Ambassador.all
+
+    titulo ||= "Embajadores internacionales de Llerena, ESPAÑA"
+    site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
+    info = "Borderless Ambassadors"
+
+    set_meta_tags title: titulo,
+                site: site,
+                reverse: true,
+                description: info,
+                keywords: titulo,
+
+                twitter: {
+                  card: "summary",
+                  site: site,
+                  title: titulo + " | " + site,
+                  description:  info,
+                  image: "#{$url_base}/cities/#{ENV['CURRENT_CITY']}/europe_ambassadors.jpg"
+                },
+
+                og: {
+                  title:    titulo + " | " + site,
+                  description: info,
+                  type:     'article',
+                  url:      "ambassador_path(@ambassador)",
+                  image:    "#{$url_base}/cities/#{ENV['CURRENT_CITY']}/europe_ambassadors.jpg"
+                }
   end
 
   def list # index in english
     @ambassadors = Ambassador.all
 
-    titulo ||= "International Ambassadors for Llerena (SPAIN)"
+    titulo ||= "International ambassadors for Llerena (SPAIN)"
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     info = "Borderless Ambassadors"
 
@@ -38,7 +64,7 @@ class AmbassadorsController < ApplicationController
 
     @ambassador = Ambassador.friendly.find(params[:id])
 
-    titulo ||= @ambassador.name + " | International Ambassador for Llerena (SPAIN)"
+    titulo ||= @ambassador.name + " | Embajador international por Llerena (SPAIN)"
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"
     info = "Embajadores sin fronteras"
 
