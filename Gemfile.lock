@@ -182,7 +182,7 @@ GEM
     pg (0.21.0)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -321,7 +321,7 @@ DEPENDENCIES
   meta-tags
   mini_magick (~> 4.7)
   pg (< 1.0)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.1, >= 5.1.6.1)
   sass-rails (~> 5.0)
   sidekiq (~> 5.2, >= 5.2.3)
