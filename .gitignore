@@ -19,6 +19,7 @@
 
 # Files uploaded by users
 /public/uploads/
+/public/temp_uploads/
 
 # Ignore Byebug command history file.
 .byebug_history
