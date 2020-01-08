@@ -4,7 +4,7 @@ class ImgdestacadoUploader < CarrierWave::Uploader::Base
    include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :file
+    storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -27,7 +27,7 @@ class ImgdestacadoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_fit: [900, 900]
+  #process resize_to_fit: [900, 900]
 
   # Create different versions of your uploaded files:
   # version :thumb do
