@@ -229,7 +229,7 @@ ActiveRecord::Schema.define(version: 20200108105745) do
 
   create_table "suscriptors", id: :serial, force: :cascade do |t|
     t.string "email"
-    t.boolean "email_confirmation"
+    t.boolean "email_confirmation", default: false
     t.string "token_confirmation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

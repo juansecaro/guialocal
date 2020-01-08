@@ -2,6 +2,7 @@
   <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :titulo %>
       <%= f.input :info %>
       <%= f.input :imgdestacado, as: :file, label: "Imagen " %>
       <p><%= image_tag(@destacado.imgdestacado, class: "img-fluid") if @destacado.imgdestacado? %></p>

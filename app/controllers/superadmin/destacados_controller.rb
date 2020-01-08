@@ -3,9 +3,11 @@ class Superadmin::DestacadosController < Superadmin::ApplicationController
   def index
     @destacados = Destacado.all
   end
+
   def new
     @destacado = Destacado.new
   end
+
   def create
     @destacado = Destacado.new(destacado_params)
     respond_to do |format|
@@ -18,6 +20,7 @@ class Superadmin::DestacadosController < Superadmin::ApplicationController
       end
     end
   end
+
   def show
 
   end
@@ -35,6 +38,8 @@ class Superadmin::DestacadosController < Superadmin::ApplicationController
     end
   end
   def destroy
+    @destacado.imgdestacado.remove!
+    FileUtils.remove_dir("#{Rails.root}/public/uploads/#{ENV['CURRENT_CITY']}/destacado/imgdestacado/#{@destacado.id}", :force => true)
     @destacado.destroy
     flash[:alert] = "Se ha borrado el destacado."
     redirect_to superadmin_destacados_path
@@ -42,10 +47,11 @@ class Superadmin::DestacadosController < Superadmin::ApplicationController
 
   private
   def destacado_params
-    params.require(:destacado).permit(:info, :imgdestacado)
+    params.require(:destacado).permit(:titulo, :info, :imgdestacado)
   end
   def set_destacado
     @destacado = Destacado.find(params[:id])
   end
+
 
 end

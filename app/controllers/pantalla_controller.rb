@@ -11,7 +11,7 @@ class PantallaController < ApplicationController
   end
 
   def random_touristic_points
-    @puntos = Punto.all.order(Arel.sql('random()'))
+    @puntos = Destacado.all.order(Arel.sql('random()'))
     render json: @puntos
   end
 

@@ -11,15 +11,16 @@
   <thead>
     <tr>
       <th>Imagen</th>
-      <th>Texto</th>
-      <th>Acciones</th>
+      <th>Titulo</th>
+      <th>Info</th>
     </tr>
-
   </thead>
+
   <tbody>
     <% @destacados.each do |destacado| %>
       <tr>
         <td><%= image_tag destacado.imgdestacado.url, class: "img-fluid img-thumbnail" if destacado.imgdestacado?  %></td>
+        <td><%= destacado.titulo %></td>
         <td><%= destacado.info %></td>
         <td>
           <%= link_to "Ver", superadmin_destacado_path(destacado) %> |

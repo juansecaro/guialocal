@@ -41,12 +41,14 @@ Promo.create!(
 	titulo: "3x2 en tapas calientes",
 	texto: "Te presentamos las tarjetas de memoria con mayor capacidad y velocidad de lectura de su clase, idóneas para vídeos Full HD. Mantén tus recuerdos siempre a salvo con el rendimiento y fiabilidad de las tarjetas EVO Plus. ",
 	validez: Time.now + 2.days,
+  normal_price: 10,
 	empresa_id: 1
 )
 Promo.create!(
 	titulo: "Rebaja del 80% en casas",
 	texto: "Información muy valiosa. Ayer nos preguntó la tía qué factores externos nos motivaban y yo le dije que ver como personas de mi entorno me retan intelectualmente con cualquier tema de la vida. Me parecía guay decirtelo. ",
 	validez: Time.now - 7.hours,
+  normal_price: 10,
 	empresa_id: 1
 )
 Evento.create!(
