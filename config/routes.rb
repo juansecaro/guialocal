@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/embajadores', to: 'ambassadors#index'
   get '/ambassadors/:name/english', to: 'ambassadors#english'
   get '/ambassadors/:name/:language', to: 'ambassadors#native'
+
   get '/api/v1/geteventos', to: 'pantalla#lastest_events'
   get '/api/v1/getpromos', to: 'pantalla#lastest_promos'
   get '/api/v1/getpuntos', to: 'pantalla#random_touristic_points'
