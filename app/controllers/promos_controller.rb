@@ -35,6 +35,9 @@ class PromosController < ApplicationController
   end
 
   def destroy
+    # Need adapt controller to routes and, set this up for admin and super admin
+    @promo.imgpromo.remove!
+    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/destacado/imgpromo/#{@destacado.id}", :force => true)
 
   end
   def mispromos

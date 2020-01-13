@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1', '>= 5.1.6.1'
+gem 'rails', '~> 5.1.7'
 gem 'webpacker', '~> 4.0', '>= 4.0.7'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '< 1.0'
@@ -32,8 +32,7 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
-gem 'better_errors', '~> 2.4'
-gem 'binding_of_caller', '~> 0.7.3'
+
 gem 'stripe'
 gem 'trix'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
@@ -77,6 +76,9 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
+  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem "binding_of_caller"
+  gem 'rubocop', '~> 0.79.0', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
   #gem 'spring-watcher-listen', '~> 2.0.0'

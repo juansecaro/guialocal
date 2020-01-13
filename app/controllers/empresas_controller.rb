@@ -13,7 +13,7 @@ class EmpresasController < ApplicationController
 
   def home
     # $current_city='llerena' <-- need a fallback for this
-    @empresas = Empresa.where.not(plan: :noplan).order("RANDOM()").limit(2)
+    @empresas = Empresa.where.not(plan: :noplan).order(Arel.sql('random()')).limit(2)
     @mapa = Map.find_by_level("1_1")
     @promos = Promo.order(created_at: :desc).limit(3)
     @eventos = Evento.where("fecha > ?", Time.zone.now).order(fecha: :asc).limit(5)

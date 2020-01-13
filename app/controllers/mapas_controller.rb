@@ -34,7 +34,7 @@ class MapasController < ApplicationController
   end
 
   def set_map
-    if (params[:id]==nil)
+    if (params[:id] == nil)
       map_id = Map.find_by_level("1_1").id
       @map = Map.friendly.find(map_id)
     else
