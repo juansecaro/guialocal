@@ -41,7 +41,6 @@ function get_new_eventos(n){
    if (slider_eventos.length > 0) {
      var time_now = Date.now();
      while ( Date.parse(slider_eventos[0].fecha) < time_now ) { //Borra todo!
-       console.log( Date.parse(slider_eventos[0].fecha), time_now);
        slider_eventos.shift();
      }
    } // falla el controlador, el signo <
@@ -98,11 +97,10 @@ function create_html_carousel(){
   $('.carousel').carousel('cycle');
 }
 
-
 function create_slide(element){
-  if (element.fotospunto){
+  if (element.imgdestacado){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.fotospunto[0].url +">\
+      "<div class=\"carousel-item corner\"><img class=\"d-block w-100\" src="+ element.imgdestacado.url +"><div><span>Comercio local</span></div>\
         <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
   }
   if (element.imgpromo){
@@ -114,8 +112,9 @@ function create_slide(element){
       "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +"></div>");
   }
 }
-
 function refill_virtual_slider(){
+  console.log("last_time_promos:", last_time_promos);
+
   while(virtual_slider.length > 0) { virtual_slider.pop(); }
   //Eventos
   for (var i=0; i < number_of_events; i++) {
@@ -132,7 +131,6 @@ function refill_virtual_slider(){
       i_total++;
      }
   }
-
   //Promos
   for (var i=0; i < number_of_promos; i++) {
     virtual_slider.push(slider_promos[j_total]);
@@ -147,13 +145,13 @@ function refill_virtual_slider(){
       j_total++;
     }
   }
-
   //Puntos
   for (var i=0; i < number_of_points; i++) {
     virtual_slider.push(slider_puntos[k_total]);
     if (k_total == slider_puntos.length -1 ) { k_total = 0; } else { k_total++; }
   }
   console.log(i_total, j_total, k_total);
+  console.log(virtual_slider.length)
 }
 
 function destroy_html_carousel(){
@@ -164,6 +162,7 @@ function destroy_html_carousel(){
 }
 
 function load_everything(){
+  console.log("last_time_promos:", last_time_promos);
 
   $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
     refill_virtual_slider();
