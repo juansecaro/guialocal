@@ -35,23 +35,23 @@
 
 
 
-// .media-screen{
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     z-index: 999;
-//     /* Full sized */
-//     width: 100%;
-//     height: 100v;
-//     /* Dark background */
-//     background: rgba(0, 0, 0, 0.7);
-//   div.fullimg img {
-//     width: 100%;
-//     height: auto;
-//   }
-//   /* [DOES NOT MATTER] */
-//   html, body {
-//     padding: 0;
-//     margin: 0;
-//   }
-// }
+.media-screen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    /* Full sized */
+    width: 100%;
+    height: 100v;
+    /* Dark background */
+    background: rgba(0, 0, 0, 0.7);
+  div.fullimg img {
+    width: 100%;
+    height: auto;
+  }
+  /* [DOES NOT MATTER] */
+  html, body {
+    padding: 0;
+    margin: 0;
+  }
+}

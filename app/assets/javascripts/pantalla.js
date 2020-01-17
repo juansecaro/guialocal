@@ -102,19 +102,19 @@ function create_slide(element){
     carousel.append(
       "<div class=\"carousel-item\"><img class=\"d-block w-100 darken\" src="+ element.imgdestacado.url +">\
       <div class=\"corner-comercio\"><span>Turismo</span></div>\
-      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1 text-left\">Hola</h1><p class=\"display-4 text-left\">Eoooooooooo</p></div></div>");
+      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1 text-left\">"+ element.titulo +"</h1><p class=\"display-4 text-left\">"+ element.info +"</p></div></div>");
   }
   if (element.imgpromo){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
+      "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
       <div class=\"corner-comercio\"><span>Turismo</span></div>\
       <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
   }
   if (element.imgevento){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
+      "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
       <div class=\"corner-comercio\"><span>Actualidad</span></div>\
-      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">Hola</h1><p class=\"display-4\">Eoooooooooo</p></div></div>");
+      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">"+ element.titulo +"</h1><p class=\"display-4\">"+ element.info +"</p></div></div>");
   }
 }
 function refill_virtual_slider(){
@@ -221,25 +221,3 @@ $(document).ready(function() {
 //   <span data-target="hello.output">
 //   </span>
 // </div> -->
-//
-// <!-- <img src="https://via.placeholder.com/1920x1080.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/ "
-// style=" position: fixed;
-//     top: 0;
-//     left: 0;
-//     z-index: 999;
-//     /* Full sized */
-//     width: 100%;
-//     height: 100vh;
-//     /* Dark background */
-//     background: rgba(0, 0, 0, 0.7);
-//   }
-//   div.fullimg img {
-//     width: 100%;
-//     height: auto;
-//   }
-//   /* [DOES NOT MATTER] */
-//   html, body {
-//     padding: 0;
-//     margin: 0;
-//   }", class="img-fluid">
-// </div>
