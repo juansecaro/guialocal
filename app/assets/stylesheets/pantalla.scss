@@ -4,10 +4,6 @@
 
 
 
-.carousel-item{
-  position:relative;
-}
-
 .corner {
   width: 0;
   height: 0;
@@ -16,9 +12,9 @@
   border-left: 300px solid transparent;
   position:absolute;
   float: right;
+  top: 0;
   right:0;
 }
-
 .corner span {
   position:absolute;
   top: -220px;
