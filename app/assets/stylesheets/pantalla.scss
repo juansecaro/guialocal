@@ -4,10 +4,11 @@
 
 
 
-.corner {
+.corner-comercio {
   width: 0;
   height: 0;
-  border-top: 300px solid #ffcc00;
+  border-top: 300px solid #003366;
+  color: white;
   border-bottom: 300px solid transparent;
   border-left: 300px solid transparent;
   position:absolute;
@@ -15,7 +16,7 @@
   top: 0;
   right:0;
 }
-.corner span {
+.corner-comercio span {
   position:absolute;
   top: -220px;
   width: 250px;
@@ -27,6 +28,11 @@
   display:block;
   font-weight: bold;
 }
+
+.darken{
+  -webkit-filter: brightness(90%);
+}
+
 
 
 // .media-screen{

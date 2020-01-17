@@ -100,16 +100,21 @@ function create_html_carousel(){
 function create_slide(element){
   if (element.imgdestacado){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgdestacado.url +"><div class=\"corner\"><span>Comercio local</span></div>\
-        <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
+      "<div class=\"carousel-item\"><img class=\"d-block w-100 darken\" src="+ element.imgdestacado.url +">\
+      <div class=\"corner-comercio\"><span>Turismo</span></div>\
+      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1 text-left\">Hola</h1><p class=\"display-4 text-left\">Eoooooooooo</p></div></div>");
   }
   if (element.imgpromo){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgpromo.url +"></div>");
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
+      <div class=\"corner-comercio\"><span>Turismo</span></div>\
+      <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
   }
   if (element.imgevento){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +"></div>");
+      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
+      <div class=\"corner-comercio\"><span>Actualidad</span></div>\
+      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">Hola</h1><p class=\"display-4\">Eoooooooooo</p></div></div>");
   }
 }
 function refill_virtual_slider(){
