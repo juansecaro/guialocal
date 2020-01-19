@@ -103,22 +103,51 @@ function create_html_carousel(){
 function create_slide(element){
   console.log(element);
   if (element.imgdestacado){
-    carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100 darken\" src="+ element.imgdestacado.url +">\
-      <div class=\"corner-comercio\"><span>Turismo</span></div>\
-      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1 text-left\">"+ element.titulo +"</h1><p class=\"display-4 text-left\">"+ element.info +"</p></div></div>");
+    carousel.append(`
+      <div class="carousel-item">
+          <img class="d-block w-100 darken" src="${element.imgdestacado.url}">
+          <div class="corner-comercio">
+              <span>Turismo</span>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+              <h1 class="display-1 text-left">${element.titulo}</h1>
+              <p class="display-4 text-left">${element.info}</p></div>
+          </div>
+      </div>
+    `);
   }
   if (element.imgpromo){
     carousel.append(
       "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
       <div class=\"corner-comercio\"><span>Turismo</span></div>\
       <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
+
+    // carousel.append(`
+    //
+    //   `);
+
   }
   if (element.imgevento){
-    carousel.append(
-      "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
-      <div class=\"corner-comercio\"><span>Actualidad</span></div>\
-      <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">"+ element.titulo +"</h1><p class=\"display-4\">"+ element.info +"</p></div></div>");
+    // carousel.append(
+    //   "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
+    //   <div class=\"corner-comercio\"><span>Actualidad</span></div>\
+    //   <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">"+ element.titulo +"</h1><p class=\"display-4\">"+ element.info +"</p></div></div>");
+
+      carousel.append(`
+            <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
+              <div class=\"corner-comercio\"><span>Actualidad</span></div>
+              <div class="row h1 display-4" style=";">${element.titulo}</div>
+
+                <div class="col-6" >
+                  <img  src="${element.imgevento.url}">
+                </div>
+                <div class="col-6">
+                  ${element.info}
+                </div>
+
+            </div>
+        `);
+
   }
 }
 function refill_virtual_slider(){
