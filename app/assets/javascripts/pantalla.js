@@ -66,8 +66,11 @@ function get_new_promos(n){
   }
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
+      console.log("ENTRA");
+      console.log(data);
       for (var i = 0; i < data.length; i++) {
         slider_promos.push(data[i]);
+        console.log(data);
       }
       console.log( "$.get succeeded promos" );
     }, function() {
@@ -98,6 +101,7 @@ function create_html_carousel(){
 }
 
 function create_slide(element){
+  console.log(element);
   if (element.imgdestacado){
     carousel.append(
       "<div class=\"carousel-item\"><img class=\"d-block w-100 darken\" src="+ element.imgdestacado.url +">\
@@ -123,7 +127,10 @@ function refill_virtual_slider(){
   while(virtual_slider.length > 0) { virtual_slider.pop(); }
   //Eventos
   for (var i=0; i < number_of_events; i++) {
-    virtual_slider.push(slider_eventos[i_total]);
+    //Given it has make the full loop for holes, it wont insert if there is no events
+    if (typeof slider_eventos[i_total] !== "undefined") {
+      virtual_slider.push(slider_eventos[i_total]);
+    }
 
     if (i_total == slider_eventos.length - 1){
 
@@ -138,7 +145,10 @@ function refill_virtual_slider(){
   }
   //Promos
   for (var i=0; i < number_of_promos; i++) {
-    virtual_slider.push(slider_promos[j_total]);
+    //Given it has make the full loop for holes, it wont insert if there is no promos
+    if (typeof slider_promos[j_total] !== "undefined") {
+      virtual_slider.push(slider_promos[j_total]);
+    }
 
     if (j_total == slider_promos.length - 1){
       $.when(get_new_promos(last_time_promos)).then(function( x ) {
