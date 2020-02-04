@@ -116,6 +116,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:info, :imgevento, :titulo, :fecha)
+      params.require(:evento).permit(:info, :imgevento, :titulo, :fecha) 
     end
 end
