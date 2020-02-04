@@ -3,6 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+.corner-comercio {
+  width: 0;
+  height: 0;
+  border-top: 300px solid #003366;
+  color: white;
+  border-bottom: 300px solid transparent;
+  border-left: 300px solid transparent;
+  position:absolute;
+  float: right;
+  top: 0;
+  right:0;
+}
+.corner-comercio span {
+  position:absolute;
+  top: -220px;
+  width: 250px;
+  left: -220px;
+  text-align: center;
+  font-size: 30px;
+  font-family: arial;
+  transform: rotate(45deg);
+  display:block;
+  font-weight: bold;
+}
+
+.darken{
+  -webkit-filter: brightness(90%);
+}
+
+
+
 .media-screen{
     position: fixed;
     top: 0;

@@ -86,6 +86,8 @@ class EventosController < ApplicationController
   # DELETE /eventos/1
   # DELETE /eventos/1.json
   def destroy
+    @evento.imgevento.remove!
+    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/evento/imgevento/#{@evento.id}", :force => true)
     @evento.destroy
     respond_to do |format|
       format.html { redirect_to eventos_url, notice: 'El evento ha sido borrado' }

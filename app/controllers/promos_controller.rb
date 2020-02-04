@@ -1,7 +1,7 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show ]
   before_action :control_max_promos, only: :create
-  before_action :set_promo, only: :show
+  before_action :set_promo, only: [:show, :destroy]
   #before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
@@ -35,11 +35,11 @@ class PromosController < ApplicationController
   end
 
   def destroy
-    # Need adapt controller to routes and, set this up for admin and super admin
     @promo.imgpromo.remove!
-    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/destacado/imgpromo/#{@destacado.id}", :force => true)
-
+    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/promo/imgpromo/#{@promo.id}", :force => true)
+    @promo.destroy
   end
+
   def mispromos
     plan = current_user.empresa.plan
     last_promo = current_user.empresa.try(:promos).try(:first)

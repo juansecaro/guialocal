@@ -3,7 +3,7 @@ class Superadmin::PromosController < Superadmin::ApplicationController
 
 
   def index
-    @promos #= Promo.all.order(created_at: :desc)
+    @promos = Promo.all.order(created_at: :desc)
   end
 
   def edit
@@ -23,6 +23,8 @@ class Superadmin::PromosController < Superadmin::ApplicationController
   end
 
   def destroy
+    @promo.imgpromo.remove!
+    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/promo/imgpromo/#{@promo.id}", :force => true)
     @promo.destroy
     respond_to do |format|
       format.html { redirect_to superadmin_promos_path, notice: 'Promoción destruida.' }

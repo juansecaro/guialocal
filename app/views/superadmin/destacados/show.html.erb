@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <img class="card-img-top" src="<%= @destacado.imgdestacado.url if @destacado.imgdestacado? %>" alt="<%= @destacado.info %>">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title"><%= @destacado.titulo %></h5>
     <p class="card-text"><%= @destacado.info %></p>
     <p class="card-text"><small class="text-muted">Creado: <%= @destacado.created_at %></small></p>
   </div>

@@ -1,12 +1,7 @@
 class PantallaController < ApplicationController
 
   def index
-    #eventos = Evento.where("fecha >= ?", Time.zone.now).order("created_at DESC")
-    #promos = Promo.where("validez >= ?", Time.zone.now).order("created_at DESC")
-    #puntos = Punto.all
-
     @config = Config.first
-
     render layout: "pantalla"
   end
 
@@ -18,15 +13,24 @@ class PantallaController < ApplicationController
   #Cogemos elementos válidos Y nos aseguramos de no coger lo que ya hemos mandado antes (last time), initially 0
   def lastest_events
     last_time_milliseconds = params[:last_events_retrieval].to_f
-    last_time = Time.at(last_time_milliseconds/1000)
-    @eventos = Evento.where("fecha >= ? AND created_at >= ?", Time.zone.now, last_time).order("fecha ASC")
+    if (last_time_milliseconds != 0)
+      last_time = Time.at(last_time_milliseconds/1000)
+      @eventos = Evento.where("fecha >= ? AND created_at >= ?", Time.zone.now, last_time).order("fecha ASC")
+    else
+      @eventos = Evento.where("fecha >= ?", Time.zone.now).order("fecha ASC")
+    end
     render json: @eventos
   end
 
+  # if last_time_milliseconds is 0 it means is the first time is requested since is booted and hence, send all with validity
   def lastest_promos
     last_time_milliseconds = params[:last_promos_retrieval].to_f
-    last_time = Time.at(last_time_milliseconds/1000)
-    @promos = Promo.where("validez >= ? AND created_at >= ?", Time.zone.now, last_time).order("validez ASC")
+    if (last_time_milliseconds != 0)
+      last_time = Time.at(last_time_milliseconds/1000)
+      @promos = Promo.where("validez >= ? AND created_at >= ?", Time.zone.now, last_time).order("validez ASC")
+    else
+      @promos = Promo.where("validez >= ?", Time.zone.now).order("validez ASC")
+    end
     render json: @promos
   end
 

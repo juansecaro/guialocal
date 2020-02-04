@@ -41,7 +41,6 @@ function get_new_eventos(n){
    if (slider_eventos.length > 0) {
      var time_now = Date.now();
      while ( Date.parse(slider_eventos[0].fecha) < time_now ) { //Borra todo!
-       console.log( Date.parse(slider_eventos[0].fecha), time_now);
        slider_eventos.shift();
      }
    } // falla el controlador, el signo <
@@ -67,8 +66,11 @@ function get_new_promos(n){
   }
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
+      console.log("ENTRA");
+      console.log(data);
       for (var i = 0; i < data.length; i++) {
         slider_promos.push(data[i]);
+        console.log(data);
       }
       console.log( "$.get succeeded promos" );
     }, function() {
@@ -98,28 +100,66 @@ function create_html_carousel(){
   $('.carousel').carousel('cycle');
 }
 
-
 function create_slide(element){
-  if (element.fotospunto){
-    carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.fotospunto[0].url +">\
-        <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
+  console.log(element);
+  if (element.imgdestacado){
+    carousel.append(`
+      <div class="carousel-item">
+          <img class="d-block w-100 darken" src="${element.imgdestacado.url}">
+          <div class="corner-comercio">
+              <span>Turismo</span>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+              <h1 class="display-1 text-left">${element.titulo}</h1>
+              <p class="display-4 text-left">${element.info}</p></div>
+          </div>
+      </div>
+    `);
   }
   if (element.imgpromo){
     carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgpromo.url +"></div>");
+      "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
+      <div class=\"corner-comercio\"><span>Turismo</span></div>\
+      <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
+
+    // carousel.append(`
+    //
+    //   `);
+
   }
   if (element.imgevento){
-    carousel.append(
-      "<div class=\"carousel-item\"><img class=\"d-block w-100\" src="+ element.imgevento.url +"></div>");
+    // carousel.append(
+    //   "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
+    //   <div class=\"corner-comercio\"><span>Actualidad</span></div>\
+    //   <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">"+ element.titulo +"</h1><p class=\"display-4\">"+ element.info +"</p></div></div>");
+
+      carousel.append(`
+            <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
+              <div class=\"corner-comercio\"><span>Actualidad</span></div>
+              <div class="row h1 display-4" style=";">${element.titulo}</div>
+
+                <div class="col-6" >
+                  <img  src="${element.imgevento.url}">
+                </div>
+                <div class="col-6">
+                  ${element.info}
+                </div>
+
+            </div>
+        `);
+
   }
 }
-
 function refill_virtual_slider(){
+  console.log("last_time_promos:", last_time_promos);
+
   while(virtual_slider.length > 0) { virtual_slider.pop(); }
   //Eventos
   for (var i=0; i < number_of_events; i++) {
-    virtual_slider.push(slider_eventos[i_total]);
+    //Given it has make the full loop for holes, it wont insert if there is no events
+    if (typeof slider_eventos[i_total] !== "undefined") {
+      virtual_slider.push(slider_eventos[i_total]);
+    }
 
     if (i_total == slider_eventos.length - 1){
 
@@ -132,10 +172,12 @@ function refill_virtual_slider(){
       i_total++;
      }
   }
-
   //Promos
   for (var i=0; i < number_of_promos; i++) {
-    virtual_slider.push(slider_promos[j_total]);
+    //Given it has make the full loop for holes, it wont insert if there is no promos
+    if (typeof slider_promos[j_total] !== "undefined") {
+      virtual_slider.push(slider_promos[j_total]);
+    }
 
     if (j_total == slider_promos.length - 1){
       $.when(get_new_promos(last_time_promos)).then(function( x ) {
@@ -147,13 +189,13 @@ function refill_virtual_slider(){
       j_total++;
     }
   }
-
   //Puntos
   for (var i=0; i < number_of_points; i++) {
     virtual_slider.push(slider_puntos[k_total]);
     if (k_total == slider_puntos.length -1 ) { k_total = 0; } else { k_total++; }
   }
   console.log(i_total, j_total, k_total);
+  console.log(virtual_slider.length)
 }
 
 function destroy_html_carousel(){
@@ -164,6 +206,7 @@ function destroy_html_carousel(){
 }
 
 function load_everything(){
+  console.log("last_time_promos:", last_time_promos);
 
   $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
     refill_virtual_slider();
@@ -217,25 +260,3 @@ $(document).ready(function() {
 //   <span data-target="hello.output">
 //   </span>
 // </div> -->
-//
-// <!-- <img src="https://via.placeholder.com/1920x1080.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/ "
-// style=" position: fixed;
-//     top: 0;
-//     left: 0;
-//     z-index: 999;
-//     /* Full sized */
-//     width: 100%;
-//     height: 100vh;
-//     /* Dark background */
-//     background: rgba(0, 0, 0, 0.7);
-//   }
-//   div.fullimg img {
-//     width: 100%;
-//     height: auto;
-//   }
-//   /* [DOES NOT MATTER] */
-//   html, body {
-//     padding: 0;
-//     margin: 0;
-//   }", class="img-fluid">
-// </div>

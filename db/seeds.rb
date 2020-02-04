@@ -30,12 +30,19 @@ Empresa.create!(
 	email: "juanmi@valledelosmolinos.com",
 	tel: "644 252 097",
 	video: "https://www.youtube.com/embed/1qykU8LDbrY",
-	plan: 0,
+	plan: 3, #premium
 	mlon: 38.237937,
 	mlat:  -6.014943,
 	user_id: 1
 )
 
+Promo.create!(
+	titulo: "Rebaja del 80% en casas",
+	texto: "Información muy valiosa. Ayer nos preguntó la tía qué factores externos nos motivaban y yo le dije que ver como personas de mi entorno me retan intelectualmente con cualquier tema de la vida. Me parecía guay decirtelo. ",
+	validez: Time.now - 7.hours,
+  normal_price: 10,
+	empresa_id: 1
+)
 
 Promo.create!(
 	titulo: "3x2 en tapas calientes",
@@ -44,13 +51,7 @@ Promo.create!(
   normal_price: 10,
 	empresa_id: 1
 )
-Promo.create!(
-	titulo: "Rebaja del 80% en casas",
-	texto: "Información muy valiosa. Ayer nos preguntó la tía qué factores externos nos motivaban y yo le dije que ver como personas de mi entorno me retan intelectualmente con cualquier tema de la vida. Me parecía guay decirtelo. ",
-	validez: Time.now - 7.hours,
-  normal_price: 10,
-	empresa_id: 1
-)
+
 Evento.create!(
 	titulo: "XXI Matanza didáctiva",
 	imgevento: "",
