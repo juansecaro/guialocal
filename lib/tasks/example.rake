@@ -21,7 +21,7 @@ task recover_eventos_llerena: :environment  do
 
   # Getting index and all links
   url = ::URI.open("https://llerena.org/eventos/lista")
-  page = Nokogiri::HTML(url)
+  page = ::Nokogiri::HTML(url)
 
   page.css("a.fusion-read-more").each do |line|
     enlaces.push(line.attr('href'))
@@ -32,7 +32,7 @@ task recover_eventos_llerena: :environment  do
   #Inspecting everyone of them
   enlaces.each do |link|
     url = ::URI.open(link)
-    page = Nokogiri::HTML(url)
+    page = ::Nokogiri::HTML(url)
 
     title = page.css("h1").text
     if Evento.find_by_titulo(title) == nil
