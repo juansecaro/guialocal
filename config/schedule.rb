@@ -26,7 +26,7 @@ every :thursday, at: '9:00 am' do # Use any day of the week or :weekend, :weekda
   rake "send_weekly_email"
 end
 
-every 1.day, at: ['10:05 am', '3:05 pm', '8:05 pm' ] do
+every 1.day, at: ['10:05 am', '3:05 pm', '8:45 pm' ] do
   rake "recover_eventos_#{ENV['CURRENT_CITY']}"
 end
 
