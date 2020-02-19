@@ -10,6 +10,9 @@ var slider_puntos = [];
 
 var virtual_slider = [];
 
+var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
 var number_of_promos = 0;
 var number_of_points = 0;
 var number_of_events = 0;
@@ -66,8 +69,7 @@ function get_new_promos(n){
   }
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
-      console.log("ENTRA");
-      console.log(data);
+      //console.log(data);
       for (var i = 0; i < data.length; i++) {
         slider_promos.push(data[i]);
         console.log(data);
@@ -78,7 +80,6 @@ function get_new_promos(n){
     }
   );
 }
-
 
 function create_html_carousel(){
 
@@ -100,8 +101,24 @@ function create_html_carousel(){
   $('.carousel').carousel('cycle');
 }
 
+function getDate(string){
+  var mydate = new Date(string);
+
+  var weekday = days[ mydate.getDay() ];
+  var day = mydate.getDate();
+  var month = months[ mydate.getMonth() ];
+
+  return (weekday + " "+ day +" de " + month);
+}
+
+function truncateString(str, num) {
+  if (str.length <= num) {
+    return str
+  }
+  return str.slice(0, num) + "..." + "<p class=\"my-5 text-center\">Puedes ver la información completa en <strong class=\"highlight text-uppercase\">guiallerena.es</strong></p>"
+}
+
 function create_slide(element){
-  console.log(element);
   if (element.imgdestacado){
     carousel.append(`
       <div class="carousel-item">
@@ -117,14 +134,29 @@ function create_slide(element){
     `);
   }
   if (element.imgpromo){
-    carousel.append(
-      "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
-      <div class=\"corner-comercio\"><span>Turismo</span></div>\
-      <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
 
-    // carousel.append(`
-    //
-    //   `);
+    // carousel.append(
+    //   "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
+    //   <div class=\"corner-comercio\"><span>Comercio Local</span></div>\
+    //   <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
+
+
+      carousel.append(`
+            <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
+              <div class=\"corner-comercio\"><span>Comercio Local</span></div>
+
+              <div class="row h1 display-4" style=";">${element.titulo}</div>
+                <div class="col-6">
+                  <img src="${element.imgpromo.url}">
+                </div>
+                <div class="col-6">
+                  <div class="m-3">${element.texto}</div>
+                </div>
+
+            </div>
+        `);
+
+
 
   }
   if (element.imgevento){
@@ -135,23 +167,20 @@ function create_slide(element){
 
       carousel.append(`
             <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
-              <div class=\"corner-comercio\"><span>Actualidad</span></div>
-              <div class="row h1 display-4" style=";">${element.titulo}</div>
+            <div class=\"corner-comercio\"><span>Actualidad</span></div>
 
-                <div class="col-6" >
-                  <img  src="${element.imgevento.url}">
+              <div class="row h1 display-4 font-weight-bold mx-3"><p>${getDate(element.fecha)}</p></div>
+                <div class="row">
+                <div class="col-6"><img src="${element.imgevento.url}"></div>
+                <div class="col-6 py-5"><p><h2><strong><mark>${element.titulo}</mark></strong></h2></p><p><h3>${truncateString(element.info,600)}</h3></p></div>
                 </div>
-                <div class="col-6">
-                  ${element.info}
-                </div>
-
             </div>
         `);
 
   }
 }
 function refill_virtual_slider(){
-  console.log("last_time_promos:", last_time_promos);
+  //console.log("last_time_promos:", last_time_promos);
 
   while(virtual_slider.length > 0) { virtual_slider.pop(); }
   //Eventos
@@ -194,8 +223,8 @@ function refill_virtual_slider(){
     virtual_slider.push(slider_puntos[k_total]);
     if (k_total == slider_puntos.length -1 ) { k_total = 0; } else { k_total++; }
   }
-  console.log(i_total, j_total, k_total);
-  console.log(virtual_slider.length)
+  //console.log(i_total, j_total, k_total);
+  //console.log(virtual_slider.length)
 }
 
 function destroy_html_carousel(){
@@ -206,7 +235,6 @@ function destroy_html_carousel(){
 }
 
 function load_everything(){
-  console.log("last_time_promos:", last_time_promos);
 
   $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
     refill_virtual_slider();
@@ -239,6 +267,8 @@ $(document).ready(function() {
   load_everything();
 
   $('.carousel').on('slid.bs.carousel', function ( data ) {
+  // $('.carousel').carousel('pause');
+
   var lastSlide = $('.carousel-item').length - 1;
 
   if( data.to == lastSlide ) {

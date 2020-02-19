@@ -31,9 +31,8 @@ class PantallaController < ApplicationController
     else
       @promos = Promo.where("validez >= ?", Time.zone.now).order("validez ASC")
     end
+    #Rails.logger.info request.env['PATH_INFO']
     render json: @promos
   end
-
-  private
 
 end
