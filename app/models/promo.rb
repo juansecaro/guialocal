@@ -1,4 +1,6 @@
 class Promo < ApplicationRecord
+  include ActionView::Helpers::DateHelper
+
   belongs_to :empresa
   before_destroy :clean_s3, prepend: true
 
@@ -18,6 +20,20 @@ class Promo < ApplicationRecord
   default_scope {order(created_at: :desc)}
   scope :activas, -> { where("validez > ?", Time.now).order("created_at ASC")  }
   scope :todas_diez_dias, -> { where("created_at > ?", Time.now-10.days).order("created_at DESC") }
+
+  def as_json options={}
+  {
+    titulo: titulo,
+    texto: texto,
+    validez: distance_of_time_in_words_to_now(validez),
+    imgpromo: imgpromo,
+    created_at: created_at,
+    normal_price: normal_price,
+    special_price: special_price,
+    logo: self.empresa.logo.url,
+    address: self.empresa.address
+  }
+end
 
 
   private

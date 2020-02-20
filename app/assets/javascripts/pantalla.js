@@ -58,6 +58,7 @@ function get_new_eventos(n){
     }
   );
 }
+
 function get_new_promos(n){
 
   //removed unvalid events
@@ -118,7 +119,25 @@ function truncateString(str, num) {
   return str.slice(0, num) + "..." + "<p class=\"my-5 text-center\">Puedes ver la información completa en <strong class=\"highlight text-uppercase\">guiallerena.es</strong></p>"
 }
 
+// It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden
+function determine_price(element){
+
+  if (element.special_price !== "undefined" && element.special_price > 0) {
+    return (`
+      <h1 class="text-center">ANTES <del class="text-muted">${element.normal_price} €</del> AHORA <span class="price">${element.special_price} €</span></h1>
+    `);
+  } else if (element.normal_price !== "undefined" && element.normal_price > 0) {
+    return (`
+      <h1 class="text-center price">${element.normal_price} €</h1>
+    `);
+  } else {
+    //  block of code to be executed if the condition1 is false and condition2 is false
+    return "<h1 class=\"text-center price\">Precio a consultar en tienda</h1>";
+  }
+}
+
 function create_slide(element){
+
   if (element.imgdestacado){
     carousel.append(`
       <div class="carousel-item">
@@ -135,28 +154,24 @@ function create_slide(element){
   }
   if (element.imgpromo){
 
-    // carousel.append(
-    //   "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgpromo.url +">\
-    //   <div class=\"corner-comercio\"><span>Comercio Local</span></div>\
-    //   <div class=\"carousel-caption d-none d-md-block\"><h1>Hola</h1><p>Eoooooooooo</p></div></div>");
-
-
       carousel.append(`
             <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
-              <div class=\"corner-comercio\"><span>Comercio Local</span></div>
+            <div class=\"corner-comercio\"><span>Comercio Local</span></div>
 
-              <div class="row h1 display-4" style=";">${element.titulo}</div>
-                <div class="col-6">
-                  <img src="${element.imgpromo.url}">
-                </div>
-                <div class="col-6">
-                  <div class="m-3">${element.texto}</div>
+                <div class="row">
+                        <div class="col-7"><img src="${element.imgpromo.url}" class="img-fluid "></div>
+                        <div class="col-5 pr-5 mt-5 pt-5">
+                          <div class="text-center my-5"><img src="${element.logo}" class="img-fluid"></div>
+                          <div class="h1"><p><mark>${element.titulo}</mark></p></div>
+                          <div><p><h2>${element.texto}</h2></p></div>
+                          <div>${determine_price(element)}</div>
+                          <h2 class="text-center"><p> *** Termina en <span class="price">${element.validez}</span> *** </p></h2>
+                          <div><p><h2 class="text-center">Encuéntranos en <strong class="address">${element.address}</strong></h2></p></div>
+                        </div>
                 </div>
 
             </div>
         `);
-
-
 
   }
   if (element.imgevento){
@@ -168,11 +183,10 @@ function create_slide(element){
       carousel.append(`
             <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
             <div class=\"corner-comercio\"><span>Actualidad</span></div>
-
               <div class="row h1 display-4 font-weight-bold mx-3"><p>${getDate(element.fecha)}</p></div>
                 <div class="row">
-                <div class="col-6"><img src="${element.imgevento.url}"></div>
-                <div class="col-6 py-5"><p><h2><strong><mark>${element.titulo}</mark></strong></h2></p><p><h3>${truncateString(element.info,600)}</h3></p></div>
+                  <div class="col-6"><img src="${element.imgevento.url}" class="img-fluid"></div>
+                  <div class="col-6 py-5"><p><h2><strong><mark>${element.titulo}</mark></strong></h2></p><p><h3>${truncateString(element.info,600)}</h3></p></div>
                 </div>
             </div>
         `);
