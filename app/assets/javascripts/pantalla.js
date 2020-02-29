@@ -3,6 +3,9 @@
 //= require popper
 //= require bootstrap-sprockets
 
+var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
 var carousel;
 var slider_eventos = [];
 var slider_promos = [];
@@ -10,10 +13,8 @@ var slider_puntos = [];
 
 var virtual_slider = [];
 
-var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-var number_of_promos = 0;
+var number_of_promos = 0; //loaded from HTML (Server)
 var number_of_points = 0;
 var number_of_events = 0;
 
@@ -21,7 +22,7 @@ var time_between_mill = 0;
 var last_time_events = 0;
 var last_time_promos = 0;
 
-var i_total = 0;
+var i_total = 0; //total promos disponibles (puede haber más huecos que promos disponibles)
 var j_total = 0;
 var k_total = 0;
 
@@ -33,7 +34,7 @@ function get_puntos(){
       }
       console.log( "$.get succeeded puntos" );
     }, function() {
-      alert( "$.get failed!" );
+      alert( "$.get failed puntos!" );
     }
   );
 }
@@ -46,7 +47,7 @@ function get_new_eventos(n){
      while ( Date.parse(slider_eventos[0].fecha) < time_now ) { //Borra todo!
        slider_eventos.shift();
      }
-   } // falla el controlador, el signo <
+   }
     // Get new ones
     return $.get( "/api/v1/geteventos", { last_events_retrieval: n } ).then(function(data) {
       for (var i = 0; i < data.length; i++) {
@@ -70,10 +71,8 @@ function get_new_promos(n){
   }
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
-      //console.log(data);
       for (var i = 0; i < data.length; i++) {
         slider_promos.push(data[i]);
-        console.log(data);
       }
       console.log( "$.get succeeded promos" );
     }, function() {
@@ -83,7 +82,6 @@ function get_new_promos(n){
 }
 
 function create_html_carousel(){
-
   //Deletion
   $(".carousel").carousel("pause").removeData();
   destroy_html_carousel();
@@ -119,7 +117,7 @@ function truncateString(str, num) {
   return str.slice(0, num) + "..." + "<p class=\"my-5 text-center\">Puedes ver la información completa en <strong class=\"highlight text-uppercase\">guiallerena.es</strong></p>"
 }
 
-// It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden
+// It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden ONLY FOR PROMOS
 function determine_price(element){
 
   if (element.special_price !== "undefined" && element.special_price > 0) {
@@ -175,10 +173,6 @@ function create_slide(element){
 
   }
   if (element.imgevento){
-    // carousel.append(
-    //   "<div class=\"carousel-item \"><img class=\"d-block w-100\" src="+ element.imgevento.url +">\
-    //   <div class=\"corner-comercio\"><span>Actualidad</span></div>\
-    //   <div class=\"carousel-caption d-none d-md-block\"><h1 class=\"display-1\">"+ element.titulo +"</h1><p class=\"display-4\">"+ element.info +"</p></div></div>");
 
       carousel.append(`
             <div class="carousel-item" style="background-color: white; height: 1080px; padding: 50px;">
@@ -194,28 +188,24 @@ function create_slide(element){
   }
 }
 function refill_virtual_slider(){
-  //console.log("last_time_promos:", last_time_promos);
 
   while(virtual_slider.length > 0) { virtual_slider.pop(); }
-  //Eventos
+
+  // Eventos
   for (var i=0; i < number_of_events; i++) {
-    //Given it has make the full loop for holes, it wont insert if there is no events
+    //Given it has made the full loop for holes, it wont insert if there is no events (it consider num max set in config)
     if (typeof slider_eventos[i_total] !== "undefined") {
       virtual_slider.push(slider_eventos[i_total]);
     }
 
     if (i_total == slider_eventos.length - 1){
-
-      $.when(get_new_eventos(last_time_events)).then(function( x ) {
-        last_time_events = Date.now();
-      });
       i_total = 0;
-    }
-    else {
+    } else {
       i_total++;
      }
   }
-  //Promos
+
+  // Promos
   for (var i=0; i < number_of_promos; i++) {
     //Given it has make the full loop for holes, it wont insert if there is no promos
     if (typeof slider_promos[j_total] !== "undefined") {
@@ -223,22 +213,17 @@ function refill_virtual_slider(){
     }
 
     if (j_total == slider_promos.length - 1){
-      $.when(get_new_promos(last_time_promos)).then(function( x ) {
-        last_time_promos = Date.now();
-      });
       j_total = 0;
-    }
-    else {
+    } else {
       j_total++;
     }
   }
-  //Puntos
+
+  //Puntos (Puntos are just loaded first time)
   for (var i=0; i < number_of_points; i++) {
     virtual_slider.push(slider_puntos[k_total]);
     if (k_total == slider_puntos.length -1 ) { k_total = 0; } else { k_total++; }
   }
-  //console.log(i_total, j_total, k_total);
-  //console.log(virtual_slider.length)
 }
 
 function destroy_html_carousel(){
@@ -248,26 +233,25 @@ function destroy_html_carousel(){
   }
 }
 
+
 function load_everything(){
 
   $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
+    last_time_events = Date.now(); // updated last time
+    last_time_promos = Date.now();
     refill_virtual_slider();
     create_html_carousel();
   });
-
-  last_time_events = Date.now(); // updated last time
-  last_time_promos = Date.now();
 }
 
 function reload_everything(){
 
   $.when(get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
+    last_time_events = Date.now(); // updated last time
+    last_time_promos = Date.now();
     refill_virtual_slider();
     create_html_carousel();
   });
-
-  last_time_events = Date.now(); // updated last time
-  last_time_promos = Date.now();
 }
 
 $(document).ready(function() {
@@ -293,14 +277,3 @@ $(document).ready(function() {
 
   //setTimeout(function(){window.location.reload(1);}, 86400000); //at least one full reload every 24 hours
 });
-
-//  <div data-controller="media">
-//   <input data-target="media.name" type="text">
-//
-//   <button data-action="click->media#greet">
-//     Greet
-//   </button>
-//
-//   <span data-target="hello.output">
-//   </span>
-// </div> -->
