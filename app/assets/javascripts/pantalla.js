@@ -13,7 +13,6 @@ var slider_puntos = [];
 
 var virtual_slider = [];
 
-
 var number_of_promos = 0; //loaded from HTML (Server)
 var number_of_points = 0;
 var number_of_events = 0;
