@@ -10,63 +10,71 @@
 <% end %>
 
   <div class="form-inputs">
-    <div class="row">
-      <%= f.text_field  :titulo, class: "form-control c", placeholder: "Título" %>
-      <div class="cd charcounter"></div>
-    </div>
-<p></p>
-    <div class="row">
-      <%= f.text_area :texto, class: "form-control d", placeholder: "Texto" %>
-      <div class="dd charcounter"></div>
-    </div>
 
-<div class="form-group">
 
-    Duración de la promoción: <span class="text-muted"><small>(Obligatorio)</small></span></br>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.radio_button :validezElegida, "baja" %>
-        <%= f.label 'validez_baja', ' 24 horas' %>
 
-        <%= f.radio_button :validezElegida, "media" %>
-        <%= f.label 'validez_media', ' 3 días' %>
 
-        <%= f.radio_button :validezElegida, "alta" %>
-        <%= f.label 'validez_alta', ' 1 semana' %>
+<div data-controller="prices">
+
+  <div class="row">
+    <%= f.text_field  :titulo, class: "form-control c", placeholder: "Título" %>
+    <div class="cd charcounter"></div>
+  </div>
+  <p></p>
+  <div class="row">
+    <%= f.text_area :texto, class: "form-control d", placeholder: "Texto" %>
+    <div class="dd charcounter"></div>
+  </div>
+
+  <div class="form-group">
+
+      Duración de la promoción: <span class="text-muted"><small>(Obligatorio)</small></span></br>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.radio_button :validezElegida, "baja" %>
+          <%= f.label 'validez_baja', ' 24 horas' %>
+
+          <%= f.radio_button :validezElegida, "media" %>
+          <%= f.label 'validez_media', ' 3 días' %>
+
+          <%= f.radio_button :validezElegida, "alta" %>
+          <%= f.label 'validez_alta', ' 1 semana' %>
+        </div>
       </div>
+  </div>
+
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="precio_toggle">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off" data-action="click->prices#show" checked> Con precio
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off" data-action="click->prices#hide"> Sin precio
+    </label>
+  </div>
+
+
+  <div class="row" id="precios">
+    <div class="col-md-12">
+      <p>
+      <%= f.label(:normal, "Precio normal") %> <span class="text-muted"><small>(Obligatorio)</small></span></br>
+      <%= f.number_field(:normal_price, step: 0.01) %>
+      </p>
+      <p>
+      <%= f.label(:rebajado, "Precio rebajado") %> <span class="text-muted"><small>(Opcional, pero recomendado)</small></span></br>
+      <%= f.number_field(:special_price, step: 0.05) %>
+      </p>
     </div>
-</div>
-
-
-
-<!-- <div class="btn-group-toggle" data-toggle="buttons">
-  <button onclick="price()" class="btn btn-secondary active" id="withprices">
-    <input type="checkbox" checked autocomplete="off"> Sin precio
-  </button>
-</div> -->
-
-
-<div class="row" id="precios">
-  <div class="col-md-12">
-    <p>
-    <%= f.label(:normal, "Precio normal") %> <span class="text-muted"><small>(Obligatorio)</small></span></br>
-    <%= f.number_field(:normal_price, step: 0.01) %>
-    </p>
-    <p>
-    <%= f.label(:rebajado, "Precio rebajado") %> <span class="text-muted"><small>(Opcional, pero recomendado)</small></span></br>
-    <%= f.number_field(:special_price, step: 0.05) %>
-    </p>
   </div>
 
 </div>
-
 
 
     <p>
     <%= f.label(:imagen, "Imagen de la promoción") %> <span class="text-muted"><small>(Opcional, pero muy recomendado)</small></span></br>
     <%= f.file_field :imgpromo, as: :file, label: "Imagen " %>
   </p>
-  </div>
+</div>
 
   <div class="form-actions">
     <%= f.submit "Enviar", class: "btn btn-primary" %>
