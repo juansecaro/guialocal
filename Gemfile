@@ -12,7 +12,7 @@ gem 'webpacker', '~> 4.0', '>= 4.0.7'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '< 1.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,8 +32,7 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
-
-gem 'stripe'
+#gem 'stripe'
 gem 'trix'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
