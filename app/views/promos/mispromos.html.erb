@@ -16,25 +16,28 @@
       <p class="text-center"><small>Aún tienes que esperar</small></p>
       <p class="text-center"><span id="time"></span></p>
 
-      <div id="clockdiv" class="mx-autdo d-block">
-        <div>
-          <span class="days"></span>
-          <div class="smalltext">Días</div>
+      <% if @waiting > 0%>
+        <div data-controller="clock">
+          <div id="clockdiv" class="mx-auto d-block" data-target="clock.display">
+            <div>
+              <span class="days"></span>
+              <div class="smalltext">Días</div>
+            </div>
+            <div>
+              <span class="hours"></span>
+              <div class="smalltext">Horas</div>
+            </div>
+            <div>
+              <span class="minutes"></span>
+              <div class="smalltext">Minutos</div>
+            </div>
+            <div>
+              <span class="seconds"></span>
+              <div class="smalltext">Segundos</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <span class="hours"></span>
-          <div class="smalltext">Horas</div>
-        </div>
-        <div>
-          <span class="minutes"></span>
-          <div class="smalltext">Minutos</div>
-        </div>
-        <div>
-          <span class="seconds"></span>
-          <div class="smalltext">Segundos</div>
-        </div>
-      </div>
-
+      <% end %>
 
       <p class="text-center"><small>hasta la próxima promoción</small></p>
 
@@ -44,9 +47,6 @@
       <p> <div class="text-muted text-center">¿No te gusta esperar?</div></p>
       <p class="text-center"><%= link_to "Pásate a Premium", "/precios"%></p>
     </div>
-
-
-    <%#= link_to "Obtener créditos", consiguemascreditos_path, class: "btn btn-success d-block mx-auto" %>
 
   </div>
   <div class="col-md-9">

@@ -20,6 +20,7 @@ class Promo < ApplicationRecord
 
   def as_json options={}
   {
+    id: id,
     titulo: titulo,
     texto: texto,
     validez: distance_of_time_in_words_to_now(validez),
