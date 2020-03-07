@@ -9,8 +9,8 @@ class Promo < ApplicationRecord
   validates :titulo, presence: true, length:{ maximum: 60, too_long: "El título no puede ser mayor de 50 carácteres y tienes %{count}" }
   validates :texto, presence: true, length:{ maximum: 250, too_long: "El texto no puede ser mayor de  250 carácteres y tienes %{count}" }
 
-  validates :normal_price, presence: { message: "La oferta debe llevar un precio" }, numericality: {greater_than_or_equal_to: 0}
-  validate :discount, :validez_elegida
+
+  validate :check_prices, :validez_elegida
 
 
   mount_uploader :imgpromo, ImgpromoUploader
@@ -41,9 +41,21 @@ end
     false
   end
 
-  def discount
-    if (self.special_price.is_a?Numeric) && (self.special_price >= self.normal_price)
-      errors.add(:Precio_rebajado, ".Si pones precio rebajado debe ser menor que el precio original")
+  def check_prices
+    if (self.normal_price.nil?)
+        errors.add(:base, "Tienes que poner un precio válido")
+    elsif (self.normal_price == 0)
+      if (self.special_price.is_a?Numeric)
+        if (self.special_price > self.normal_price)
+          errors.add(:base, "El precio rebajado no puede ser mayor que el original")
+        end
+      end
+    else
+      if (self.special_price.is_a?Numeric)
+        if (self.special_price >= self.normal_price)
+          errors.add(:base, "El precio rebajado tiene que ser menor que el original")
+        end
+      end
     end
   end
 

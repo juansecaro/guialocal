@@ -110,6 +110,7 @@ es:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      max_size_error: Tamaño de archivo demasiado grande
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       present: debe estar en blanco

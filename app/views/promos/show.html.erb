@@ -12,15 +12,19 @@
       <% if @promo.empresa.try(:present?) %>
           <div class="text-center">
             <p class="h3">
-              <% if @promo.special_price %>
-              <span class="text-muted"><del><%= number_to_currency(@promo.normal_price, precision: 2, locale: :es) if @promo.normal_price %></del></span>
-               <span class="font-weight-bold text-danger"><%= number_to_currency(@promo.special_price, precision: 2, locale: :es) if @promo.special_price %></span>
-               <span><%= discount(@promo) %></span>
-               <% else %>
-                <% if @promo.normal_price %>
-                <span class="font-weight-bold text-danger"><%= number_to_currency(@promo.normal_price, precision: 2, locale: :es) if @promo.normal_price %></span>
-                <% end %>
-               <% end %>
+              <%if @promo.special_price == 0 && @promo.normal_price ==0%>
+                <span class="font-weight-bold text-danger h5"></span>
+              <%else%>
+                <% if @promo.special_price %>
+                 <span class="text-muted"><del><%= number_to_currency(@promo.normal_price, precision: 2, locale: :es) if @promo.normal_price %></del></span>
+                 <span class="font-weight-bold text-danger"><%= number_to_currency(@promo.special_price, precision: 2, locale: :es) if @promo.special_price %></span>
+                 <span><%= discount(@promo) %></span>
+                 <% else %>
+                  <% if @promo.normal_price %>
+                  <span class="font-weight-bold text-danger"><%= number_to_currency(@promo.normal_price, precision: 2, locale: :es) if @promo.normal_price %></span>
+                  <% end %>
+                 <% end %>
+              <% end %>
              </p>
             <small class="text-muted">Empresa: <%= link_to @promo.empresa.name, empresa_path(@promo.empresa) %></small>
           </div>
