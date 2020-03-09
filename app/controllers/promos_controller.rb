@@ -1,7 +1,7 @@
 class PromosController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show ]
   before_action :control_max_promos, only: :create
-  before_action :set_promo, only: [:show, :destroy]
+  before_action :set_promo, only: [:show, :edit, :update, :destroy]
   #before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
@@ -27,11 +27,23 @@ class PromosController < ApplicationController
   end
 
   def edit
-
+    if Time.now.utc > @promo.created_at + 1800
+      flash[:error] = "Sólo puedes editar promociones durante la primera media hora"
+      redirect_to mispromos_path
+    end
   end
 
   def update
-
+    respond_to do |format|
+      @promo.increment(:version)
+      if @promo.update(promo_params)
+        format.html { redirect_to mispromos_path, notice: 'La promoción se ha actualizado con éxito' }
+        format.json { render :show, status: :ok, location: @promo }
+      else
+        format.html { render :edit }
+        format.json { render json: @promo.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -298,7 +310,7 @@ class PromosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def promo_params
-      params.require(:promo).permit(:titulo, :imgpromo, :texto, :validez, :normal_price, :special_price)
+      params.require(:promo).permit(:titulo, :version, :imgpromo, :texto, :validez, :normal_price, :special_price)
     end
 
 end

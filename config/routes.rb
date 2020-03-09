@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]
-  resources :promos, only: [:show, :new, :create]
+  resources :promos, only: [:show, :new, :create, :edit, :update]
   resources :achievement_proposals, only: :show
   resources :ambassadors, only: [:show]
 

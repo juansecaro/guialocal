@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200108105745) do
+ActiveRecord::Schema.define(version: 20200307234041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20200108105745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.integer "version", default: 0
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -208,6 +209,7 @@ ActiveRecord::Schema.define(version: 20200108105745) do
     t.datetime "updated_at", null: false
     t.decimal "normal_price"
     t.decimal "special_price"
+    t.integer "version", default: 0
     t.index ["empresa_id"], name: "index_promos_on_empresa_id"
   end
 

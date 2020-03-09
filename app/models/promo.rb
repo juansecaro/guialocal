@@ -12,7 +12,6 @@ class Promo < ApplicationRecord
 
   validate :check_prices, :validez_elegida
 
-
   mount_uploader :imgpromo, ImgpromoUploader
   default_scope {order(created_at: :desc)}
   scope :activas, -> { where("validez > ?", Time.now).order("created_at ASC")  }
@@ -23,6 +22,7 @@ class Promo < ApplicationRecord
     id: id,
     titulo: titulo,
     texto: texto,
+    version: version,
     validez: distance_of_time_in_words_to_now(validez),
     imgpromo: imgpromo,
     created_at: created_at,
