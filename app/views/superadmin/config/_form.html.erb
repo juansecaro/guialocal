@@ -8,40 +8,22 @@
       <%= f.label :Ciudad_base %>
       <%= f.select :city, Config.cities.keys %>
 
-      <p>
-      <%= f.label :Reindexar? %>
-      <%= select_tag "reindex", options_for_select([ "NO", "YES" ], "NO") %>
-      </p>
-
-    <div class="col-auto">
-      <div >
-        <%= f.input :promo_active, label: "Promo activa", as: :boolean, class: "align-text-bottom"%>
-      </div>
-      <div >
-        <%= f.input :promo_text, label: false, class: " align-middle" %>
-      </div>
-    </div>
-
-    <div class="col-auto">
+    <div class="col-md-2">
       <%= f.input :number_of_points, as: :integer %>
       <%= f.input :number_of_promos, as: :integer %>
       <%= f.input :number_of_events, as: :integer %>
-
     </div>
 
-    <div class="col-auto">
-      <div >
-        <%= f.input :happyhour, label: "Happy Hour", as: :boolean, class: "align-text-bottom"%>
-      </div>
-    </div>
+    <%= f.input :header, as: :file, label: "Cabecero de las pantallas " %>
+    <p><%= image_tag(@config.header, class: "img-fluid") if @config.header? %></p>
 
 
-
-      <p class="text-muted">Fin sólo para superadmins</p>
-    <% end %>
   </div>
 
   <div class="form-actions">
     <p><%= f.button :submit, class: "btn btn-primary" %></p>
   </div>
+
+    <p class="text-muted">Fin sólo para superadmins</p>
+  <% end %>
 <% end %>

@@ -196,17 +196,7 @@ class PromosController < ApplicationController
         valid_value = false
         last_promo = current_user.empresa.try(:promos).try(:first).try(:created_at)
         plan = current_user.empresa.plan
-        #nil??? primera vez??
-          if (Config.first.happyhour == true)
-            if (last_promo + 1.hour < Time.now ) #nil?
-              valid_value = true
-              set_validez
-            else
-              flash.now[:error] = "Tiene que pasar al menos una hora entre promociones"
-              render 'new' and return
-            end
-          else
-            #no happy hour
+
             if last_promo == nil #no previous publication
               valid_value = true
               set_validez
@@ -247,7 +237,6 @@ class PromosController < ApplicationController
                 end
 
                 end
-              end
           end
 
     # Ya tenemos todo para saber si es válido o no

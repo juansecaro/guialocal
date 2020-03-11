@@ -109,9 +109,7 @@ class InfoController < ApplicationController
   end
 
   def precios
-    if Config.first.promo_active == true
-      flash.now[:notice] = Config.first.promo_text
-    end
+
   end
 
   def consiguemascreditos

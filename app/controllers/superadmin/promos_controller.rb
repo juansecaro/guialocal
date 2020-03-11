@@ -12,6 +12,7 @@ class Superadmin::PromosController < Superadmin::ApplicationController
 
   def update
     respond_to do |format|
+      @promo.increment(:version)
       if @promo.update(promo_params)
         format.html { redirect_to superadmin_promos_path, notice: 'La promoción se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @promo }
