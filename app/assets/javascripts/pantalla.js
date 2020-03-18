@@ -16,6 +16,8 @@ var virtual_slider = [];
 var number_of_promos = 0; //loaded from HTML (Server)
 var number_of_points = 0;
 var number_of_events = 0;
+var header = "";
+var not_available = "";
 
 var time_between_mill = 0;
 var last_time_events = 0;
@@ -85,6 +87,10 @@ function create_html_carousel(){
   $(".carousel").carousel("pause").removeData();
   destroy_html_carousel();
   carousel = $('#carousel-inner');
+  // We create the first one with the custom header (loading phase)
+  carousel.append (`
+    <div class=\"carousel-item\"><img class=\"d-block w-100\" src=${header}></div>
+  `);
   virtual_slider.forEach(function(element) {
     create_slide(element);
   });
@@ -114,6 +120,12 @@ function truncateString(str, num) {
     return str
   }
   return str.slice(0, num) + "..." + "<p class=\"my-5 text-center\">Puedes ver la información completa en <strong class=\"highlight text-uppercase\">guiallerena.es</strong></p>"
+}
+
+function checkNullImage(image) {
+  if (image == null || image == undefined) {
+    return noimage; //placeholder
+  }
 }
 
 // It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden ONLY FOR PROMOS
@@ -156,7 +168,7 @@ function create_slide(element){
             <div class=\"corner-comercio\"><span>Comercio Local</span></div>
 
                 <div class="row">
-                        <div class="col-7"><img src="${element.imgpromo.url}" class="img-fluid "></div>
+                        <div class="col-7"><img src="${checkNullImage(element.imgpromo.url)}" class="img-fluid "></div>
                         <div class="col-5 pr-5 mt-5 pt-5">
                           <div class="text-center my-5"><img src="${element.logo}" class="img-fluid"></div>
                           <div class="h1"><p><mark>${element.titulo}</mark></p></div>
@@ -178,7 +190,7 @@ function create_slide(element){
             <div class=\"corner-comercio\"><span>Actualidad</span></div>
               <div class="row h1 display-4 font-weight-bold mx-3"><p>${getDate(element.fecha)}</p></div>
                 <div class="row">
-                  <div class="col-6"><img src="${element.imgevento.url}" class="img-fluid"></div>
+                  <div class="col-6"><img src="${checkNullImage(element.imgevento.url)}" class="img-fluid"></div>
                   <div class="col-6 py-5"><p><h2><strong><mark>${element.titulo}</mark></strong></h2></p><p><h3>${truncateString(element.info,600)}</h3></p></div>
                 </div>
             </div>
@@ -259,6 +271,8 @@ $(document).ready(function() {
   number_of_promos = parseInt(document.getElementById('number_of_promos').value);
   number_of_points = parseInt(document.getElementById('number_of_points').value);
   number_of_events = parseInt(document.getElementById('number_of_events').value);
+  header = document.getElementById('header').value;
+  noimage = document.getElementById('noimage').value;
   //time_between_mill = parseInt(document.getElementById('time_between').value);
 
   load_everything();

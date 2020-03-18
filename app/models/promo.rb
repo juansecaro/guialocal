@@ -26,6 +26,7 @@ class Promo < ApplicationRecord
     validez: distance_of_time_in_words_to_now(validez),
     imgpromo: imgpromo,
     created_at: created_at,
+    updated_at: updated_at,
     normal_price: normal_price,
     special_price: special_price,
     logo: self.empresa.logo.url,

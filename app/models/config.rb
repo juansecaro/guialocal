@@ -8,6 +8,4 @@ class Config < ApplicationRecord
   def set_default_city
     self.city ||= :sinasignar
   end
-
-
 end

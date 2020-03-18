@@ -235,8 +235,7 @@ class PromosController < ApplicationController
                     render 'new' and return
                   end
                 end
-
-                end
+              end
           end
 
     # Ya tenemos todo para saber si es válido o no
