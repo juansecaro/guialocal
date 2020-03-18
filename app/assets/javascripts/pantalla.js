@@ -102,7 +102,7 @@ function create_html_carousel(){
   $('.carousel').carousel({
     interval: 2000
   });
-  $('.carousel').carousel('cycle');
+  $('.carousel').carousel('cycle').delay(3000);
 }
 
 function getDate(string){
@@ -126,6 +126,7 @@ function checkNullImage(image) {
   if (image == null || image == undefined) {
     return noimage; //placeholder
   }
+  return image;
 }
 
 // It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden ONLY FOR PROMOS
@@ -178,7 +179,6 @@ function create_slide(element){
                           <div><p><h2 class="text-center">Encuéntranos en <strong class="address">${element.address}</strong></h2></p></div>
                         </div>
                 </div>
-
             </div>
         `);
 
