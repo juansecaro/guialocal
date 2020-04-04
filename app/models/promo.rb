@@ -20,13 +20,14 @@ class Promo < ApplicationRecord
   def as_json options={}
   {
     id: id,
+    empresa_id: self.empresa.id,
     titulo: titulo,
     texto: texto,
     version: version,
     validez: distance_of_time_in_words_to_now(validez),
     imgpromo: imgpromo,
-    created_at: created_at,
-    updated_at: updated_at,
+    validez_num: validez.to_time.to_i,
+    updated_at: updated_at.to_time.to_i,
     normal_price: normal_price,
     special_price: special_price,
     logo: self.empresa.logo.url,

@@ -15,7 +15,7 @@ class PantallaController < ApplicationController
     last_time_milliseconds = params[:last_events_retrieval].to_f
     if (last_time_milliseconds != 0)
       last_time = Time.at(last_time_milliseconds/1000)
-      @eventos = Evento.where("fecha >= ? AND created_at >= ?", Time.zone.now, last_time).order("fecha ASC")
+      @eventos = Evento.where("fecha >= ? AND updated_at >= ?", Time.zone.now, last_time).order("fecha ASC")
     else
       @eventos = Evento.where("fecha >= ?", Time.zone.now).order("fecha ASC")
     end
@@ -27,7 +27,7 @@ class PantallaController < ApplicationController
     last_time_milliseconds = params[:last_promos_retrieval].to_f
     if (last_time_milliseconds != 0)
       last_time = Time.at(last_time_milliseconds/1000)
-      @promos = Promo.where("validez >= ? AND created_at >= ?", Time.zone.now, last_time).order("validez ASC")
+      @promos = Promo.where("validez >= ? AND updated_at >= ?", Time.zone.now, last_time).order("validez ASC")
     else
       @promos = Promo.where("validez >= ?", Time.zone.now).order("validez ASC")
     end

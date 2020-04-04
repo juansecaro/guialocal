@@ -8,7 +8,6 @@ var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto',
 
 var carousel;
 var slider_eventos = [];
-var slider_promos = [];
 var slider_puntos = [];
 
 var virtual_slider = [];
@@ -26,6 +25,111 @@ var last_time_promos = 0;
 var i_total = 0; //total promos disponibles (puede haber más huecos que promos disponibles)
 var j_total = 0;
 var k_total = 0;
+
+class Empresa {
+  constructor(promo, empresa_id) {
+    this.turn = 0
+    this.empresa_id = empresa_id
+    this.promos = new Array()
+    this.insertPromoInEmpresa(promo)
+  }
+  // Hay que determinar numero de existentes y a quien le toca
+  takePromoFromEmpresa() {
+    let promo = this.promos[this.turn]
+    if (this.turn < this.promos.length - 1) {
+      this.turn++
+    } else {
+      this.turn = 0
+    }
+    return promo
+  }
+  // dado un valor devuelve la clave. Lo usamos para sustituir con nueva versión
+  getKeyByValue(object, value) {
+	  return Object.keys(object).find(key => object[key] === value);
+  }
+
+  insertPromoInEmpresa(promo) {
+    let found = this.promos.find(element => element.id == promo.id);
+
+    if(typeof found === "undefined"){
+      this.promos.push(promo)
+    }else{
+      let index = this.getKeyByValue(this.promos, found)
+      this.promos[index] = promo
+    }
+  }
+  // Clean lapsed and removed
+  updateAndCleanPromos() {
+    var time_now = Date.now()/1000
+    let i = this.promos.length - 1
+    while (i>= 0) {
+
+      if (this.promos[i].validez < time_now || this.promos[i].version < 0 ) {
+        if (this.turn == this.promos.length - 1) {
+          //adapt turn
+          if (this.turn > 0) {
+            this.turn--
+          }
+        }
+        this.promos.splice(i, 1) //remove
+      }
+      i--
+    }
+  }
+  checkEmpresaShouldExist() {
+    if (this.promos.length == 0) {
+      return false;
+    } else
+      return true;
+  }
+}
+
+function Marketplace() {
+  this.empresas = []
+  this.indexes = [] // here we hold the used ones, to ckeck shown ones
+  this.turn = 0 // the number (index) to be shown
+
+  this.getValue = function(){
+    Object.keys(this.empresas).find(key => object[key] === value);
+  }
+  this.cleanUp = function () {
+    empresas = this.empresas
+    Object.keys(this.empresas).forEach(function(i){
+      empresas[i].updateAndCleanPromos()
+       if (!empresas[i].checkEmpresaShouldExist()){
+       empresas[i] = undefined;
+       }
+    });
+  }
+  this.insertPromoInMarketplace = function (promo) {
+    empresa_id = promo.empresa_id
+
+    if (this.empresas[empresa_id] instanceof Empresa) {
+      this.empresas[empresa_id].insertPromoInEmpresa(promo)
+    } else {
+      this.empresas[empresa_id] = new Empresa(promo, empresa_id)
+    }
+  }
+  this.takePromoFromMarketplace = function(){
+    if (this.turn == this.indexes.length){
+      this.indexes = Object.keys(this.empresas);
+      this.turn = 0;
+    }
+    let i = this.indexes[this.turn]
+    this.turn++
+
+    let promo = this.empresas[i].takePromoFromEmpresa()
+
+    if (typeof promo !== "undefined"){
+      return promo;
+    } else {
+      return false;
+    }
+  }
+}
+
+// global instance of promos management system
+const m = new Marketplace();
 
 function get_puntos(){
 
@@ -63,17 +167,12 @@ function get_new_eventos(n){
 
 function get_new_promos(n){
 
-  //removed unvalid events
-  if (slider_promos.length > 0) {
-    var time_now = Date.now();
-    while ( Date.parse(slider_promos[0].validez) < time_now ) {
-      slider_promos.shift();
-    }
-  }
+    m.cleanUp(); // removes dated, and invalid ones
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
+
       for (var i = 0; i < data.length; i++) {
-        slider_promos.push(data[i]);
+        m.insertPromoInMarketplace(data[i]);
       }
       console.log( "$.get succeeded promos" );
     }, function() {
@@ -123,7 +222,7 @@ function truncateString(str, num) {
 }
 
 function checkNullImage(image) {
-  if (image == null || image == undefined) {
+  if (image == null || image == "undefined") {
     return noimage; //placeholder
   }
   return image;
@@ -219,15 +318,11 @@ function refill_virtual_slider(){
   // Promos
   for (var i=0; i < number_of_promos; i++) {
     //Given it has make the full loop for holes, it wont insert if there is no promos
-    if (typeof slider_promos[j_total] !== "undefined") {
-      virtual_slider.push(slider_promos[j_total]);
+    let promo = m.takePromoFromMarketplace();
+    if (promo !== false) {
+      virtual_slider.push(promo);
     }
 
-    if (j_total == slider_promos.length - 1){
-      j_total = 0;
-    } else {
-      j_total++;
-    }
   }
 
   //Puntos (Puntos are just loaded first time)
@@ -274,6 +369,8 @@ $(document).ready(function() {
   header = document.getElementById('header').value;
   noimage = document.getElementById('noimage').value;
   //time_between_mill = parseInt(document.getElementById('time_between').value);
+
+  p = new Empresa();
 
   load_everything();
 
