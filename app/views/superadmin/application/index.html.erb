@@ -99,6 +99,15 @@
           <span class="label label-danger float-right"><%= @suscriptors.count %></span>
         <% end %>
       </li>
+
+      <li>
+        <%= link_to superadmin_nodes_path do %>
+          <%= fa_icon "desktop" %>
+          <span>Nodos de pantalla</span>
+          <span class="label label-danger float-right"><%= @nodes.count %></span>
+        <% end %>
+      </li>
+
       <li>
         <%= link_to superadmin_ambassadors_path do %>
           <%= fa_icon "university" %>

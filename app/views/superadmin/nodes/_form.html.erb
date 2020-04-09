@@ -1,0 +1,14 @@
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= simple_form_for([:superadmin, node]) do |f| %>
+
+      <%= f.input :number, label: "Número" %>
+      <%= f.input :address, label: "Dirección" %>
+      <%= f.input :description, label: "Detalles" %>
+
+      <%= f.button :submit, class: "btn btn-primary"  %>
+
+    <% end %>
+  </div>
+</div>

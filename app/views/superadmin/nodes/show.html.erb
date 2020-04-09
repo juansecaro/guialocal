@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12"><h1>Número: <%= @node.number %></h1></div>
+  <div class="col-md-12"><h2>Dirección: <%= @node.address %></h2></div>
+  <div class="col-md-12"><h2>Detalles: </h2><p><%= @node.description %><p></div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p><%= link_to "Editar", edit_superadmin_node_path(@node), class: "btn btn-primary" %></p>
+  </div>
+  <div class="col-md-12">
+    <p><%= link_to "Borrar", superadmin_node_path(@node), method: :delete, data: {confirm: "¿Seguro?"}, class: "delete" %></p>
+  </div>
+</div>

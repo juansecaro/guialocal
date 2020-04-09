@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'empresas#home'
-  get 'pantalla/index', to: 'pantalla#index'
   get '/empresas-ordenadas', to: 'empresas#empresas_ordenadas'
   get '/empresas/:id/horarios', to: 'empresas#horarios'
   get '/mispromos', to: 'promos#mispromos'
@@ -35,10 +34,12 @@ Rails.application.routes.draw do
   get '/ambassadors/:name/english', to: 'ambassadors#english'
   get '/ambassadors/:name/:language', to: 'ambassadors#native'
 
+  get 'pantalla/:number', to: 'pantalla#index'
   get '/api/v1/geteventos', to: 'pantalla#lastest_events'
   get '/api/v1/getpromos', to: 'pantalla#lastest_promos'
   get '/api/v1/getpuntos', to: 'pantalla#random_touristic_points'
   get '/api/v1/getconfig', to: 'pantalla#get_config'
+  get '/api/v1/updatestatus/:number', to: 'pantalla#update_status'
 
   devise_for :users, controllers: {
         registrations: 'users/registrations'
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
     patch 'configs', to: 'config#update'
     post '/creditos/update', to: 'creditos#update'
     get '/creditos/edit', to: 'creditos#edit'
+    resources :nodes
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :empresas
     resources :promos, only: [:index, :edit, :update, :destroy]

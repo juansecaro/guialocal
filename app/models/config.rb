@@ -18,5 +18,4 @@ class Config < ApplicationRecord
     header: header
   }
   end
-
 end

@@ -14,6 +14,7 @@ class Superadmin::ApplicationController < ApplicationController
       @puntos = Punto.all
       @maps = Map.all
       @suscriptors = Suscriptor.all
+      @nodes = Node.all
     end
 
     private

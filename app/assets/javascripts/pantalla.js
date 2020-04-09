@@ -17,13 +17,13 @@ var number_of_points = 0;
 var number_of_events = 0;
 var header = "";
 var not_available = "";
+var pantalla_number;
 
 var time_between_mill = 0;
 var last_time_events = 0;
 var last_time_promos = 0;
 
 var i_total = 0; //total promos disponibles (puede haber más huecos que promos disponibles)
-var j_total = 0;
 var k_total = 0;
 
 class Empresa {
@@ -131,6 +131,15 @@ function Marketplace() {
 // global instance of promos management system
 const m = new Marketplace();
 
+function updateStatus(){
+    return $.get( "/api/v1/updatestatus/" + pantalla_number ).then(function(data) {
+      console.log( "update: " + data.status );
+    }, function() {
+      alert( "$.get updateStatus failed!" );
+    }
+  );
+}
+
 function get_puntos(){
 
     return $.get( "/api/v1/getpuntos" ).then(function(data) {
@@ -170,7 +179,6 @@ function get_new_promos(n){
     m.cleanUp(); // removes dated, and invalid ones
 
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
-
       for (var i = 0; i < data.length; i++) {
         m.insertPromoInMarketplace(data[i]);
       }
@@ -347,6 +355,7 @@ function load_everything(){
     last_time_promos = Date.now();
     refill_virtual_slider();
     create_html_carousel();
+    updateStatus();
   });
 }
 
@@ -357,6 +366,7 @@ function reload_everything(){
     last_time_promos = Date.now();
     refill_virtual_slider();
     create_html_carousel();
+    updateStatus();
   });
 }
 
@@ -366,11 +376,11 @@ $(document).ready(function() {
   number_of_promos = parseInt(document.getElementById('number_of_promos').value);
   number_of_points = parseInt(document.getElementById('number_of_points').value);
   number_of_events = parseInt(document.getElementById('number_of_events').value);
+  pantalla_number = parseInt(document.getElementById('pantalla_number').value);
+
   header = document.getElementById('header').value;
   noimage = document.getElementById('noimage').value;
   //time_between_mill = parseInt(document.getElementById('time_between').value);
-
-  p = new Empresa();
 
   load_everything();
 

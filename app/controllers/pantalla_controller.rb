@@ -2,12 +2,25 @@ class PantallaController < ApplicationController
 
   def index
     @config = Config.first
+    @pantalla_number = params[:number]
     render layout: "pantalla"
   end
 
   def get_config
     @config = Config.first
     render json: @config
+  end
+
+  def update_status
+    number = params[:number]
+    @node = Node.find_by_number(number)
+    if (!@node.nil?)
+      @node.touch
+      @node.save
+      render json: {"status":"received"}
+    else
+      render json: {"status":"unreached"}
+    end
   end
 
   def random_touristic_points
