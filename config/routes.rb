@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get '/api/v1/geteventos', to: 'pantalla#lastest_events'
   get '/api/v1/getpromos', to: 'pantalla#lastest_promos'
   get '/api/v1/getpuntos', to: 'pantalla#random_touristic_points'
-
+  get '/api/v1/getconfig', to: 'pantalla#get_config'
 
   devise_for :users, controllers: {
         registrations: 'users/registrations'

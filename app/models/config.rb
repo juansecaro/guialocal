@@ -8,4 +8,15 @@ class Config < ApplicationRecord
   def set_default_city
     self.city ||= :sinasignar
   end
+
+  def as_json options={}
+  {
+    city: city,
+    number_of_points: number_of_points,
+    number_of_promos: number_of_promos,
+    number_of_events: number_of_events,
+    header: header
+  }
+  end
+
 end

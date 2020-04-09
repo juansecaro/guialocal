@@ -5,6 +5,11 @@ class PantallaController < ApplicationController
     render layout: "pantalla"
   end
 
+  def get_config
+    @config = Config.first
+    render json: @config
+  end
+
   def random_touristic_points
     @puntos = Destacado.all.order(Arel.sql('random()'))
     render json: @puntos
