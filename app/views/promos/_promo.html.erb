@@ -1,22 +1,24 @@
 <%= link_to promo_path(promo) do %>
-  <div class="alert alert-success">
-      <div class="col-md-12">
-        <h6 class="alert-link">  <%= promo.titulo %>  </h6>
-        <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
-        <small><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %> </small>
-        <p><h6> <strong> <%= time_format(promo.validez) %> </strong></h6></p>
+  <% if promo.version >= 0 %>
+    <div class="alert alert-success">
+        <div class="col-md-12">
+          <h6 class="alert-link">  <%= promo.titulo %>  </h6>
+          <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
+          <small><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %> </small>
+          <p><h6> <strong> <%= time_format(promo.validez) %> </strong></h6></p>
 
-        <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail" unless promo.imgpromo.blank? %>
+          <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail" unless promo.imgpromo.blank? %>
 
-        <% unless current_user.blank? %>
-          <% if (promo.empresa.user.id && (promo.empresa.user.id == current_user.id))  %>
-            <% if Time.now.utc <= promo.created_at + 1800 #max time for edition half an hour %>
-              <%= link_to "Editar", edit_promo_path(promo) %>
-            <% else %>
-              <span class="text-muted">Las promociones sólo son editables los primeros 30 minutos.</span>
+          <% unless current_user.blank? %>
+            <% if (promo.empresa.user.id && (promo.empresa.user.id == current_user.id))  %>
+              <% if Time.now.utc <= promo.created_at + 1800 #max time for edition half an hour %>
+                <%= link_to "Editar", edit_promo_path(promo) %>
+              <% else %>
+                <span class="text-muted">Las promociones sólo son editables los primeros 30 minutos.</span>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      </div>
-  </div>
+        </div>
+    </div>
+  <% end %>
 <% end %>

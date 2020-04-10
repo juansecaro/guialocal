@@ -3,7 +3,7 @@ class Superadmin::PromosController < Superadmin::ApplicationController
 
 
   def index
-    @promos = Promo.all.order(created_at: :desc)
+    @promos = Promo.where("version >= '0'").order(created_at: :desc)
   end
 
   def edit

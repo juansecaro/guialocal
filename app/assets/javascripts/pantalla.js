@@ -158,7 +158,7 @@ function get_new_eventos(n){
    // Removes expired events
    if (slider_eventos.length > 0) {
      var time_now = Date.now();
-     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { Deletes everything!
+     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { // Deletes everything!
        slider_eventos.shift();
      }
    }

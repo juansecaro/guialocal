@@ -54,7 +54,7 @@ class PromosController < ApplicationController
 
   def mispromos
     plan = current_user.empresa.plan
-    last_promo = current_user.empresa.try(:promos).try(:first)
+    last_promo = current_user.empresa.try(:promos).where("version >= '0'").try(:first)
 
     if plan != 'premium'
       if last_promo != nil
@@ -67,8 +67,8 @@ class PromosController < ApplicationController
       end
     end
 
-    @pasadas = Promo.where("validez <= ? AND empresa_id = ?", Time.zone.now, current_user.empresa.id).order("created_at DESC")
-    @actuales = Promo.where("validez > ? AND empresa_id = ?", Time.zone.now, current_user.empresa.id).order("created_at DESC")
+    @pasadas = Promo.where("validez <= ? AND empresa_id = ? AND version >= 0", Time.zone.now, current_user.empresa.id).order("created_at DESC")
+    @actuales = Promo.where("validez > ? AND empresa_id = ? AND version >= 0", Time.zone.now, current_user.empresa.id).order("created_at DESC")
 
     @ready = false
     case plan
@@ -194,7 +194,7 @@ class PromosController < ApplicationController
     def create_promo
       #===========> Remember the promos are odered inversely so I take first (more recent one)
         valid_value = false
-        last_promo = current_user.empresa.try(:promos).try(:first).try(:created_at)
+        last_promo = current_user.empresa.try(:promos).where("version >= '0'").try(:first).try(:created_at)
         plan = current_user.empresa.plan
 
             if last_promo == nil #no previous publication

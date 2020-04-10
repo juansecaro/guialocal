@@ -35,38 +35,43 @@ class Promo < ApplicationRecord
   }
 end
 
+# Deletes daily invalid (erased promos)
+def self.autodeletion
+  Promo.where(version: -1).destroy_all
+end
 
-  private
-  def clean_s3
-    self.remove_imgpromo!
-  rescue Excon::Errors::Error => error
-    puts "Something gone wrong"
-    false
-  end
 
-  def check_prices
-    if (self.normal_price.nil?)
-        errors.add(:base, "Tienes que poner un precio válido")
-    elsif (self.normal_price == 0)
-      if (self.special_price.is_a?Numeric)
-        if (self.special_price > self.normal_price)
-          errors.add(:base, "El precio rebajado no puede ser mayor que el original")
-        end
+private
+def clean_s3
+  self.remove_imgpromo!
+rescue Excon::Errors::Error => error
+  puts "Something gone wrong"
+  false
+end
+
+def check_prices
+  if (self.normal_price.nil?)
+      errors.add(:base, "Tienes que poner un precio válido")
+  elsif (self.normal_price == 0)
+    if (self.special_price.is_a?Numeric)
+      if (self.special_price > self.normal_price)
+        errors.add(:base, "El precio rebajado no puede ser mayor que el original")
       end
-    else
-      if (self.special_price.is_a?Numeric)
-        if (self.special_price >= self.normal_price)
-          errors.add(:base, "El precio rebajado tiene que ser menor que el original")
-        end
+    end
+  else
+    if (self.special_price.is_a?Numeric)
+      if (self.special_price >= self.normal_price)
+        errors.add(:base, "El precio rebajado tiene que ser menor que el original")
       end
     end
   end
+end
 
-  def validez_elegida
-    if validez.nil?
-      errors.add(:base, "Tienes que seleccionar la duración de la promoción")
-    end
+def validez_elegida
+  if validez.nil?
+    errors.add(:base, "Tienes que seleccionar la duración de la promoción")
   end
+end
 
 
 end
