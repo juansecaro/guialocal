@@ -238,7 +238,7 @@ class PromosController < ApplicationController
               end
           end
 
-    # Ya tenemos todo para saber si es válido o no
+    # Ya tenemos para saber si es válido o no
         if valid_value == true
             respond_to do |format|
               if @promo.save

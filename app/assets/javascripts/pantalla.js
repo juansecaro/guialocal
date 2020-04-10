@@ -135,7 +135,7 @@ function updateStatus(){
     return $.get( "/api/v1/updatestatus/" + pantalla_number ).then(function(data) {
       console.log( "update: " + data.status );
     }, function() {
-      alert( "$.get updateStatus failed!" );
+      console.log( "$.get updateStatus failed!" );
     }
   );
 }
@@ -148,7 +148,7 @@ function get_puntos(){
       }
       console.log( "$.get succeeded puntos" );
     }, function() {
-      alert( "$.get failed puntos!" );
+      console.log( "$.get failed puntos!" );
     }
   );
 }
@@ -158,7 +158,7 @@ function get_new_eventos(n){
    // Removes expired events
    if (slider_eventos.length > 0) {
      var time_now = Date.now();
-     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { //Borra todo!
+     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { Deletes everything!
        slider_eventos.shift();
      }
    }
