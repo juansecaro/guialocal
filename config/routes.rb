@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     root 'application#index'
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
+    patch '/promos/:id', to: 'promos#pre_delete'
     post '/creditos/update', to: 'creditos#update'
     get '/creditos/edit', to: 'creditos#edit'
     resources :nodes

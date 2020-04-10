@@ -1,5 +1,5 @@
 class Superadmin::PromosController < Superadmin::ApplicationController
-  before_action :set_promo, only: [:edit, :update, :destroy]
+  before_action :set_promo, only: [:edit, :update, :destroy, :pre_delete]
 
 
   def index
@@ -20,6 +20,13 @@ class Superadmin::PromosController < Superadmin::ApplicationController
         format.html { render :edit }
         format.json { render json: @promo.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def pre_delete
+    @promo.version = -1
+    if @promo.save
+      redirect_to superadmin_promos_path, notice: 'Promoción pre-borrada.'
     end
   end
 
