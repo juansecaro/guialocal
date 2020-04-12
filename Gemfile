@@ -19,12 +19,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-gem 'awesome_print', '~> 1.7', :require => 'ap'
+
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
-#gem 'searchkick', '~> 3.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'font_awesome5_rails', '~> 0.3.4'
 gem "simple_form", ">= 5.0.0"
@@ -40,7 +37,6 @@ gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
-gem "letter_opener", :group => :development
 gem 'invisible_captcha', '~> 0.12.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -56,32 +52,27 @@ gem 'capistrano', '~> 3.7', '>= 3.7.1'
 gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-yarn'
+gem 'capistrano-rvm' # ojo con rbenv
 #gem 'capistrano-nvm', require: false
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'whenever', :require => false
 
 
 
-# Add this if you're using rvm
-gem 'capistrano-rvm'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-
-end
-
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'awesome_print', '~> 1.7', :require => 'ap'
   gem 'web-console', '>= 3.3.0'
+  gem "letter_opener"
   gem 'listen', '~> 3.0.5'
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
   gem "binding_of_caller"
   gem 'rubocop', '~> 0.79.0', require: false
+  gem 'byebug', platform: :mri
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
   #gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
