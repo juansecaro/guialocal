@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   get '/cookies', to: 'info#cookies'
   get '/politicadeprivacidad', to: 'info#privacidad'
   get '/condicionesdeuso', to: 'info#condicionesdeuso'
-  get '/consiguemascreditos', to: 'info#consiguemascreditos'
   get '/comparativa-promociones', to: 'info#comparativa_promociones'
   get '/gesteventos', to: 'eventos#editor_index'
   get '/ambassadors', to: 'ambassadors#list'
@@ -69,8 +68,6 @@ Rails.application.routes.draw do
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
     patch '/promos/:id', to: 'promos#pre_delete'
-    post '/creditos/update', to: 'creditos#update'
-    get '/creditos/edit', to: 'creditos#edit'
     resources :nodes
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :empresas

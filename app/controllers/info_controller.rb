@@ -1,6 +1,5 @@
 class InfoController < ApplicationController
-  before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :consiguemascreditos, :cookies, :privacidad, :novedades, :condicionesdeuso]
-  before_action :authenticate_user!, only: :consiguemascreditos
+  before_action :set_region, except: [:publica, :preguntasfrecuentes, :publicitate, :cookies, :privacidad, :novedades, :condicionesdeuso]
   invisible_captcha only: :quejasysugerencias, honeypot: :subtitle, on_spam: :spam_received
 
 
@@ -110,11 +109,6 @@ class InfoController < ApplicationController
 
   def precios
 
-  end
-
-  def consiguemascreditos
-    @user = current_user
-    @proposals = AchievementProposal.all
   end
 
   private

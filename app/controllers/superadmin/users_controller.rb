@@ -35,6 +35,6 @@ class Superadmin::UsersController < Superadmin::ApplicationController
     @user = User.find(params[:id])
   end
   def users_params
-    params.require(:user).permit(:email, :creditos, :empresa_id, :role, :first_name, :last_name, :birthdate, :dni, :phone, :address, :gender, achievement_attributes: [:achievement1, :achievement2, :achievement3, :achievement4, :achievement5, :achievement6, :achievement7, :achievement8, :achievement9, :achievement0, :_destroy])
+    params.require(:user).permit(:email, :empresa_id, :role, :first_name, :last_name, :birthdate, :dni, :phone, :address, :gender, achievement_attributes: [:achievement1, :achievement2, :achievement3, :achievement4, :achievement5, :achievement6, :achievement7, :achievement8, :achievement9, :achievement0, :_destroy])
   end
 end

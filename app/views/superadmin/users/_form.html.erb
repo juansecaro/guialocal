@@ -19,7 +19,6 @@
 <% superadmins_only do %>
   <p class="text-muted">Sólo para superadmins</p>
     <%= f.select :role, User.roles.keys %>
-    <%= f.input :creditos, label: "Créditos" %>
   <p class="text-muted">Fin sólo para superadmins</p>
 <% end %>
 

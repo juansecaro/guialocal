@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
     # Amount in cents
     @amount = params[:amount].to_i
 
-    current_user.creditos +=  params[:amount].to_i/100
+    #current_user.creditos +=  params[:amount].to_i/100
     current_user.save!
 
     customer = Stripe::Customer.create(
