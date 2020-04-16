@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :puntos, only: [:show, :index]
   resources :incidents, only: [:new, :create, :show]
-  resources :empresas
+  resources :empresas, only: [:show, :index]
   resources :contacts, only: [:new, :create]
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]

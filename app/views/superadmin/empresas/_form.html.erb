@@ -256,11 +256,13 @@
   </div>
 <% end %>
 
-
+<% if controller.action_name == 'new' %>
+  <input type="hidden" id="user_id" name="user_id" value="<%= @user_id %>">
+<% end %>
 
 <p>
   <div class="text-center">
-  <%= f.submit "Enviar", class: "btn btn-primary text", id: "emp_enviar" %>
+    <%= f.submit "Enviar", class: "btn btn-primary text", id: "emp_enviar" %>
   </div>
 </p>
 </div>

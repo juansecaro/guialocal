@@ -17,7 +17,6 @@ class Empresa < ApplicationRecord
 
   has_many :promos, dependent: :destroy
   has_many :suscriptors, dependent: :nullify
-
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 

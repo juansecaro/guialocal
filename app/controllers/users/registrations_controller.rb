@@ -61,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :password_confirmation, :role, :birthday, :dni, :address, :phone, :gender])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :password_confirmation, :role, :birthday, :dni, :address, :phone, :gender, :user_id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -72,21 +72,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource) #Resource is the user just created
 
-    empresa = Empresa.create(user_id: resource.id)
-    resource.empresa = empresa
-    if resource.save(validate: false)
+    # empresa = Empresa.create(user_id: resource.id)
+    # resource.empresa = empresa
+    # if resource.save(validate: false)
+    #   if current_user.superadmin?
+    #     edit_superadmin_empresa_path(resource.empresa)
+    #   elsif current_user.admin?
+    #     edit_admin_empresa_path(resource.empresa)
+    #   else
+    #     flash[:alert] = "Ha habido un problema"
+    #     redirect_to (root_path)
+    #   end
+    # else
+    #   flash[:alert] = "Ha habido un problema"
+    #   redirect_to (root_path)
+    # end
+    #======================== old version of self empresa
+    flash[:notice] = "Usuario creado"
       if current_user.superadmin?
-        edit_superadmin_empresa_path(resource.empresa)
-      elsif current_user.admin?
-        edit_admin_empresa_path(resource.empresa)
-      else
-        flash[:alert] = "Ha habido un problema"
-        redirect_to (root_path)
+        edit_superadmin_user_path(resource)
+      else current_user.admin?
+        edit_admin_user_path(resource)
       end
-    else
-      flash[:alert] = "Ha habido un problema"
-      redirect_to (root_path)
-    end
   end
 
   # The path used after sign up for inactive accounts.
@@ -99,6 +106,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def authorize_admin!
     unless user_signed_in? && (current_user.admin? || current_user.superadmin?)
       redirect_to root_path, alert: "Tú no eres administrador."
+    end
+  end
+
+  # if there is none assigned while existing, it will assign the first to exist
+  def set_current_empresa(identificator = nil)
+    if (!self.current_empresa)
+      self.current_empresa = self.try(:empresas).try(:first).try(:id)
+    else
+      self.current_empresa = identificator
     end
   end
 
