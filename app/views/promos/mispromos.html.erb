@@ -1,9 +1,25 @@
-<%= hidden_field_tag 'plan', current_user.empresa.plan %>
+<%= hidden_field_tag 'plan', @plan %>
 <%= hidden_field_tag 'waiting', @waiting %>
-
 
 <div class="row">
   <div class="col-md-3">
+    <p class="">
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          Empresa <small class="float-right">
+            <% if several_empresas %>
+              <%= link_to users_change_empresa_path do %>
+                <%= fa_icon "exchange-alt" %> Cambiar <%= current_user.current_empresa  %>
+              <% end %>
+            <% end %>
+
+          </small>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge badge-secondary"><%= @empresa.name %></span></h5>
+        </div>
+      </div>
+    </p>
     <p><h2 class="text-center">Disponibilidad</h2></p>
 
     <% if @ready == true %>

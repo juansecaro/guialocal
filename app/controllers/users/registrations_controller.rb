@@ -71,23 +71,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource) #Resource is the user just created
-
-    # empresa = Empresa.create(user_id: resource.id)
-    # resource.empresa = empresa
-    # if resource.save(validate: false)
-    #   if current_user.superadmin?
-    #     edit_superadmin_empresa_path(resource.empresa)
-    #   elsif current_user.admin?
-    #     edit_admin_empresa_path(resource.empresa)
-    #   else
-    #     flash[:alert] = "Ha habido un problema"
-    #     redirect_to (root_path)
-    #   end
-    # else
-    #   flash[:alert] = "Ha habido un problema"
-    #   redirect_to (root_path)
-    # end
-    #======================== old version of self empresa
     flash[:notice] = "Usuario creado"
       if current_user.superadmin?
         edit_superadmin_user_path(resource)
@@ -106,15 +89,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def authorize_admin!
     unless user_signed_in? && (current_user.admin? || current_user.superadmin?)
       redirect_to root_path, alert: "Tú no eres administrador."
-    end
-  end
-
-  # if there is none assigned while existing, it will assign the first to exist
-  def set_current_empresa(identificator = nil)
-    if (!self.current_empresa)
-      self.current_empresa = self.try(:empresas).try(:first).try(:id)
-    else
-      self.current_empresa = identificator
     end
   end
 

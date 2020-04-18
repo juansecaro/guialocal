@@ -7,17 +7,16 @@ class PromosController < ApplicationController
   # before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
+    set_current_empresa(current_user)
+    @plan = current_user.empresas.find_by_id(current_user.current_empresa)
     @promo = Promo.new
-    @plan = current_user.empresa.plan
   end
 
   def create
     @promo = Promo.new(promo_params)
     @promo.empresa_id = current_user.empresa.id
 
-    plan = current_user.empresa.plan
-    # last_promo = current_user.empresa.try(:promos).try(:last).try(:created_at)
-    # last_promo_when = helpers.time_format_mini(last_promo) if last_promo.nil? == false
+    plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
 
     if plan == 'noplan'
       flash[:error] = 'No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo.'
@@ -54,23 +53,25 @@ class PromosController < ApplicationController
   end
 
   def mispromos
-    plan = current_user.empresa.plan
-    last_promo = current_user.empresa.try(:promos).where("version >= '0'").try(:first)
+    @empresa = current_user.empresas.find_by_id(current_user.current_empresa)
+    @plan = @empresa.plan
+    last_promo = @empresa.try(:promos).where("version >= '0'").try(:first)
 
-    if plan != 'premium'
+    if @plan != 'premium'
       if !last_promo.nil?
-        waiting = waiting_date(last_promo, plan)
+        waiting = waiting_date(last_promo, @plan)
         @waiting = (waiting - Time.zone.now).to_i if waiting > Time.zone.now
       else
         @waiting = nil
       end
     end
 
-    @pasadas = Promo.where('validez <= ? AND empresa_id = ? AND version >= 0', Time.zone.now, current_user.empresa.id).order('created_at DESC')
-    @actuales = Promo.where('validez > ? AND empresa_id = ? AND version >= 0', Time.zone.now, current_user.empresa.id).order('created_at DESC')
+    @pasadas = Promo.where('validez <= ? AND empresa_id = ? AND version >= 0', Time.zone.now, @empresa.id).order('created_at DESC')
+    @actuales = Promo.where('validez > ? AND empresa_id = ? AND version >= 0', Time.zone.now, @empresa.id).order('created_at DESC')
 
     @ready = false
-    case plan
+
+    case @plan
     when 'premium'
       if @actuales.count < 3
         @ready = true
@@ -150,6 +151,8 @@ class PromosController < ApplicationController
                     image: @promo.imgpromo.url
                   }
   end
+
+
 
   private
 
