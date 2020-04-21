@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :puntos, only: [:show, :index]
   resources :incidents, only: [:new, :create, :show]
-  resources :empresas, only: [:show, :index]
+  resources :empresas, only: [:show, :index, :edit, :update]
   resources :contacts, only: [:new, :create]
   resources :categories, only: [:index, :show]
   resources :tags, only: [:index, :show]

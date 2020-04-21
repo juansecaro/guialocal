@@ -7,14 +7,13 @@ class PromosController < ApplicationController
   # before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
-    set_current_empresa(current_user)
-    @plan = current_user.empresas.find_by_id(current_user.current_empresa)
+    @plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
     @promo = Promo.new
   end
 
   def create
     @promo = Promo.new(promo_params)
-    @promo.empresa_id = current_user.empresa.id
+    @promo.empresa_id = current_user.current_empresa
 
     plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
 
@@ -55,6 +54,8 @@ class PromosController < ApplicationController
   def mispromos
     @empresa = current_user.empresas.find_by_id(current_user.current_empresa)
     @plan = @empresa.plan
+    redirect_to root_path, alert: "No puedes poner promociones sin tener un plan anual o si está al día" and return unless @plan != "noplan"
+    byebug
     last_promo = @empresa.try(:promos).where("version >= '0'").try(:first)
 
     if @plan != 'premium'
@@ -166,8 +167,8 @@ class PromosController < ApplicationController
 
   def control_max_promos
     # Delete the oldest when reach 20
-    if current_user.empresa.promos.count > 19
-      current_user.empresa.promos.order(created_at: :desc).last.destroy
+    if current_user.empresas.find_by_id(current_user.current_empresa).promos.count > 19
+      current_user.empresas.find_by_id(current_user.current_empresa).promos.order(created_at: :desc).last.destroy
     end
   end
 
@@ -189,15 +190,16 @@ class PromosController < ApplicationController
   def create_promo
     #===========> Remember the promos are odered inversely so I take first (more recent one)
     valid_value = false
-    last_promo = current_user.empresa.try(:promos).where("version >= '0'").try(:first).try(:created_at)
-    plan = current_user.empresa.plan
+    #current_user.empresas.find_by_id(current_user.current_empresa).plan
+    last_promo = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first).try(:created_at)
+    plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
 
     if last_promo.nil? # no previous publication
       valid_value = true
       set_validez
     else
       if plan == 'premium'
-        last_promos = current_user.empresa.try(:promos).try(:first, 3)
+        last_promos = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first, 3)
         if last_promos.count < 3
           valid_value = true
           set_validez
@@ -215,7 +217,7 @@ class PromosController < ApplicationController
         end
       else
         # basic/plus
-        last_promo_item = current_user.empresa.try(:promos).try(:first)
+        last_promo_item = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first)
         if is_still_valid?(last_promo_item)
           flash.now[:error] = 'Tu última publicación aún está activa (pásate a premium si quieres varias y sin esperas)'
           render('new') && return
