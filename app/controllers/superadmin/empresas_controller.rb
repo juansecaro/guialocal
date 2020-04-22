@@ -17,11 +17,10 @@ class Superadmin::EmpresasController < Superadmin::ApplicationController
     user_id = params[:user_id].to_i
     if user_id > 0 #Given n0 is admin and "" could be interpreted as 0, we avoid the risk
       @empresa.user_id = user_id
-      helpers.set_current_empresa(@empresa.user, @empresa.id)
     end
-
     respond_to do |format|
       if @empresa.save
+        helpers.set_current_empresa(@empresa.user, @empresa.id)
         format.html { redirect_to @empresa, notice: 'Empresa creada con éxito.' }
         format.json { render :show, status: :created, location: @empresa }
       else

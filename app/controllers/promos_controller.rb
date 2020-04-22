@@ -1,9 +1,8 @@
 # frozen_string_literal: true
-
 class PromosController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :control_max_promos, only: :create
-  before_action :set_promo, only: %i[show edit update destroy]
+  before_action :set_promo, only: [:show, :edit, :update, :destroy]
   # before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
@@ -55,7 +54,6 @@ class PromosController < ApplicationController
     @empresa = current_user.empresas.find_by_id(current_user.current_empresa)
     @plan = @empresa.plan
     redirect_to root_path, alert: "No puedes poner promociones sin tener un plan anual o si está al día" and return unless @plan != "noplan"
-    byebug
     last_promo = @empresa.try(:promos).where("version >= '0'").try(:first)
 
     if @plan != 'premium'
@@ -190,16 +188,16 @@ class PromosController < ApplicationController
   def create_promo
     #===========> Remember the promos are odered inversely so I take first (more recent one)
     valid_value = false
-    #current_user.empresas.find_by_id(current_user.current_empresa).plan
-    last_promo = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first).try(:created_at)
-    plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
+    empresa = current_user.empresas.find_by_id(current_user.current_empresa)
+    when_last_promo = empresa.try(:promos).where("version >= '0'").try(:first).try(:created_at)
+    plan = empresa.plan
 
-    if last_promo.nil? # no previous publication
+    if when_last_promo.nil? # no previous publication
       valid_value = true
       set_validez
     else
       if plan == 'premium'
-        last_promos = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first, 3)
+        last_promos = empresa.try(:promos).where("version >= '0'").try(:first, 3)
         if last_promos.count < 3
           valid_value = true
           set_validez
@@ -217,7 +215,7 @@ class PromosController < ApplicationController
         end
       else
         # basic/plus
-        last_promo_item = current_user.empresas.find_by_id(current_user.current_empresa).try(:promos).where("version >= '0'").try(:first)
+        last_promo_item = empresa.try(:promos).where("version >= '0'").try(:first)
         if is_still_valid?(last_promo_item)
           flash.now[:error] = 'Tu última publicación aún está activa (pásate a premium si quieres varias y sin esperas)'
           render('new') && return
@@ -239,7 +237,6 @@ class PromosController < ApplicationController
     if valid_value == true
       respond_to do |format|
         if @promo.save
-
           format.html { redirect_to @promo, notice: 'La promoción se ha creado con éxito' }
           format.json { render :show, status: :created, location: @promo }
         else
@@ -254,7 +251,6 @@ class PromosController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     flash[:error] = e
     redirect_to '/promos/new'
-    #===========> Final
   end
 
   def verify_id!

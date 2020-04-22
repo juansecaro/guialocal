@@ -59,10 +59,11 @@ gem 'whenever', :require => false
 
 
 
-group :development do
+gem 'web-console', '>= 3.3.0', group: :development
+group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
   gem 'awesome_print', '~> 1.7', :require => 'ap'
-  gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
   gem 'listen', '~> 3.0.5'
   gem 'better_errors', '~> 2.5', '>= 2.5.1'

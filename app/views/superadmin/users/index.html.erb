@@ -35,8 +35,10 @@
               <%= link_to empresa.name, edit_superadmin_empresa_path(empresa) %>
             </p>
           <% end %>
-          <%= link_to new_superadmin_empresa_path(user_id: user.id) do %>
-            <%= fa_icon "plus-circle" %>
+          <% if user.role == "user" %>
+            <%= link_to new_superadmin_empresa_path(user_id: user.id) do %>
+              <%= fa_icon "plus-circle" %>
+            <% end %>
           <% end %>
 
         </td>
