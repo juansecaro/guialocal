@@ -377,6 +377,7 @@ $(document).ready(function() {
   number_of_points = parseInt(document.getElementById('number_of_points').value);
   number_of_events = parseInt(document.getElementById('number_of_events').value);
   pantalla_number = parseInt(document.getElementById('pantalla_number').value);
+  //interval_number =
 
   header = document.getElementById('header').value;
   noimage = document.getElementById('noimage').value;

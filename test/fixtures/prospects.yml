@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_email: MyString
+  dni: MyString
+  plan: MyString
+  empresa_name: MyString
+  empresa_email: MyString
+  empresa_phone: 1
+  empresa_address: MyString
+  empresa_web: MyString
+  empresa_category: 1
+  empresa_summary: MyString
+  user_first_name: MyString
+  user_last_name: MyString
+  user_birthday: 2020-04-25 22:14:22
+  user_phone: 1
+  user_address: MyString
+  sex: false
+  iban_code: MyString
+
+two:
+  user_email: MyString
+  dni: MyString
+  plan: MyString
+  empresa_name: MyString
+  empresa_email: MyString
+  empresa_phone: 1
+  empresa_address: MyString
+  empresa_web: MyString
+  empresa_category: 1
+  empresa_summary: MyString
+  user_first_name: MyString
+  user_last_name: MyString
+  user_birthday: 2020-04-25 22:14:22
+  user_phone: 1
+  user_address: MyString
+  sex: false
+  iban_code: MyString

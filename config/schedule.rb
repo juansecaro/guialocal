@@ -22,12 +22,12 @@
 # end
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
-every :thursday, at: '9:00 am' do # Use any day of the week or :weekend, :weekday
-  rake "send_weekly_email"
-end
+# every 1.day, at: ['10:05 am', '3:05 pm' ] do
+#   rake "recover_eventos_#{ENV['CURRENT_CITY']}"
+# end
 
-every 1.day, at: ['10:05 am', '3:05 pm' ] do
-  rake "recover_eventos_#{ENV['CURRENT_CITY']}"
+every :saturday, at: '4:00 am' do
+  rake "cleanup_stale_prospects"
 end
 
 # XML Sitemap updating

@@ -11,7 +11,7 @@ class Superadmin::NodesController < Superadmin::ApplicationController
   def create
     @node = Node.new(node_params)
     if @node.save
-      redirect_to @node, notice: 'El nodo se ha creado con éxito' 
+      redirect_to superadmin_nodes_path, notice: 'El nodo se ha creado con éxito' 
     else
       render :new
       flash.now[:alert] = 'Nodo no creado'

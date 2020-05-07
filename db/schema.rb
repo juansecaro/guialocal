@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200416111241) do
+ActiveRecord::Schema.define(version: 20200507225042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -219,6 +219,32 @@ ActiveRecord::Schema.define(version: 20200416111241) do
     t.index ["empresa_id"], name: "index_promos_on_empresa_id"
   end
 
+  create_table "prospects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "user_email"
+    t.string "dni"
+    t.integer "plan"
+    t.integer "original_plan"
+    t.string "status", default: "created"
+    t.string "empresa_name"
+    t.string "empresa_email"
+    t.integer "empresa_phone"
+    t.string "empresa_address"
+    t.string "empresa_web"
+    t.integer "empresa_category"
+    t.string "empresa_summary"
+    t.string "user_first_name"
+    t.string "user_last_name"
+    t.datetime "user_birthday"
+    t.string "user_phone"
+    t.string "user_address"
+    t.string "iban_code"
+    t.boolean "conditions_accepted", default: false
+    t.string "ip_address"
+    t.datetime "date_of_acceptance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "puntos", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
@@ -282,6 +308,9 @@ ActiveRecord::Schema.define(version: 20200416111241) do
     t.string "address"
     t.string "gender"
     t.integer "current_empresa"
+    t.boolean "conditions_accepted", default: false
+    t.string "date_of_acceptance"
+    t.string "ip_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

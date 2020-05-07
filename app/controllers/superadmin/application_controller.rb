@@ -15,6 +15,7 @@ class Superadmin::ApplicationController < ApplicationController
       @maps = Map.all
       @suscriptors = Suscriptor.all
       @nodes = Node.all
+      @prospects = Prospect.where.not(status: 'created')
     end
 
     private

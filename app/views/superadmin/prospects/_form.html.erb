@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= simple_form_for([:superadmin, prospect]) do |f| %>
+
+      <%= f.input :dni, label: "DNI", required: true %>
+      <%= f.input :user_first_name, label: "Nombre", required: true %>
+      <%= f.input :user_last_name, label: "Apellidos", required: true %>
+      <%= f.input :user_email, label: "E-mail de usuario", required: true %>
+
+      <%= f.input :empresa_name, label: "Nombre de la empresa" %>
+      <%= f.input :empresa_email, label: "Correo de Empresa" %>
+      <%= f.input :empresa_address, label: "Dirección de Empresa" %>
+      <%= f.input :empresa_phone, label: "Teléfono de Empresa" %>
+      <%= f.input :empresa_summary, label: "Extracto de empresa" %>
+      <%= f.input :empresa_web, label: "Web de Empresa" %>
+      <%= f.collection_select :empresa_category, Category.all, :id, :name, :selected => @prospect.empresa_category, label: "Categoría"  %>
+      <%= f.input :user_birthday, as: :date, label: "Fecha de nacimiento" %>
+      <%= f.input :user_phone, label: "Teléfono de contacto" %>
+      <%= f.input :user_address, label: "Dirección de contacto" %>
+      <%= f.input :iban_code, label: "Códico de Cuenta Corriente IBAN" %>
+      <%= f.input :conditions_accepted, as: :boolean, checked_value: true, unchecked_value: false, disabled: true, label: " Aceptó las condiciones" %>
+
+      <p>
+      Plan original seleccionado: <strong><%= prospect.original_plan %></strong></br>
+      Fecha de aceptación: <strong><%= time_format_mini prospect.date_of_acceptance %></strong></br>
+      IP del equipo: <strong><%= prospect.ip_address %></strong></br>
+      <%= f.select(:plan, [['Basic', 1], ['Plus', 2], ['Premium', 3]], label: " Plan:") %>
+      <%= f.select(:status, [['created'], ['sign_up'], ['business_details'], ['user_details'], ['completed'], ['archived']]) %>
+      </p>
+
+      </br>
+      <p>
+      <%= f.submit "Guardar", class: "btn btn-primary"  %>
+      <%= f.submit "Generar", class: "btn btn-success"  %>
+      </p>
+
+    <% end %>
+  </div>
+</div>

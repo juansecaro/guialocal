@@ -58,6 +58,12 @@ Rails.application.routes.draw do
   resources :achievement_proposals, only: :show
   resources :ambassadors, only: [:show]
 
+  get '/prospects/new', to: 'prospects#create'
+  get '/prospects/info', to: 'prospects#info'
+  get '/prospects/:prospect_id/build/:id', to: 'prospects#show'
+  put '/prospects/:prospect_id/build/:id', to: 'prospects#update'
+
+
   resources :suscriptors do
     member do
       get :confirm_email
@@ -82,6 +88,7 @@ Rails.application.routes.draw do
     resources :categories, except: [:show]
     resources :tags, only: [:index, :show, :destroy]
     resources :ambassadors
+    resources :prospects, only: [:index, :edit, :update]
     resources :incidents do
       resources :comments
     end

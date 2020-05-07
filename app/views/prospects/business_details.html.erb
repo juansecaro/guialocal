@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <h1>Detalles de la empresa</h1>
+
+    <%= form_with model: @prospect, url: wizard_path, local: true, method: :put do |f| %>
+
+    <div class="form-group">
+      <label>Plan seleccionado</label></br>
+        <%= f.select(:plan, options_for_select([['Basic', 1],['Plus', 2],['Premium',3]], session[:plan])) %>
+    </div>
+    <div class="form-group">
+      <label>Nombre de la empresa</label></br>
+        <%= f.text_field :empresa_name, required: true %>
+    </div>
+
+    <div class="form-group">
+      <label>Dirección física de empresa</label></br>
+      <%= f.text_field :empresa_address, required: true %>
+      <!-- <small id="emailHelp" class="form-text text-muted">Usaremos siempre el E-mail para todos los procesos y comunicaciones.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label>Teléfono de contacto de la empresa</label></br>
+      <%= f.text_field :empresa_phone, required: true %>
+      <!-- <small id="emailHelp" class="form-text text-muted">Usaremos siempre el E-mail para todos los procesos y comunicaciones.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label>Web de la empresa</label></br>
+      <%= f.text_field :empresa_web %>
+      <!-- <small id="emailHelp" class="form-text text-muted">Usaremos siempre el E-mail para todos los procesos y comunicaciones.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label>¿Qué hace tu empresa?</label></br>
+      <%= f.text_area :empresa_summary, required: true, style:"resize: none;", rows: 5, required: true %>
+      <small id="emailHelp" class="form-text text-muted">Describe tu empresa en una frase para que otras personas sepan de forma rápida a qué te dedicas</small>
+    </div>
+
+      <p>
+        <%= f.submit "Siguiente", class: "btn btn-primary" %>
+      </p>
+    <% end %>
+
+  </div>
+</div>
