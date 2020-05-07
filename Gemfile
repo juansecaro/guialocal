@@ -38,7 +38,7 @@ gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'invisible_captcha', '~> 0.12.0'
-gem 'wicked'
+gem 'wicked', '>= 1.3.4'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

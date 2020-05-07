@@ -367,9 +367,9 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webpacker (~> 4.0, >= 4.0.7)
   whenever
-  wicked
+  wicked (>= 1.3.4)
   will_paginate (~> 3.1, >= 3.1.6)
   will_paginate-bootstrap4 (~> 0.2.2)
 
 BUNDLED WITH
-   2.1.2
+   1.17.3
