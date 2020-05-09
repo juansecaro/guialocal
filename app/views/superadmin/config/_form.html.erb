@@ -8,10 +8,16 @@
       <%= f.label :Ciudad_base %>
       <%= f.select :city, Config.cities.keys %>
 
-    <div class="col-md-2">
-      <%= f.input :number_of_points, as: :integer %>
-      <%= f.input :number_of_promos, as: :integer %>
-      <%= f.input :number_of_events, as: :integer %>
+    <div class="col-md-4">
+      <%= f.input :number_of_points, as: :integer, label: "Puntos por ciclo" %>
+      <%= f.input :number_of_promos, as: :integer, label: "Promos por ciclo" %>
+      <%= f.input :number_of_events, as: :integer, label: "Eventos por ciclo" %>
+    </div>
+
+    <small class="text-muted">Tiempos en milisegundos (x1000)</small></br>
+    <div class="col-md-4">
+      <%= f.input :time_delay_with_header, as: :integer, label: "Tiempo de visualización de cabecera" %>
+      <%= f.input :time_between_slides, as: :integer, label: "Duración de cada diapositiva" %>
     </div>
 
     <%= f.input :header, as: :file, label: "Cabecero de las pantallas " %>

@@ -15,6 +15,8 @@ var virtual_slider = [];
 var number_of_promos = 0; //loaded from HTML (Server)
 var number_of_points = 0;
 var number_of_events = 0;
+var time_between_slides;
+var time_delay_with_header;
 var header = "";
 var not_available = "";
 var pantalla_number;
@@ -207,9 +209,9 @@ function create_html_carousel(){
   // Activation
   $(".carousel-item:first-child").addClass("active");
   $('.carousel').carousel({
-    interval: 2000
+    interval: time_between_slides
   });
-  $('.carousel').carousel('cycle').delay(3000);
+  $('.carousel').carousel('cycle').delay(time_delay_with_header);
 }
 
 function getDate(string){
@@ -330,7 +332,6 @@ function refill_virtual_slider(){
     if (promo !== false) {
       virtual_slider.push(promo);
     }
-
   }
 
   //Puntos (Puntos are just loaded first time)
@@ -347,6 +348,22 @@ function destroy_html_carousel(){
   }
 }
 
+function refreshAt(hours, minutes, seconds) {
+    var now = new Date();
+    var then = new Date();
+
+    if(now.getHours() > hours ||
+       (now.getHours() == hours && now.getMinutes() > minutes) ||
+        now.getHours() == hours && now.getMinutes() == minutes && now.getSeconds() >= seconds) {
+        then.setDate(now.getDate() + 1);
+    }
+    then.setHours(hours);
+    then.setMinutes(minutes);
+    then.setSeconds(seconds);
+
+    var timeout = (then.getTime() - now.getTime());
+    setTimeout(function() { window.location.reload(true); }, timeout);
+}
 
 function load_everything(){
 
@@ -372,12 +389,12 @@ function reload_everything(){
 
 $(document).ready(function() {
 
-  // Dejamos cargados los valores en memoria (!= 0)
   number_of_promos = parseInt(document.getElementById('number_of_promos').value);
   number_of_points = parseInt(document.getElementById('number_of_points').value);
   number_of_events = parseInt(document.getElementById('number_of_events').value);
   pantalla_number = parseInt(document.getElementById('pantalla_number').value);
-  //interval_number =
+  time_between_slides = parseInt(document.getElementById('time_between_slides').value);
+  time_delay_with_header = parseInt(document.getElementById('time_delay_with_header').value);
 
   header = document.getElementById('header').value;
   noimage = document.getElementById('noimage').value;
@@ -391,10 +408,11 @@ $(document).ready(function() {
   var lastSlide = $('.carousel-item').length - 1;
 
   if( data.to == lastSlide ) {
+
     reload_everything();
   }
 
   });
 
-  //setTimeout(function(){window.location.reload(1);}, 86400000); //at least one full reload every 24 hours
+  refreshAt(6,0,0); // Everyday refresh at 6:00
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200507225042) do
+ActiveRecord::Schema.define(version: 20200509022100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 20200507225042) do
     t.integer "number_of_promos"
     t.integer "number_of_events"
     t.string "header"
+    t.integer "time_between_slides"
+    t.integer "time_delay_with_header"
   end
 
   create_table "destacados", id: :serial, force: :cascade do |t|
