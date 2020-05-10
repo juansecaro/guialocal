@@ -57,6 +57,10 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
+
+      <% unless user_signed_in? %>
+      <li>  <%= link_to "Área Privada", new_user_session_path, class:"btn btn-primary", rel: "nofollow" %> </li>
+      <% end %>
       <!-- Usuarios normales -->
       <% if user_signed_in? %>
         <% if current_user.user?%>
