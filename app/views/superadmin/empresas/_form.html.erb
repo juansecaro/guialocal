@@ -138,18 +138,13 @@
 </div>
 </p>
 
-<p>
+  <p>
     <div class="row">
-      <div class="col-md-3 offset-md-3">
-        <%= f.label :Latitud %>
-        <%= f.number_field(:mlat, step:0.000001) %>
-      </div>
-      <div class="col-md-3">
-        <%= f.label :Longitud %>
-        <%= f.number_field(:mlon, step:0.000001) %>
+      <div class="col-md-6 offset-md-3">
+        URL mapa embebido <%= link_to "(Más info)", '#', target: "_blank" %>
+        <%= f.text_field :map_string, size: "50x2" %>
       </div>
     </div>
-
     <p>
 
       <div class="row">

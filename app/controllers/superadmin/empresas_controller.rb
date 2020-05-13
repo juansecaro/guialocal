@@ -47,7 +47,10 @@ class Superadmin::EmpresasController < Superadmin::ApplicationController
   end
 
   def destroy
+    user = @empresa.user
     @empresa.destroy
+    user.current_empresa = user.empresas.first.id
+    user.save!
     respond_to do |format|
       format.html { redirect_to superadmin_empresas_path, notice: 'Empresa eliminada con éxito.' }
       format.json { head :no_content }
@@ -69,8 +72,10 @@ class Superadmin::EmpresasController < Superadmin::ApplicationController
   end
 
   def empresa_params
-    params.require(:empresa).permit(:logo, :user_id, :name, :tag_list ,:category_id, :description, :plan, :mlon, :mlat, :address, :excerpt, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
+    params.require(:empresa).permit(:logo, :user_id, :name, :tag_list, :category_id, :description, :map_string, :plan, :address, :excerpt, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
        :schedule7, :schedule8, :schedule9, :schedule10, :schedule11, :schedule12, :schedule13, :schedule14, :schedule15, :schedule16, :schedule17, :schedule18, :schedule19, :schedule20, :schedule21, :schedule22, :schedule23, :schedule24, :schedule25, :schedule26, :schedule27, :remove_logo)
   end
+
+
 
 end

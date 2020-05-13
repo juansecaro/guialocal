@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200509022100) do
+ActiveRecord::Schema.define(version: 20200512003904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,6 @@ ActiveRecord::Schema.define(version: 20200509022100) do
     t.string "video"
     t.json "fotos"
     t.integer "plan", default: 0
-    t.float "mlon"
-    t.float "mlat"
     t.string "schedule0"
     t.string "schedule1"
     t.string "schedule2"
@@ -152,6 +150,7 @@ ActiveRecord::Schema.define(version: 20200509022100) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.string "slug"
+    t.string "map_string", default: ""
     t.index ["category_id"], name: "index_empresas_on_category_id"
   end
 

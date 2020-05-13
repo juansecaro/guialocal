@@ -1,4 +1,5 @@
 class EmpresasController < ApplicationController
+  include EmpresasHelper
   before_action :set_empresa, only: [:show, :edit, :update, :horarios]
   before_action :verify_id!, only: [:edit, :update]
 
@@ -103,44 +104,14 @@ class EmpresasController < ApplicationController
     end
   end
 
-  def change_empresa
-    authenticate_user!
-
-
-
-
-    if current_user.empresas.count > 1
-
-      i = 0
-      enc = false
-
-      ids = current_user.empresas.map{|empresa| empresa.id }
-
-      while !enc
-        if current_user.current_empresa == ids[i]
-          if ids[i+1].nil?
-            current_user.current_empresa = ids[0]
-          else
-            current_user.current_empresa = ids[i+1]
-          end
-          enc = true
-          current_user.save
-        end
-        i = i + 1
-      end
-
-
-
-
-
-
-
-    end
-
-
-
-
+  def change_empresa_from_promo
+    change_empresa
     redirect_to mispromos_path
+  end
+
+  def change_empresa_from_edit
+    change_empresa
+    redirect_to "/empresas/#{current_user.current_empresa}/edit/"
   end
 
 
@@ -328,7 +299,7 @@ class EmpresasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def empresa_params
-      params.require(:empresa).permit(:logo, :name, :tag_list ,:category_id, :description, :plan, :mlon, :mlat, :address, :excerpt, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
+      params.require(:empresa).permit(:logo, :name, :tag_list ,:category_id, :description, :plan, :map_string, :address, :excerpt, :web, :email, :tel, :video, {fotos:[]}, :schedule0, :schedule1, :schedule2, :schedule3, :schedule4, :schedule5, :schedule6,
          :schedule7, :schedule8, :schedule9, :schedule10, :schedule11, :schedule12, :schedule13, :schedule14, :schedule15, :schedule16, :schedule17, :schedule18, :schedule19, :schedule20, :schedule21, :schedule22, :schedule23, :schedule24, :schedule25, :schedule26, :schedule27, :remove_logo)
     end
 end
