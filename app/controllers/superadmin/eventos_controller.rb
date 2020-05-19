@@ -1,7 +1,7 @@
 class Superadmin::EventosController < Superadmin::ApplicationController
-  before_action :set_evento, only: [:edit, :update, :destroy]
+  before_action :set_evento, only: [:edit, :update, :destroy, :pre_destroy]
   def index
-    @eventos = Evento.all.order(created_at: :desc)
+    @eventos = Evento.where("version >= '0'").order(created_at: :desc)
   end
   def new
     @evento = Evento.new
@@ -21,11 +21,19 @@ class Superadmin::EventosController < Superadmin::ApplicationController
       end
     end
   end
+
   def edit
 
   end
+
+  def pre_destroy
+    @evento.update_attributes(version: -1)
+    redirect_to superadmin_eventos_path, notice: 'Evento pre-eliminado.'
+  end
+
   def update
     respond_to do |format|
+      @evento.increment(:version)
       if @evento.update(evento_params)
         format.html { redirect_to superadmin_eventos_path, notice: 'El evento se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @evento }
@@ -35,6 +43,7 @@ class Superadmin::EventosController < Superadmin::ApplicationController
       end
     end
   end
+
   def destroy
     @evento.imgevento.remove!
     FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/evento/imgevento/#{@evento.id}", :force => true)
@@ -44,10 +53,12 @@ class Superadmin::EventosController < Superadmin::ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
   def set_evento
     @evento = Evento.friendly.find(params[:id])
   end
+
   def evento_params
     params.require(:evento).permit(:titulo, :imgevento, :info, :fecha)
   end

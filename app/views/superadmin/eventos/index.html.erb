@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-1">
       <%= link_to "Editar", edit_superadmin_evento_path(evento) %>
-      <%= link_to "Borrar", superadmin_evento_path(evento), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <%= link_to "Borrar", "eventos/predelete/#{evento.id}", method: :patch, data: {confirm: "¿Seguro?"} %>
       <%= %>
     </div>
   </div>

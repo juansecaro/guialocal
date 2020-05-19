@@ -6,7 +6,7 @@ class Superadmin::ApplicationController < ApplicationController
       @empresas = Empresa.all
       @categories = Category.all
       @tags = Tag.all
-      @eventos = Evento.all
+      @eventos = Evento.where("version >= '0'")
       @promos = Promo.where("version >= '0'")
       @incidents = Incident.all
       @destacados = Destacado.all

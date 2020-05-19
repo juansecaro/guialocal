@@ -1,13 +1,12 @@
 
 <header>
   <h1>Listado de eventos</h1>
-  <%# editors_only do %>
+  <% editors_only do %>
     <ul class="actions">
       <li><%= link_to "Nuevo evento", new_evento_path, class: "new" %></li>
     </ul>
-  <%# end %>
+  <% end %>
 </header>
-
 
 <% @eventos.each do |evento| %>
   <div class="row border border-info filas">
@@ -22,7 +21,7 @@
     <div class="col-md-1">
       <%editors_only do%>
       <%= link_to "Editar", edit_evento_path(evento) %>
-      <%= link_to "Borrar", evento_path(evento), method: :delete, data: {confirm: "¿Seguro?"} %>
+      <%= link_to "Borrar", "/eventos/predelete/#{evento.id}", method: :patch, data: {confirm: "¿Seguro?"} %>
       <% end %>
       <%= %>
     </div>

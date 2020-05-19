@@ -3,7 +3,6 @@ class PromosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :control_max_promos, only: :create
   before_action :set_promo, only: [:show, :edit, :update, :destroy]
-  # before_filter ->{ authenticate_user!( force: true ) }, only: [:index, :create, :mispromos]
 
   def new
     @plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
@@ -11,8 +10,6 @@ class PromosController < ApplicationController
   end
 
   def create
-    @promo = Promo.new(promo_params)
-    @promo.empresa_id = current_user.current_empresa
 
     plan = current_user.empresas.find_by_id(current_user.current_empresa).plan
 
@@ -20,6 +17,9 @@ class PromosController < ApplicationController
       flash[:error] = 'No puedas lanzar promociones. Tu plan está fuera de validez. Renuévalo.'
       redirect_to root_path
     else
+      @promo = Promo.new(promo_params)
+      @promo.empresa_id = current_user.current_empresa
+
       create_promo
     end
   end
@@ -34,6 +34,7 @@ class PromosController < ApplicationController
   def update
     respond_to do |format|
       @promo.increment(:version)
+      set_validez
       if @promo.update(promo_params)
         format.html { redirect_to mispromos_path, notice: 'La promoción se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @promo }
@@ -170,14 +171,15 @@ class PromosController < ApplicationController
     end
   end
 
+  # We set using time.now when is the first time and hence, there is not one saved
   def set_validez
     case params[:promo][:validezElegida]
     when 'alta'
-      @promo.validez = Time.zone.now + 7.days
+      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 7.days : @promo.validez = @promo.created_at + 7.days
     when 'media'
-      @promo.validez = Time.zone.now + 3.days
+      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 3.days : @promo.validez = @promo.created_at + 3.days
     when 'baja'
-      @promo.validez = Time.zone.now + 1.day
+      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 1.day : @promo.validez = @promo.created_at + 1.days
     end
   end
 

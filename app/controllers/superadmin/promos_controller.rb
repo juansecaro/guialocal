@@ -1,5 +1,5 @@
 class Superadmin::PromosController < Superadmin::ApplicationController
-  before_action :set_promo, only: [:edit, :update, :destroy, :pre_delete]
+  before_action :set_promo, only: [:edit, :update, :destroy, :pre_destroy]
 
 
   def index
@@ -23,11 +23,9 @@ class Superadmin::PromosController < Superadmin::ApplicationController
     end
   end
 
-  def pre_delete
-    @promo.version = -1
-    if @promo.save
-      redirect_to superadmin_promos_path, notice: 'Promoción pre-borrada.'
-    end
+  def pre_destroy
+    @promo.update_attributes(version: -1)
+    redirect_to superadmin_promos_path, notice: 'Promoción pre-borrada.'
   end
 
   def destroy

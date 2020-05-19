@@ -1,12 +1,12 @@
 class EventosController < ApplicationController
-  before_action :set_evento, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_editor!, only: [:editor_index, :new, :edit, :update, :destroy]
+  before_action :set_evento, only: [:show, :edit, :update, :destroy, :pre_destroy]
+  before_action :authorize_editor!, only: [:editor_index, :new, :edit, :update, :destroy, :pre_destroy]
   before_action :control_max_eventos, only: :create
 
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.where("DATE(fecha) >= ?", Date.today).order(fecha: :asc).paginate(page: params[:page], per_page: 20)
+    @eventos = Evento.where("DATE(fecha) >= ? AND version >= '0'", Date.today).order(fecha: :asc).paginate(page: params[:page], per_page: 20)
   end
 
   # GET /eventos/1
@@ -49,8 +49,13 @@ class EventosController < ApplicationController
   def edit
   end
 
+  def pre_destroy
+    @evento.update_attributes(version: -1)
+    redirect_to gesteventos_path, notice: 'Evento eliminado.'
+  end
+
   def editor_index
-    @eventos = Evento.order(created_at: :desc)
+    @eventos = Evento.where("DATE(fecha) >= ? AND version >= '0'", Date.today).order(fecha: :asc)
   end
 
   # POST /eventos
@@ -73,6 +78,7 @@ class EventosController < ApplicationController
   # PATCH/PUT /eventos/1.json
   def update
     respond_to do |format|
+      @evento.increment(:version)
       if @evento.update(evento_params)
         format.html { redirect_to @evento, notice: 'El evento se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @evento }
@@ -118,6 +124,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:info, :imgevento, :titulo, :fecha) 
+      params.require(:evento).permit(:info, :imgevento, :titulo, :fecha)
     end
 end

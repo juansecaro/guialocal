@@ -6,6 +6,10 @@ class Evento < ApplicationRecord
   extend FriendlyId
   friendly_id :titulo, use: :slugged
 
+  def should_generate_new_friendly_id?
+    titulo_changed? || super
+  end
+
   private
 
   # Uploading events through scraping public pages

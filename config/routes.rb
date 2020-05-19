@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get '/api/v1/getconfig', to: 'pantalla#get_config'
   get '/api/v1/updatestatus/:number', to: 'pantalla#update_status'
 
+  patch '/eventos/predelete/:id', to: 'eventos#pre_destroy'
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
@@ -75,7 +77,8 @@ Rails.application.routes.draw do
     root 'application#index'
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
-    patch '/promos/:id', to: 'promos#pre_delete'
+    patch '/promos/:id', to: 'promos#pre_destroy'
+    patch 'eventos/predelete/:id', to: 'eventos#pre_destroy'
     resources :nodes
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :empresas
