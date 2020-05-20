@@ -37,7 +37,7 @@ end
 
 # Deletes daily invalid (erased promos)
 def self.autodeletion
-  Promo.where(version: -1).destroy_all
+  Promo.where("DATE(validez) <= ? OR version = '-1'", Date.today.prev_day).destroy_all
 end
 
 

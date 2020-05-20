@@ -45,7 +45,7 @@ class PantallaController < ApplicationController
     last_time_milliseconds = params[:last_promos_retrieval].to_f
     if (last_time_milliseconds != 0)
       last_time = Time.at(last_time_milliseconds/1000)
-      @promos = Promo.where("validez >= ? AND updated_at >= ? AND version >= 0", Time.zone.now, last_time).order("validez ASC")
+      @promos = Promo.where("validez >= ? AND updated_at >= ?", Time.zone.now, last_time).order("validez ASC")
     else
       @promos = Promo.where("validez >= ? AND version >= 0", Time.zone.now).order("validez ASC")
     end

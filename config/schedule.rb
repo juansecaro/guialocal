@@ -26,16 +26,21 @@ set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log
 #   rake "recover_eventos_#{ENV['CURRENT_CITY']}"
 # end
 
-every :saturday, at: '4:00 am' do
+# XML Sitemap updating
+every 1.day, :at => '4:00 am' do
+  runner "Evento.autodeletion"
+end
+
+every 1.day, :at => '4:05 am' do
+  runner "Promo.autodeletion"
+end
+
+every 1.day, at: '4:10 am' do
   rake "cleanup_stale_prospects"
 end
 
-# XML Sitemap updating
-every 1.day, :at => '5:00 am' do
+every 1.day, :at => '4:30 am' do
   rake "-s sitemap:refresh"
 end
 
-every 1.day, :at => '4:00 am' do
-  runner "Promo.autodeletion"
-end
 # Learn more: http://github.com/javan/whenever

@@ -77,7 +77,7 @@ Rails.application.routes.draw do
     root 'application#index'
     get 'configs', to: 'config#edit'
     patch 'configs', to: 'config#update'
-    patch '/promos/:id', to: 'promos#pre_destroy'
+    patch 'promos/predelete/:id', to: 'promos#pre_destroy'
     patch 'eventos/predelete/:id', to: 'eventos#pre_destroy'
     resources :nodes
     resources :users, only: [:index, :show, :edit, :update, :destroy]

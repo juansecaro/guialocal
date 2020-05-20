@@ -10,6 +10,10 @@ class Evento < ApplicationRecord
     titulo_changed? || super
   end
 
+  def self.autodeletion
+    Evento.where("DATE(fecha) <= ? OR version = '-1'", Date.today.prev_day).destroy_all
+  end
+
   private
 
   # Uploading events through scraping public pages
