@@ -200,7 +200,7 @@ GEM
     pg (0.21.0)
     popper_js (1.16.0)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (3.12.6)
     rack (2.0.9)
     rack-protection (2.0.8.1)
       rack
@@ -354,7 +354,7 @@ DEPENDENCIES
   mini_magick (~> 4.7)
   minitest-reporters (~> 1.4, >= 1.4.2)
   pg (< 1.0)
-  puma (~> 3.12.4)
+  puma (~> 3.12.6)
   rails (~> 5.1.7)
   rubocop (~> 0.79.0)
   sass-rails (~> 5.0)
@@ -372,4 +372,4 @@ DEPENDENCIES
   will_paginate-bootstrap4 (~> 0.2.2)
 
 BUNDLED WITH
-   2.1.2
+   1.17.3
