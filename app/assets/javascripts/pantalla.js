@@ -56,7 +56,7 @@ class Empresa {
     if(typeof found === "undefined"){
       this.promos.push(promo)
     }else{
-      let index = this.getKeyByValue(this.promos, found)
+      let index = this.getKeyByValue(this.promos, found) //we just substitute by a recenter version
       this.promos[index] = promo
     }
   }
@@ -65,8 +65,8 @@ class Empresa {
     var time_now = Date.now()/1000
     let i = this.promos.length - 1
     while (i>= 0) {
-
-      if (this.promos[i].validez < time_now || this.promos[i].version < 0 ) {
+      if (this.promos[i].validez_num < time_now || this.promos[i].version < 0 ) { //se confunde con validez num!!!!
+        //debugger
         if (this.turn == this.promos.length - 1) {
           //adapt turn
           if (this.turn > 0) {
@@ -89,20 +89,18 @@ class Empresa {
 function Marketplace() {
   this.empresas = []
   this.indexes = [] // here we hold the used ones, to ckeck shown ones
-  this.turn = 0 // the number (index) to be shown
+  this.turn // the number (index) to be shown
 
-  this.getValue = function(){
-    Object.keys(this.empresas).find(key => object[key] === value);
-  }
   this.cleanUp = function () {
     empresas = this.empresas
     Object.keys(this.empresas).forEach(function(i){
       empresas[i].updateAndCleanPromos()
        if (!empresas[i].checkEmpresaShouldExist()){
-       empresas[i] = undefined;
+        delete this.empresas[i];
        }
     });
   }
+
   this.insertPromoInMarketplace = function (promo) {
     empresa_id = promo.empresa_id
 
@@ -112,26 +110,35 @@ function Marketplace() {
       this.empresas[empresa_id] = new Empresa(promo, empresa_id)
     }
   }
+
   this.takePromoFromMarketplace = function(){
-    if (this.turn == this.indexes.length){
+    // this.turn is undefinedined in the first entrance
+    if (this.turn = (typeof x === 'undefined') || this.turn == this.indexes.length - 1){ //reset turn when every empresa has been featured
+      this.cleanUp(); // removes dated, and invalid ones
       this.indexes = Object.keys(this.empresas);
       this.turn = 0;
     }
-    let i = this.indexes[this.turn]
-    this.turn++
 
-    let promo = this.empresas[i].takePromoFromEmpresa()
+    if (this.indexes.length != 0){ // hay empresas
+      let i = this.indexes[this.turn]
+      this.turn++
 
-    if (typeof promo !== "undefined"){
-      return promo;
+      let promo = this.empresas[i].takePromoFromEmpresa()
+      if (typeof promo !== "undefined"){
+        return promo;
+      } else {
+        return false; // promo not found in empresa
+      }
     } else {
-      return false;
+      return false; // there are no empresas
     }
   }
+
 }
 
 // global instance of promos management system
 const m = new Marketplace();
+
 
 function updateStatus(){
     return $.get( "/api/v1/updatestatus/" + pantalla_number ).then(function(data) {
@@ -178,12 +185,11 @@ function get_new_eventos(n){
 
 function get_new_promos(n){
 
-    m.cleanUp(); // removes dated, and invalid ones
-
     return $.get( "/api/v1/getpromos", { last_promos_retrieval: n } ).then(function(data) {
       for (var i = 0; i < data.length; i++) {
         m.insertPromoInMarketplace(data[i]);
       }
+
       console.log( "$.get succeeded promos" );
     }, function() {
       console.log( "$.get failed promos!" );
@@ -290,7 +296,7 @@ function create_slide(element){
                 </div>
             </div>
         `);
-
+// recalc validez
   }
   if (element.imgevento){
 
@@ -373,6 +379,8 @@ function load_everything(){
     refill_virtual_slider();
     create_html_carousel();
     updateStatus();
+    //$('.carousel').carousel('pause');
+
   });
 }
 
@@ -398,12 +406,11 @@ $(document).ready(function() {
 
   header = document.getElementById('header').value;
   noimage = document.getElementById('noimage').value;
-  //time_between_mill = parseInt(document.getElementById('time_between').value);
 
   load_everything();
 
   $('.carousel').on('slid.bs.carousel', function ( data ) {
-  // $('.carousel').carousel('pause');
+
 
   var lastSlide = $('.carousel-item').length - 1;
 
