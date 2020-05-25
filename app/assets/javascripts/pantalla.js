@@ -65,10 +65,8 @@ class Empresa {
     var time_now = Date.now()/1000
     let i = this.promos.length - 1
     while (i>= 0) {
-      if (this.promos[i].validez_num < time_now || this.promos[i].version < 0 ) { //se confunde con validez num!!!!
-        //debugger
+      if (this.promos[i].validez < time_now || this.promos[i].version < 0 ) {
         if (this.turn == this.promos.length - 1) {
-          //adapt turn
           if (this.turn > 0) {
             this.turn--
           }
@@ -112,8 +110,8 @@ function Marketplace() {
   }
 
   this.takePromoFromMarketplace = function(){
-    // this.turn is undefinedined in the first entrance
-    if (this.turn = (typeof x === 'undefined') || this.turn == this.indexes.length - 1){ //reset turn when every empresa has been featured
+    // this.turn is undefinedined in the first entrance //reset turn when every empresa has been featured
+    if (this.turn = (typeof x === 'undefined') || this.turn == this.indexes.length - 1){
       this.cleanUp(); // removes dated, and invalid ones
       this.indexes = Object.keys(this.empresas);
       this.turn = 0;
@@ -290,13 +288,12 @@ function create_slide(element){
                           <div class="h1"><p><mark>${element.titulo}</mark></p></div>
                           <div><p><h2>${element.texto}</h2></p></div>
                           <div>${determine_price(element)}</div>
-                          <h2 class="text-center"><p> *** Termina en <span class="price">${element.validez}</span> *** </p></h2>
+                          <h2 class="text-center"><p> *** Termina en <span class="price">${timeTo(element.validez)}</span> *** </p></h2>
                           <div><p><h2 class="text-center">Encuéntranos en <strong class="address">${element.address}</strong></h2></p></div>
                         </div>
                 </div>
             </div>
         `);
-// recalc validez
   }
   if (element.imgevento){
 
@@ -354,6 +351,32 @@ function destroy_html_carousel(){
   }
 }
 
+function timeTo(date) {
+  var seconds = Math.floor(date - Date.now()/1000);
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " años";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " meses";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " días";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " horas";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutos";
+  }
+  return Math.floor(seconds) + " segundos";
+}
+
 function refreshAt(hours, minutes, seconds) {
     var now = new Date();
     var then = new Date();
@@ -380,7 +403,6 @@ function load_everything(){
     create_html_carousel();
     updateStatus();
     //$('.carousel').carousel('pause');
-
   });
 }
 
