@@ -162,17 +162,31 @@ function get_puntos(){
 
 function get_new_eventos(n){
 
-   // Removes expired events
-   if (slider_eventos.length > 0) {
-     var time_now = Date.now();
-     while ( Date.parse(slider_eventos[0].fecha) < time_now ) { // Deletes everything!
-       slider_eventos.shift();
-     }
-   }
-    // Get new ones
+  // Removes expired events
+  var time_now = Math.floor(Date.now()/1000);
+  if (slider_eventos.length > 0) {
+    let i = slider_eventos.length - 1;
+    while (i>= 0) {
+      if (Date.parse(slider_eventos[i].fecha) < time_now  ) {
+        slider_eventos.splice(i, 1); //remove
+      }
+      i--;
+    }
+  }
+    // Get new events since last time
     return $.get( "/api/v1/geteventos", { last_events_retrieval: n } ).then(function(data) {
       for (var i = 0; i < data.length; i++) {
-        slider_eventos.push(data[i]);
+        let index = slider_eventos.findIndex(obj => obj.id == data[i].id);
+        //we need to delete or modify an existing one
+        if (index != -1){
+          if (data[i].version == -1) {
+            slider_eventos.splice(index, 1); //delete
+          } else if (data[i].version > 0) {
+            slider_eventos[index] = data[i]; //update
+          }
+        } else {
+          slider_eventos.push(data[i]); // It's new
+        }
       }
       console.log( "$.get succeeded eventos" );
     }, function() {
@@ -282,7 +296,7 @@ function create_slide(element){
             <div class=\"corner-comercio\"><span>Comercio Local</span></div>
 
                 <div class="row">
-                        <div class="col-7"><img src="${checkNullImage(element.imgpromo.url)}" class="img-fluid "></div>
+                        <div class="col-7"><img src="${checkNullImage(element.imgpromo)}" class="img-fluid "></div>
                         <div class="col-5 pr-5 mt-5 pt-5">
                           <div class="text-center my-5"><img src="${element.logo}" class="img-fluid"></div>
                           <div class="h1"><p><mark>${element.titulo}</mark></p></div>
@@ -302,7 +316,7 @@ function create_slide(element){
             <div class=\"corner-comercio\"><span>Actualidad</span></div>
               <div class="row h1 display-4 font-weight-bold mx-3"><p>${getDate(element.fecha)}</p></div>
                 <div class="row">
-                  <div class="col-6"><img src="${checkNullImage(element.imgevento.url)}" class="img-fluid"></div>
+                  <div class="col-6"><img src="${checkNullImage(element.imgevento)}" class="img-fluid"></div>
                   <div class="col-6 py-5"><p><h2><strong><mark>${element.titulo}</mark></strong></h2></p><p><h3>${truncateString(element.info,600)}</h3></p></div>
                 </div>
             </div>
