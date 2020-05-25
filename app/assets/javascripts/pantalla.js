@@ -167,7 +167,7 @@ function get_new_eventos(n){
   if (slider_eventos.length > 0) {
     let i = slider_eventos.length - 1;
     while (i>= 0) {
-      if (Date.parse(slider_eventos[i].fecha) < time_now  ) {
+      if (Date.parse(slider_eventos[i].fecha_as_integer) < time_now  ) {
         slider_eventos.splice(i, 1); //remove
       }
       i--;
