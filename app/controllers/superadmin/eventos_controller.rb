@@ -46,7 +46,7 @@ class Superadmin::EventosController < Superadmin::ApplicationController
 
   def destroy
     @evento.imgevento.remove!
-    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/evento/imgevento/#{@evento.id}", :force => true)
+    FileUtils.remove_dir("#{Rails.root}/public/uploads/#{ENV['CURRENT_CITY']}/evento/imgevento/#{@evento.id}", :force => true)
     @evento.destroy
     respond_to do |format|
       format.html { redirect_to superadmin_eventos_path, notice: 'Evento eliminado.' }

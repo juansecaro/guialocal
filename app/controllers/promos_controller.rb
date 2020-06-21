@@ -47,7 +47,7 @@ class PromosController < ApplicationController
 
   def destroy
     @promo.imgpromo.remove!
-    FileUtils.remove_dir("#{Rails.root}/public/temp_uploads/#{ENV['CURRENT_CITY']}/promo/imgpromo/#{@promo.id}", force: true)
+    FileUtils.remove_dir("#{Rails.root}/public/uploads/#{ENV['CURRENT_CITY']}/promo/imgpromo/#{@promo.id}", force: true)
     @promo.destroy
   end
 

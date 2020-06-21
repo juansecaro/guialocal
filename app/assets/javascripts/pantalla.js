@@ -100,30 +100,30 @@ function Marketplace() {
   }
 
   this.insertPromoInMarketplace = function (promo) {
-    empresa_id = promo.empresa_id
+    empresa_id = promo.empresa_id;
 
     if (this.empresas[empresa_id] instanceof Empresa) {
-      this.empresas[empresa_id].insertPromoInEmpresa(promo)
+      this.empresas[empresa_id].insertPromoInEmpresa(promo);
     } else {
-      this.empresas[empresa_id] = new Empresa(promo, empresa_id)
+      this.empresas[empresa_id] = new Empresa(promo, empresa_id);
     }
   }
 
   this.takePromoFromMarketplace = function(){
     // this.turn is undefinedined in the first entrance //reset turn when every empresa has been featured
-    console.log(this.turn)
-    if (typeof this.turn === 'undefined' || this.turn == this.indexes.length - 1){
+    // console.log("Índices: " + this.indexes )
+    // console.log("turno: " + this.turn)
+    // console.log(this.turn == this.indexes.length - 1)
+    if (typeof this.turn === 'undefined' || this.turn == this.indexes.length){
       this.cleanUp(); // removes dated, and invalid ones
       this.indexes = Object.keys(this.empresas);
       this.turn = 0;
     }
-    console.log("Índices: " + this.indexes )
     if (this.indexes.length != 0){ // hay empresas
-      let i = this.indexes[this.turn]
-      console.log("turno: " + i)
-      this.turn++
+      let i = this.indexes[this.turn];
+      this.turn++;
 
-      let promo = this.empresas[i].takePromoFromEmpresa()
+      let promo = this.empresas[i].takePromoFromEmpresa();
       if (typeof promo !== "undefined"){
         return promo;
       } else {
