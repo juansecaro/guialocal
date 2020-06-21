@@ -228,7 +228,8 @@ function create_html_carousel(){
   // Activation
   $(".carousel-item:first-child").addClass("active");
   $('.carousel').carousel({
-    interval: time_between_slides
+    interval: time_between_slides,
+    pause: false
   });
   $('.carousel').carousel('cycle').delay(time_delay_with_header);
 }
