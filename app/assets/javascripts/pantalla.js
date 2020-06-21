@@ -111,14 +111,16 @@ function Marketplace() {
 
   this.takePromoFromMarketplace = function(){
     // this.turn is undefinedined in the first entrance //reset turn when every empresa has been featured
-    if (this.turn = (typeof x === 'undefined') || this.turn == this.indexes.length - 1){
+    console.log(this.turn)
+    if (typeof this.turn === 'undefined' || this.turn == this.indexes.length - 1){
       this.cleanUp(); // removes dated, and invalid ones
       this.indexes = Object.keys(this.empresas);
       this.turn = 0;
     }
-
+    console.log("Índices: " + this.indexes )
     if (this.indexes.length != 0){ // hay empresas
       let i = this.indexes[this.turn]
+      console.log("turno: " + i)
       this.turn++
 
       let promo = this.empresas[i].takePromoFromEmpresa()
@@ -131,7 +133,6 @@ function Marketplace() {
       return false; // there are no empresas
     }
   }
-
 }
 
 // global instance of promos management system

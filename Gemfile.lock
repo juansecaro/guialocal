@@ -333,7 +333,7 @@ DEPENDENCIES
   byebug
   capistrano (~> 3.14, >= 3.14.1)
   capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.2)
+  capistrano-rails (~> 1.4)
   capistrano-rbenv (~> 2.1, >= 2.1.4)
   capistrano-yarn
   carrierwave (~> 2.0, >= 2.0.2)
