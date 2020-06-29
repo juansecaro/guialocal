@@ -34,7 +34,7 @@ class PromosController < ApplicationController
   def update
     respond_to do |format|
       @promo.increment(:version)
-      set_validez
+      helpers.set_validez_promo
       if @promo.update(promo_params)
         format.html { redirect_to mispromos_path, notice: 'La promoción se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @promo }
@@ -171,17 +171,7 @@ class PromosController < ApplicationController
     end
   end
 
-  # We set using time.now when is the first time and hence, there is not one saved
-  def set_validez
-    case params[:promo][:validezElegida]
-    when 'alta'
-      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 7.days : @promo.validez = @promo.created_at + 7.days
-    when 'media'
-      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 3.days : @promo.validez = @promo.created_at + 3.days
-    when 'baja'
-      @promo.created_at.nil? ? @promo.validez = Time.zone.now + 1.day : @promo.validez = @promo.created_at + 1.days
-    end
-  end
+
 
   def is_still_valid?(promo)
     promo.validez > Time.zone.now
@@ -196,13 +186,13 @@ class PromosController < ApplicationController
 
     if when_last_promo.nil? # no previous publication
       valid_value = true
-      set_validez
+      helpers.set_validez_promo
     else
       if plan == 'premium'
         last_promos = empresa.try(:promos).where("version >= '0'").try(:first, 3)
         if last_promos.count < 3
           valid_value = true
-          set_validez
+          helpers.set_validez_promo
         else
           # It has 3 or more
           if is_still_valid?(last_promos[2]) # last and oldest element
@@ -212,7 +202,7 @@ class PromosController < ApplicationController
           else
             # We know not all 3 options are active, so we can activate a new one
             valid_value = true
-            set_validez
+            helpers.set_validez_promo
           end
         end
       else
@@ -226,7 +216,7 @@ class PromosController < ApplicationController
           @waiting_until = waiting_date(last_promo_item, plan)
           if Time.zone.now > @waiting_until
             valid_value = true
-            set_validez
+            helpers.set_validez_promo
           else
             flash.now[:error] = 'Aún tienes que esperar hasta la próxima promoción (pásate a premium si no quieres esperas)'
             render('new') && return
@@ -291,6 +281,6 @@ class PromosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def promo_params
-    params.require(:promo).permit(:titulo, :version, :imgpromo, :texto, :validez, :normal_price, :special_price)
+    params.require(:promo).permit(:titulo, :version, :imgpromo, :texto, :validez, :validez_elegida, :normal_price, :special_price)
   end
 end

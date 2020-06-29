@@ -4,13 +4,10 @@ class Promo < ApplicationRecord
   belongs_to :empresa
   before_destroy :clean_s3, prepend: true
 
-  attr_accessor :validezElegida
-
   validates :titulo, presence: true, length:{ maximum: 60, too_long: "El título no puede ser mayor de 50 carácteres y tienes %{count}" }
   validates :texto, presence: true, length:{ maximum: 250, too_long: "El texto no puede ser mayor de  250 carácteres y tienes %{count}" }
 
-
-  validate :check_prices, :validez_elegida
+  validate :check_prices, :validez_elegida_check
 
   mount_uploader :imgpromo, ImgpromoUploader
   default_scope {order(created_at: :desc)}
@@ -66,7 +63,7 @@ class Promo < ApplicationRecord
     end
   end
 
-  def validez_elegida
+  def validez_elegida_check
     if validez.nil?
       errors.add(:base, "Tienes que seleccionar la duración de la promoción")
     end

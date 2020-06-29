@@ -13,6 +13,7 @@ class Superadmin::PromosController < Superadmin::ApplicationController
   def update
     respond_to do |format|
       @promo.increment(:version)
+      helpers.set_validez_promo
       if @promo.update(promo_params)
         format.html { redirect_to superadmin_promos_path, notice: 'La promoción se ha actualizado con éxito' }
         format.json { render :show, status: :ok, location: @promo }
@@ -46,7 +47,7 @@ class Superadmin::PromosController < Superadmin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def promo_params
-    params.require(:promo).permit(:titulo, :imgpromo, :texto, :validez)
+    params.require(:promo).permit(:titulo, :version, :imgpromo, :texto, :validez, :validez_elegida, :normal_price, :special_price)
   end
 
 end

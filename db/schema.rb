@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200512003904) do
+ActiveRecord::Schema.define(version: 20200629072209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20200512003904) do
     t.decimal "normal_price"
     t.decimal "special_price"
     t.integer "version", default: 0
+    t.string "validez_elegida"
     t.index ["empresa_id"], name: "index_promos_on_empresa_id"
   end
 

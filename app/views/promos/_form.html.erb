@@ -28,13 +28,13 @@
       Duración de la promoción: <span class="text-muted"><small>(Obligatorio)</small></span></br>
       <div class="row">
         <div class="col-md-12">
-          <%= f.radio_button :validezElegida, "baja" %>
+          <%= f.radio_button :validez_elegida, "baja" %>
           <%= f.label 'validez_baja', ' 24 horas' %>
 
-          <%= f.radio_button :validezElegida, "media" %>
+          <%= f.radio_button :validez_elegida, "media" %>
           <%= f.label 'validez_media', ' 3 días' %>
 
-          <%= f.radio_button :validezElegida, "alta" %>
+          <%= f.radio_button :validez_elegida, "alta" %>
           <%= f.label 'validez_alta', ' 1 semana' %>
         </div>
       </div>
@@ -43,7 +43,7 @@
 
   <div class="btn-group btn-group-toggle" data-toggle="buttons" id="precio_toggle">
     <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option1" autocomplete="off" data-action="click->prices#show" checked> Con precio
+      <input type="radio" name="options" id="option1" autocomplete="off" data-action="click->prices#show"> Con precio
     </label>
     <label class="btn btn-secondary">
       <input type="radio" name="options" id="option2" autocomplete="off" data-action="click->prices#hide"> Sin precio
@@ -66,11 +66,17 @@
 
 </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <%= image_tag(@promo.imgpromo, class: "img-fluid") if @promo.imgpromo? %>
+      </div>
+    </div>
+
 
     <p>
     <%= f.label(:imagen, "Imagen de la promoción") %> <span class="text-muted"><small>(Opcional, pero muy recomendado)</small></span></br>
     <%= f.file_field :imgpromo, as: :file, label: "Imagen " %>
-  </p>
+    </p>
 </div>
 
   <div class="form-actions">

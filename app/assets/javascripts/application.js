@@ -20,7 +20,8 @@
 //= require imagemap
 //= require charactercount
 //= require trix
-//= require_tree .
+//= require promos
+//= require empresas
 
 
 $(document).ready(function() {
