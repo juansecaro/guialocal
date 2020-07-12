@@ -59,22 +59,19 @@ gem 'capistrano-yarn'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'whenever', :require => false
 
-
-
 gem 'web-console', '>= 3.3.0', group: :development
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
-  gem 'awesome_print', '~> 1.7', :require => 'ap'
+  gem 'awesome_print', '~> 1.8'
   gem "letter_opener"
   gem 'listen', '~> 3.0.5'
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
   gem "binding_of_caller"
-  gem 'rubocop', '~> 0.79.0', require: false
   gem 'byebug', platform: :mri
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  #gem 'spring'
-  #gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

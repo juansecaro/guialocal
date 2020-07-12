@@ -410,6 +410,24 @@ function refreshAt(hours, minutes, seconds) {
     setTimeout(function() { window.location.reload(true); }, timeout);
 }
 
+
+function pauseAt(hours, minutes, seconds) {
+    var now = new Date();
+    var then = new Date();
+
+    if(now.getHours() > hours ||
+       (now.getHours() == hours && now.getMinutes() > minutes) ||
+        now.getHours() == hours && now.getMinutes() == minutes && now.getSeconds() >= seconds) {
+        then.setDate(now.getDate() + 1);
+    }
+    then.setHours(hours);
+    then.setMinutes(minutes);
+    then.setSeconds(seconds);
+
+    var timeout = (then.getTime() - now.getTime());
+    setTimeout(function() { $('.carousel').carousel('pause'); }, timeout);
+}
+
 function load_everything(){
 
   $.when(get_puntos(), get_new_eventos(last_time_events), get_new_promos(last_time_promos)).then(function( x ) {
@@ -459,5 +477,8 @@ $(document).ready(function() {
 
   });
 
-  refreshAt(6,0,0); // Everyday refresh at 6:00
+  // Everyday pause/sleep at 23:00
+  pauseAt(23,0,0);
+  // Everyday refresh/restart at 7:30
+  refreshAt(7,30,0);
 });
