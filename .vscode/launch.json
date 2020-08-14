@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Rails server",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/bin/rails",
+            "showDebuggerOutput": true,
+
+            "args": [
+                "server"
+            ]
+        }
+    ]
+}
