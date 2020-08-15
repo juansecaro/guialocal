@@ -52,6 +52,7 @@ class PromosController < ApplicationController
   end
 
   def mispromos
+    set_current_empresa
     @empresa = current_user.empresas.find_by_id(current_user.current_empresa)
     @plan = @empresa.plan
     redirect_to root_path, alert: "No puedes poner promociones sin tener un plan anual o si está al día" and return unless @plan != "noplan"
@@ -161,6 +162,16 @@ class PromosController < ApplicationController
     @promo = Promo.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'La promoción que buscas no existe'
+    redirect_to (request.referrer || root_path)
+  end
+
+  def set_current_empresa
+    if current_user.current_empresa.nil?
+      current_user.current_empresa = current_user.empresas.first.id
+      current_user.save
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Este usuario no tiene empresa(s)'
     redirect_to (request.referrer || root_path)
   end
 
