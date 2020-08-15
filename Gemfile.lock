@@ -115,6 +115,9 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n-views (0.3.7)
+    devise_masquerade (0.6.5)
+      devise (>= 2.1.0)
+      railties (>= 3.0)
     erubi (1.9.0)
     excon (0.75.0)
     execjs (2.7.0)
@@ -333,6 +336,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   devise-bootstrapped!
   devise-i18n-views
+  devise_masquerade
   fog-aws (~> 3.5, >= 3.5.2)
   font_awesome5_rails (~> 0.3.4)
   friendly_id (~> 5.2, >= 5.2.1)

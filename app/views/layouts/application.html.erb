@@ -28,6 +28,15 @@
     <!-- End Google Tag Manager (noscript) -->
     <%= render "layouts/header" %>
 
+    <nav>
+      <% if user_masquerade? %>
+      <div class="alert alert-warning text-center" style="margin-top: -10px">
+        Estás loggeado como <%= current_user.email %>
+        <%= link_to back_masquerade_path(current_user) do %>Salir <%= fa_icon "times" %><% end %>
+      </div>
+      <% end %>
+    </nav>
+
     <div class="container">
       <%= render 'layouts/messages' %>
 

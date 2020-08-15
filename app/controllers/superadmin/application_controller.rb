@@ -1,5 +1,6 @@
 class Superadmin::ApplicationController < ApplicationController
   before_action :authorize_superadmin!
+  before_action :masquerade_user!
 
     def index
       @users = User.all

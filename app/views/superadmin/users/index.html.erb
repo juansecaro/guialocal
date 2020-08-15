@@ -17,6 +17,7 @@
       <th class="text-center">E-Mail</th>
       <th class="text-center">Empresa</th>
       <th class="text-center">Última vez</th>
+      <th class="text-center">Suplantación</th>
     </tr>
   </thead>
 
@@ -44,6 +45,11 @@
         </td>
 
         <td class="text-center"><%= time_format_mini_mini user.last_sign_in_at if user.last_sign_in_at %></td>
+        <td class="text-center">
+          <% if user.role == "user" || user.role == "editor" %>
+            <%= link_to "Suplantar", masquerade_path(user), class: "btn btn-primary" %>
+          <% end %>
+        </td>
       </tr>
 
     <% end %>
