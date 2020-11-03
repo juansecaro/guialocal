@@ -10,9 +10,5 @@
             </h6></p>
           <small class="event-text"> <%= Nokogiri::HTML(evento.info).text.truncate(120, separator: ' ') %></small>
     </div>
-
-    <p><h6> <strong> <%#= time_format(evento.fecha) %> </strong>  </h6></p>
-
-
   </div>
 <% end %>

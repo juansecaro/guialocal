@@ -45,7 +45,6 @@ module ApplicationHelper
     end
   end
 
-
   def current_city
     if ($current_city == "sinasignar" || $current_city == nil)
       $current_city = Config.first.city || "Dev"
@@ -60,5 +59,23 @@ module ApplicationHelper
       return $current_city.capitalize
     end
   end
+
+  def money_format(price)
+    return "0" if price == nil
+    if price.is_a?(BigDecimal) && price > 0
+      price = sprintf('%.2f', price)
+      price_uds = price.split('.')[0]
+      price_decimals = price.split('.')[1]
+      price_uds = price_uds.reverse.scan(/.{1,3}/).join(".").reverse
+      if price.chars.last(3).join == ".00"
+        price = price_uds
+      else
+        price = price_uds + "," + price_decimals
+      end
+    end
+    price
+  end
+
+
 
 end

@@ -53,7 +53,7 @@ task recover_eventos_llerena: :environment  do
 
 
   desc "removes stale and inactive products from the database"
-  task cleanup_stale_prospects :environment do
+  task cleanup_stale_prospects: :environment do
     # Find all the products older than yesterday, that are not active yet
     stale_prospects = Prospect.where("DATE(created_at) < DATE(?)", Date.yesterday).where(status: 'created')
 

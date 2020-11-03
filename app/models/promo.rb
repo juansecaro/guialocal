@@ -12,7 +12,7 @@ class Promo < ApplicationRecord
   mount_uploader :imgpromo, ImgpromoUploader
   default_scope {order(created_at: :desc)}
   scope :activas, -> { where("validez > ?", Time.now).order("created_at ASC")  }
-  scope :todas_diez_dias, -> { where("created_at > ?", Time.now-10.days).order("created_at DESC") }
+  scope :todas_diez_dias, -> { where("validez > ?", Time.now-10.days).order("created_at DESC") }
 
   def as_json options={}
   {

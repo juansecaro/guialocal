@@ -1,109 +1,52 @@
-<div class="row cards">
-    <div class="col-md-12">
-      <div id="slider">
-        <%= render "cities/slider" %>
-      </div>
-  </div>
-</div>
 
-<div class="row">
-  <!-- separador promociones -->
-  <div class="col-md-3 col-sm-12">
+  <%= render "cities/slider" %>
+  <!-- primera fila -->
+  <h1 class="mainribbon"><strong><span class="capital_color">ATRACTIVOS</span> TURÍSTICOS</strong></h1>
+    <div class="row">
 
-    <% if @mapa.nil? == false %>
-      <%= link_to mapas_path do %>
-      <div class="card card-space-bottom">
-        <div class="ribbon">
-          <span>Descubre</span>
-        </div>
-        <%= image_tag(@mapa.try(:imgsrc).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @mapa.imgsrc.blank? %>
-        <div class="card-body">
-          <h5 class="card-title"><%= @mapa.title%> </h5>
-          <p class="card-text event-text"><%= @mapa.description %></p>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-
-    <% if @empresas.count > 0 %>
-
-      <%= link_to empresa_path(@empresas[0]) do %>
-      <div class="card" >
-        <%= image_tag(@empresas[0].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[0].logo.blank? %>
-        <div class="card-body">
-          <h5 class="card-title"><%= @empresas[0].name if @empresas[0].try(:present?) %></h5>
-          <p class="card-text event-text"><%= @empresas[0].excerpt if @empresas[0].excerpt %></p>
-          <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
-        </div>
-      </div>
+        <% if @puntos.any?  %>
+          <% @puntos.each do |punto| %>
+          <div class="col-md-4">
+            <div class="card card-space-bottom">
+              <%= image_tag(punto.try(:fotospunto).try(:first).try(:url), class: "card-img-top img-fluid", alt: "Card image cap") unless punto.fotospunto.empty? %>
+              <div class="card-body">
+                <p class="card-text"><strong><%= punto.title %></strong></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
 
-    <% end %>
+    </div>
 
-    <% if @empresas.count > 1 %>
+  <!-- segunda fila -->
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="mainribbon"> <strong> <span class="capital_color">PRÓXIMOS</span> EVENTOS</strong></h1>
 
-      <%= link_to empresa_path(@empresas[1]) do %>
-      <div class="card cards">
-        <%= image_tag(@empresas[1].try(:logo).try(:url), class: "card-img-top img-fluid img-pad", alt: "Card image cap") unless @empresas[1].logo.blank? %>
-        <div class="card-body">
-          <h5 class="card-title"><%= @empresas[1].name if @empresas[1].present? %></h5>
-          <p class="card-text event-text"><%= @empresas[1].excerpt if @empresas[1].excerpt %></p>
-          <p class="text-center"><small class="text-muted"> - Promocionado - </small></p>
-        </div>
+        <% if @eventos.any?  %>
+          <%= render @eventos %>
+          <div class="text-right">
+            <%= link_to 'Ver todos', eventos_path %>
+          </div>
+        <% else %>
+          <div class="row alert alert-secondary">
+            No hay eventos próximos
+          </div>
+        <% end %>
       </div>
-      <% end %>
-    <% end %>
 
-  </div>
-
- <!-- segunda fila -->
-   <div class="col-md-6 col-sm-12 negative-margin">
-      <h1 class="mainribbon"> <strong> <span class="capital_color">PRÓXIMOS</span> EVENTOS</strong></h1>
-
-     <% if @eventos.any?  %>
-       <%= render @eventos %>
-     <% else %>
-       <div class="row alert alert-secondary">
-         No hay eventos próximos
-       </div>
-     <% end %>
-
-     <div class="text-right">
-       <%= link_to 'Ver todos', eventos_path %>
-     </div>
-
-     <div class="dropdown-divider"></div>
-
-     <div id="weather">
-      <%= render "cities/weather/#{current_city}/" %>
-     </div>
-
-   </div>
-
-     <!-- tercera columna -->
-
-     <div class="col-md-3 col-sm-12">
-
-       <div class="alert alert-info">
-         <strong>OFERTAS FLASH</strong>
-       </div>
-       <% if @promos.any?  %>
-         <%= render @promos %>
-       <% else %>
-         <div class="alert alert-secondary">
-           No hay promociones recientes
-         </div>
-       <% end %>
-       <div class="row">
-         <div class="col-12">
-           <div class="text-right">
-             <%= link_to 'Ver todas', mercadillo_digital_path %>
-           </div>
-         </div>
-       </div>
-
-     </div>
-
-   </div>
-
-</div>
+      <div class="col-md-6">
+        <h1 class="mainribbon"> <strong> <span class="capital_color">COMERCIO</span> LOCAL</strong></h1>
+          <% if @promos.any?  %>
+            <%= render @promos %>
+            <div class="text-right">
+              <%= link_to 'Ver todas', promos_path %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted">
+              No hay promociones recientes
+            </div>
+          <% end %>
+      </div>
+    </div>

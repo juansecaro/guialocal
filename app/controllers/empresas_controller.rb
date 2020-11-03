@@ -14,9 +14,9 @@ class EmpresasController < ApplicationController
 
   def home
     # $current_city='llerena' <-- need a fallback for this
-    @empresas = Empresa.where.not(plan: :noplan).order(Arel.sql('random()')).limit(2)
-    @mapa = Map.find_by_level("1_1")
-    @promos = Promo.where('validez > ? AND version >= 0', Time.zone.now).order('created_at DESC').limit(3)
+    #@empresas = Empresa.where.not(plan: :noplan).order(Arel.sql('random()')).limit(2)
+    @puntos = Punto.all
+    @promos = Promo.where('validez > ? AND version >= 0', Time.zone.now).order('created_at DESC').limit(5)
     @eventos = Evento.where("DATE(fecha) >= ? AND version >= '0'", Date.today).order(fecha: :asc).limit(5)
 
     site ||= "Guia#{ENV['CURRENT_CITY_CAP']}.es"

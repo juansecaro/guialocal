@@ -258,16 +258,36 @@ function checkNullImage(image) {
   return image;
 }
 
+function priceFormat(price){
+  if (price === null || price == "undefined") return "0";
+  if (parseFloat(price) > 0)
+    price = parseFloat(price).toFixed(2);
+    let price_uds = price.split('.')[0]
+    let price_decimals = price.split('.')[1]
+    price_uds = price_uds.split("").reverse().join(""); //reverse
+    price_uds = price_uds.match(/.{1,3}/g).join(".");// split in groups of 3, and group with dots
+    price_uds = price_uds.split("").reverse().join(""); //reverse again
+    console.log("decimales: " +price_decimals);
+    if (price_decimals == "00"){
+      price = price_uds;
+      }
+    else{
+      price = price_uds + "," + price_decimals;
+      }
+      console.log("precio final: " +price);
+  return price;
+}
+
 // It shows proper display deppending on 3 different situation that can ocur: discounted, fixed price or hidden ONLY FOR PROMOS
 function determine_price(element){
 
   if (element.special_price !== "undefined" && element.special_price > 0) {
     return (`
-      <h1 class="text-center">ANTES <del class="text-muted">${element.normal_price} €</del> AHORA <span class="price">${element.special_price} €</span></h1>
+      <h1 class="text-center">ANTES <del class="text-muted">${priceFormat(element.normal_price)} €</del> AHORA <span class="price">${priceFormat(element.special_price)} €</span></h1>
     `);
   } else if (element.normal_price !== "undefined" && element.normal_price > 0) {
     return (`
-      <h1 class="text-center price">${element.normal_price} €</h1>
+      <h1 class="text-center price">${priceFormat(element.normal_price)} €</h1>
     `);
   } else {
     //  block of code to be executed if the condition1 is false and condition2 is false

@@ -67,11 +67,11 @@ group :development, :test do
   gem 'awesome_print', '~> 1.8'
   gem "letter_opener"
   gem 'listen', '~> 3.0.5'
-  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem 'better_errors', '~> 2.8', '>= 2.8.3'
+  gem "binding_of_caller"
   gem 'byebug', '~> 11.1', '>= 11.1.3'
   gem 'ruby-debug-ide'
   gem 'debase', '~> 0.2.4.1'
-  gem "binding_of_caller"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
