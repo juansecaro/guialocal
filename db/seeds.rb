@@ -31,8 +31,6 @@ Empresa.create!(
 	tel: "644 252 097",
 	video: "https://www.youtube.com/embed/1qykU8LDbrY",
 	plan: 3, #premium
-	mlon: 38.237937,
-	mlat:  -6.014943,
 	user_id: 1
 )
 

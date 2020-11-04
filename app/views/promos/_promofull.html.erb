@@ -1,39 +1,39 @@
 
-EOOO
 <% if @promos.any? %>
+<div class="row">
   <% @promos.each do |promo| %>
-  <% if promo.version >= 0 %>
-    <%= link_to promo_path(promo) do %>
-      <div class="row alert alert-success">
-        <div class="col-md-3">
-          <%= image_tag (promo.imgpromo.thumb.url), class: "img-thumbnail img-fluid" unless promo.imgpromo.blank? %>
-        </div>
-        <div class="col-md-9">
-          <small class="text-right text-muted"><%= promo.empresa.name if (promo.empresa) %></small>
-          <h6 class="alert-link">  <%= promo.titulo %>  </h6>
-          <h6>  <%= promo.texto %>   </h6>
-          <% if (Time.now > promo.validez) %>
-            <span class="badge badge-danger still">
-              <%= time_format(promo.validez) %>
-            </span>
-          <% else %>
-            <span class="badge badge-success still">
-              <%= time_format(promo.validez) %>
-            </span><br/>
-            <small>Fin: <%= time_format_mini(promo.validez) %></small>
+    <% if promo.version >= 0 %>
+    <div class="col-md-6">
 
-          <% end %>
-        </div>
-      </div>
+      <%= link_to promo_path(promo) do %>
+        <% if promo.version >= 0 %>
+          <div class="row">
+            <div class="col-4">
+              <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail fotos" unless promo.imgpromo.blank? %>
+            </div>
+            <div class="col-8">
 
-    <% end %>
-    <% end %>
+                  <p><h6>
+                      <%= promo.titulo %>
+                     <span class="date_cal">| Termina el <%= promo.validez.day %> de <%= I18n.l(promo.validez, format: "%B") %> a las <%= promo.validez.strftime('%H:%M') %></span>
+                    </h6></p>
+                  <small class="event-text"><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %></small></br>
 
-  <% end %>
+                    <% if (promo.special_price && promo.special_price > 0) %>
+                        Precio: <span class="text-center">Antes <del class="text-muted"><%= money_format(promo.normal_price) %> €</del> Ahora <span class="price" style="color: red;"><%= money_format(promo.special_price) %> €</span></span>
+                    <% elsif (promo.normal_price && promo.normal_price > 0) %>
+                        Precio: <span class="text-center price" style="color: red;"><%= money_format(promo.normal_price) %>  €</span>
+                    <% else %>
+                      <span class="text-center price">Precio a consultar en tienda</span>
+                    <% end %>
 
-  <% else %>
-    <div class="row alert alert-secondary text-right">
-      No hay promociones recientes
+            </div>
+          </div>
+
+        <% end %>
+      <% end %>
     </div>
-
+    <% end %>
+  <% end %>
+  </div>
 <% end %>

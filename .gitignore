@@ -31,3 +31,4 @@ config/secrets.yml
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+node_modules/.yarn-integrity
