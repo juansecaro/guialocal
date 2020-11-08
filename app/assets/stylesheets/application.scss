@@ -368,3 +368,9 @@ span.past {
 .menu-icon{
   padding-right: 100px;
 }
+.vertically-centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}

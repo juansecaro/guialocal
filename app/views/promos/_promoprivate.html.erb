@@ -1,0 +1,98 @@
+<p><h2 class="text-center">Promociones en activo</h2></p>
+<p class="text-muted text-center">Las promociones son modificables sólo durante los primeros 30 minutos para corregir porsibles errores</p>
+
+<% if @actuales.any?  %>
+  <% @actuales.each do |promo| %>
+    <% if promo.version >= 0 %>
+
+      <div class="row my-1 vertically-centered" style="border: 3px solid green;">
+        <div class="col-md-4 pt-2">
+          <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail fotos mx-auto d-block" unless promo.imgpromo.blank? %>
+        </div>
+        <div class="col-md-6">
+              <p><h6>
+                  <%= link_to promo.titulo, promo_path(promo) %>
+                 <span class="date_cal">| Termina el <%= promo.validez.day %> de <%= I18n.l(promo.validez, format: "%B") %> a las <%= promo.validez.strftime('%H:%M') %></span>
+                </h6></p>
+              <small class="event-text"><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %></small></br>
+
+                <% if (promo.special_price && promo.special_price > 0) %>
+                    Precio: <span class="text-center">Antes <del class="text-muted"><%= money_format(promo.normal_price) %> €</del> Ahora <span class="price" style="color: red;"><%= money_format(promo.special_price) %> €</span></span>
+                <% elsif (promo.normal_price && promo.normal_price > 0) %>
+                    Precio: <span class="text-center price" style="color: red;"><%= money_format(promo.normal_price) %>  €</span>
+                <% else %>
+                  <span class="text-center price">Precio a consultar en tienda</span>
+                <% end %>
+
+        </div>
+        <div class="col-md-2 vertically-centered">
+          <p>
+          <%= link_to "Ver", promo_path(promo) %> |
+          <% if Time.now.utc > promo.created_at + 1800 %>
+          <span class="text-muted">Editar</span>
+          <% else %>
+          <%= link_to "Editar", edit_promo_path(promo) %>
+          <% end %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+
+<% else %>
+  <div class="row text-center text-muted">
+    <div class="col-md-12">
+      <h6 class="text-center">No hay promociones en activo</h6>
+    </div>
+  </div>
+<% end %>
+
+
+<p><h2 class="text-center">Promociones pasadas</h2></p>
+
+<% if @pasadas.any?  %>
+  <% @pasadas.each do |promo| %>
+    <% if promo.version >= 0 %>
+
+      <div class="row my-1 vertically-centered" style="border: 3px solid green;">
+        <div class="col-md-4 pt-2">
+          <%= image_tag (promo.imgpromo.thumb.url), class: "img-fluid img-thumbnail fotos mx-auto d-block" unless promo.imgpromo.blank? %>
+        </div>
+        <div class="col-md-6">
+              <p><h6>
+                  <%= link_to promo.titulo, promo_path(promo) %>
+                 <span class="date_cal">| Termina el <%= promo.validez.day %> de <%= I18n.l(promo.validez, format: "%B") %> a las <%= promo.validez.strftime('%H:%M') %></span>
+                </h6></p>
+              <small class="event-text"><%= Nokogiri::HTML(promo.texto).text.truncate(100, separator: ' ') %></small></br>
+
+                <% if (promo.special_price && promo.special_price > 0) %>
+                    Precio: <span class="text-center">Antes <del class="text-muted"><%= money_format(promo.normal_price) %> €</del> Ahora <span class="price" style="color: red;"><%= money_format(promo.special_price) %> €</span></span>
+                <% elsif (promo.normal_price && promo.normal_price > 0) %>
+                    Precio: <span class="text-center price" style="color: red;"><%= money_format(promo.normal_price) %>  €</span>
+                <% else %>
+                  <span class="text-center price">Precio a consultar en tienda</span>
+                <% end %>
+
+        </div>
+        <div class="col-md-2 vertically-centered">
+          <p>
+          <%= link_to "Ver", promo_path(promo) %> |
+          <% if Time.now.utc > promo.created_at + 1800 %>
+          <span class="text-muted">Editar</span>
+          <% else %>
+          <%= link_to "Editar", edit_promo_path(promo) %>
+          <% end %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="row text-muted">
+    <div class="col-md-12">
+      <h6 class="text-center">Aún no hay promociones inactivas</h6>
+    </div>
+  </div>
+<% end %>
