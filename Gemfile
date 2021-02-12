@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 gem 'webpacker', '~> 4.0', '>= 4.0.7'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '< 1.0'
@@ -37,7 +37,7 @@ gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
-gem 'invisible_captcha', '~> 0.12.0'
+gem 'invisible_captcha', '~> 0.12.2'
 gem 'wicked'
 gem 'devise_masquerade'
 # Use jquery as the JavaScript library
