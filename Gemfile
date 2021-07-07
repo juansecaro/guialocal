@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 
-gem 'carrierwave', '~> 2.0', '>= 2.0.2'
+gem 'carrierwave', '~> 2.1', '>= 2.1.0'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'font_awesome5_rails', '~> 0.3.4'
@@ -65,7 +65,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
   gem 'awesome_print', '~> 1.8'
-  gem "letter_opener"
+  gem "letter_opener", ">= 1.7.0"
   gem 'listen', '~> 3.0.5'
   gem 'better_errors', '~> 2.8', '>= 2.8.3'
   gem "binding_of_caller"
