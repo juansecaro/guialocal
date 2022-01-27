@@ -102,7 +102,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
-    connection_pool (2.2.3)
+    connection_pool (2.2.5)
     crass (1.0.6)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
@@ -203,8 +203,6 @@ GEM
     public_suffix (4.0.5)
     puma (3.12.6)
     rack (2.2.3)
-    rack-protection (2.0.8.1)
-      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -236,7 +234,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.1.4)
+    redis (4.5.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -264,11 +262,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sidekiq (5.2.9)
-      connection_pool (~> 2.2, >= 2.2.2)
+    sidekiq (6.4.0)
+      connection_pool (>= 2.2.2)
       rack (~> 2.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 4.2)
+      redis (>= 4.2.0)
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -354,7 +351,7 @@ DEPENDENCIES
   rails (~> 5.1.7)
   ruby-debug-ide
   sass-rails (~> 5.0)
-  sidekiq (~> 5.2, >= 5.2.3)
+  sidekiq (~> 6.4)
   simple_form (>= 5.0.0)
   sitemap_generator (~> 6.0, >= 6.0.1)
   stripe
