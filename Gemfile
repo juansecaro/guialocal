@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 gem 'webpacker', '~> 4.0', '>= 4.0.7'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '< 1.0'
@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
-gem 'friendly_id', '~> 5.2', '>= 5.2.1'
+gem 'friendly_id', '~> 5.3', '>= 5.3.0'
 gem 'font_awesome5_rails', '~> 0.3.4'
 gem "simple_form", ">= 5.0.0"
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
@@ -37,7 +37,7 @@ gem 'mail_form'
 gem 'meta-tags'
 gem 'sidekiq', '~> 5.2', '>= 5.2.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
-gem 'invisible_captcha', '~> 0.12.0'
+gem 'invisible_captcha', '~> 0.12.2'
 gem 'wicked'
 gem 'devise_masquerade'
 # Use jquery as the JavaScript library
