@@ -8,25 +8,25 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
-gem 'webpacker', '~> 4.0', '>= 4.0.7'
+gem 'webpacker', '~> 4.2', '>= 4.2.2'
 # Use postgreSQL as the database for Active Record
 gem 'pg', '< 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 
 gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
-gem 'font_awesome5_rails', '~> 0.3.4'
-gem "simple_form", ">= 5.0.0"
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'font_awesome5_rails', '~> 0.3.6'
+gem "simple_form", ">= 5.0.2"
+gem 'bootstrap', '~> 4.5', '>= 4.5.0'
+gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'stripe'
@@ -35,9 +35,9 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
 gem 'mail_form'
 gem 'meta-tags'
-gem 'sidekiq', '~> 5.2', '>= 5.2.3'
+gem 'sidekiq', '~> 6.0', '>= 6.0.0'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
-gem 'invisible_captcha', '~> 0.12.0'
+gem 'invisible_captcha', '~> 0.12.2'
 gem 'wicked'
 gem 'devise_masquerade'
 # Use jquery as the JavaScript library
@@ -60,7 +60,7 @@ gem 'capistrano-rvm' # ojo con rbenv
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'whenever', :require => false
 
-gem 'web-console', '>= 3.3.0', group: :development
+gem 'web-console', '>= 3.7.0', group: :development
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
