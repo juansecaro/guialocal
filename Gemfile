@@ -25,7 +25,7 @@ gem 'mini_magick', '~> 4.7' #carrierwave dependent
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'font_awesome5_rails', '~> 0.3.4'
 gem "simple_form", ">= 5.0.0"
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+gem 'bootstrap', '~> 5.0', '>= 5.0.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n-views'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
